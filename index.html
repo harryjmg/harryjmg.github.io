@@ -150,6 +150,50 @@
         margin-bottom: 0rem;
     }
 
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-30px);
+        }
+        60% {
+            transform: translateY(-15px);
+        }
+    }
+
+    .bounce {
+        animation: bounce 2s infinite;
+    }
+
+    .bold {
+        font-weight: 700;
+    }
+
+    .link_special {
+        align-items: center;
+        background-color: transparent;
+        border-color: #E2E8F0;
+        color: #1A202C;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.5;
+        outline: 2px solid transparent;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+        -webkit-box-align: center;
+        cursor: pointer;
+        display: inline-flex;
+        outline-offset: 2px;
+        transition-duration: 150ms;
+        transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
 </style>
 
 <nav>
@@ -159,31 +203,53 @@
     </div>
 </nav>
 
-<section class="article">
+<section class="article" style="margin-bottom:8rem">
     <h1 class="head">L'objectif est de devenir libre en utilisant ses <span class="blue-gradient">compétences en code</span>.</h1>
     <p class="lead">On t'accompagne pour devenir développeur vraiment indépendant. Capable de donner vie à tes idées et d'en vivre. (Gagner au moins 2000€/mois si tu veux un chiffre, et jusqu'à 40k/mois pour les plus déterminés).</p>
     <p class="lead">En créant des applications mobiles ou bureau, des logiciels, des SaaS, des bots, des outils, des systèmes, peu importe.</p>
     <p class="lead">On t'aidera aussi à trouver des missions à 400€ par jour si besoin, mais ce sera qu'une étape vers l'extérieur de la prison.</p>
     <p class="lead">Ne laisse pas la société t'enfermer dans le rôle du développeur mercenaire à qui on jette des cacahuètes, c'est un piège destiné à tuer ta créativité et ton potentiel. Ils cherchent à t'endormir.</p>
     <p class="lead">Qu'ils aillent tous se faire foutre.</p>
+    <p class="lead">Et maintenant ?</p>
+    
+    <p class="bounce" style="text-align: center; margin-top: 45px; font-size: xx-large;">↓</p>
 
-    <h2>1) Réserver un rendez-vous gratuit avec moi</h2>
+    <h2>1) Réserver un entretien gratuit avec moi</h2>
     <p class="lead">
-        Clique sur le bouton ci-dessous pour prendre rendez-vous avec moi. Je n'ai pas énormément de créneaux par semaine car j'ai décidé de faire chaque appel moi-même.
+        Clique sur le bouton ci-dessous pour prendre rendez-vous avec moi. Je n'ai pas énormément de créneaux par semaine car je tiens à faire chaque appel moi-même aujourd'hui.
     </p>
-    <a href="#" class="btn_cta">→ Réserver un entretien gratuit avec moi</a>
+    <a href="#" class="btn_cta">1) Réserver un entretien gratuit avec moi</a>
     <a href="#" class="link_secondary">Clique ici s'il n'y a plus de places</a>
 
+    
     <h2>2) Gagner en clarté et avoir une direction</h2>
+    
     <p class="lead">
-        À l'heure de notre rendez-vous, on aura environ 40 minutes pour parler de ton parcours, de ta vision pour ta propre vie, des obstacles que tu rencontres aujourd'hui et de comment tu peux les surmonter.
+        À l'heure de notre rendez-vous, on aura environ 40 minutes pour parler de ton parcours, <span class="bold">de ta vision pour ta propre vie</span>, des obstacles que tu rencontres aujourd'hui et de comment tu peux les surmonter.
     </p>
-
+    
     <h2>3) Rejoindre l'accélérateur si tu veux</h2>
-    <p class="lead" style="margin-bottom:8rem">
-        Je te le dis de suite : l'appel n'est pas conditionné à ce que tu rejoignes Coding Accelerator, mais tu pourras le rejoindre si je confirme avec toi que le programme peut t'aider. 1997€ le prix comme ça t'as pas de surprises. Tu pourras régler en 1, 3, 4 ou 10 fois si ta banque est d'accord.
+    <p class="lead">
+        Je te le dis de suite : l'appel n'est pas conditionné à ce que tu rejoignes Coding Accelerator, mais tu pourras le rejoindre <span class="bold">si je confirme avec toi que le programme peut t'aider</span>.
     </p>
-
+    
+    <p class="lead">
+        1997€ le prix comme ça t'as pas de surprises. C'est réglable en 1, 3, 4 ou 10 fois si ta banque est d'accord. Ça te donnera accès à vie.
+    </p>
+    
+    <p class="lead">
+        Pour accéder à la description médico-légale du programme d'accompagnement Coding Accelerator, <a class="link_special" href="#">clique ici.</a>
+    </p>
+    
+    <p class="lead">
+        À très vite, <br><br>
+       –  Harry Jmg
+    </p>
+    
+    <hr style="width: 100%; border-color: #ececec; margin-top: 2rem; margin-bottom: 2rem;">
+    
+    <script src="https://widget.senja.io/widget/3a4472ba-4113-4327-930c-512831f1c08a/platform.js" type="text/javascript" async></script>
+    <div class="senja-embed" data-id="3a4472ba-4113-4327-930c-512831f1c08a" data-mode="shadow" data-lazyload="false" style="display: block;"></div>
 
 
 </section>
