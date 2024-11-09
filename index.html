@@ -256,7 +256,7 @@
 
 <nav>
     <div class="nav_logo_and_title">
-        <img alt="Logo" fetchpriority="high" loading="eager" width="50" height="40" decoding="async" data-nimg="1" style="color:transparent" src="https://snappify.com/images/logo.svg">
+        <img alt="Logo" fetchpriority="high" loading="eager" width="50" height="40" decoding="async" data-nimg="1" style="color:transparent" src="codewindow.svg">
         <strong class="website_title">Harry Jmg</strong>
     </div>
 </nav>
@@ -275,8 +275,12 @@
     <p class="lead">
         Clique sur le bouton ci-dessous pour prendre rendez-vous avec moi. Il n'y a pas énormément de créneaux parce que je tiens à te rencontrer et te parler <span class="bold">moi-même</span>.
     </p>
-    <a href="#" class="btn_cta">1) Réserver un entretien gratuit avec moi</a>
-    <a href="#" class="link_secondary">Clique ici s'il n'y a plus de places</a>
+    <!-- Début de widget de lien Calendly -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <a class="btn_cta" href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/harryjmg/codingaccelerator'});return false;">1) Réserver un entretien gratuit avec moi</a>
+    <!-- Fin de widget de lien Calendly -->
+    <a href="https://tally.so/r/wooorV" class="link_secondary">Clique ici s'il n'y a plus de places</a>
 
     
     <h2>2) Gagner en clarté et avoir une direction</h2>
@@ -296,7 +300,7 @@
     </p>
     
     <p class="lead">
-        Pour accéder à la description médico-légale du programme d'accompagnement Coding Accelerator, <a class="link_special" href="#">clique ici.</a>
+        Pour accéder à la description médico-légale du programme d'accompagnement Coding Accelerator, <a class="link_special" href="description_ca.html">clique ici.</a>
     </p>
 
     <p class="lead">
@@ -316,14 +320,14 @@
 <footer>
     <div class="footer">
         <div class="row">
-            <a href="#"><i class="fa fa-youtube"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/@HarryJMG"><i class="fa fa-youtube"></i></a>
+            <a href="https://www.instagram.com/harryjmg"><i class="fa fa-instagram"></i></a>
+            <a href="https://x.com/harry_jmg"><i class="fa fa-twitter"></i></a>
         </div>
 
         <div class="row">
             <ul>
-                <li>✉️ <a href="#">support@joincodingnow.com</a></li>
+                <li>✉️ : support@joincodingnow.com</li>
             </ul>
         </div>
 
