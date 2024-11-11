@@ -10,7 +10,7 @@
 
     <!-- Chargement des balises communes depuis head.html -->
     <script>
-    fetch('/partials/_head.html')
+    fetch('/partials/head.html')
         .then(response => response.text())
         .then(data => {
         document.head.insertAdjacentHTML('beforeend', data);
@@ -22,7 +22,7 @@
     <header id="header"></header>
 
     <script>
-        fetch('/partials/_header.html')
+        fetch('/partials/header.html')
             .then(response => response.text())
             .then(data => {
             document.getElementById("header").innerHTML = data;
@@ -569,7 +569,7 @@
     
     <footer></footer>
     <script>
-        fetch('/partials/_footer.html')
+        fetch('/partials/footer.html')
             .then(response => response.text())
             .then(data => {
             document.querySelector("footer").innerHTML = data;
