@@ -64,7 +64,13 @@ nav {
     padding-bottom: 2rem;
     padding-top: 1rem;
 
-    .nav_logo_and_title {
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+    }
+
+    .nav_logo_and_title, a {
         img {
             margin-right: .75em;
         }
@@ -74,7 +80,6 @@ nav {
         -webkit-box-pack: center;
         align-items: center;
         -webkit-box-align: center;
-        cursor: pointer;
     }
 }
 
