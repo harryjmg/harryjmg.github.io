@@ -37,8 +37,8 @@
 .badge {
     padding: 5px 10px;
     border-radius: 30px;
-    background: #555555;
-    color: white;
+    background: #e8e8e8;
+    color: #656565;
     margin-top: 1em;
     width: fit-content;
     display: block;
@@ -659,7 +659,7 @@ ol {
         }
 
         &.faded-icon {
-            background-color: #f4f6f8;
+            background-color: #e8e8e8;
             color: #7b7b7b;
         }
 
