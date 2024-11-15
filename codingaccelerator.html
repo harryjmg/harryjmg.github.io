@@ -29,7 +29,7 @@
             });
     </script>
         
-    <section class="article" style="margin-bottom:2rem">
+    <section class="article" style="margin-bottom:3rem">
         <h1 class="head">L'objectif est de <span class="blue-underline">devenir libre</span> en utilisant ses <span class="blue-gradient">compétences en code</span>.</h1>
         <p class="lead">
             On t'accompagne pour devenir développeur vraiment indépendant. Être capable de créer des trucs et d'en vivre. (en générant au moins 2000€/mois si tu veux un chiffre, et jusqu'à 40k/mois pour les plus déterminés, voir plus).
@@ -49,8 +49,28 @@
         </p>
         
         <p class="bounce" style="text-align: center; margin-top: 45px; font-size: xx-large;">↓</p>
-    
-        <h2>1) Réserver un entretien gratuit avec moi</h2>
+        
+        <h2 style="margin-">Notre roadmap</h2>
+
+
+        <!-- Insert the roadmap html here -->
+        <div id="roadmap"></div>
+        <script>
+            fetch('/partials/roadmap.html')
+                .then(response => response.text())
+                .then(data => {
+                document.getElementById("roadmap").innerHTML = data;
+                });
+        </script>
+
+        <p class="lead faded">
+            Pour accéder à la description complète et détaillée du programme Coding Accelerator, tu peux <a class="link_special" href="programme.html">cliquer ici.</a>
+        </p>
+        
+        <p class="bounce" style="text-align: center; margin-top: 45px; font-size: xx-large;">↓</p>
+
+        <h2>Comment démarrer ?</h2>
+
         <p class="lead">
             Clique sur le bouton ci-dessous pour prendre rendez-vous avec moi. Je tiens à te rencontrer et à te parler <span class="bold">moi-même</span>.
         </p>
@@ -60,15 +80,10 @@
         <a class="btn_cta" style="margin-top: 1em;" href="booking.html">1) Réserver un entretien gratuit avec moi</a>
         <!-- Fin de widget de lien Calendly -->
         <a href="https://tally.so/r/wooorV" class="link_secondary">Clique ici s'il n'y a plus de places</a>
-    
-        
-        <h2>2) Gagner en clarté et avoir une direction</h2>
-        
+            
         <p class="lead">
             À l'heure de notre rendez-vous, on aura environ 40 minutes pour parler de ton parcours, de ta <span class="bold">vision pour ta propre vie</span>, des obstacles que tu rencontres et de comment tu vas les <span class="bold">surmonter.</span>
         </p>
-        
-        <h2>3) Rejoindre l'accélérateur si tu veux</h2>
     
         <p class="lead">
             Je te le dis de suite : l'appel n'est pas conditionné à ce que tu rejoignes Coding Accelerator, mais tu pourras le rejoindre si je <span class="bold">confirme avec toi que le programme peut t'aider</span>.
@@ -77,12 +92,8 @@
         <p class="lead">
             1997€ le prix comme ça t'as pas de surprises. C'est réglable en 1, 3, 4 ou 10 fois si ta banque est d'accord. Et ça te donnera accès à vie.
         </p>
-        
-        <p class="lead">
-            Pour accéder à la description complète du programme d'accompagnement Coding Accelerator, <a class="link_special" href="programme.html">clique ici.</a>
-        </p>
     
-        <p class="lead" style="margin-bottom:2em">
+        <p class="lead" style="margin-bottom:4em">
             À plus tard,<br>
             Harry.
         </p>
