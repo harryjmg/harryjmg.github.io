@@ -667,6 +667,11 @@ ol {
             background-color: #688afd;
             color: #fff;
         }
+
+        &.celebration-icon {
+            background: linear-gradient(45deg, #ffe479, #daa248, #c9933c, #a1830d);
+            color: #FFF;
+        }
     }
 
     .timeline-item-description {
