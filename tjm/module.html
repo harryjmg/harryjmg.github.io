@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <title>Trajet TJM - Formation Gratuite</title>
+</head>
+<body>
+    <header id="header"></header>
+    <script>
+        // Chargement de l'en-tête commun
+        fetch('/partials/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+    </script>
+
+    <section class="article" style="margin-bottom:3rem">
+        <h1 class="head"><span id="module-title" class="blue-underline"></span></h1>
+        <div class="video-container">
+            <!-- Utilisation de Loom pour l'embed -->
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden;">
+                <iframe id="video-frame" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+        <p class="" id="module-description"></p>
+
+        <h3>Ressources</h3>
+        <ul id="resources-list"></ul>
+
+        <!-- Liens de navigation -->
+        <div class="navigation-links">
+            <a href="#" id="prev-video-link" class="link_special">← Vidéo précédente</a><br>
+            <a href="#" id="next-video-link" class="link_special">Vidéo suivante →</a><br>
+            <a href="/tjm/home.html" class="link_special">Revenir à l'accueil</a>
+        </div>
+
+        <script>
+            // Tableau contenant les informations de chaque module
+            const modules = {
+                "1": {
+                    title: "Bienvenue",
+                    video: "https://www.loom.com/embed/c641960807334ee8b91a57479b3d00b3?sid=28a8a1a9-617b-458d-af37-70e7eb5dc486",
+                    description: "Ceci est la description du module 1.",
+                    resources: [
+                        { name: "Ressource 1", link: "https://resource1.com" },
+                        { name: "Ressource 2", link: "https://resource2.com" }
+                    ],
+                    next: "2"
+                },
+                "2": {
+                    title: "Anti-objectif et objectif",
+                    video: "https://www.loom.com/embed/video2-id",
+                    description: "Description du module 2.",
+                    resources: [
+                        { name: "Ressource 3", link: "https://resource3.com" },
+                        { name: "Ressource 4", link: "https://resource4.com" }
+                    ],
+                    prev: "1",
+                    next: "3"
+                },
+                // Ajoute ici d'autres modules selon tes besoins
+            };
+
+            // Fonction pour obtenir l'ID du module depuis l'URL
+            function getModuleId() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get("id");
+            }
+
+            // Chargement du module basé sur l'ID
+            const moduleId = getModuleId();
+            const module = modules[moduleId];
+
+            if (module) {
+                document.getElementById("module-title").textContent = module.title;
+                document.getElementById("video-frame").src = module.video + "&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true";
+                document.getElementById("module-description").textContent = module.description;
+
+                // Ajout des ressources externes
+                const resourcesList = document.getElementById("resources-list");
+                module.resources.forEach(resource => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = resource.link;
+                    a.textContent = resource.name;
+                    li.appendChild(a);
+                    resourcesList.appendChild(li);
+                });
+
+                // Lien vers la vidéo précédente
+                if (module.prev && modules[module.prev]) {
+                    document.getElementById("prev-video-link").href = `?id=${module.prev}`;
+                } else {
+                    document.getElementById("prev-video-link").style.display = "none";
+                }
+
+                // Lien vers la vidéo suivante
+                if (module.next && modules[module.next]) {
+                    document.getElementById("next-video-link").href = `?id=${module.next}`;
+                } else {
+                    document.getElementById("next-video-link").style.display = "none";
+                }
+            } else {
+                document.getElementById("module-title").textContent = "Module non trouvé";
+                document.getElementById("module-description").textContent = "Le module que vous cherchez n'existe pas.";
+                document.getElementById("prev-video-link").style.display = "none";
+                document.getElementById("next-video-link").style.display = "none";
+            }
+        </script>
+    </section>
+
+    <footer></footer>
+    <script>
+        // Chargement du pied de page commun
+        fetch('/partials/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector("footer").innerHTML = data;
+            });
+    </script>
+</body>
+</html>
