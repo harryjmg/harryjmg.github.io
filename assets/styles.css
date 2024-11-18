@@ -799,3 +799,39 @@ ol {
         }
     }       
 }
+
+#resources-title {
+    margin-bottom: 0;
+}
+
+#resources-list {
+    padding: 2em 2em;
+    margin-top: 0;
+
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+    margin-bottom: 2.5rem;
+    background-color: #f3f3f3;
+
+    li {
+        /* remove bullet */
+        list-style-type: none;
+        &::before {
+            content: "→";
+            margin-right: 0.5em;
+            /* Remove underline from the arrow */
+            text-decoration: none;
+        }
+    }
+
+    a {
+        color: #121212;
+        font-weight: 500;
+
+        &:hover {
+            color: #688afd;
+        }
+    }
+}

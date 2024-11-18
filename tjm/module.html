@@ -17,49 +17,168 @@
 
     <section class="article" style="margin-bottom:3rem">
         <h1 class="head"><span id="module-title" class="blue-underline"></span></h1>
+
+        <div class="navigation-links">
+            <a style="float:left" href="#" id="prev-video-link" class="link_special">← Précédent</a>
+            <a style="float:right" href="#" id="next-video-link" class="link_special">Suivant →</a>
+        </div>
+
         <div class="video-container">
             <!-- Utilisation de Loom pour l'embed -->
             <div style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden;">
                 <iframe id="video-frame" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
             </div>
         </div>
+
         <p class="" id="module-description"></p>
 
-        <h3>Ressources</h3>
+        <h3 id="resources-title">Ressources</h3>
         <ul id="resources-list"></ul>
 
         <!-- Liens de navigation -->
-        <div class="navigation-links">
-            <a href="#" id="prev-video-link" class="link_special">← Vidéo précédente</a><br>
-            <a href="#" id="next-video-link" class="link_special">Vidéo suivante →</a><br>
-            <a href="/tjm/home.html" class="link_special">Revenir à l'accueil</a>
-        </div>
+        <a href="/tjm/index.html" class="link_special">🏠 Revenir à l'accueil</a>
 
         <script>
             // Tableau contenant les informations de chaque module
             const modules = {
                 "1": {
                     title: "Bienvenue",
-                    video: "https://www.loom.com/embed/c641960807334ee8b91a57479b3d00b3?sid=28a8a1a9-617b-458d-af37-70e7eb5dc486",
-                    description: "Ceci est la description du module 1.",
-                    resources: [
-                        { name: "Ressource 1", link: "https://resource1.com" },
-                        { name: "Ressource 2", link: "https://resource2.com" }
-                    ],
+                    video: "https://www.loom.com/embed/c641960807334ee8b91a57479b3d00b3?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Vidéo d'introduction au Trajet TJM, quel est l'objectif et à quoi vous attendre en suivant les vidéos qui constituent le Trajet TJM.",
+                    resources: [],
                     next: "2"
                 },
                 "2": {
                     title: "Anti-objectif et objectif",
-                    video: "https://www.loom.com/embed/video2-id",
-                    description: "Description du module 2.",
-                    resources: [
-                        { name: "Ressource 3", link: "https://resource3.com" },
-                        { name: "Ressource 4", link: "https://resource4.com" }
-                    ],
+                    video: "https://www.loom.com/embed/fbb583bda1c54751a452c90524b72a8e?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, je vous présente la voie que vous souhaitez certainement éviter, et je vous aide à visualiser plus clairement le véritable objectif.",
+                    resources: [],
                     prev: "1",
                     next: "3"
                 },
-                // Ajoute ici d'autres modules selon tes besoins
+                "3": {
+                    title: "Mon histoire",
+                    video: "https://www.loom.com/embed/52a027efb30744658eb37b234127ff31?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, je vous raconte les grandes lignes de mon histoire et de comment j'ai découvert la voie qui mène à devenir développeur indépendant et facturer 400€/jour grâce à ses compétences en code.",
+                    resources: [],
+                    prev: "2",
+                    next: "4"
+                },
+                "4": {
+                    title: "Le Trajet TJM™️",
+                    video: "https://www.loom.com/embed/18c50147dd6c49108b95bd59d3f66121?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, je vous présente quelles sont les 3 grandes étapes du Trajet TJM et les sous étapes pour chacune de ces étapes.",
+                    resources: [
+                        { name: "Le Schéma du Trajet TJM", link: "https://drive.google.com/file/d/1CDiPkZXGmIodqCYO80je7mBI2mmgDfdt/view?usp=drive_link" }
+                    ],
+                    prev: "3",
+                    next: "5"
+                },
+                "5": {
+                    title: "Construire de solides compétences",
+                    video: "https://www.loom.com/embed/8b6245d0f5b847a782231f68c4a5d122?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, je vous décris la différence de parcours entre les bons et les mauvais développeurs, je vous présente l'édifice des compétences et les différents blocs qui constituent les vraies fondations du code.",
+                    resources: [
+                        { name: "CS50 de Harvard", link: "https://www.youtube.com/watch?v=3LPJfIKxwWc&list=PLhQjrBD2T381WAHyx1pq-sBfykqMBI7V4" },
+                        { name: "Intro à l'informatique du MIT", link: "https://missing.csail.mit.edu/" },
+                        { name: "Exo : Problem Solving sur Scratch.", link: "https://scratch.mit.edu/search/projects?q=problem%20solving" },
+                        { name: "Schéma Édifice des compétences", link: "https://drive.google.com/file/d/1GwdnVMB5vBY-mhm-44EHZdB5zOUwweD5/view?usp=drive_link" }
+                    ],
+                    prev: "4",
+                    next: "6"
+                },
+                "6": {
+                    title: "Choisir un langage de programmation",
+                    video: "https://www.loom.com/embed/fd061b87c3734d5abd8baece5a2d5223?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce nouveau module, on va voir ensemble comment vous allez pouvoir choisir un langage de programmation sans être paralysés par la profusion de choix disponibles grâce à 3 critères de choix.",
+                    resources: [
+                        { name: "Github", link: "https://github.com/" },
+                        { name: "StackOverflow", link: "https://stackoverflow.com/tags" },
+                        { name: "Udemy", link: "https://www.udemy.com/fr/" },
+                        { name: "Youtube", link: "https://www.youtube.com/" }
+                    ],
+                    prev: "5",
+                    next: "7"
+                },
+                "7": {
+                    title: "Apprendre un langage de programmation",
+                    video: "https://www.loom.com/embed/ac410fd9b7ae437f9078f2f86cf1ae03?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, on va voir les subtilités de l'apprentissage d'un premier langage de programmation. Que devez-vous apprendre ? Ou vous arrêtez ?",
+                    resources: [
+                        { name: "Le Cours Python de DocString", link: "https://youtu.be/LamjAFnybo0" },
+                        { name: "Cours pour le langage C", link: "https://youtu.be/ssJY5MDLjlo" },
+                        { name: "Mon 1er cours sur le langage C", link: "https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c" },
+                        { name: "Exos à être capable de résoudre", link: "https://docs.google.com/presentation/d/1e18pJ2XsoCtsaiyHUrOwfec0nAxI6kJKmsXvnf1C_98/edit#slide=id.g10489fecaab_0_54" },
+                        { name: "Une roadmap pour les fondations", link: "https://www.skool.com/tjm-access/fondamentaux-en-computer-science?p=d9b76536" }
+                    ],
+                    prev: "6",
+                    next: "8"
+                },
+                "8": {
+                    title: "Identifier une expertise en demande",
+                    video: "https://www.loom.com/embed/019c1ea1ce764f36b9f240b35f91edad?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, je vous montre comment identifier une expertise en demande et choisir votre spécialité et votre expertise pour la suite.",
+                    resources: [
+                        { name: "Free-work", link: "https://www.free-work.com/fr/tech-it" },
+                        { name: "Malt", link: "https://www.malt.fr/" }
+                    ],
+                    prev: "7",
+                    next: "9"
+                },
+                "9": {
+                    title: "Concevoir une roadmap d'apprentissage",
+                    video: "https://www.loom.com/embed/89440671dd5f40699d7db137cc7f97d6?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, vous allez découvrir comment construire votre roadmap d'apprentissage dans le but de gagner en clarté sur le trajet qui vous attend à partir de cette étape.",
+                    resources: [
+                        { name: "À vos crayons ! Excalidraw", link: "https://excalidraw.com/" }
+                    ],
+                    prev: "8",
+                    next: "10"
+                },
+                "10": {
+                    title: "Apprendre une expertise",
+                    video: "https://www.loom.com/embed/e73e714b7a204a2ba2ac94c05841f02d?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, vous allez découvrir comment devenir un expert sur votre stack et les deux méthodes qui permettent d'atteindre le niveau requis par le marché.",
+                    resources: [
+                        { name: "Cours complet React sur Youtube.", link: "https://youtu.be/h2a0cSC1Vz8" },
+                        { name: "Codecademy", link: "https://www.codecademy.com/" },
+                        { name: "Awesome Rails sur Github", link: "https://github.com/gramantin/awesome-rails" },
+                        { name: "ChatGPT", link: "https://chat.openai.com/auth/login" },
+                        { name: "Awesome rails open source app", link: "https://github.com/asyraffff/Open-Source-Ruby-and-Rails-Apps" }
+                    ],
+                    prev: "9",
+                    next: "11"
+                },
+                "11": {
+                    title: "Cracker le marché de la tech",
+                    video: "https://www.loom.com/embed/f763f9a1472742c592a4d1063bf2e9d2?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, vous allez découvrir quels sont les différents acteurs du marché de la tech et comment vous positionner pour être légitimes et trouver des missions freelances.",
+                    resources: [],
+                    prev: "10",
+                    next: "12"
+                },
+                "12": {
+                    title: "Générer des opportunités",
+                    video: "https://www.loom.com/embed/4d3ff8cdd281458c86bf4cc35320eb47?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce module, vous allez découvrir les différentes méthodes qui vont vous permettre de générer des opportunités de missions.",
+                    resources: [
+                        { name: "Linkedin", link: "https://fr.linkedin.com/" },
+                        { name: "Free-work", link: "https://www.free-work.com/fr/tech-it" },
+                        { name: "Malt", link: "https://www.malt.fr/" },
+                        { name: "Freelance Republik", link: "https://www.freelancerepublik.com/" },
+                        { name: "Pylote", link: "https://pylote.io/" },
+                        { name: "Freelance.com", link: "https://www.freelance.com/" }
+                    ],
+                    prev: "11",
+                    next: "13"
+                },
+                "13": {
+                    title: "Convertir en entretien",
+                    video: "https://www.loom.com/embed/999cd422b44c4f92a5649d97ad2872a3?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
+                    description: "Dans ce nouveau module, vous allez découvrir le tunnel de vente qui permet de conceptualiser et de rationaliser la recherche de mission.",
+                    resources: [],
+                    prev: "12"
+                }
             };
 
             // Fonction pour obtenir l'ID du module depuis l'URL
@@ -69,12 +188,12 @@
             }
 
             // Chargement du module basé sur l'ID
-            const moduleId = getModuleId();
+            const moduleId = getModuleId() || "1";
             const module = modules[moduleId];
 
             if (module) {
                 document.getElementById("module-title").textContent = module.title;
-                document.getElementById("video-frame").src = module.video + "&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true";
+                document.getElementById("video-frame").src = module.video;
                 document.getElementById("module-description").textContent = module.description;
 
                 // Ajout des ressources externes
@@ -87,6 +206,10 @@
                     li.appendChild(a);
                     resourcesList.appendChild(li);
                 });
+                if (module.resources.length === 0) {
+                    document.getElementById("resources-title").style.display = "none";
+                    document.getElementById("resources-list").style.display = "none";
+                }
 
                 // Lien vers la vidéo précédente
                 if (module.prev && modules[module.prev]) {
