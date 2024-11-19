@@ -178,10 +178,6 @@ h2 {
     }
 }
 
-.bounce {
-    /* animation: bounce 2s infinite; */
-}
-
 .bold {
     font-weight: 700;
 }
@@ -686,12 +682,10 @@ ol {
             flex-shrink: 0;
         }
         a {
-            color: #3d3d3d;
-            font-weight: 500;
+            color: #7b7b7b;
             text-decoration: none;
-            &:hover,
-            &:focus {
-                outline: 0; // Don't actually do this
+            
+            &:hover {
                 color: #688afd;
             }
         }

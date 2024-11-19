@@ -16,7 +16,7 @@
     </script>
 
     <section class="article" style="margin-bottom:3rem">
-        <h1 class="head"><span id="module-title" class="blue-underline"></span></h1>
+        <h1 class="head"><span id="module-title"></span></h1>
 
         <div class="navigation-links">
             <a style="float:left" href="#" id="prev-video-link" class="link_special">← Précédent</a>
@@ -109,7 +109,7 @@
                         { name: "Cours pour le langage C", link: "https://youtu.be/ssJY5MDLjlo" },
                         { name: "Mon 1er cours sur le langage C", link: "https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c" },
                         { name: "Exos à être capable de résoudre", link: "https://docs.google.com/presentation/d/1e18pJ2XsoCtsaiyHUrOwfec0nAxI6kJKmsXvnf1C_98/edit#slide=id.g10489fecaab_0_54" },
-                        { name: "Une roadmap pour les fondations", link: "https://www.skool.com/tjm-access/fondamentaux-en-computer-science?p=d9b76536" }
+                        { name: "Une roadmap pour les fondations", link: "https://github.com/ossu/computer-science" }
                     ],
                     prev: "6",
                     next: "8"
@@ -128,7 +128,7 @@
                 "9": {
                     title: "Concevoir une roadmap d'apprentissage",
                     video: "https://www.loom.com/embed/89440671dd5f40699d7db137cc7f97d6?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true",
-                    description: "Dans ce module, vous allez découvrir comment construire votre roadmap d'apprentissage dans le but de gagner en clarté sur le trajet qui vous attend à partir de cette étape.",
+                    description: "Dans ce module, vous allez découvrir comment construire votre roadmap d'apprentissage dans le but de gagner en clarté sur le trajet qui vous attend à partir de cette étape. Exemples de roadmap : Web avec Python/Django : Bases de python, Html css js, Django jusqu'à un blog, API, Tests, Deploiement...",
                     resources: [
                         { name: "À vos crayons ! Excalidraw", link: "https://excalidraw.com/" }
                     ],
@@ -192,7 +192,7 @@
             const module = modules[moduleId];
 
             if (module) {
-                document.getElementById("module-title").textContent = module.title;
+                document.getElementById("module-title").textContent = moduleId + "/13 - " + module.title;
                 document.getElementById("video-frame").src = module.video;
                 document.getElementById("module-description").textContent = module.description;
 
