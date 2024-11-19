@@ -10,7 +10,8 @@
         document.head.appendChild(metaDescription);
     </script>
 
-    <!-- Chargement des balises communes depuis head.html -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
     <script>
         fetch('/partials/head.html')
             .then(response => response.text())
@@ -21,6 +22,18 @@
 </head>
 
 <body>
+
+    <script>
+        if (!localStorage.getItem('hasVisitedTJM')) {
+            localStorage.setItem('hasVisitedTJM')) {, 'true');
+            confetti({
+                particleCount: 1000,
+                spread: 700,
+                origin: { y: 0.1 }
+            });
+        }
+    </script>
+    
     <header id="header"></header>
     <script>
         fetch('/partials/header.html')
