@@ -1,3 +1,4 @@
+
 .head {
     border-color: #E2E8F0;
     color: #1A202C;
@@ -96,7 +97,6 @@ nav {
 }
 
 .website_title {
-    border-color: #E2E8F0;
     cursor: pointer;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.5;
@@ -650,7 +650,7 @@ ol {
         margin-left: -52px;
         flex-shrink: 0;
         overflow: hidden;
-        box-shadow: 0 0 0 6px #fff;
+        box-shadow: 0 0 0 2px #fff;
         svg {
             width: 20px;
             height: 20px;
@@ -684,7 +684,7 @@ ol {
         a {
             color: #7b7b7b;
             text-decoration: none;
-            
+
             &:hover {
                 color: #688afd;
             }
