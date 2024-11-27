@@ -1,4 +1,165 @@
 
+@import url(https://fonts.googleapis.com/css?family=Arvo:700);
+@import url(https://fonts.googleapis.com/css?family=Seaweed+Script);
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+// CSS HEX
+@eerie-black: #222222ff;
+@white: #ffffffff;
+@medium-slate-blue: #6f73d2ff;
+@orange-wheel: #ff7f11ff;
+@coquelicot: #ff3f00ff;
+@eerie-black: #222222ff;
+
+@ourblack: #1A202C;
+
+body {
+    margin: 0;
+    color: #1A202C;
+}
+
+section {
+    display: flex;
+    letter-spacing: 0.2px;
+
+    padding-top: 3rem;
+
+    // Adjust space between paragraphs
+    p {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h3 {
+        margin-top: 2rem;
+    }
+
+    ul {
+        margin-top: 0;
+        position: relative;
+        gap: 8px 32px;
+        line-height: 1.45;
+        list-style: none;
+        padding-left: 1rem;
+
+        li {
+            margin-bottom: 16px;
+            display: flex;
+            -webkit-box-align: baseline;
+            align-items: baseline;
+
+            .li-arrow {
+                display: inline-block;
+                padding-right: 16px;
+                padding-top: 0px;
+                transform: translateY(5px);
+                color: #ff0a78;
+            }
+
+            .li-item {
+                margin: 0px;
+                padding: 0px;
+                border: 0px;
+                font: inherit;
+                vertical-align: baseline;
+            }
+        }
+    }
+
+    .gradient-yellow {
+        background-color: rgb(255, 178, 62);
+        background-image: linear-gradient(-268.67deg, rgb(255, 240, 102), rgb(255, 163, 26));
+        background-size: 100%;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-hot {
+        background-color: rgb(255, 178, 62);
+        background-image: linear-gradient(268.67deg, rgb(255, 255, 255) 3.43%, rgb(255, 240, 102) 15.69%, rgb(255, 163, 26) 55.54%, rgb(255, 0, 115) 99%);
+        background-size: 100%;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .muted-italic {
+        color: #a2a2a2;
+        font-family: "Chewy", system-ui;
+        font-weight: 400;
+        font-style: italic;
+    }
+}
+
+section.dark {
+    background: #0e0e0e;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+
+    h2 {
+        font-weight: 400;
+        margin-top: 3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    a {
+        color: rgb(159, 140, 255);
+        text-decoration: underline 1px;
+        text-underline-offset: 2px;
+    }
+
+    a:not(:hover) {
+        background-color: rgb(159, 140, 255);
+        background-image: linear-gradient(190deg, rgb(221, 153, 255) 20%, rgb(128, 159, 255) 80%);
+        background-size: 100%;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .long-underline {
+        position: relative;
+
+        img {
+            transform: translateY(45%) translateX(-4px) rotate(0.5deg);
+            display: block;
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            bottom: -3px;
+            user-select: none;
+        }
+    }
+
+    .double-underline {
+        position: relative;
+
+        img {
+            transform: translateY(40%);
+            width: 75%;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+            display: block;
+            position: absolute;
+            bottom: -5px;
+            user-select: none;
+        }
+    }
+
+    .stubby-arrow {
+        display: block;
+        position: absolute;
+        width: 30px;
+        top: 0px;
+        left: 0px;
+        user-select: none;
+        transform: translate(calc(-100% - 12px), 8px);
+    }
+
+    .orange {
+        color: rgb(255, 170, 51);
+    }
+}
+
 .head {
     border-color: #E2E8F0;
     color: #1A202C;
@@ -23,14 +184,11 @@
 }
 
 .lead {
-    color: #1A202C;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.5;
-    margin-bottom: .75rem;
 
     @media screen and (min-width: 768px) {
         font-size: 20px;
-        margin-bottom: 0rem;
         max-width: 800px;
     }
 }
@@ -47,9 +205,84 @@
     font-weight: 600;
 }
 
-.article {
-    border-color: #E2E8F0;
+.wave {
+    position: relative;
+    width: 100%;
+    padding-bottom: 22.22%; /* Ajuste le ratio */
+    overflow: hidden;
+    margin-bottom: -2px; /* Force le chevauchement pour masquer la ligne */
+}
+  
+.wave svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    shape-rendering: geometricPrecision;
+}
+
+.wave svg path {
+    stroke: #0e0e0e;; /* Correspond à la couleur de la vague */
+    stroke-width: 1; /* Ajoute un léger contour pour masquer la ligne */
+}
+
+.wave.inverted svg path {
+    fill: #ffffff; /* Correspond à la couleur de fond */
+    stroke: none; /* Masque la ligne */
+}
+
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
     color: #1A202C;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.responsive-table th,
+.responsive-table td {
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.cell-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.btn-grad {background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 5px 0;
+   text-align: center;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+ 
+.container {
+    border-color: #E2E8F0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.5;
     margin-inline-end: auto;
@@ -158,12 +391,10 @@ nav {
 
 h2 {
     border-color: #E2E8F0;
-    color: #1A202C;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.5;
-    margin-bottom: 0rem;
 }
 
 @keyframes bounce {
@@ -257,6 +488,22 @@ h2 {
     .footer .row a i{
         margin:0% 3%;
     }
+}
+
+.gradient-underline::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    height: 5px;
+    border-radius: 2px;
+    background: linear-gradient(111.3deg, #3e27b0 9.6%, #00bcd4 93.6%);
+}
+
+.gradient-underline {
+    position: relative;
+    text-decoration: none;
 }
 
 .blue-underline::before {
@@ -826,6 +1073,128 @@ ol {
 
         &:hover {
             color: #688afd;
+        }
+    }
+}
+
+.highlight {
+    display: inline-block;
+    background: linear-gradient(
+        100deg,
+        #ffffaf00 1%,
+        #ffffaf 2.5%,
+        #ffffaf80 5.7%,
+        #ffffaf1a 93%,
+        #ffffafb4 95%,
+        #ffffaf00 98%
+        ), linear-gradient(182deg, #ffffaf00, #ffffaf4d 8%, #ffffaf00 15%);
+}
+
+.green-highlight {
+    display: inline-block;
+    background: linear-gradient(
+        100deg,
+        #b8ffaf00 1%,
+        #b8ffaf 2.5%,
+        #b8ffaf80 5.7%,
+        #b8ffaf1a 93%,
+        #b8ffafb4 95%,
+        #b8ffaf00 98%
+        ), linear-gradient(182deg, #b8ffaf00, #b8ffaf4d 8%, #b8ffaf00 15%);
+}
+
+.pink-highlight {
+    display: inline-block;
+    background: linear-gradient(
+        100deg,
+        #ffafd400 1%,
+        #ffafd4 2.5%,
+        #ffafd480 5.7%,
+        #ffafd41a 93%,
+        #ffafd4b4 95%,
+        #ffafd400 98%
+        ),
+        linear-gradient(182deg, #ffafd400, #ffafd44d 8%, #ffafd400 15%);
+}
+
+.blue-highlight {
+    display: inline-block;
+    background: linear-gradient(
+        100deg,
+        #afd7ff00 1%,
+        #afd7ff 2.5%,
+        #afd7ff80 5.7%,
+        #afd7ff1a 93%,
+        #afd7ffb4 95%,
+        #afd7ff00 98%
+        ),
+        linear-gradient(182deg, #afd7ff00, #afd7ff4d 8%, #afd7ff00 15%);
+}
+
+
+.centered {
+    text-align: center;
+}
+
+.product-card {
+    text-align: left;
+    align-self: center;
+    margin-bottom: 2rem;
+
+    h3 {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    ul {
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    li {
+        padding-left: 2.5rem;
+    }
+
+    ul li {
+        background-image: url("/assets/check-circle.svg");
+        background-repeat: no-repeat;
+        line-height: 28px;
+
+        margin-bottom: 1rem;
+    }
+}
+
+
+.creator-info {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+    margin: 4rem 0 0;
+
+    @media screen and (min-width: 768px) {
+        justify-content: center;
+    }
+}
+
+.profile-pic {
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.creator-text {
+    font-size: 20px; /* Taille de police pour le texte */
+    color: #555; /* Couleur du texte */
+    font-family: Arial, sans-serif; /* Police personnalisée */
+
+    a {
+        text-decoration: none; /* Supprime le soulignement des liens */
+        font-weight: bold; /* Met le texte en gras */
+        color: @ourblack; /* Couleur du lien */
+
+        &:hover {
+            color: @medium-slate-blue;
         }
     }
 }

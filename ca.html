@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet/less" type="text/css" href="/assets/styles.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+
+    <script>
+        document.title = "Coding Accelerator - Harry Jmg";
+        const metaDescription = document.createElement('meta');
+        metaDescription.name = "L'objectif est de devenir libre en utilisant ses compétences en code.";
+        document.head.appendChild(metaDescription);
+    </script>
+
+    <!-- Chargement des balises communes depuis head.html -->
+    <script>
+    fetch('/partials/head.html')
+        .then(response => response.text())
+        .then(data => {
+        document.head.insertAdjacentHTML('beforeend', data);
+        });
+    </script>
+
+    <script>
+        (function(w, d, t, h, s, n) {
+        w.FlodeskObject = n;
+        var fn = function() {
+            (w[n].q = w[n].q || []).push(arguments);
+        };
+        w[n] = w[n] || fn;
+        var f = d.getElementsByTagName(t)[0];
+        var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+        var sm = d.createElement(t);
+        sm.async = true;
+        sm.type = 'module';
+        sm.src = h + s + '.mjs' + v;
+        f.parentNode.insertBefore(sm, f);
+        var sn = d.createElement(t);
+        sn.async = true;
+        sn.noModule = true;
+        sn.src = h + s + '.js' + v;
+        f.parentNode.insertBefore(sn, f);
+        })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+    </script>
+    <script>
+        window.fd('form', {
+        formId: '673ae8aac29ab05218d843f5'
+        });
+    </script>
+</head>
+
+<body> 
+    <section class="article" id="headline" style="flex-direction: column; min-height: 550px; max-height: 600px;">
+
+        <div class="container" style="max-width: 700px;">
+            <h1 class="head" style="margin-top: 5rem;">Arrêtez de tourner en rond.</h1>
+            <h1 class="head" style="margin-bottom: 0">
+                Voici le système qui m’a permis de passer de 9€/h à 400€/jour en moins d’un an et de devenir libre grâce au code
+            </h1>
+            <div class="creator-info">
+                <img src="/assets/harry-fun.jpeg" alt="Harry Jmg" class="profile-pic">
+                <span class="creator-text"> par 
+                    <a href="https://youtube.com/c/HarryJmg" target="_blank" rel="noopener noreferrer">
+                        Harry Jmg
+                    </a>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave" id="colinne">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#0e0e0e" d="M0,224L48,213.3C96,203,192,181,288,160C384,139,480,117,576,112C672,107,768,117,864,122.7C960,128,1056,128,1152,133.3C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <section class="article dark" id="intro">
+        <div class="container">
+            <h2>
+                <strong>Tu arrives à un <span class="gradient-yellow">tournant dans ta vie.</span></strong>
+            </h2>
+            <p class="lead">
+                Tu voudrais apprendre le code pour faire un job créatif
+                qui te permettra non seulement d’être bien payé, mais aussi d’avoir plus de temps pour toi et tes proches.
+            </p>
+            <p class="lead">
+                Tu rêves de te réveiller le matin avec l’énergie et la motivation de travailler sur des projets qui te passionnent (voire même ta propre idée de business), tout en pouvant subvenir à tes besoins et en prenant soin de ta famille.
+            </p>
+            <p class="lead">
+                <strong>Tu voudrais vivre de tes compétences en code en restant pleinement autonome</strong>, et ne plus avoir à dépendre de patrons tyranniques ni de petits jobs précaires qui ne veulent rien dire pour toi.
+            </p>
+            <p class="lead">
+                Tu voudrais te construire un filet de sécurité pour l’avenir grâce à une compétence qui te garantit de toujours pouvoir trouver du travail <span class="long-underline"><strong>dans un monde où tout change si vite</strong><img src="/assets/long-underline.png" alt="Long underline"></span>.
+            </p>
+            
+            <h2>
+                Mais aujourd’hui <span class="muted-italic">tu en es encore loin...</span>
+            </h2>
+            <p class="lead">
+                Tu ne demandes qu’à apprendre à coder mais tu es perdu, tu n’apprends que des <i>choses sans intérêt</i> et tu tournes en rond. Tu as l'impression de ne pouvoir faire que des copier-coller.
+            </p>
+            <p class="lead">
+                <strong class="gradient-yellow">Chaque jour, ton rêve de liberté s’éloigne un peu plus.</strong>
+            </p>
+            <p class="lead">
+                Ta vie ne bouge pas, tu te sens bloqué dans un job qui ne te convient pas, tu n’as pas la possibilité d'avancer vers une vraie indépendance.
+            </p>
+            <p class="lead" style="position: relative">
+                <img src="/assets/stubby-arrow.png" alt="Stubby arrow" class="stubby-arrow">
+                <strong class="orange">
+                    Tu te sens incapable d'avancer
+                </strong>
+                et tu restes prisonnier de ces trois grandes questions qui restent sans réponse :
+            </p>
+
+            <ul class="lead">
+                <li>
+                    <div class="li-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    <span class="item">Comment vraiment apprendre à coder ?</li>
+                </li>
+
+                <li>
+                    <div class="li-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    <span class="item">Quels langages faut-il choisir ?</li>
+                </li>
+
+                <li>
+                    <div class="li-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    <span class="item">Comment vivre du code en étant indépendant ?</li>
+                </li>
+
+            </ul>
+
+        </div>
+    </section>
+
+    <div class="wave" id="colinne" style="background: linear-gradient(180deg, rgb(34 34 34) 0%, rgb(43 43 43) 45%, rgb(26 26 26) 53%, rgb(34 34 34) 100%);">
+    </div>
+
+    <!-- 
+    ***********************************
+    *                                 
+    *      🌟   Les problèmes   🌟        
+    *                                 
+    ***********************************
+    -->
+
+    <section class="article dark" id="grande-question-1">
+        <div class="container">
+            <h2>
+                Grande question n°1 :<br> <strong class="gradient-yellow">Comment apprendre à coder ?</strong>
+            </h2>
+            
+            <p class="lead">
+                Tu cherches désespérément à savoir comment apprendre à coder. T’as même tenté de te former ici et là sur internet, t’as peut-être même essayé de suivre un bootcamp.
+            </p>
+            <p class="lead">
+                Après quelques recherches sur Google et YouTube, t’es vite arrivé à la conclusion que tu avais 4 grandes façons d’apprendre à coder :
+            </p>
+
+            <ul class="lead"> 
+                <li>
+                    <div class="li-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    <span class="item">1) Une formation publique</li>
+                </li>
+
+                <li>
+                    <div class="li-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    <span class="item">2) Une école privée</li>
+                </li>
+
+                <li>
+                    <div class="li-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    <span class="item">3) Un bootcamp</li>
+                </li>
+
+                <li>
+                    <div class="li-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                    <span class="item">4) En autodidacte</li>
+                </li>
+            </ul>
+
+            <h3>
+                <strong>La formation publique</strong>
+            </h3>
+            <p class="lead">
+                La formation publique semble être une bonne option sur le papier : c’est <strong>quasiment gratuit</strong>, et si tu pousses loin, tu peux aller jusqu’au doctorat. 
+                Mais au fond tu sais déjà que ce n’est pas fait pour toi. Les cours magistraux interminables en amphi, les exercices théoriques loin de la réalité du terrain… 
+                Tout ça, c’est le genre de pédagogie qui t’ennuie profondément.
+            </p>
+            <p class="lead">
+                Et puis tu ne te sens pas prêt à consacrer <span class="long-underline">
+                    <strong>3 à 5 ans</strong>
+                    <img src="/assets/long-underline.png" alt="Long underline">
+                </span> 
+                de ta vie pour un diplôme qui n’a aujourd’hui plus de valeur sur le marché du travail et qui ne t’aidera donc même pas à trouver un job…
+            </p>
+            
+            <h3>
+                <strong>Une école privée</strong>
+            </h3>
+            <p class="lead">
+                Les écoles privées ont des atouts indéniables : elles offrent <strong>un diplôme prestigieux</strong> et un réseau puissant pour entrer dans les grandes entreprises. 
+                Mais tu sais aussi que ces écoles coûtent une fortune, souvent plus
+                <span class="double-underline">
+                    <i>de 30 000 €</i>
+                    <img src="/assets/double-underline.png" alt="Double underline">
+                </span>, et nécessitent plusieurs années d’investissement.
+            </p>
+            <p class="lead">
+                C’est peut-être la solution qui te rassure le plus, mais <strong>est-ce vraiment réaliste ?</strong> Entre le prix exorbitant et le temps que ça prend, tu as l’impression que c’est un luxe réservé à des privilégiés.
+            </p>
+            
+            <h3>
+                <strong>Le bootcamp</strong>
+            </h3>
+            <p class="lead">
+                Le bootcamp, ça te parle. Enfin une solution concrète, guidée et rapide, avec des promesses de résultats clairs. 
+                Mais il y a un hic : il faut <i>tout mettre en pause</i> pendant plusieurs mois, et l’investissement financier reste conséquent, autour de 10 000 €.
+            </p>
+            <p class="lead">
+                C’est une option qui te donne envie, mais tu te demandes <strong>si tu es prêt à tout sacrifier</strong> pour un pari qui, au fond, n’est pas si garanti que ça. 
+                Est-ce que tu seras vraiment compétent en aussi peu de temps ? Tu en doutes sincèrement.
+            </p>
+            
+            <h3>
+                <strong>En autodidacte</strong>
+            </h3>
+            <p class="lead">
+                Apprendre en autodidacte a ses avantages : c’est <strong>presque gratuit</strong>, tu es libre d’explorer ce que tu veux et ça prouve ta passion aux yeux des autres.
+            </p>
+            <p class="lead">
+                Mais soyons honnêtes : cette option a de nombreux désavantages. Tu es à l’aveugle, tu n’as pas de structure, et <i>tu te perds facilement.</i> 
+                Un jour tu vas voir une vidéo d’un type qui te donne un conseil avec des arguments convaincants, et le lendemain tu tombes sur un autre type qui te dit l’inverse avec des arguments tout aussi convaincants…
+            </p>
+            <p class="lead">
+                <span class="long-underline">
+                    <strong>Qui croire, qui suivre, que faire ?</strong>
+                    <img src="/assets/long-underline.png" alt="Long underline">
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <section class="article dark" id="grande-question-2">
+        <div class="container">
+            <h2>
+                Grande question n°2 :<br> <strong class="gradient-yellow">Quels langages tu devrais choisir ?</strong>
+            </h2>
+            
+            <p class="lead">
+                <strong>Python, JavaScript, Ruby, langage C...</strong> 
+                Par où commencer ? Ou peut-être que tu devrais démarrer avec HTML et CSS comme le conseillent certains sur internet ?
+            </p>
+            
+            <p class="lead">
+                <i>Ajoute à ça l’explosion de l’intelligence artificielle,</i> et tu te demandes même si coder a encore un avenir… <strong class="gradient-yellow">(spoiler : oui, mais on y revient plus tard).</strong>
+            </p>
+            
+            <p class="lead">
+                Voici une illustration des <strong>changements du web</strong> sur 20 ans :
+            </p>
+            
+            <img src="/assets/webevolution.png" alt="L’évolution du Web (source: https://www.evolutionoftheweb.com/)" style="width:100%; max-width:534px; margin: 20px 0;">
+            
+            <p class="lead">
+                <strong>Le marché de la tech est devenu une vraie jungle.</strong> 
+                Et ça ne va pas en s’arrangeant.
+            </p>
+            
+            <p class="lead">
+                Il y a aujourd’hui une <i>infinité de langages, de frameworks et d’outils</i> qu’il <strong>FAUT ABSOLUMENT</strong> utiliser, du moins si on en croit les avis passionnés de leurs adeptes.
+            </p>
+            
+            <p class="lead">
+                C’est aussi ce que prétendent les formations et bootcamps qui te promettent d’apprendre telle ou telle technologie.
+            </p>
+            
+            <p class="lead" style="position: relative">
+                <img src="/assets/stubby-arrow.png" alt="Stubby arrow" class="stubby-arrow">
+                <strong class="orange">
+                    Mais ils oublient une chose essentielle :
+                </strong>
+                tu as besoin d’un socle de fondations solides pour t’adapter, comprendre, et être <strong>vraiment libre de tes choix</strong>.
+            </p>
+        </div>
+    </section>
+
+    <section class="article dark" id="grande-question-3">
+        <div class="container">
+            <h2>
+                Grande question n°3 :<br> 
+                <strong class="gradient-yellow">Comment vivre du code en tant qu’indépendant</strong> <span class="muted-italic">(sans devenir esclave)</span>
+            </h2>
+            
+            <p class="lead">
+                Si tu veux apprendre à coder, <strong>c’est pour être libre</strong>, pas pour finir comme employé sous-payé dans une ESN (entreprise de services numérique) où tu n’as aucun contrôle : ni sur tes projets, ni sur tes revenus, ni sur ton emploi du temps.
+            </p>
+            
+            <p class="lead">
+                <strong>C’est un piège</strong> dans lequel la plupart des développeurs tombent. Ils se contentent de compétences techniques et restent coincés dans des jobs <i>sans autonomie ni perspectives.</i>
+            </p>
+            
+            <p class="lead" style="position: relative">
+                <img src="/assets/stubby-arrow.png" alt="Stubby arrow" class="stubby-arrow">
+                <strong class="orange">Pour vivre du code en toute indépendance,</strong> il faut bien plus que savoir coder. Tu dois aussi comprendre :
+            </p>
+            
+            <ul class="lead">
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <strong>Comment trouver des missions.</strong></li>
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <strong>Comment fixer tes tarifs.</strong>
+                </li>
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <strong>Quel statut choisir.</strong>
+                </li>
+                <li><div class="li-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    </div>
+                    <strong>Comment gérer tes finances.</strong>
+                </li>
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <strong>Et comment continuer d’évoluer par toi-même.</strong>
+                </li>
+            </ul>
+            
+            <p class="lead">
+                <strong class="gradient-yellow">C’est là que les formations traditionnelles échouent.</strong> Elles ne t’enseignent pas comment devenir vraiment libre grâce au code et se contentent de t’apprendre quelques langages de programmation.
+            </p>
+        </div>
+    </section>
+
+    <section class="article dark" id="ce-qu-il-faut-eviter">
+        <div class="container">
+            <h2>
+                <strong class="gradient-yellow">Ce qu’il faut éviter</strong>
+            </h2>
+            
+            <p class="lead">
+                Tu te dis peut-être qu’un bootcamp ou une formation classique est la solution. 
+                Mais si tu as déjà tenté ce genre de parcours, <strong>tu t’es sûrement rendu compte de la réalité :</strong>
+            </p>
+            
+            <p class="lead">
+                On t’apprend juste à <i>survoler une stack</i> (généralement du Web Front-End) et à utiliser quelques outils à la mode. 
+                <strong>C’est tout.</strong>
+            </p>
+            
+            <p class="lead">
+                <strong>Le problème ?</strong> Tu ressors avec une boîte à outils incomplète et des fondations fragiles. 
+                <i>Tu sais te servir d’un marteau et tu traites tous les problèmes comme des clous.</i>
+            </p>
+            
+            <p class="lead">
+                Une fois face au monde du travail, tu réalises <strong>l’écart immense</strong> entre ce qu’on t’a enseigné et ce qu’on attend réellement de toi. 
+                Résultat : tu galères à t’adapter et à te positionner, car tout change <i>trop vite</i> dans l’univers de la tech.
+            </p>
+            
+            <p class="lead">
+                <span class="long-underline">
+                    <strong>La vérité, c’est qu’apprendre un langage ou une stack à la mode ne suffira jamais.</strong>
+                    <img src="/assets/long-underline.png" alt="Long underline">
+                </span>
+            </p>
+            
+            <p class="lead">
+                Ce n’est pas ça qui te rendra <strong class="gradient-yellow">libre</strong> ou <strong class="gradient-yellow">adaptable</strong>.
+            </p>
+        </div>
+    </section>
+
+    <div class="wave inverted" id="colinne" style="background: linear-gradient(180deg, rgb(34 34 34) 0%, rgb(68 66 66) 50%);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#222" d="M1440,256L1380,245.3C1320,235,1200,213,1080,192C960,171,840,149,720,144C600,139,480,149,360,160C240,171,120,181,60,186.7L0,192L0,320L60,320C120,320,240,320,360,320C480,320,600,320,720,320C840,320,960,320,1080,320C1200,320,1320,320,1380,320L1440,320Z"></path>
+        </svg>
+    </div>
+
+    <!-- 
+    ***********************************
+    *                                 
+    * 🌟   Solutions aux problèmes   🌟        
+    *                                 
+    ***********************************
+    -->
+
+    <section class="article dark" id="solution-head">
+        <div class="container">
+            <h2>
+                <strong class="gradient-yellow">Notre méthode</strong> pour devenir développeur (vraiment) indépendant
+            </h2>
+            
+            <p class="lead">
+                Nous avons développé une méthode unique, basée sur <strong>30 années d’expérience cumulées</strong>, 
+                pour permettre à n’importe qui de devenir un développeur <strong class="gradient-yellow">autonome</strong> et <i>à l’épreuve du temps</i>.
+            </p>
+            
+            <p class="lead">
+                Cette méthode repose sur <strong>trois piliers essentiels :</strong>
+            </p>
+            
+            <ul class="lead">
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <strong>Pilier n°1 :</strong> être un autodidacte efficace
+                </li>
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <strong>Pilier n°2 :</strong> construire un esprit de codeur
+                </li>
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <strong>Pilier n°3 :</strong> apprendre le business pour vivre du code
+                </li>
+            </ul>
+            
+            <p class="lead">
+                <span class="long-underline">
+                    <strong>En me focalisant sur ces 3 piliers,</strong> j’ai réussi à passer de livreur à vélo payé au SMIC à développeur indépendant payé 400€/j, 
+                    sans diplôme ni certification.
+                    <img src="/assets/long-underline.png" alt="Long underline">
+                </span>
+            </p>
+            
+            <p class="lead">
+                Plusieurs dizaines de personnes ont accompli <strong>la même transformation</strong> en se concentrant sur ces trois piliers essentiels.
+            </p>
+        </div>
+    </section>
+    
+    <section class="article dark" id="pilier-1">
+        <div class="container">
+            <h2>
+                <strong class="gradient-yellow">Pilier n°1 :</strong> être un autodidacte efficace
+            </h2>
+            
+            <p class="lead">
+                <strong>Apprendre à coder, c’est pratiquer encore et encore.</strong> Et pour ça, tu dois être capable d’apprendre par toi-même.
+            </p>
+            
+            <p class="lead">
+                Le métier de développeur repose sur une chose : <span class="double-underline"><i>savoir s’adapter</i><img src="/assets/double-underline.png" alt="Double underline"></span>. 
+                Être un autodidacte efficace, c’est savoir choisir les bons contenus, trouver les meilleures solutions, et avancer sans dépendre de personne.
+            </p>
+            
+            <p class="lead">
+                <strong>Un bon autodidacte</strong> utilise des accélérateurs (formations, bootcamps, livres, communautés…) pour aller plus vite et se cadrer. 
+                Mais il sait les choisir intelligemment pour ne pas perdre son temps ni son énergie.
+            </p>
+            
+            <p class="lead">
+                <span class="long-underline">
+                    <strong>Être un autodidacte efficace,</strong> c’est apprendre à apprendre par soi-même.
+                    <img src="/assets/long-underline.png" alt="Long underline">
+                </span>
+            </p>
+            
+            <p class="lead">
+                <strong class="gradient-yellow">C’est la première clé</strong> pour rester libre face à un monde technologique en perpétuel changement.
+            </p>
+        </div>
+    </section>
+
+    <section class="article dark" id="pilier-2">
+        <div class="container">
+            <h2>
+                <strong class="gradient-yellow">Pilier n°2 :</strong> construire un esprit de codeur
+            </h2>
+            
+            <p class="lead">
+                Être développeur, ce n’est pas juste <strong>connaître des langages</strong> ou <i>copier-coller des solutions</i> trouvées sur Google ou avec ChatGPT.
+            </p>
+            
+            <p class="lead">
+                <strong>Construire un esprit de codeur,</strong> c’est comprendre comment résoudre des problèmes, réussir à penser en étapes claires, et créer des solutions adaptées à chaque situation, <i>même si tu ne l’avais jamais fait avant.</i>
+            </p>
+            
+            <p class="lead">
+                Cela signifie maîtriser <strong>la pensée algorithmique</strong>, savoir décomposer un problème complexe en petites étapes, et réfléchir avec des principes fondamentaux et des modèles mentaux qui s’appliquent <span class="double-underline"><i>à n’importe</i><img src="/assets/double-underline.png" alt="Double underline"></span> quels langages et technologies.
+            </p>
+            
+            <p class="lead">
+                Ça te permet de devenir quelqu’un qui <strong>crée, innove, et résout</strong> des problèmes nouveaux.
+            </p>
+            
+            <p class="lead">
+                <span class="long-underline">
+                    <strong>L’esprit de codeur</strong> est ce qui différencie un simple exécutant, <i>contrôlé par les circonstances</i>, d’un développeur vraiment autonome.
+                    <img src="/assets/long-underline.png" alt="Long underline">
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <section class="article dark" id="pilier-3">
+        <div class="container">
+            <h2>
+                <strong class="gradient-yellow">Pilier n°3 :</strong> apprendre le business pour vivre du code
+            </h2>
+            
+            <p class="lead">
+                <strong>Savoir coder</strong> sera peut-être suffisant un temps pour travailler en tant que développeur en CDI dans une entreprise lambda.
+            </p>
+            
+            <p class="lead">
+                Mais si tu veux <span class="long-underline"><i>devenir autonome et libre</i><img src="/assets/long-underline.png" alt="Double underline"></span>, ça ne suffit pas. Tu dois aussi maîtriser <strong>le business</strong>.
+            </p>
+            
+            <img src="/assets/codebusiness2.png" alt="Diagramme de Venn : Coding et Business" style="max-width: 400px; margin: 20px auto; display: block;">
+            
+            <p class="lead">
+                Les formations classiques te forment à être un <i>bon employé</i>, pas un indépendant. Elles ignorent les <strong>soft skills</strong> indispensables comme le marketing, la vente et la gestion du temps, qui sont pourtant la clé de ta liberté.
+            </p>
+            
+            <p class="lead">
+                Pour vivre plus libre grâce à tes compétences en code, tu dois apprendre à :
+            </p>
+            
+            <ul class="lead">
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <div class="li-item">
+                        <strong>Générer de la demande (Marketing)</strong> : attirer des clients, fixer tes tarifs, te positionner.
+                    </div>
+                </li>
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <div class="li-item">
+                        <strong>Transformer cette demande (Vente)</strong> : convertir des prospects en clients et négocier.
+                    </div>
+                </li>
+                <li>
+                    <div class="li-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                    <div class="li-item">
+                        <strong>Maîtriser ton temps (Organisation)</strong> : gérer ton temps de travail pour maximiser tes résultats.
+                    </div>
+                </li>
+            </ul>
+            
+            <p class="lead">
+                <span class="long-underline">
+                    <strong>C’est cette combinaison entre Coding et Business</strong> qui te mettra aux manettes de ton avenir.
+                    <img src="/assets/long-underline.png" alt="Long underline">
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <section class="article dark" id="solution-pont">
+        <div class="container">
+            <h2>
+                <strong class="gradient-yellow">Notre solution</strong> pour construire ces trois piliers
+            </h2>
+            
+            <p class="lead">
+                Aujourd’hui, <strong>aucune solution</strong> ne te permet d’apprendre à coder dans l’objectif assumé de mener une vie réellement plus libre et indépendante.
+            </p>
+            
+            <p class="lead">
+                C’est pour cette raison que l’on a créé un <i>programme unique</i>, pensé pour t’aider à développer les compétences durables indispensables pour devenir vraiment autonome, loin des formations classiques qui se contentent de te rendre opérationnel pour un type de métier précis.
+            </p>
+            
+            <p class="lead">
+                À l’intérieur, pas de focus sur un langage ou un outil à la mode qui aura disparu d’ici 2 ans. À la place, tu vas <strong class="gradient-yellow">apprendre à apprendre</strong>, développer un esprit de codeur autonome, et maîtriser les bases pour vivre du code <span class="long-underline"><strong>sans dépendre d’un patron ou d’un emploi servile</strong><img src="/assets/long-underline.png" alt="Long underline"></span>.
+            </p>
+            
+            <p class="lead" style="position: relative">
+                <img src="/assets/stubby-arrow.png" alt="Stubby arrow" class="stubby-arrow">
+                <strong class="orange">Tu ne te contenteras pas de connaissances superficielles.</strong>
+            </p>
+            
+            <p class="lead">
+                Tu construiras des <strong>compétences profondes</strong>, qui te garantiront une vraie liberté.
+            </p>
+        </div>
+    </section>
+
+    <!-- 
+    ***********************************
+    *                                 
+    *         🌟   Produit   🌟        
+    *                                 
+    ***********************************
+    -->
+
+    <section class="article" id="produit">
+        <div class="container">
+            <h2>Coding Accelerator</h2>
+            
+            <p class="lead">Devenez développeur indépendant en étant accompagnés par des mentors.</lead>
+            
+            <p class="lead">
+                Coding Accelerator est un programme d’accompagnement composé de trois éléments qui fonctionnent en synergie :
+            </p>
+            
+            <p class="lead bold">1. Un coaching avec des mentors</p>
+            <p class="lead bold">2. Une communauté d’entraide</p>
+            <p class="lead bold">3. Un programme orienté action</p>
+
+        </div>
+    </section>
+
+    <section class="article" id="coaching">
+        <div class="container">
+    
+            <h2>Le coaching avec des mentors</h2>
+    
+            <p class="lead">
+                Le plus gros obstacle quand tu veux devenir indépendant, c’est l’isolement. Tu te retrouves souvent sans personne vers qui te tourner pour demander conseil :
+            </p>
+
+            <p class="lead">- Comment bien démarrer ?</p>
+            <p class="lead">- Quels pièges éviter ?</p>
+            <p class="lead">- Comment trouver des clients ?</p>
+            <p class="lead">- Ou juste avoir un avis et une perspective sur tes décisions.</p>
+
+    
+            <p class="lead">
+                En rejoignant le programme, cet isolement disparaît.
+            </p>
+            
+            <p class="lead">
+                Tu auras un accès direct à nos mentors (uniquement des développeurs indépendants), prêts à répondre à tes questions, lever tes doutes, et t’accompagner à chaque étape, aujourd’hui comme dans plusieurs années.
+            </p>
+            
+            <p class="lead">
+                Dès ton entrée dans le programme, tu bénéficies d’un entretien avec un mentor pour faire le point sur ta situation et t’assurer que cette méthode est ta meilleure voie vers la liberté.
+            </p>
+    
+            <h3>Appels hebdomadaires</h3>
+            <p class="lead">Chaque semaine, tu peux poser tes questions directement à un mentor en groupe.</p>
+            <ul class="lead">
+                <li>Reçois des réponses claires et immédiates.</li>
+                <li>Écoute les questions des autres pour élargir ta perspective.</li>
+                <li>Accède aux enregistrements des appels passés à tout moment.</li>
+            </ul>
+    
+            <h3>Groupe privé</h3>
+            <p class="lead">Le groupe privé te permet de demander de l’aide quand tu en as besoin, sans attendre le prochain appel.</p>
+            <ul class="lead">
+                <li>Pose tes questions à un mentor à tout moment.</li>
+                <li>Obtiens des conseils concrets sur tes actions.</li>
+                <li>Profite des retours et perspectives des autres membres.</li>
+            </ul>
+    
+            <h3>Appels individuels</h3>
+            <p class="lead">Besoin d’un accompagnement plus poussé ? Les appels individuels te donnent l’occasion d’échanger en profondeur.</p>
+            <ul class="lead">
+                <li>Partage ta situation spécifique avec un mentor.</li>
+                <li>Reçois des conseils adaptés à ton contexte.</li>
+                <li>Recharge ton crédit d’appels si nécessaire.</li>
+            </ul>
+    
+        </div>
+    </section>
+
+    <section class="article" id="communaute">
+        <div class="container">
+            <h2>La communauté d’entraide</h2>
+            
+            <p class="lead">
+                Apprendre à coder et devenir indépendant peut être difficile quand personne autour de toi ne partage tes ambitions :
+            </p>
+            
+            <ul class="lead">
+                <li>Personne pour célébrer tes succès.</li>
+                <li>Personne pour écouter tes doutes.</li>
+                <li>Personne pour répondre à tes questions.</li>
+            </ul>
+            
+            <p class="lead">
+                La communauté de notre programme résout ce problème à deux niveaux :
+            </p>
+            
+            <ol class="lead">
+                <li>Créer un environnement sain et motivant pour rester concentré et avancer.</li>
+                <li>Te permettre de solliciter l’aide de la communauté pour ne jamais rester bloqué.</li>
+            </ol>
+            
+            <p class="lead">
+                Ton environnement façonne ta mentalité, ta mentalité guide tes actions, et tes actions déterminent tes résultats.
+            </p>
+            
+            <p class="lead">
+                Avec plus de 600 membres dans le groupe, tu rejoins un réseau qui te pousse vers le haut et te soutient dans chaque étape de ton parcours.
+            </p>
+            
+            <div class="lead">
+                <img src="/assets/discord-1.png" alt="Exemple de présentation dans le groupe Discord" style="max-width: 400px; margin: 20px auto; display: block;">
+                <img src="/assets/discord-2.png" alt="Exemple de présentation dans le groupe Discord" style="max-width: 400px; margin: 20px auto; display: block;">
+                <img src="/assets/discord-3.png" alt="Exemple de présentation dans le groupe Discord" style="max-width: 400px; margin: 20px auto; display: block;">
+            </div>
+            
+            <p class="lead">
+                En devenant membre de Coding Accelerator, tu obtiens un accès à vie à cette communauté de codeurs autonomes et aux conseils personnalisés des mentors.
+            </p>
+        </div>
+    </section>
+
+    <section class="article" id="programme">
+        <div class="container">
+            <h2>Le programme orienté action</h2>
+            
+            <p class="lead">
+                Pour avoir une base commune et rendre le coaching plus efficace, on a mis au point un programme vidéo structuré qui pose les rails de ta progression.
+            </p>
+            
+            <p class="lead">
+                Avec des vidéos et des exercices séquentiels, il te suffit de suivre les instructions pour avancer. Le programme est composé de 6 semaines de contenu, mais tu y as accès à vie pour progresser à ton rythme.
+            </p>
+            
+            <p class="lead">
+                Chaque semaine aborde un thème différent et répond à des problématiques spécifiques au travers des modules en vidéo.
+            </p>
+            
+            <p class="lead">
+                Et si tu restes bloqué plus d’une heure à n’importe quelle étape, il te suffit de nous contacter : on t’aide à débloquer la situation pour que tu avances sereinement.
+            </p>
+            
+            <div class="full-program">
+                <h3>Programme en détails</h3>
+                <p class="lead">
+                    Le programme en détails sera disponible ici très bientôt. Reste à l’écoute pour découvrir les modules étape par étape.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article" id="bonus">
+        <div class="container">
+            <h2>Bonus exclusifs</h2>
+            
+            <h3>Partenariats</h3>
+            <p class="lead">Profite d’offres négociées spécialement pour toi :</p>
+            <ul class="lead">
+                <li>Cabinet comptable</li>
+                <li>Mutuelle et prévoyance</li>
+                <li>Assurance RC Pro</li>
+                <li>Et bien d’autres...</li>
+            </ul>
+    
+            <h3>Documents prêts à l’emploi</h3>
+            <p class="lead">Ne perds pas de temps à tout créer toi-même. On te partage :</p>
+            <ul class="lead">
+                <li>Contrats de mission</li>
+                <li>Contrats de confidentialité</li>
+                <li>Conditions générales</li>
+                <li>Et bien plus encore...</li>
+            </ul>
+    
+            <h3>Surprises à venir</h3>
+            <p class="lead">Le programme continue d’évoluer avec :</p>
+            <ul class="lead">
+                <li>Challenges hebdomadaires</li>
+                <li>Job board pour trouver des missions</li>
+                <li>Annuaire public</li>
+                <li>Du contenu supplémentaire pour apprendre à lancer son propre business grâce au code</li>
+            </ul>
+        </div>
+    </section>
+    
+
+    <section class="article" id="team">
+        <div class="container">
+            <h2>Les membres de l'équipe</h2>
+    
+            <div class="content" style="display: flex; align-items: center; margin-bottom: 20px; margin-top: 20px;">
+                <img src="assets/team_harry.png" alt="Harry Gueguen" style="margin-right: 20px; width: 75px; border-radius: 50%;">
+                <div>
+                    <p style="margin: 0; font-weight: bold; font-size: 1.2em;">
+                        Harry Gueguen <span style="color: gray; font-weight: normal;">(Mentor)</span>
+                    </p>
+                    <p style="margin: 5px 0;">
+                        Développeur freelance, fondateur de Coding Accelerator, et créateur de contenu sur la chaîne YouTube Harry Jmg. Harry te guide avec son expérience pour atteindre tes objectifs.
+                    </p>
+                </div>
+            </div>
+    
+            <div class="content" style="display: flex; align-items: center; margin-bottom: 20px;">
+                <img src="assets/team_romain.png" alt="Romain Felicianne" style="margin-right: 20px; width: 75px; border-radius: 50%;">
+                <div>
+                    <p style="margin: 0; font-weight: bold; font-size: 1.2em;">
+                        Romain Felicianne <span style="color: gray; font-weight: normal;">(Mentor)</span>
+                    </p>
+                    <p style="margin: 5px 0;">
+                        Développeur indépendant avec plus de 10 ans d’expérience. Responsable des revues de code, il apporte des conseils techniques précis et clairs.
+                    </p>
+                </div>
+            </div>
+    
+            <div class="content" style="display: flex; align-items: center;">
+                <img src="assets/team_amine.png" alt="Amine Ben Taleb" style="margin-right: 20px; width: 75px; border-radius: 50%;">
+                <div>
+                    <p style="margin: 0; font-weight: bold; font-size: 1.2em;">
+                        Amine Ben Taleb <span style="color: gray; font-weight: normal;">(Support)</span>
+                    </p>
+                    <p style="margin: 5px 0;">
+                        Ancien élève du programme, devenu développeur freelance rémunéré 400€/j en 12 mois. Amine est là pour répondre à tes questions techniques et partager son expérience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    ***********************************
+    *                                 
+    *           🌟   CTA   🌟        
+    *                                 
+    ***********************************
+    -->
+
+    <section class="article dark" id="rejoindre">
+        <div class="container centered">
+            <h2>Rejoins Coding Accelerator</h2>
+            
+            <div class="product-card">
+                <ul>
+                    <li><strong>Coaching personnalisé</strong> avec nos mentors.</li>
+                    <li><strong>Une communauté de guerriers</strong> de +600 membres prêts à t’aider.</li>
+                    <li><strong>Un programme structuré</strong> pour avancer étape par étape.</li>
+                    <li><strong>Des offres exclusives</strong> négociées avec nos partenaires.</li>
+                </ul>
+            </div>
+            
+            <a class="btn_cta" style="max-width: 500px; align-self: center;" href="booking.html">
+                👉 Je dépose ma candidature maintenant
+            </a>
+        </div>
+    </section>
+
+    <section class="article" id="faq">
+        <div class="container">
+            <h2>Questions / Réponses</h2>
+            <div class="faq">
+                <h3>Qu’est-ce qui vous différencie de la concurrence ?</h3>
+                <p>
+                    Coding Accelerator ne se limite pas aux compétences techniques. Contrairement aux écoles et bootcamps, on t’apprend à devenir autonome en revenant aux fondamentaux et en développant des compétences humaines (soft skills). On va bien au-delà des simples “hard skills” : ici, tu apprends aussi à trouver des clients et à travailler librement.
+                </p>
+                
+                <h3>Quelle est la durée du programme ?</h3>
+                <p>
+                    Le programme dure six semaines, mais tu avances à ton rythme. Chaque semaine couvre une étape clé avec des vidéos et des challenges pour bâtir ton autonomie.
+                </p>
+                
+                <h3>Puis-je suivre le programme en parallèle d’une autre activité ?</h3>
+                <p>
+                    Oui. Tu avances à ton rythme, même si cela peut prendre plus de temps en parallèle d’un autre engagement.
+                </p>
+                
+                <h3>Est-ce une formation ?</h3>
+                <p>
+                    Oui, Coding Accelerator est une formation professionnelle enregistrée sous un numéro de déclaration d'activité en France, dans le cadre de la formation professionnelle continue.
+                </p>
+                <p>
+                    Malgré cela, cette formation se distingue des modèles traditionnels. Elle ne délivre pas de certifications officielles. À la place, tu développes des compétences concrètes et durables grâce à un accompagnement sur mesure, du mentoring, et une méthodologie orientée action.
+                </p>
+                <p>
+                    L’objectif n’est pas simplement d’enseigner un métier précis, mais de te rendre autonome et capable de construire une carrière indépendante et épanouissante.
+                </p>
+
+                <h3>Votre formation est-elle éligible au CPF (Compte Personnel de Formation) ?</h3>
+                <p>
+                    Non, Coding Accelerator n'est pas éligible au CPF.
+                </p>
+                <p>
+                    Malgré le fait que Coding Accelerator rentre dans le cadre de la formation professionnelle continue et est enregistré avec un numéro de déclaration d’activité, il ne délivre pas de certifications officielles reconnues par l’État. 
+                </p>
+                <p>
+                    Nous avons choisi de concentrer notre programme sur le développement de compétences pratiques et sur un accompagnement personnalisé, sans dépendre des contraintes administratives liées au CPF.
+                </p>
+                <p>
+                    Notre priorité est de t’aider à atteindre des résultats concrets et mesurables, comme devenir développeur indépendant et bâtir une carrière durable.
+                </p>
+                
+                <h3>Qu’est-ce que la curation de contenu ?</h3>
+                <p>
+                    Plutôt que de réinventer la roue, on te partage les meilleures ressources (livres, vidéos) déjà existantes. Si nécessaire, on crée nos propres contenus pour compléter ce qui manque.
+                </p>
+                
+                <h3>Faut-il parler anglais ?</h3>
+                <p>
+                    Un niveau lycée est recommandé. Pas d’inquiétude : dès la première semaine, on te donne des conseils pour progresser rapidement.
+                </p>
+                
+                <h3>Peut-on vraiment trouver des missions en freelance ?</h3>
+                <p>
+                    Oui ! Aujourd’hui, le freelancing devient la norme, et trouver des missions n’a jamais été aussi accessible.
+                </p>
+                
+                <h3>Comment se déroule le programme ?</h3>
+                <p>
+                    Tu auras accès :
+                </p>
+                <ul>
+                    <li>À un groupe privé pour demander de l’aide aux mentors ou aux membres.</li>
+                    <li>À un portail en ligne avec six semaines de vidéos et challenges.</li>
+                </ul>
+                <p>
+                    Chaque semaine est débloquée progressivement pour te permettre de bâtir des bases solides.
+                </p>
+                
+                <h3>Y a-t-il un suivi ?</h3>
+                <p>
+                    Pas de suivi imposé. Tu avances de façon autonome, mais tu peux demander de l’aide dans le groupe à tout moment.
+                </p>
+                
+                <h3>Quels sont les prérequis ?</h3>
+                <p>
+                    Aucun diplôme ou connaissance technique requis. Tu dois parler français, avoir des bases en anglais, et un ordinateur avec Internet.
+                </p>
+                
+                <h3>Devenir codeur en six semaines… est-ce une arnaque ?</h3>
+                <p>
+                    Non, on t’apprend à poser les bases en six semaines. Devenir un codeur autonome prend plus de temps, mais le programme te donne une méthodologie durable.
+                </p>
+                
+                <h3>Le marché va-t-il être saturé si tout le monde devient codeur ?</h3>
+                <p>
+                    Non. La demande en tech explose plus vite que l’offre. Les niches spécifiques et les nouvelles tendances garantissent que les opportunités continuent de croître.
+                </p>
+                
+                <h3>L’IA va-t-elle remplacer les développeurs ?</h3>
+                <p>
+                    Non. L’IA est un outil qui rend les développeurs plus efficaces, mais elle ne peut pas remplacer leur capacité à résoudre des problèmes complexes et à concevoir des solutions sur mesure.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer></footer>
+    <script>
+        fetch('/partials/footer.html')
+            .then(response => response.text())
+            .then(data => {
+            document.querySelector("footer").innerHTML = data;
+            });
+    </script>
+</body>
+</html>
