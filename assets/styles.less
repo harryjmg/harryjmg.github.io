@@ -22,8 +22,6 @@ section {
     display: flex;
     letter-spacing: 0.2px;
 
-    padding-top: 3rem;
-
     // Adjust space between paragraphs
     p {
         margin-top: 0.5rem;
@@ -194,6 +192,10 @@ section.dark {
     .orange {
         color: rgb(255, 170, 51);
     }
+}
+
+section.pt-6 {
+    padding-top: 40px;
 }
 
 .prog-grid {
@@ -1537,4 +1539,33 @@ ol {
 
 .button-82-pushable:focus:not(:focus-visible) {
   outline: none;
+}
+
+.transition-section {
+    background: #0e0e0e;
+    &.up {
+        background: linear-gradient(180deg, #0e0e0e 0%, rgb(68, 73, 83) 100%);
+    }
+
+    &.down {
+        background: linear-gradient(180deg, rgb(96, 102, 115)0%, #0e0e0e 100%);
+    }
+}
+
+.transition-section svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.transition-dark-to-light {
+    background: white; /* Couleur de la section du haut */
+    background: linear-gradient(180deg, rgb(52, 55, 72)0%, #ffffff 100%);
+
+}
+
+.transition-dark-to-light svg {
+    display: block;
+    width: 100%;
+    height: auto;
 }
