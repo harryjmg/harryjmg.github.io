@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<html>
+  <head>
+    <link rel="stylesheet/less" type="text/css" href="/assets/styles.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>3/3 : Réserver un créneau</title>
+
+    <!-- Chargement des balises communes depuis head.html -->
+    <script>
+        fetch('/partials/head.html')
+            .then(response => response.text())
+            .then(data => {
+            document.head.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+  </head>
+  <body>
+    <section class="article">
+        <div class="container">
+            <div class="go-funnel-head">
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+                <h2>Étape 3/3 : Réserver un créneau</h2>
+                <p>Choisissez un créneau pour discuter de votre projet</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <!-- Début de widget en ligne Calendly -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/harryjmg/codingaccelerator?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:1700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Fin de widget en ligne Calendly -->
+        </div>
+    </section>
+  </body>
+</html>
+

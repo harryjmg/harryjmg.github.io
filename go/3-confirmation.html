@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<html>
+  <head>
+    <link rel="stylesheet/less" type="text/css" href="/assets/styles.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Confirmation</title>
+
+    <!-- Chargement des balises communes depuis head.html -->
+    <script>
+        fetch('/partials/head.html')
+            .then(response => response.text())
+            .then(data => {
+            document.head.insertAdjacentHTML('beforeend', data);
+            });
+    </script>
+  </head>
+  <body>
+    <section class="article">
+        <div class="container">
+            <div class="go-funnel-head">
+                <div class="progress-bar">
+                    <div class="progress" style="width: 100%; background-color: green;"></div>
+                </div>
+                <h2>Confirmation</h2>
+                <p>Ton créneau est bien reservé, tu recevras le lien de la réunion par mail (ce n'est pas un appel teléphonique). Sois bien à l'heure !</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container" style="max-width: 980px; text-align: center">
+            <h1>En attendant, voici quelques avis de personnes ayant suivi Coding Accelerator</h1>
+
+            <script src="https://widget.senja.io/widget/be05cacf-7cd6-4fc2-a30a-afbda7a9f6b0/platform.js" type="text/javascript" async></script>
+            <div class="senja-embed" data-id="be05cacf-7cd6-4fc2-a30a-afbda7a9f6b0" data-mode="shadow" data-lazyload="false" style="display: block;"></div>            </div>
+        </div>
+    </section>
+  </body>
+</html>
