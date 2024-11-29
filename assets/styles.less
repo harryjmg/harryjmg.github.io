@@ -1625,10 +1625,11 @@ ol {
 }
 
 #produit-spotlight {
+    overflow: hidden;
     position: relative;
     isolation: isolate;
     height: 100vh;
-    max-height: 700px;
+    max-height: 800px;
     display: flex;
     flex-direction: column;
     -webkit-box-pack: center;
@@ -1652,6 +1653,14 @@ ol {
     bottom: -2px;
 }
 
+.spotlight-lights-wrapper {
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    display: contents;
+    box-sizing: border-box;
+}
+
 .light-1-wrapper {
     animation: 4567ms ease-in-out 0s infinite alternate none running lightmoves-1;
 
@@ -1660,6 +1669,7 @@ ol {
     left: -5vw;
     bottom: -8vw;
     transform-origin: 25% 75%;
+    pointer-events: none;
 }
 
 .light-2-wrapper {
@@ -1670,6 +1680,7 @@ ol {
     right: -5vw;
     bottom: -2vw;
     transform-origin: 75% 75%;
+    pointer-events: none;
 }
 
 @keyframes lightmoves-1 {
@@ -1715,6 +1726,7 @@ ol {
 }
 
 .spotlight-title {
+    text-align: left;
     color: initial;
     background-color: rgb(255, 178, 62);
     background-image: linear-gradient(200.67deg, rgb(255, 255, 255) 25%, rgb(255, 240, 102) 35%, rgb(255, 163, 26) 55.54%, rgb(255, 0, 115) 90%);
@@ -1735,17 +1747,17 @@ ol {
 
 .spotlight-title-line-0 {
     font-size: min(7.5vw, 40px);
-    -webkit-text-fill-color: #ffffff;
+    -webkit-text-fill-color: #ffe0c0;
     font-weight: 500;
 }
 
 .spotlight-title-line-1 {
-    font-size: min(13.5vw, 120px);
+    font-size: min(9vw, 92px);
     line-height: inherit;
 
 }
 
 .spotlight-title-line-2 {
-    font-size: min(9.5vw, 92px);
+    font-size: min(9vw, 92px);
     line-height: inherit;
 }
