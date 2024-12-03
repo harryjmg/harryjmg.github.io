@@ -2114,10 +2114,12 @@
                 // Logique d'affichage des CTA
                 const ctaFlash = document.getElementById("cta-flash");
                 const ctaCandidature = document.getElementById("cta-candidature");
+                const instructions = document.getElementById("instructions");
     
                 if (ctaFlash && ctaCandidature) {
                     ctaFlash.style.display = "none"; // Cacher l'offre flash
                     ctaCandidature.style.display = "block"; // Afficher la candidature normale
+                    instructions.style.display = "none";
                 }
             }
         }
