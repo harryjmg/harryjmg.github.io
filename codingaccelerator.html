@@ -116,17 +116,22 @@
             window.addEventListener('scroll', onScroll);        </script>
     </head>
 
-    <body>
+    <body style="background: hsl(274deg 16% 8%); z-index: -5; position: relative;">
 
-        <section class="article" id="headline" style="flex-direction: column; min-height: 550px; max-height: 600px;">
+        <section class="article dark" id="hero">
+            <div class="hero-gradient"></div>
+            <svg class="hero-svg" width="100%" height="303" viewBox="0 0 1440 303" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="Hero__Swoop-sc-1sl265n-2 focicy" style="display: block; overflow: visible;"><path d="M339 122C220.647 106.212 176.609 -12.2323 58 1.50005C29.0671 4.84984 -14.5 19.0001 -14.5 19.0001V303H1443V184C1443 184 1296.24 217.673 1200.5 221C974.265 228.862 864.366 79.4709 638 81.0001C520.143 81.7962 455.825 137.584 339 122Z" fill="hsl(274, 16%, 8%)"></path></svg>
 
-            <div class="container" style="max-width: 700px;">
-                <h1 id="first-words" class="head" style="font-size: xxx-large;">
+            <div class="hero-stuff">
+                <div class="hero-spacer"></div>
+                <h1 id="first-words" class="head">
                     Arrête de tourner en rond.
                 </h1>
-                <h1 class="head" style="margin-bottom: 0; font-size: xx-large;">
-                    Voici le système qui m’a permis de passer de 9€/h à 400€/jour en moins d’un an et de devenir libre grâce au code
+                <h2>
+                    Voici le système qui m’a permis de passer de 9€/h à 400€/jour en moins d’un an et de devenir libre grâce au code.
                 </h1>
+                <div style="min-width: 72px;min-height: 72px;"></div>
+                
                 <div class="creator-info">
                     <img src="/assets/harry-fun.jpeg" alt="Harry Jmg" class="profile-pic">
                     <span class="creator-text"> par 
@@ -135,14 +140,9 @@
                         </a>
                     </span>
                 </div>
+                <div style="min-width: 36px;min-height: 36px;"></div>
             </div>
         </section>
-
-        <div class="wave" id="colinne">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0e0e0e" d="M0,224L48,213.3C96,203,192,181,288,160C384,139,480,117,576,112C672,107,768,117,864,122.7C960,128,1056,128,1152,133.3C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
 
         <section class="article dark" id="intro">
             <div class="container">
@@ -205,7 +205,7 @@
 
         <section class="transition-section up">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0d0d0d" d="M0,192C360,96,720,288,1080,192C1260,144,1440,80,1440,80L1440,320L0,320Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,192C360,96,720,288,1080,192C1260,144,1440,80,1440,80L1440,320L0,320Z"></path>
             </svg>
         </section>
 
@@ -481,7 +481,7 @@
 
         <section class="transition-section down">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0d0d0d" d="M0,320L360,224C720,128,1080,224,1440,160L1440,0L0,0Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,320L360,224C720,128,1080,224,1440,160L1440,0L0,0Z"></path>
             </svg>
         </section>
 
@@ -729,7 +729,7 @@
         ***********************************
         -->
 
-        <div style="background: #0e0e0e;">
+        <div style="background: hsl(274deg 16% 8%);">
             <section class="article dark" id="produit-spotlight">
                 <svg class="spotlight-bg-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 2986 393"><path fill="hsl(267deg 50% 11%)" d="M573.5 94C346.756 91.146.5 0 .5 0v393h2985V222s-334.14-75.852-530.5-94c-222.28-20.544-346.81 47.19-570 43-327.93-6.157-501.55-136.097-829.5-131.5-189.414 2.655-292.583 56.884-482 54.5z"></path></svg>
                 <div class="spotlight-lights-wrapper">
@@ -740,7 +740,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="60vw" fill="none" viewBox="0 0 2441 2224" class="Spotlight__Svg-sc-1kd6jfz-1 bFEQmK"><g filter="url(#spotlight-right0_f)"><path fill="url(#spotlight-right0_linear)" fill-opacity="0.5" d="M1133.48 511.488l792.11 1178.782 16.91 11.14-11 9.59-5.91-9.59L506.336 935.49l174.152-325.932 452.992-98.07z"></path></g><g filter="url(#spotlight-right1_f)"><path fill="url(#spotlight-right1_linear)" d="M1133.48 511.488l792.11 1178.782 14.91 13.73h-7L506.336 935.49l174.151-325.932 452.993-98.07z"></path></g><g filter="url(#spotlight-right2_f)"><path fill="url(#spotlight-right2_linear)" fill-opacity="0.2" d="M1621.5 538l304.09 1152.27 28.91 54.23-53.5 11L629.5 1342l50.99-732.441L1621.5 538z"></path></g><g filter="url(#spotlight-right3_f)"><path fill="url(#spotlight-right3_linear)" d="M1133.48 511.488l792.11 1178.782L506.336 935.49l174.152-325.932 452.992-98.07z"></path></g><defs><filter id="spotlight-right0_f" width="1641.84" height="1429" x="400.786" y="400.897" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur result="effect1_foregroundBlur" stdDeviation="50"></feGaussianBlur></filter><filter id="spotlight-right1_f" width="2439.71" height="2222.09" x="0.786" y="0.924" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur result="effect1_foregroundBlur" stdDeviation="250"></feGaussianBlur></filter><filter id="spotlight-right2_f" width="1735.7" height="1638.64" x="418.941" y="333.769" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur result="effect1_foregroundBlur" stdDeviation="100"></feGaussianBlur></filter><filter id="spotlight-right3_f" width="1574.8" height="1357.97" x="425.787" y="426.121" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur result="effect1_foregroundBlur" stdDeviation="37.5"></feGaussianBlur></filter><linearGradient id="spotlight-right0_linear" x1="921.665" x2="1972.19" y1="753.838" y2="1745.42" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity="0"></stop><stop offset="1" stop-color="#fff"></stop></linearGradient><linearGradient id="spotlight-right1_linear" x1="921.665" x2="1972.19" y1="753.838" y2="1745.42" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity="0"></stop><stop offset="1" stop-color="#fff"></stop></linearGradient><linearGradient id="spotlight-right2_linear" x1="921.666" x2="1972.19" y1="753.837" y2="1745.42" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity="0"></stop><stop offset="1" stop-color="#fff"></stop></linearGradient><linearGradient id="spotlight-right3_linear" x1="1422" x2="1971.74" y1="1225" y2="1745.89" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity="0"></stop><stop offset="0.318" stop-color="#fff" stop-opacity="0.18"></stop><stop offset="0.609" stop-color="#fff" stop-opacity="0.36"></stop><stop offset="1" stop-color="#fff"></stop></linearGradient></defs></svg>
                     </div>
                 </div>
-                <svg class="spotlight-fg-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 2839 579"><g clip-path="url(#clip0)"><path fill="#0e0e0e" d="M2095 482c344.77-31.423 744-482 744-482v578.5H-127s0-214 331-256C392.489 298.583 452.227 451.156 625.5 482c332.323 59.155 508.95-108.5 846.5-108.5 237.5 0 374.02 131.192 623 108.5z"></path></g><defs><clipPath id="clip0"><path fill="#fff" d="M0 0H2839V579H0z"></path></clipPath></defs></svg>
+                <svg class="spotlight-fg-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 2839 579"><g clip-path="url(#clip0)"><path fill="hsl(274deg 16% 8%)" d="M2095 482c344.77-31.423 744-482 744-482v578.5H-127s0-214 331-256C392.489 298.583 452.227 451.156 625.5 482c332.323 59.155 508.95-108.5 846.5-108.5 237.5 0 374.02 131.192 623 108.5z"></path></g><defs><clipPath id="clip0"><path fill="#fff" d="M0 0H2839V579H0z"></path></clipPath></defs></svg>
             
                 <div class="spotlight-title-wrapper">
                     <div class="spotlight-title-wrapper-2">
@@ -824,7 +824,7 @@
 
         <section class="transition-section up">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0d0d0d" d="M0,192C360,96,720,288,1080,192C1260,144,1440,80,1440,80L1440,320L0,320Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,192C360,96,720,288,1080,192C1260,144,1440,80,1440,80L1440,320L0,320Z"></path>
             </svg>
         </section>
 
@@ -844,7 +844,7 @@
 
         <section class="transition-section down">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none" style="display: block;">
-                <path fill="#0d0d0d" d="M0,100L360,80C720,60,1080,80,1440,70L1440,0L0,0Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,100L360,80C720,60,1080,80,1440,70L1440,0L0,0Z"></path>
             </svg>
         </section> 
 
@@ -1145,7 +1145,7 @@
 
         <section class="transition-section down">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0d0d0d" d="M0,320L360,224C720,128,1080,224,1440,160L1440,0L0,0Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,320L360,224C720,128,1080,224,1440,160L1440,0L0,0Z"></path>
             </svg>
         </section>
 
@@ -1638,7 +1638,7 @@
 
         <section class="transition-section down">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0d0d0d" d="M0,320L360,224C720,128,1080,224,1440,160L1440,0L0,0Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,320L360,224C720,128,1080,224,1440,160L1440,0L0,0Z"></path>
             </svg>
         </section>
 
@@ -1941,7 +1941,7 @@
 
         <section class="transition-section up">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0d0d0d" d="M0,192C360,96,720,288,1080,192C1260,144,1440,80,1440,80L1440,320L0,320Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,192C360,96,720,288,1080,192C1260,144,1440,80,1440,80L1440,320L0,320Z"></path>
             </svg>
         </section>
 
@@ -1954,7 +1954,7 @@
 
         <section class="transition-section down">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0d0d0d" d="M0,320L360,224C720,128,1080,224,1440,160L1440,0L0,0Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,320L360,224C720,128,1080,224,1440,160L1440,0L0,0Z"></path>
             </svg>
         </section>
 
@@ -2058,9 +2058,9 @@
             </div>
         </section>
 
-        <section class="transition-dark-to-light">
+        <section class="transition-section up">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0e0e0e" d="M0,224C360,320,720,160,1080,224C1260,256,1440,288,1440,288L1440,0L0,0Z"></path>
+                <path fill="hsl(274deg 16% 8%)" d="M0,192C360,96,720,288,1080,192C1260,144,1440,80,1440,80L1440,320L0,320Z"></path>
             </svg>
         </section>
         
@@ -2073,9 +2073,9 @@
                 });
         </script>
 
-        <a class="btn_cta" href="#cta-flash" id="floating-button">
+        <a class="btn_cta" href="#cta-candidature" id="floating-button">
             <span>
-                → Voir l'offre de fin d'année
+                → Lets go
             </span>
         </a>
     </body>
