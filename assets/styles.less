@@ -1407,7 +1407,6 @@ ol {
     align-items: center;
 
     gap: 10px;
-    margin: 4rem 0 0;
 
     @media screen and (min-width: 768px) {
         justify-content: center;
@@ -1421,7 +1420,7 @@ ol {
 }
 
 .creator-text {
-    font-size: 20px; /* Taille de police pour le texte */
+    font-size: 18px; /* Taille de police pour le texte */
     color: hsl(223deg,5%,60%);
     font-family: Arial, sans-serif; /* Police personnalisée */
 
@@ -2043,6 +2042,7 @@ ol {
 }
 
 .hero-stuff {
+    z-index: 1;
     height: 100%;
     min-height: 650px;
     max-height: 750px;
@@ -2052,7 +2052,6 @@ ol {
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-
     width: 100%;
     color: white;
 
@@ -2086,6 +2085,7 @@ ol {
         font-weight: 300;
         max-width: 818px;
         text-align: center;
+        margin-top: 0 !important;
 
         @media (max-width: 768px) {
             text-align: left;
