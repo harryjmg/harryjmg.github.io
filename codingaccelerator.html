@@ -130,8 +130,8 @@
                 <div style="min-width: 24px;min-height: 24px;"></div>
 
                 <h2>
-                    Voici le système qui m’a permis de passer de 9€/h à 400€/jour en moins d’un an et de devenir libre grâce au code.
-                </h1>
+                    Voici le système qui peut te permettre de passer de zéro à 400€/jour en moins d’un an et de devenir libre grâce au code.
+                </h2>
                 <div style="min-width: 72px;min-height: 72px;"></div>
                 
                 <div class="creator-info">
@@ -149,7 +149,7 @@
         <section class="article dark" id="intro">
             <div class="container">
                 <h2>
-                    <strong>Tu arrives à un <span class="gradient-yellow">virage dans ta vie.</span></strong>
+                    Tu arrives à un <strong class="gradient-yellow">virage dans ta vie.</strong>
                 </h2>
                 <p class="lead">
                     Tu voudrais apprendre à coder pour faire un job créatif qui te permettra non seulement d'être bien payé, mais aussi d'avoir plus de temps pour toi et tes proches.
@@ -2081,47 +2081,4 @@
             </span>
         </a>
     </body>
-
-    <script>
-        // Définir la date limite au vendredi 6 décembre 2024 à minuit
-        const deadline = new Date('2024-12-06T23:59:59');
-    
-        // Fonction pour calculer et afficher le temps restant
-        function updateCountdown() {
-            const now = new Date();
-            const timeRemaining = deadline - now;
-    
-            if (timeRemaining > 0) {
-                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-    
-                // Met à jour le contenu du timer
-                document.getElementById("countdown-timer").innerText = 
-                    `Temps restant : ${days}j ${hours}h ${minutes}m ${seconds}s`;
-            } else {
-                // Affiche un message lorsque le délai est dépassé
-                document.getElementById("countdown-timer").innerText = "L'offre est terminée.";
-                clearInterval(countdownInterval); // Stop le timer
-    
-                // Logique d'affichage des CTA
-                const ctaFlash = document.getElementById("cta-flash");
-                const ctaCandidature = document.getElementById("cta-candidature");
-                const instructions = document.getElementById("instructions");
-    
-                if (ctaFlash && ctaCandidature) {
-                    ctaFlash.style.display = "none"; // Cacher l'offre flash
-                    ctaCandidature.style.display = "block"; // Afficher la candidature normale
-                    instructions.style.display = "none";
-                }
-            }
-        }
-    
-        // Met à jour le timer toutes les secondes
-        const countdownInterval = setInterval(updateCountdown, 1000);
-    
-        // Appel initial pour éviter le délai d'une seconde
-        updateCountdown();
-    </script>
 </html>

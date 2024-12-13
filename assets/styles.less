@@ -2073,10 +2073,9 @@ ol {
         max-width: 100%;
 
         @media (max-width: 768px) {
-                font-size: 12vw;
-                text-align: left;
-                line-height: 1.2;
-            
+            font-size: 12vw;
+            text-align: left;
+            line-height: 1.2;
         }
     }
 
@@ -2103,4 +2102,45 @@ ol {
 .hero-spacer {
     min-width: 24px;
     min-height: 24px;
+}
+
+.form-lead-magnet {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 400px;
+
+    input {
+        padding: 1rem 1.25rem;
+        border-radius: 0.75rem;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        font-size: 1.1rem;
+        transition: all 0.2s ease-in-out;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: rgb(255, 255, 255);
+            background: rgba(159, 140, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(159, 140, 255, 0.2);
+        }
+    }
+
+    .button-82-pushable {
+        margin-top: 0.5rem;
+
+        .button-82-front {
+            height: 2em;
+        }
+
+        &:hover .button-82-front {
+            height: 2em;
+            transform: translateY(-4px);
+        }
+    }
 }
