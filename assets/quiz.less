@@ -16,12 +16,12 @@ body {
     line-height: 1.6;
 }
 
+
 .quiz-progress-bar {
-    position: fixed;
+    position: relative;
     top: 24px;
-    left: 24px;
-    right: 24px;
     height: 6px;
+    margin: 0 15px;
     background: transparent;
     z-index: 1000;
     display: flex;
@@ -219,7 +219,6 @@ body {
     padding: 14px 28px;
     border-radius: 8px;
     text-decoration: none;
-    margin-top: 32px;
     font-weight: 500;
     transition: background 0.2s ease;
     border: none;
@@ -313,8 +312,20 @@ strong {
 
 .cta-section {
     margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border-color);
+    padding: 32px;
+    background: #FFF9E5;
+    border-radius: 12px;
+    border: 1px solid #FFE4A0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    .results-heading {
+        color: var(--text-primary);
+        margin-top: 0;
+    }
+
+    .confirmation-message {
+        margin-bottom: 32px;
+    }
 }
 
 @media (max-width: 768px) {
