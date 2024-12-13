@@ -17,9 +17,14 @@
             document.head.appendChild(metaDescription);
         </script>
 
+        <!-- Title -->
+        <title>Test Gratuit - Harry Jmg</title>
+
+        <!-- Styles -->
         <link rel="stylesheet/less" type="text/css" href="/assets/styles.less" />
         <script src="https://cdn.jsdelivr.net/npm/less"></script>
 
+        <!-- Meta -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,32 +93,6 @@
                 page_name: pageConfig.mixpanelPageName
             });
         </script>
-
-        <script>
-            // Fonction pour vérifier si un élément est visible dans la fenêtre
-            function isElementInViewport(el) {
-                const rect = el.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-
-            // Appliquer ou retirer l'animation uniquement si elle n'a pas encore été jouée
-            function onScroll() {
-                const spotlightTitle = document.querySelector('.spotlight-title');
-                if (spotlightTitle && isElementInViewport(spotlightTitle)) {
-                    // Ajouter une classe pour jouer l'animation une seule fois
-                    if (!spotlightTitle.classList.contains('animation-played')) {
-                        spotlightTitle.classList.add('animate-spotlight', 'animation-played');
-                    }
-                }
-            }
-
-            // Ajouter l'écouteur de défilement
-            window.addEventListener('scroll', onScroll);        </script>
     </head>
 
     <body style="background: hsl(274deg 16% 8%); z-index: -5; position: relative;">
