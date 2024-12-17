@@ -130,123 +130,73 @@
                     id: 1,
                     prefix: "Mon âge :",
                     text: "Quel âge as-tu ?",
-                    options: [
-                        "Moins de 18 ans",
-                        "18-24 ans",
-                        "25-34 ans",
-                        "35-44 ans",
-                        "45 ans et plus"
-                    ]
+                    options: ["Moins de 18 ans", "18-24 ans", "25-34 ans", "35-44 ans", "45+ ans"]
                 },
                 {
                     id: 2,
                     prefix: "Ma situation actuelle :",
                     text: "Quel est ta situation actuelle ?",
-                    options: [
-                        "Étudiant",
-                        "En reconversion professionnelle",
-                        "Salarié dans un autre domaine",
-                        "En recherche d'emploi",
-                        "Développeur salarié",
-                        "Freelance ou indépendant"
-                    ]
+                    options: ["Étudiant", "En reconversion", "En recherche d'emploi", "Développeur"]
                 },
                 {
                     id: 3,
                     prefix: "Mon expérience en code :",
-                    text: "Quelle est ton expérience en programmation ?",
-                    options: [
-                        "Je n’ai jamais codé (je pars totalement de zéro).",
-                        "J'ai suivi quelques tutoriels en ligne, mais je n’ai jamais terminé de projet concret.",
-                        "J'ai déjà réalisé des petits projets personnels, mais je manque encore de structure ou de profondeur.",
-                        "J'ai travaillé sur des projets dans un cadre professionnel ou collaboratif (freelance, entreprise, études).",
-                        "Je suis expérimenté(e), je code depuis plusieurs années et je maîtrise des technologies avancées."
-                    ]
+                    text: "Ton expérience en code ?",
+                    options: ["Aucune", "Quelques tutoriels", "Quelques projets", "Expert"]
                 },
                 {
                     id: 4,
                     prefix: "Mon aisance numérique :",
-                    text: "À quel point es-tu à l’aise avec un ordinateur ?",
-                    options: [
-                        "Pas du tout à l’aise (je suis perdu(e) dès qu’il faut utiliser un nouveau logiciel ou application).",
-                        "Un peu à l’aise (je sais utiliser les outils courants comme Word, Excel ou naviguer sur internet, mais coder ou configurer me paraît difficile).",
-                        "Très à l’aise (j’ai déjà utilisé des outils plus avancés comme GitHub, des IDE, ou automatisé des tâches simples)."
-                    ]
+                    text: "Ton aisance avec un ordinateur ?",
+                    options: ["Faible", "Moyenne", "Élevée"]
                 },
                 {
                     id: 5,
                     prefix: "Ma motivation :",
-                    text: "Pourquoi veux-tu devenir développeur indépendant ?",
-                    options: [
-                        "Gagner plus d’argent",
-                        "Être libre et indépendant",
-                        "Changer de carrière",
-                        "Créer mes propres projets",
-                        "Posséder un métier stable et passionant"
-                    ]
+                    text: "Pourquoi développeur indépendant ?",
+                    options: ["Pour gagner plus", "Être plus libre", "Changer de métier", "Créer mes propres projets"]
                 },
                 {
                     id: 6,
                     prefix: "Mon besoin de liberté :",
-                    text: "À quel point souhaites-tu devenir indépendant(e) dans ta vie professionnelle ?",
+                    text: "À quel point souhaites-tu devenir indépendant(e) ?",
                     options: [
-                        "Plutôt mourir que de vivre une vie de salarié, je veux être totalement libre.",
-                        "Je veux plus de liberté, mais je suis à l’aise avec une certaine structure pour avancer.",
-                        "Je préfère la sécurité et la stabilité d’un emploi salarié pour le moment."
+                        "Plutôt mourir qu'être salarié",
+                        "J'en ai vraiment envie",
+                        "Sans plus"
                     ]
                 },
                 {
                     id: 7,
-                    prefix: "Ma détermination à faire les efforts pour réussir :",
-                    text: "À quel point es-tu déterminé(e) à faire les efforts pour réussir en tant que développeur indépendant ?",
-                    options: [
-                        "Je suis prêt(e) à sacrifier mon temps, mon énergie et tout ce qu’il faut pour réussir.",
-                        "Je veux réussir, mais je voudrais que ce soit facile.",
-                        "Je trouve l’idée intéressante, mais je suis encore en train d’étudier mes options."
-                    ]
+                    prefix: "Ma détermination :",
+                    text: "Ta détermination à réussir ?",
+                    options: ["Prêt à tout", "Seulement si c'est facile", "J'étudie encore mes options"]
                 },
                 {
                     id: 8,
                     prefix: "Ma confiance en moi :",
-                    text: "À quel point te sens-tu capable d’y arriver ?",
-                    options: [
-                        "Je sais que je vais réussir, quoi qu’il arrive.",
-                        "Je pense pouvoir y arriver, mais j’ai parfois besoin d’être rassuré(e).",
-                        "Je ne suis pas sûr(e) d’être fait(e) pour ça."
-                    ]
+                    text: "À quel point te sens-tu capable ?",
+                    options: ["Je vais réussir", "Je pense y arriver", "Je n'ai aucune chance"]
                 },
                 {
                     id: 9,
                     prefix: "Mon temps disponible :",
-                    text: "Combien de temps peux-tu consacrer à ta formation chaque semaine ?",
-                    options: [
-                        "Moins de 10 heures (je peux apprendre quelques heures ici et là, principalement le week-end).",
-                        "Entre 10 et 25 heures (je peux y consacrer plusieurs soirées par semaine et une bonne partie de mes week-ends).",
-                        "Plus de 25 heures (je suis disponible à plein temps ou presque, je peux m’investir sérieusement chaque jour)."
-                    ]
+                    text: "Quel est ton temps disponible par semaine ?",
+                    options: ["Moins de 10h", "Entre 10 et 25h", "Plus de 25h"]
                 },
                 {
                     id: 10,
-                    prefix: "Ma façon d’apprendre :",
-                    text: "Quelle est ta façon préférée d’apprendre ?",
-                    options: [
-                        "Je veux être guidé(e) étape par étape, je me sens plus à l’aise avec des explications détaillées.",
-                        "Je préfère plonger directement dans le concret, quitte à me tromper et galérer pour apprendre.",
-                        "Je veux un mentor qui m’accompagne personnellement et me pousse à aller plus vite que seul(e)."
-                    ]
+                    prefix: "Ma façon d’apprendre préférée :",
+                    text: "Comment préfères-tu apprendre ?",
+                    options: ["Réviser la théorie", "La pratique", "Avec un mentor"]
                 },
                 {
                     id: 11,
                     prefix: "Mes projets ou idées :",
-                    text: "As-tu déjà des idées de projets ou des problèmes que tu aimerais résoudre avec tes compétences en code ?",
-                    options: [
-                        "Oui, j’ai des idées précises et je suis prêt(e) à commencer dès maintenant.",
-                        "J’ai des idées, mais elles sont encore vagues et j’ai besoin d’un coup de pouce pour les concrétiser.",
-                        "Non, je n’ai aucune idée pour l’instant, et je ne sais pas par où commencer à chercher."
-                    ]
+                    text: "As-tu des idées de projets ?",
+                    options: ["Oui !", "Quelques idées vagues", "Pas encore"]
                 }
             ];
-
             // Ajouter la variable CSS pour le nombre total de questions
             document.documentElement.style.setProperty('--total-questions', questions.length);
 
@@ -278,7 +228,7 @@
                     <div class="options-container">
                         ${question.options.map((option, index) => `
                             <label class="option">
-                                <input type="radio" name="q${question.id}" value="${index + 1}">
+                                <input type="radio" name="q${question.id}" value="${option}">
                                 <span class="option-text">${option}</span>
                             </label>
                         `).join('')}
@@ -332,7 +282,7 @@
                         const questionId = question.dataset.question;
                         const radioInput = option.querySelector('input[type="radio"]');
                         const questionData = questions.find(q => q.id === parseInt(questionId));
-                        answers[questionId] = `${questionData.prefix} ${questionData.options[parseInt(radioInput.value) - 1]}`;
+                        answers[questionId] = `${questionData.prefix} ${radioInput.value}`;
                         // Activer le bouton suivant
                         nextButton.disabled = false;
                     });
@@ -390,8 +340,8 @@
 
                     // Préparer les données à envoyer
                     const data = {
-                        email: email,
-                        firstName: firstName,
+                        email: userInfo.email,
+                        firstName: userInfo.firstName,
                         answers: answers,
                         metadata: {
                             timestamp: new Date().toISOString(),
@@ -416,7 +366,7 @@
                     }
 
                     // Encoder l'email en base64 pour la redirection
-                    const encodedEmail = btoa(email);
+                    const encodedEmail = btoa(userInfo.email);
                     window.location.href = `/test-gratuit/confirmation.html?em=${encodedEmail}`;
 
                 } catch (error) {
