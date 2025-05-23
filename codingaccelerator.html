@@ -11,24 +11,6 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Promo Banner -->
-    <div id="promo-banner" style="display: none; background-color: #FD635B; color: white; padding: 12px 16px; text-align: center; font-size: 0.95rem; line-height: 1.6; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-        <!-- Mobile Text -->
-        <span class="sm:hidden">
-            <strong>PROMO FLASH : -50% jusqu'à Vendredi soir !</strong><br>
-            <strong>Coding Accelerator à 997€</strong> (au lieu de 1997€).<br>
-            Paiement en 1x à 10x. Accès immédiat. Garantie 7 jours.<br>
-            Bonus : 1h de coaching privé avec Harry pour les 5 premiers !
-        </span>
-        <!-- Desktop Text -->
-        <span class="hidden sm:inline">
-            <strong>PROMO FLASH : -50% jusqu'à Vendredi soir !</strong>
-            <strong>Coding Accelerator à 997€</strong> (au lieu de 1997€).<br>
-            Paiement en 1x à 10x. Accès immédiat. Garantie 7 jours.<br>
-            Bonus : 1h de coaching privé avec Harry pour les 5 premiers !
-        </span>
-        <button id="close-promo-banner-button" style="position: absolute; top: 50%; right: 16px; transform: translateY(-50%); background: none; border: none; color: white; font-size: 2rem; line-height: 1; cursor: pointer; padding: 5px;">&times;</button>
-    </div>
     <div class="max-w-4xl mx-auto px-4 py-14 sm:px-6 lg:px-8">
         <header class="text-center mb-16">
             <h1 class="text-5xl font-bold text-gray-900 mb-4">Coding Accelerator 🚀</h1>
@@ -42,17 +24,10 @@
         </section>
 
         <section class="mb-16 text-xl">
-            <!-- Application Button Section 1 -->
-            <div id="application-section-1" class="flex justify-center">
+            <div class="flex justify-center">
                 <a href="/go/1-postuler.html" class="bg-blue-700 text-white text-xl px-6 py-3 rounded-2xl shadow hover:bg-blue-500 transition">
                     Déposer ma candidature
                 </a>
-            </div>
-            <!-- Buy Button Section 1 (initially hidden) -->
-            <div id="buy-section-1" class="flex justify-center" style="display: none;">
-                <button class="open-payment-modal-button bg-green-600 text-white text-xl px-6 py-3 rounded-2xl shadow hover:bg-green-500 transition">
-                    Démarrer le programme (-50%)
-                </button>
             </div>
         </section>
 
@@ -140,18 +115,12 @@
             </div>
         </section>
 
+        <!-- Options Section -->
         <section class="mb-16 text-xl">
-            <!-- Application Button Section 2 -->
-            <div id="application-section-2" class="flex justify-center">
+            <div class="flex justify-center">
                 <a href="/go/1-postuler.html" class="bg-blue-700 text-white text-xl px-6 py-3 rounded-2xl shadow hover:bg-blue-500 transition">
                     Déposer ma candidature
                 </a>
-            </div>
-            <!-- Buy Button Section 2 (initially hidden) -->
-            <div id="buy-section-2" class="flex justify-center" style="display: none;">
-                <button class="open-payment-modal-button bg-green-600 text-white text-xl px-6 py-3 rounded-2xl shadow hover:bg-green-500 transition">
-                    Démarrer le programme (-50%)
-                </button>
             </div>
         </section>
 
@@ -160,117 +129,5 @@
             <p>© 2025 Coding Accelerator. Tous droits réservés.</p>
         </footer>
     </div>
-
-    <!-- Payment Modal -->
-    <div id="payment-modal" style="display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
-        <div style="background-color: #fefefe; margin: auto; padding: 30px; border: 1px solid #888; width: 90%; max-width: 600px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); text-align: left;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2 style="font-size: 1.8rem; font-weight: bold; color: #333;">Choisissez votre option de paiement</h2>
-                <button id="close-payment-modal-button" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; background: none; border: none; cursor: pointer;">&times;</button>
-            </div>
-            <p style="font-size: 1.1rem; color: #555; margin-bottom: 25px;">Profitez de l'offre spéciale à <strong>997€</strong> (au lieu de 1997€).</p>
-            
-            <div>
-                <a href="https://buy.stripe.com/14kaG56ML3zJdd6aIw" target="_blank" rel="noopener noreferrer" style="display: block; background-color: #6772e5; color: white; text-align: center; padding: 15px 20px; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#5460c0'" onmouseout="this.style.backgroundColor='#6772e5'">
-                    Paiement via Stripe : 997€
-                </a>
-                <a href="https://www.paypal.com/ncp/payment/W6M83QVSC5X22" target="_blank" rel="noopener noreferrer" style="display: block; background-color: #0070ba; color: white; text-align: center; padding: 15px 20px; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 500; margin-top: 15px; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#005ea6'" onmouseout="this.style.backgroundColor='#0070ba'">
-                    Paiement via PayPal : 997€ (4 fois accessible)
-                </a>
-                <a href="https://app.finnocar.com/links/1733215733145x115653187382804480" target="_blank" rel="noopener noreferrer" style="display: block; background-color: #3cb878; color: white; text-align: center; padding: 15px 20px; border-radius: 8px; text-decoration: none; font-size: 1.1rem; font-weight: 500; margin-top: 15px; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#33a068'" onmouseout="this.style.backgroundColor='#3cb878'">
-                    Financement via Lenbox (ex: dès 99.70€/mois pour 10x)
-                </a>
-            </div>
-            <p style="font-size: 0.9rem; color: #777; margin-top: 25px; text-align: center;">Vous serez redirigé vers une page de paiement sécurisée.</p>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const getNextFridayEndTimeLocal = () => {
-                const now = new Date();
-                const promoEnd = new Date(now);
-                let dayOfWeek = promoEnd.getDay(); // 0 (Sun) to 6 (Sat)
-                let daysUntilFriday = (5 - dayOfWeek + 7) % 7;
-
-                if (daysUntilFriday === 0) { // If today is Friday
-                    if (now.getHours() > 23 || (now.getHours() === 23 && now.getMinutes() >= 59 && now.getSeconds() >= 59)) {
-                        daysUntilFriday = 7; // Past 23:59:59 local time on a Friday, target next Friday
-                    }
-                }
-                promoEnd.setDate(now.getDate() + daysUntilFriday);
-                promoEnd.setHours(23, 59, 59, 999);
-                return promoEnd;
-            };
-
-            const promoEndDate = getNextFridayEndTimeLocal();
-            const currentDate = new Date();
-            const isPromoActive = currentDate < promoEndDate;
-
-            const promoBanner = document.getElementById('promo-banner');
-            const applicationSection1 = document.getElementById('application-section-1');
-            const applicationSection2 = document.getElementById('application-section-2');
-            const buySection1 = document.getElementById('buy-section-1');
-            const buySection2 = document.getElementById('buy-section-2');
-            
-            const paymentModal = document.getElementById('payment-modal');
-            const openModalButtons = document.querySelectorAll('.open-payment-modal-button');
-            const closeModalButton = document.getElementById('close-payment-modal-button');
-            const closePromoBannerButton = document.getElementById('close-promo-banner-button');
-
-            function adjustPageForBanner() {
-                if (promoBanner && promoBanner.style.display !== 'none') {
-                    const bannerHeight = promoBanner.offsetHeight;
-                    document.body.style.paddingTop = bannerHeight + 'px';
-                } else {
-                    document.body.style.paddingTop = '0px';
-                }
-            }
-
-            if (isPromoActive) {
-                if (promoBanner) promoBanner.style.display = 'block';
-                if (applicationSection1) applicationSection1.style.display = 'none';
-                if (applicationSection2) applicationSection2.style.display = 'none';
-                if (buySection1) buySection1.style.display = 'flex';
-                if (buySection2) buySection2.style.display = 'flex';
-                
-            } else {
-                if (promoBanner) promoBanner.style.display = 'none';
-                if (applicationSection1) applicationSection1.style.display = 'flex';
-                if (applicationSection2) applicationSection2.style.display = 'flex';
-                if (buySection1) buySection1.style.display = 'none';
-                if (buySection2) buySection2.style.display = 'none';
-            }
-
-            adjustPageForBanner(); // Adjust padding on initial load
-
-            if (closePromoBannerButton) {
-                closePromoBannerButton.addEventListener('click', () => {
-                    if (promoBanner) promoBanner.style.display = 'none';
-                    adjustPageForBanner(); // Adjust padding after banner is hidden
-                });
-            }
-
-            openModalButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (paymentModal) paymentModal.style.display = 'flex';
-                });
-            });
-
-            if (closeModalButton) {
-                closeModalButton.addEventListener('click', () => {
-                    if (paymentModal) paymentModal.style.display = 'none';
-                });
-            }
-
-            window.addEventListener('click', (event) => {
-                if (event.target === paymentModal) {
-                    if (paymentModal) paymentModal.style.display = 'none';
-                }
-            });
-
-            window.addEventListener('resize', adjustPageForBanner); // Adjust padding on window resize
-        });
-    </script>
 </body>
 </html>
