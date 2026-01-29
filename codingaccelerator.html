@@ -1537,17 +1537,6 @@
                                 </svg>
                             </div>
                             <div class="li-item">
-                                <strong>Challenges hebdomadaires</strong> avec la communauté pour évoluer techniquement.
-                            </div>
-                        </li>
-                        <li>
-                            <div class="li-arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ff0a78">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </div>
-                            <div class="li-item">
                                 Une <strong>liste de plateformes à jour</strong> pour trouver des missions freelance et des clients.
                             </div>
                         </li>
@@ -1627,19 +1616,6 @@
                         </p>
                         <p style="margin: 5px 0; line-height: 1.6;">
                             Développeur indépendant avec plus de 10 ans d’expérience. Responsable des <strong>revues de code</strong>, il apporte des conseils techniques <strong>précis et clairs</strong>.
-                        </p>
-                    </div>
-                </div>
-        
-                <div class="content" style="display: flex; align-items: center;">
-                    <img src="assets/team_amine.png" alt="Amine Ben Taleb" style="margin-right: 20px; width: 75px; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
-                    <div>
-                        <p style="margin: 0; font-weight: bold; font-size: 1.2em;">
-                            Amine Ben Taleb <span style="color: gray; font-weight: normal;">(Support)</span>
-                        </p>
-                        <p style="margin: 5px 0; line-height: 1.6;">
-                            Ancien élève du programme, passé de zéro à développeur freelance <strong>rémunéré 400€/j en 2022</strong>.
-                            Il sait ce que tu vis mieux que quiconque et sera là pour t'aider.
                         </p>
                     </div>
                 </div>
@@ -1724,25 +1700,17 @@
                                 <strong>Bonus:</strong> Documents prêts à l'emploi
                             </div>
                         </li>
-                        <li>
-                            <div class="li-check">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="Checklist__CheckIcon-sc-1ofp8sb-1 cxxNTv"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            </div>
-                            <div class="li-item">
-                                <strong>Bonus:</strong> Challenges hebdomadaires
-                            </div>
-                        </li>
                     </ul>
-                    <form action="/go/1-postuler.html">
+                    <form action="https://buy.stripe.com/14kaG56ML3zJdd6aIw" method="GET" target="_blank">
                         <button class="button-82-pushable" role="button">
                             <span class="button-82-shadow"></span>
                             <span class="button-82-edge"></span>
                             <span class="button-82-front text">
-                                ➡ Déposer ma candidature
+                                ➡ Rejoindre le programme (997€)
                             </span>
                         </button>
                         <small style="text-align: center; display: block; margin-top: 16px">
-                            → Cela prend une minute
+                            → Paiement sécurisé par Stripe
                         </small>
                     </form>
                 </div>
@@ -1884,10 +1852,26 @@
                 });
         </script>
 
-        <a class="btn_cta" href="#cta-candidature" id="floating-button">
-            <span>
-                → Lets go
+        <a class="btn_cta" href="https://buy.stripe.com/14kaG56ML3zJdd6aIw" target="_blank" rel="noopener noreferrer" id="floating-button">
+            <span class="desktop-text">
+                → Démarrer le programme
+            </span>
+            <span class="mobile-text">
+                → Démarrer
             </span>
         </a>
+        <style>
+            #floating-button .mobile-text {
+                display: none;
+            }
+            @media (max-width: 768px) {
+                #floating-button .desktop-text {
+                    display: none;
+                }
+                #floating-button .mobile-text {
+                    display: inline;
+                }
+            }
+        </style>
 </body>
 </html>
