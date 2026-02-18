@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Accelerator — Harry Gueguen</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23B85C38'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='22' fill='white'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #FAFAF7;
+      --bg-warm: #F5F3EE;
+      --text: #1A1A1A;
+      --text-secondary: #6B6B6B;
+      --text-light: #999;
+      --accent: #B85C38;
+      --accent-hover: #A34E2E;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+      --content-width: 660px;
+      --section-gap: 140px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--bg);
+    }
+
+    /* Fade-in animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== LAYOUT ===== */
+    .content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: var(--section-gap) 0;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 80px 0 var(--section-gap);
+    }
+
+    .hero .content {
+      width: 100%;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--bg-warm);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(32px, 5vw, 46px);
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 28px;
+      max-width: 580px;
+    }
+
+    .hero .subtitle {
+      font-family: var(--sans);
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      margin-top: 64px;
+      margin-bottom: 0;
+    }
+
+    .hero-images {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      justify-content: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .hero-images::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hero-images figure {
+      flex-shrink: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    .hero-images img {
+      height: auto;
+      max-width: 280px;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.1);
+    }
+
+    .hero-images figcaption {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 12px;
+    }
+
+    .carousel-arrow {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-60%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: var(--bg);
+      color: var(--text-secondary);
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 2;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .carousel-arrow:hover {
+      background: #fff;
+      border-color: rgba(0,0,0,0.2);
+    }
+
+    .carousel-arrow.prev { left: 8px; }
+    .carousel-arrow.next { right: 8px; }
+
+    .phone-screenshot {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 6px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    /* ===== CTA ===== */
+    .cta-btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      background-color: var(--accent);
+      padding: 14px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.25s ease, transform 0.2s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .cta-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .cta-note {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-light);
+    }
+
+    /* ===== SECTION LABEL ===== */
+    .section-label {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      max-width: var(--content-width);
+      margin: 80px auto;
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .section-warm {
+      background-color: var(--bg-warm);
+    }
+
+    /* ===== MANIFESTE ===== */
+    .manifeste {
+      background-color: var(--bg-warm);
+    }
+
+    .manifeste .content {
+      border-left: 3px solid var(--accent);
+      padding-left: 32px;
+    }
+
+    .manifeste-text {
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .manifeste-text .highlight {
+      background: linear-gradient(to top, rgba(184, 92, 56, 0.2) 70%, transparent 100%);
+      padding: 0 2px;
+    }
+
+    .manifeste-text .first-line {
+      font-weight: 700;
+    }
+
+    .manifeste-text p {
+      margin-bottom: 28px;
+    }
+
+    .manifeste-signature {
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text);
+      margin-top: 40px;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title {
+      font-family: var(--sans);
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .section-subtitle {
+      font-family: var(--sans);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    /* ===== PROSE ===== */
+    .prose p {
+      margin-bottom: 24px;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .prose strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ===== QUI SUIS-JE ===== */
+    .portrait-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 32px;
+      filter: grayscale(15%);
+    }
+
+    .proof-img {
+      width: 100%;
+      max-width: 400px;
+      margin: 40px 0;
+      border-radius: 6px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .proof-caption {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-top: -28px;
+      margin-bottom: 40px;
+    }
+
+    .yt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px 20px;
+      margin: 36px 0 36px 0;
+      margin-right: -120px;
+    }
+
+    @media (max-width: 900px) {
+      .yt-grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin-right: 0;
+      }
+
+      .yt-grid > .yt-card:nth-child(n+7) {
+        display: none;
+      }
+
+    }
+
+    @media (max-width: 560px) {
+      .yt-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+      }
+
+      .yt-grid > .yt-card:nth-child(n+4) {
+        display: none;
+      }
+    }
+
+    .yt-card {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .yt-card:hover .yt-card-title {
+      color: var(--accent);
+    }
+
+    .yt-card-thumb {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .yt-card-thumb img {
+      width: 100%;
+      display: block;
+    }
+
+    .yt-card-duration {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: 4px;
+      line-height: 1.4;
+    }
+
+    .yt-card-info {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      align-items: flex-start;
+    }
+
+    .yt-card-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+      margin-top: 1px;
+    }
+
+    .yt-card-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .yt-card-title {
+      display: block;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 2px;
+      transition: color 0.2s ease;
+    }
+
+    .yt-card-sub {
+      display: block;
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.3;
+    }
+
+    .wide-figure {
+      margin: 40px 0;
+    }
+
+    .yt-grid--story {
+      grid-template-columns: repeat(3, 1fr);
+      margin: 36px -80px;
+    }
+
+    @media (max-width: 900px) {
+      .yt-grid--story {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 36px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .yt-grid--story {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+      }
+
+      .yt-grid--story > .yt-card:nth-child(n+4) {
+        display: none;
+      }
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .stat-item .stat-number {
+      font-family: var(--sans);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .stat-item .stat-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* ===== PROGRAMME / MODULES (TIMELINE) ===== */
+    .timeline {
+      position: relative;
+      padding-left: 48px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), rgba(184, 92, 56, 0.15));
+    }
+
+    .module-block {
+      position: relative;
+      margin-bottom: 48px;
+    }
+
+    .module-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .module-block::before {
+      content: '';
+      position: absolute;
+      left: -48px;
+      top: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      z-index: 1;
+    }
+
+    .module-block::after {
+      content: attr(data-step);
+      position: absolute;
+      left: -48px;
+      top: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      z-index: 2;
+    }
+
+    .module-label {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 6px;
+    }
+
+    .module-title {
+      font-family: var(--sans);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .module-desc {
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .module-result {
+      font-size: 15px;
+      color: var(--accent);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ===== FORMAT ===== */
+    .format-block {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .format-block--accent {
+      border-left: 3px solid var(--accent);
+    }
+
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .format-grid .format-block {
+      margin-bottom: 0;
+    }
+
+    .format-title {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .format-desc {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ===== INCLUS ===== */
+    .bonus-block {
+      margin-bottom: 48px;
+    }
+
+    .bonus-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .bonus-title {
+      font-family: var(--sans);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .bonus-desc {
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .bonus-img {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 24px;
+      border-radius: 6px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    /* ===== POUR QUI ===== */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .checklist li::before {
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 16px;
+    }
+
+    .checklist--yes li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .checklist--yes li {
+      color: var(--text);
+    }
+
+    .not-for-you {
+      background: var(--bg-warm);
+      border-radius: 10px;
+      padding: 32px;
+      margin-top: 48px;
+    }
+
+    .not-for-you-title {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .checklist--no li::before {
+      content: '✕';
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .checklist--no li {
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+
+    .not-for-you .audience-desc {
+      color: var(--text-light);
+      font-size: 16px;
+    }
+
+    /* ===== GARANTIE ===== */
+    .garantie {
+      padding: 80px 0;
+    }
+
+    .garantie-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 48px;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-item {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .faq-question {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--text-light);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-top: 16px;
+    }
+
+    .faq-answer p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final {
+      text-align: center;
+      padding: var(--section-gap) 0;
+    }
+
+    .cta-final .section-title {
+      text-align: center;
+    }
+
+    .cta-final .cta-text {
+      color: var(--text-secondary);
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-final .cta-note {
+      text-align: center;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    /* ===== SEPARATOR ===== */
+    .section-sep {
+      height: 1px;
+      background: rgba(0,0,0,0.05);
+      max-width: 120px;
+      margin: 0 auto;
+    }
+
+    /* ===== CAROUSEL RESPONSIVE (dès que les 4 images ne tiennent plus) ===== */
+    @media (max-width: 1200px) {
+      .hero-images {
+        justify-content: flex-start;
+        padding: 0 24px;
+      }
+
+      .carousel-arrow {
+        display: flex;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 700px) {
+      :root {
+        --section-gap: 96px;
+      }
+
+      body {
+        font-size: 17px;
+      }
+
+      .hero {
+        padding: 60px 0 40px;
+      }
+
+      .hero-images img {
+        max-width: 220px;
+      }
+
+      .badge {
+        margin-bottom: 28px;
+      }
+
+      .hero h1 {
+        margin-bottom: 20px;
+      }
+
+      .hero .subtitle {
+        margin-bottom: 36px;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 16px;
+      }
+
+      .manifeste-text {
+        font-size: 18px;
+      }
+
+      .manifeste-text .first-line {
+        font-size: 20px;
+      }
+
+      .timeline {
+        padding-left: 40px;
+      }
+
+      .module-block::before,
+      .module-block::after {
+        left: -40px;
+        width: 28px;
+        height: 28px;
+      }
+
+      .module-block::after {
+        font-size: 12px;
+      }
+
+      .timeline::before {
+        left: 13px;
+      }
+
+      .format-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-img {
+        margin: 28px 0;
+      }
+
+      .proof-caption {
+        margin-top: -16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="content">
+      <div class="fade-up">
+        <span class="badge">App Accelerator — Harry JMG</span>
+
+        <h1>Deviens Indie App Maker en 17 semaines</h1>
+
+        <p class="subtitle">Un accompagnement total pour lancer une app rentable et atteindre 5 000€/mois, même si le marketing te fait peur.</p>
+        <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
+        <span class="cta-note">Places limitées à 30 personnes.</span>
+      </div>
+    </div>
+
+    <!-- PREUVES -->
+    <div class="carousel-wrapper fade-up">
+      <button class="carousel-arrow prev" aria-label="Précédent">&#8249;</button>
+      <div class="hero-images" id="proofCarousel">
+        <figure>
+          <img src="assets/images/IMG_1745.jpeg" alt="App Store — classement N°19 en France">
+          <figcaption>N°19 en France</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/images/punchlines-app-dark.png" alt="Punchlines App">
+          <figcaption>Mon app Punchlines</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/images/revenuecat-revenue.jpeg" alt="RevenueCat — revenus réels">
+          <figcaption>25k€/mois de revenus</figcaption>
+        </figure>
+      </div>
+      <button class="carousel-arrow next" aria-label="Suivant">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- WHY / MANIFESTE -->
+  <section class="manifeste">
+    <div class="content">
+      <div class="manifeste-text fade-up">
+        <p><span class="first-line">L'ère où tu codais pour les autres est terminée.</span></p>
+        <p>Envoyer des CV, peaufiner son LinkedIn, faire des tests techniques, passer des entretiens avec des RH en essayant de faire bon genre, tout ça pour ensuite bosser sur des projets chiants en échange d'un virement tous les mois.</p>
+        <p>Peu importe le montant du virement, ça ne fait plus rêver personne.</p>
+        <p><span class="highlight">Aujourd'hui, on veut travailler pour nous-mêmes.</span> On veut lancer nos propres projets, créer nos propres business, ne plus avoir de plafonds de revenus fixés par quelqu'un d'autre. On veut construire nos propres sources de revenus et gagner notre liberté.</p>
+        <p>Et ça tombe bien, parce que c'est possible.</p>
+        <p>De plus en plus d'applications mobiles bootstrappées par des développeurs solos apparaissent dans les classements des stores, et les témoignages inspirants de développeurs courageux qui atteignent des sommets se multiplient aussi.</p>
+        <p>Toujours le même schéma : l'IA leur permet de faire des choses qu'il aurait été impossible ou très difficile de faire avant, ils trouvent un canal d'acquisition marketing qui fonctionne, et l'argent a l'air de pleuvoir sur leur tête.</p>
+        <p><strong>Voici quelques success stories, rien que sur YouTube :</strong></p>
+        <div class="yt-grid">
+          <a href="https://www.youtube.com/watch?v=yBjcmMhXSDk" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/yBjcmMhXSDk/maxresdefault.jpg" alt="I Built a $20K/Month Mobile App: Here's My Entire Playbook">
+              <span class="yt-card-duration">17:34</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">I Built a $20K/Month Mobile App: Here's My Entire Playbook</span>
+                <span class="yt-card-sub">Starter Story · 76K views · jan. 2026</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=k2jecxFu2as" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/k2jecxFu2as/maxresdefault.jpg" alt="I shipped my app in 12 hours and now it makes $15K/month">
+              <span class="yt-card-duration">13:01</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">I shipped my app in 12 hours and now it makes $15K/month</span>
+                <span class="yt-card-sub">Starter Story · 99K views · déc. 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=8kM-JcKpcDs" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/8kM-JcKpcDs/maxresdefault.jpg" alt="How I grew my mobile app to $17K per month">
+              <span class="yt-card-duration">20:57</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">How I grew my mobile app to $17K per month</span>
+                <span class="yt-card-sub">Starter Story · 74K views · déc. 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=2dfMUtHlQik" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/2dfMUtHlQik/maxresdefault.jpg" alt="How I Built It: $400K/Month Mobile App (Gravl)">
+              <span class="yt-card-duration">15:34</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">How I Built It: $400K/Month Mobile App (Gravl)</span>
+                <span class="yt-card-sub">Starter Story · 171K views · nov. 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=nsn94Ad47GY" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/nsn94Ad47GY/maxresdefault.jpg" alt="Our Mobile App Made $85K in 8 months">
+              <span class="yt-card-duration">12:55</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">Our Mobile App Made $85K in 8 months</span>
+                <span class="yt-card-sub">Starter Story · 29K views · nov. 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=PmyXmpkTIdc" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/PmyXmpkTIdc/maxresdefault.jpg" alt="I flipped 4 apps and made $500,000">
+              <span class="yt-card-duration">16:41</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">I flipped 4 apps and made $500,000</span>
+                <span class="yt-card-sub">Starter Story · 83K views · nov. 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=orYTlk_BhW8" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/orYTlk_BhW8/maxresdefault.jpg" alt="I vibe coded a $12K/month mobile app (Stoppr Breakdown)">
+              <span class="yt-card-duration">10:05</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">I vibe coded a $12K/month mobile app (Stoppr Breakdown)</span>
+                <span class="yt-card-sub">Starter Story · 36K views · oct. 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=HBCwzfFbopE" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/HBCwzfFbopE/maxresdefault.jpg" alt="This App Makes $25,000/Month">
+              <span class="yt-card-duration">14:48</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">This App Makes $25,000/Month</span>
+                <span class="yt-card-sub">Starter Story · 539K views · juin 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=qeY283nBhIA" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/qeY283nBhIA/maxresdefault.jpg" alt="I Built a $10K/Month App from My Mom's Basement">
+              <span class="yt-card-duration">19:09</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">I Built a $10K/Month App from My Mom's Basement</span>
+                <span class="yt-card-sub">Starter Story · 211K views · mars 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=loXc0Tyi4R4" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/loXc0Tyi4R4/maxresdefault.jpg" alt="How I Built It: $40K/Month iPhone App">
+              <span class="yt-card-duration">17:01</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">How I Built It: $40K/Month iPhone App</span>
+                <span class="yt-card-sub">Starter Story · 1,2M views · sept. 2024</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=6VASoDJqjF8" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/6VASoDJqjF8/maxresdefault.jpg" alt="J'ai créé une app mobile sans coder (et je te dis combien ça rapporte)">
+              <span class="yt-card-duration">11:29</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">J'ai créé une app mobile sans coder (et je te dis combien ça rapporte)</span>
+                <span class="yt-card-sub">Thomas Tavola · 110K views · août 2025</span>
+              </div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=3sLP2bcD5Xg" target="_blank" class="yt-card">
+            <div class="yt-card-thumb">
+              <img src="https://img.youtube.com/vi/3sLP2bcD5Xg/maxresdefault.jpg" alt="I made $800k building silly apps (this is how)">
+              <span class="yt-card-duration">7:30</span>
+            </div>
+            <div class="yt-card-info">
+              <div class="yt-card-meta">
+                <span class="yt-card-title">I made $800k building silly apps (this is how)</span>
+                <span class="yt-card-sub">Adam Lyttle · 130K views · juin 2025</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <p>Après avoir vu des dizaines d'exemples de réussite, j'ai décidé de tenter moi-même l'aventure en public sur <a href="#" style="color: var(--accent);">ma chaîne YouTube</a> l'année dernière. C'était ma première application mobile, mais les résultats ont été fous.</p>
+        <p>App Accelerator est le condensé de tout ce que j'ai découvert à l'intérieur d'un système cohérent, qu'il ne reste plus qu'à suivre pour mettre toutes les chances de son côté.</p>
+        <p>Je te raconte tout sur cette page.</p>
+        <p class="manifeste-signature">Harry Jmg</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- L'OPPORTUNITÉ -->
+  <section>
+    <div class="content fade-up">
+      <p class="section-label">L'opportunité</p>
+      <div class="prose">
+        <p>Depuis peu, un inconnu en pyjama peut recoder une app du top 100 en quelques jours même sans expérience en utilisant un abonnement IA à 20€/mois.</p>
+        <p>Ce nouveau terrain de jeu pour les indépendants est un gigantesque marché. <strong>330 milliards de dollars en 2025</strong> (+300% en 10 ans), 1 000 milliards prévu en 2035 :</p>
+      </div>
+
+      <!-- Graphique du marché des apps mobiles -->
+      <div class="wide-figure">
+        <svg viewBox="0 0 600 290" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
+          <defs>
+            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#B85C38" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#B85C38" stop-opacity="0.02"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Grid lines -->
+          <line x1="60" y1="40" x2="60" y2="220" stroke="#e0ddd6" stroke-width="1"/>
+          <line x1="60" y1="220" x2="570" y2="220" stroke="#e0ddd6" stroke-width="1"/>
+          <line x1="60" y1="175" x2="570" y2="175" stroke="#e0ddd6" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="60" y1="130" x2="570" y2="130" stroke="#e0ddd6" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="60" y1="85" x2="570" y2="85" stroke="#e0ddd6" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="60" y1="40" x2="570" y2="40" stroke="#e0ddd6" stroke-width="0.5" stroke-dasharray="4"/>
+
+          <!-- Y axis labels -->
+          <text x="52" y="224" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$0</text>
+          <text x="52" y="179" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$250B</text>
+          <text x="52" y="134" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$500B</text>
+          <text x="52" y="89" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$750B</text>
+          <text x="52" y="44" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$1 000B</text>
+
+          <!-- Area fill (2015-2035) -->
+          <path d="M60,201 L111,196 L162,190 L213,182 L264,173 L315,161 L366,146 L417,128 L468,106 L519,78 L570,40 L570,220 L60,220 Z" fill="url(#areaGrad)"/>
+
+          <!-- Solid line up to 2025 -->
+          <polyline points="60,201 111,196 162,190 213,182 264,173 315,161" fill="none" stroke="#B85C38" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Dashed projection line after 2025 -->
+          <polyline points="315,161 366,146 417,128 468,106 519,78 570,40" fill="none" stroke="#B85C38" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+
+          <!-- Small dots on data points -->
+          <circle cx="60" cy="201" r="2.5" fill="#B85C38" opacity="0.5"/>
+          <circle cx="111" cy="196" r="2.5" fill="#B85C38" opacity="0.5"/>
+          <circle cx="162" cy="190" r="2.5" fill="#B85C38" opacity="0.5"/>
+          <circle cx="213" cy="182" r="2.5" fill="#B85C38" opacity="0.5"/>
+          <circle cx="264" cy="173" r="2.5" fill="#B85C38" opacity="0.5"/>
+
+          <!-- Key highlight: 2025 -->
+          <circle cx="315" cy="161" r="5" fill="#B85C38"/>
+          <line x1="315" y1="161" x2="315" y2="220" stroke="#B85C38" stroke-width="1" stroke-dasharray="3" opacity="0.3"/>
+          <text x="315" y="150" text-anchor="middle" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="13" font-weight="600">$330B</text>
+
+          <!-- Key highlight: ~2035 -->
+          <circle cx="570" cy="40" r="5" fill="#B85C38"/>
+          <text x="558" y="32" text-anchor="end" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="13" font-weight="600">$1 000B</text>
+
+          <!-- "Projections" label -->
+          <text x="445" y="75" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="10" font-style="italic" opacity="0.7">projections ›</text>
+
+          <!-- X axis years -->
+          <text x="60" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">2015</text>
+          <text x="162" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">2019</text>
+          <text x="315" y="240" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="11" font-weight="600">2025</text>
+          <text x="468" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">2031</text>
+          <text x="570" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">~2035</text>
+
+          <!-- Annotation: x3 growth -->
+          <text x="190" y="268" text-anchor="middle" fill="#6B6B6B" font-family="DM Sans, sans-serif" font-size="11">× 3 en 10 ans</text>
+          <line x1="75" y1="264" x2="135" y2="264" stroke="#ccc" stroke-width="1"/>
+          <line x1="245" y1="264" x2="305" y2="264" stroke="#ccc" stroke-width="1"/>
+
+          <!-- Caption -->
+          <text x="315" y="285" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">Revenus du marché mondial des applications mobiles · Sources : Statista, Sensor Tower</text>
+        </svg>
+      </div>
+
+      <div class="prose">
+        <p>Mais il ne suffit pas de publier des applications qui résolvent un problème pour profiter de cet énorme gâteau. Il faut être capable de trouver un marché, des angles marketing et un canal d'acquisition rentable.</p>
+        <p>Cette partie business, c'est elle qui manque à la plupart des développeurs aujourd'hui. Ils sont capables de construire n'importe quoi, mais incapables de comprendre le marché et de vendre.</p>
+      </div>
+
+      <!-- Venn diagram: Code x Business = App Accelerator -->
+      <div style="margin: 40px 0; position: relative;">
+        <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
+          <!-- Left circle: Code -->
+          <circle cx="230" cy="140" r="120" fill="none" stroke="#ccc" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+          <!-- Right circle: Business -->
+          <circle cx="370" cy="140" r="120" fill="none" stroke="#B85C38" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+          <!-- Intersection highlight -->
+          <clipPath id="clipLeft">
+            <circle cx="230" cy="140" r="120"/>
+          </clipPath>
+          <circle cx="370" cy="140" r="120" clip-path="url(#clipLeft)" fill="#B85C38" opacity="0.12"/>
+
+          <!-- Labels -->
+          <text x="170" y="135" text-anchor="middle" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="15" font-weight="600">Code</text>
+          <text x="170" y="155" text-anchor="middle" fill="#6B6B6B" font-family="DM Sans, sans-serif" font-size="11">Dev, IA, Produit</text>
+
+          <text x="430" y="135" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="15" font-weight="600">Business</text>
+          <text x="430" y="155" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="11" opacity="0.7">Marketing, vente</text>
+        </svg>
+        <!-- HTML overlay for center label (wraps naturally) -->
+        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--accent); text-align: center; width: 90px; line-height: 1.3;">App Accelerator</span>
+      </div>
+
+      <div class="prose">
+        <p>App Accelerator a été conçu pour tous ceux qui cherchent la jonction entre code et business, pour créer des applications utiles et réussir à les vendre dans le but de gagner en indépendance et en liberté.</p>
+      </div>
+
+      <div style="margin-top: 48px;">
+        <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
+        <span class="cta-note">30 places · Candidature gratuite</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- QUI SUIS-JE -->
+  <section class="section-warm">
+    <div class="content fade-up">
+      <img src="assets/images/harry-portrait.jpeg" alt="Harry" class="portrait-img">
+      <h2 class="section-subtitle">Je m'appelle Harry.</h2>
+      <div class="prose">
+        <p>Après une vie d'étudiant chaotique que j'ai délaissée sans diplôme, j'ai enchaîné les petits boulots qui apprennent la vie : fast food, livraison, jusqu'à ce que j'utilise le code comme moyen d'augmenter mes revenus lorsque j'étais livreur sur Paris (Shift Heroes, les vrais savent).</p>
+        <p>C'est à ce moment là que j'ai réalisé qu'il était possible de vivre différemment, sans chercher de boulot ni avoir de patron, juste en créant des trucs utiles et en trouvant des clients.</p>
+        <p>J'ai fait des vidéos YouTube pour raconter tout ça, je suis devenu freelance pendant un temps, j'ai créé des petits SaaS, j'ai créé une école en ligne (Coding Accelerator) qui a formé plus de 600 personnes à devenir développeur freelance.</p>
+        <p>Et c'est l'année dernière que j'ai décidé de m'amuser à créer des apps mobiles B2C rentables tout en partageant l'aventure sur YouTube.</p>
+      </div>
+
+      <div class="yt-grid yt-grid--story">
+        <a href="https://www.youtube.com/watch?v=fGMdzWXMM4Y" target="_blank" class="yt-card">
+          <div class="yt-card-thumb">
+            <img src="https://img.youtube.com/vi/fGMdzWXMM4Y/maxresdefault.jpg" alt="J'ai lancé une app et voici combien j'ai gagné en 3 mois">
+            <span class="yt-card-duration">16:54</span>
+          </div>
+          <div class="yt-card-info">
+            <div class="yt-card-meta">
+              <span class="yt-card-title">J'ai lancé une app et voici combien j'ai gagné en 3 mois</span>
+              <span class="yt-card-sub">Harry Jmg · 46K views · sept. 2025</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=D_y4ZgBJtRg" target="_blank" class="yt-card">
+          <div class="yt-card-thumb">
+            <img src="https://img.youtube.com/vi/D_y4ZgBJtRg/maxresdefault.jpg" alt="J'ai essayé d'atteindre 30k/mois avec une app mobile">
+            <span class="yt-card-duration">26:25</span>
+          </div>
+          <div class="yt-card-info">
+            <div class="yt-card-meta">
+              <span class="yt-card-title">J'ai essayé d'atteindre 30k/mois avec une app mobile</span>
+              <span class="yt-card-sub">Harry Jmg · 42K views · jan. 2026</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=jz19sA2FjlE" target="_blank" class="yt-card">
+          <div class="yt-card-thumb">
+            <img src="https://img.youtube.com/vi/jz19sA2FjlE/maxresdefault.jpg" alt="Je cherche une idée d'app… et je tombe sur ça – Jour 2/90">
+            <span class="yt-card-duration">12:55</span>
+          </div>
+          <div class="yt-card-info">
+            <div class="yt-card-meta">
+              <span class="yt-card-title">Je cherche une idée d'app… et je tombe sur ça – Jour 2/90</span>
+              <span class="yt-card-sub">Harry Jmg · 11K views · avr. 2025</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=iSBmHYaYf-k" target="_blank" class="yt-card">
+          <div class="yt-card-thumb">
+            <img src="https://img.youtube.com/vi/iSBmHYaYf-k/maxresdefault.jpg" alt="Jour 1/90 – On va bien s'amuser (5kappchallenge)">
+            <span class="yt-card-duration">15:38</span>
+          </div>
+          <div class="yt-card-info">
+            <div class="yt-card-meta">
+              <span class="yt-card-title">Jour 1/90 – On va bien s'amuser (5kappchallenge)</span>
+              <span class="yt-card-sub">Harry Jmg · 11K views · mars 2025</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=dKGKEAyDeIs" target="_blank" class="yt-card">
+          <div class="yt-card-thumb">
+            <img src="https://img.youtube.com/vi/dKGKEAyDeIs/maxresdefault.jpg" alt="Je donne vie à mon app sur Figma – Jour 4/90">
+            <span class="yt-card-duration">16:21</span>
+          </div>
+          <div class="yt-card-info">
+            <div class="yt-card-meta">
+              <span class="yt-card-title">Je donne vie à mon app sur Figma – Jour 4/90</span>
+              <span class="yt-card-sub">Harry Jmg · 9K views · avr. 2025</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=DkBF1oKEMsI" target="_blank" class="yt-card">
+          <div class="yt-card-thumb">
+            <img src="https://img.youtube.com/vi/DkBF1oKEMsI/maxresdefault.jpg" alt="Je pose des bases solides pour l'app – Jour 3/90">
+            <span class="yt-card-duration">15:22</span>
+          </div>
+          <div class="yt-card-info">
+            <div class="yt-card-meta">
+              <span class="yt-card-title">Je pose des bases solides pour l'app – Jour 3/90</span>
+              <span class="yt-card-sub">Harry Jmg · 7K views · avr. 2025</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="prose">
+        <p>Ça a donné Punchlines, une application grand public de développement personnel, disponible uniquement sur iOS pour le moment.</p>
+        <p>6 mois seulement après son lancement, et malgré que ce soit ma toute première application mobile, j'avais réussi à atteindre 25k€ de revenus mensuels.</p>
+        <p>Ce n'est pas un coup de chance. Il y a une méthode derrière tout ça, et ça faisait longtemps que je n'avais pas été aussi passionné par un sujet. C'est pour ça que j'ai créé App Accelerator : pour transmettre tout ce que j'ai appris.</p>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-number">25k€/mois</span>
+          <span class="stat-label">atteint avec mon app</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">7.8M+</span>
+          <span class="stat-label">vues YouTube</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">600+</span>
+          <span class="stat-label">personnes accompagnées</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">8 ans</span>
+          <span class="stat-label">d'accompagnement</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- PROGRAMME -->
+  <section>
+    <div class="content">
+      <h2 class="section-title fade-up">Le programme en 17 semaines</h2>
+      <p class="prose fade-up" style="color: var(--text-secondary); margin-bottom: 64px;">Un système à suivre pour atteindre les 5K de revenus mensuels.</p>
+
+      <div class="timeline fade-up">
+        <div class="module-block" data-step="1">
+          <p class="module-label">Semaine 1</p>
+          <h3 class="module-title">Découverte du marché mobile B2C</h3>
+          <p class="module-desc">Comprends la nature de l'opportunité en profondeur en analysant les apps qui cartonnent et leurs systèmes de conversion. Avant de construire quoi que ce soit, il est essentiel que tu identifies où se trouve l'argent et pourquoi ça fonctionne.</p>
+          <p class="module-result">Tu comprends l'opportunité et tu sais à quelles conditions tu vas réussir.</p>
+        </div>
+
+        <div class="module-block" data-step="2">
+          <p class="module-label">Semaine 2</p>
+          <h3 class="module-title">Trouver une idée rentable</h3>
+          <p class="module-desc">Apprends à faire la distinction entre une bonne idée et une idée rentable grâce à la remix strategy et les 7 filtres de validation. Aligne ton intuition et des données factuelles pour déterminer ton idée.</p>
+          <p class="module-result">Tu as ton idée d'application et tu sais déjà qu'elle va fonctionner.</p>
+        </div>
+
+        <div class="module-block" data-step="3">
+          <p class="module-label">Semaines 3-4</p>
+          <h3 class="module-title">Préparer le toboggan de conversion</h3>
+          <p class="module-desc">Contenus sur les réseaux sociaux, page App Store, onboarding et paywall. Avant même de coder ta fonctionnalité principale, tu dois imaginer comment tu vas aligner ces 4 planètes de la conversion pour créer une expérience qui transforme facilement un curieux en client. On va parler design, on va parler copywriting.</p>
+          <p class="module-result">Tu as les plans d'un parcours utilisateur pensé pour la conversion.</p>
+        </div>
+
+        <div class="module-block" data-step="4">
+          <p class="module-label">Semaines 5-7</p>
+          <h3 class="module-title">Créer ton app avec l'IA</h3>
+          <p class="module-desc">Construis la première version fonctionnelle de ton application : fonctionnalités principales, backend cloud gratuit si nécessaire, onboarding, paywall, sans oublier les analytics et une série de petits détails à ne pas oublier avant de soumettre aux stores.</p>
+          <p class="module-result">Ton app est fonctionnelle et prête à être utilisée par des vrais gens.</p>
+        </div>
+
+        <div class="module-block" data-step="5">
+          <p class="module-label">Semaines 8-9</p>
+          <h3 class="module-title">Publier sur les stores</h3>
+          <p class="module-desc">Structure légale, créer son compte sur les app stores, checklist avant soumission, optimisation de la commission reversée à Apple. Tu sais gérer les rejets sans stress jusqu'à ce que ça soit en ligne.</p>
+          <p class="module-result">Ton app est disponible pour le public et tu es prêt à encaisser.</p>
+        </div>
+
+        <div class="module-block" data-step="6">
+          <p class="module-label">Semaines 10-13</p>
+          <h3 class="module-title">Trouver ses premiers clients</h3>
+          <p class="module-desc">Mets en place l'attribution, détermine ton client idéal, tes angles marketing, les formats et les concepts que tu vas utiliser sur tes canaux d'acquisition. Crée tes premiers contenus et teste-les en lançant ta première campagne de publicité. Apprends à gérer tout ça au quotidien grâce à un système que j'ai conçu pour mes propres campagnes.</p>
+          <p class="module-result">Tu as tes premiers clients, et tu apprends à être rentable sur tes publicités.</p>
+        </div>
+
+        <div class="module-block" data-step="7">
+          <p class="module-label">Semaines 14-17</p>
+          <h3 class="module-title">5 000€+ / mois</h3>
+          <p class="module-desc">Créer des boucles de viralité, recruter des créateurs UGC, augmenter les budgets publicitaires, diversifier tes canaux d'acquisition et prendre des décisions basées sur les chiffres. Tu crées un système rentable capable de tourner sans toi.</p>
+          <p class="module-result">Ce n'est plus juste un projet, ça devient un business que tu sais piloter.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CE QUE TU REÇOIS -->
+  <section class="section-warm">
+    <div class="content fade-up">
+      <h2 class="section-title">Concrètement, c'est quoi ?</h2>
+
+      <p class="section-label" style="margin-top: 48px;">L'accompagnement</p>
+
+      <div class="format-block format-block--accent">
+        <h3 class="format-title">Un module chaque semaine</h3>
+        <p class="format-desc">Des vidéos qui détaillent des concepts, des principes et des méthodes pour t'aider à comprendre comment tu vas réussir à franchir chacune des marches vers l'objectif final : 5 000€/mois avec ton app.</p>
+      </div>
+
+      <div class="format-block format-block--accent">
+        <h3 class="format-title">Call avec Harry tous les vendredis</h3>
+        <p class="format-desc">Je suis là pour te donner mon avis sur ton travail chaque semaine. Que ce soit sur la recherche d'idées, le marketing, la technique, tout est sur la table. Tu n'es jamais laissé seul, et tu peux venir pour participer ou simplement écouter pour apprendre des autres.</p>
+      </div>
+
+      <p class="section-label" style="margin-top: 48px;">Les ressources</p>
+
+      <div class="format-grid">
+        <div class="format-block">
+          <h3 class="format-title">Communauté Discord privée</h3>
+          <p class="format-desc">Un groupe de gens qui veulent atteindre la même chose que toi, accessibles en permanence. On review les apps des membres, on se partage les meilleures ressources, on échange sur les nouveautés. J'y suis actif au quotidien.</p>
+        </div>
+
+        <div class="format-block">
+          <h3 class="format-title">Boilerplate React Native / Expo</h3>
+          <p class="format-desc">Un code de départ prêt à l'emploi. Si tu pars de zéro, tu gagnes des jours de développement. Si tu as déjà une app, ce sera une référence pour t'aider à améliorer ton propre projet.</p>
+        </div>
+
+        <div class="format-block">
+          <h3 class="format-title">Raccourci iOS App Intelligence</h3>
+          <p class="format-desc">J'ai créé ce raccourci iOS pour obtenir une estimation des revenus et des téléchargements de n'importe quelle app. J'y ai ajouté une fonction d'historique des recherches.</p>
+        </div>
+
+        <div class="format-block">
+          <h3 class="format-title">Templates et checklists</h3>
+          <p class="format-desc">On te donne des templates et des checklists pour chaque étape : validation de l'idée, plan marketing, suivi des campagnes de pub, checklist de soumission App Store. Tu n'as plus qu'à cocher et avancer.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 64px;" class="fade-up">
+        <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
+        <span class="cta-note">30 places · Candidature gratuite</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- POUR QUI -->
+  <section style="padding-bottom: 80px;">
+    <div class="content fade-up">
+      <h2 class="section-title">C'est fait pour toi si...</h2>
+
+      <div style="background: var(--bg-warm); border-radius: 10px; padding: 32px; margin-top: 48px;">
+        <ul class="checklist checklist--yes">
+          <li>Tu sais coder ou tu maîtrises les outils IA</li>
+          <li>Tu veux créer ton propre business, pas bosser pour quelqu'un d'autre</li>
+          <li>Tu as déjà une app mais tu ne sais pas la rendre rentable</li>
+          <li>Tu peux consacrer au moins 20h/semaine au projet</li>
+          <li>Tu es prêt à apprendre le marketing — pas juste coder</li>
+        </ul>
+      </div>
+
+      <div class="not-for-you" style="margin-top: 24px;">
+        <p class="not-for-you-title">Ce n'est pas pour toi si…</p>
+        <ul class="checklist checklist--no">
+          <li>Tu n'as aucune compétence technique et tu n'es pas à l'aise avec l'IA</li>
+          <li>Tu cherches un revenu passif sans effort — construire un business d'app mobile, c'est un vrai métier</li>
+          <li>Tu veux faire du B2B, du SaaS, ou du web — ici c'est apps mobiles B2C</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTIE -->
+  <section class="garantie">
+    <div class="content">
+      <div class="garantie-inner fade-up">
+        <h2 class="section-title">Garantie 100% remboursé</h2>
+        <div class="prose">
+          <p style="color: var(--text-secondary);">Si tu as suivi toutes les étapes du programme validées avec Harry à 100% et que tu n'as pas atteint les 5 000€ de revenus après 6 mois, tu es intégralement remboursé. Si tu comptes t'investir sérieusement, tu n'as rien à perdre.</p>
+        </div>
+      </div>
+      <div style="margin-top: 48px; text-align: center;" class="fade-up">
+        <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
+        <span class="cta-note" style="display: block; margin-top: 12px;">30 places · Candidature gratuite</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- FAQ -->
+  <section>
+    <div class="content">
+      <h2 class="section-title fade-up">Questions fréquentes</h2>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Je ne suis pas développeur, je peux quand même suivre le programme ?
+        </div>
+        <div class="faq-answer">
+          <p>Oui, à condition que tu sois à l'aise avec les outils IA (Cursor, Claude, ChatGPT). Le Module 4 est conçu pour deux profils : les devs qui veulent coder 10x plus vite avec l'IA, et les non-devs qui veulent coder leur app de A à Z grâce à l'IA.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Combien de temps faut-il consacrer par semaine ?
+        </div>
+        <div class="faq-answer">
+          <p>Minimum 20 heures par semaine. C'est un vrai projet entrepreneurial, pas un cours du soir.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Je peux suivre le programme en parallèle de mon job ?
+        </div>
+        <div class="faq-answer">
+          <p>Oui. Par contre, il faut pouvoir dégager au moins 20h/semaine de travail sérieux.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Je n'ai pas encore d'idée d'app. C'est un problème ?
+        </div>
+        <div class="faq-answer">
+          <p>Non. C'est le rôle des Modules 1 et 2. Tu apprends à analyser le marché et à trouver une idée validée par les données. Parmi les personnes que j'accompagne actuellement, certaines n'avaient aucune idée en démarrant.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          J'ai déjà une app publiée mais elle ne génère rien. C'est pour moi ?
+        </div>
+        <div class="faq-answer">
+          <p>Oui. Les modules 1-4 te permettent d'auditer tes fondations avant d'investir en pub. La plupart des apps qui ne génèrent rien ont un problème de fondations, pas de marketing.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Mon app n'est pas en React Native. C'est un problème ?
+        </div>
+        <div class="faq-answer">
+          <p>Non. Les modules stratégie, marketing et scaling s'appliquent quelle que soit ta stack. Le boilerplate est un bonus, pas une obligation.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Je peux sauter les premiers modules si j'ai déjà une app ?
+        </div>
+        <div class="faq-answer">
+          <p>Je te le déconseille. Les modules 1-4 ne sont pas des modules débutant — c'est l'audit de tes fondations. Est-ce que ton idée tient la route ? Est-ce que ton onboarding convertit ? La plupart des apps qui ne décollent pas ont un problème là, pas dans le marketing.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Je n'y connais rien en marketing. C'est grave ?
+        </div>
+        <div class="faq-answer">
+          <p>C'est exactement pour ça que le programme existe. Les modules 6-7 partent de zéro sur le marketing.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          5 000€/mois, c'est réaliste ?
+        </div>
+        <div class="faq-answer">
+          <p>J'ai atteint 25k€/mois avec ma propre app en moins d'un an. Le programme est conçu pour t'amener aux 5k€/mois en 6 mois si tu fais le boulot. C'est ambitieux mais réaliste.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Pourquoi un formulaire de candidature ?
+        </div>
+        <div class="faq-answer">
+          <p>Parce que je veux des gens déterminés, pas des touristes. Le formulaire me permet de vérifier que ton profil correspond. On se parle ensuite en appel pour confirmer que c'est le bon move pour toi.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Quel budget prévoir en plus du programme ?
+        </div>
+        <div class="faq-answer">
+          <p>Un budget pour tes premières campagnes pub (à partir du Module 6). Le montant dépend de ton marché — on en parle pendant l'appel.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Est-ce que ça marche sur Android aussi ?
+        </div>
+        <div class="faq-answer">
+          <p>Le programme se concentre sur iOS d'abord (meilleurs revenus par utilisateur). Mais React Native / Expo permet de déployer sur Android facilement ensuite.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Qu'est-ce qui se passe après les 17 semaines ?
+        </div>
+        <div class="faq-answer">
+          <p>Tu gardes l'accès à la communauté Discord et aux modules. Les calls de groupe continuent tant qu'il y a des membres actifs.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Quand est-ce que le programme commence ?
+        </div>
+        <div class="faq-answer">
+          <p>Dès ton inscription. Le Module 1 est disponible immédiatement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="content fade-up">
+      <!-- Illustration: dev on transat -->
+      <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="width: 220px; height: auto; display: block; margin: 0 auto 40px; opacity: 0.55;">
+        <!-- Transat frame -->
+        <line x1="80" y1="160" x2="100" y2="90" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="200" y1="160" x2="180" y2="90" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="210" y1="160" x2="220" y2="120" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Transat back support -->
+        <line x1="220" y1="120" x2="180" y2="90" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Transat seat fabric -->
+        <path d="M98,92 Q140,105 182,92" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M182,92 Q200,130 210,155" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M98,92 Q88,130 82,155" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- Transat legs cross -->
+        <line x1="90" y1="160" x2="130" y2="130" stroke="#1A1A1A" stroke-width="1" stroke-linecap="round"/>
+        <line x1="195" y1="160" x2="160" y2="130" stroke="#1A1A1A" stroke-width="1" stroke-linecap="round"/>
+        <!-- Ground line -->
+        <path d="M50,162 Q150,165 250,162" fill="none" stroke="#1A1A1A" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="3,5"/>
+
+        <!-- Person body leaning back -->
+        <!-- Head -->
+        <circle cx="190" cy="62" r="12" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
+        <!-- Hair scribble -->
+        <path d="M183,54 Q190,48 197,54" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- Body/torso leaning -->
+        <path d="M188,74 Q170,95 155,115" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Legs stretched -->
+        <path d="M155,115 Q130,130 110,140" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M155,115 Q128,135 108,148" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Feet -->
+        <path d="M110,140 L103,138" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M108,148 L101,146" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+
+        <!-- Arms holding laptop -->
+        <path d="M180,82 Q168,95 158,100" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M185,85 Q175,100 168,105" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+
+        <!-- Laptop -->
+        <rect x="148" y="96" width="26" height="16" rx="2" fill="none" stroke="#1A1A1A" stroke-width="1.3" transform="rotate(-15, 161, 104)"/>
+        <!-- Laptop screen glow -->
+        <rect x="150" y="98" width="22" height="11" rx="1" fill="#B85C38" opacity="0.1" transform="rotate(-15, 161, 104)"/>
+        <!-- Laptop base -->
+        <path d="M150,112 Q161,115 172,112" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-linecap="round" transform="rotate(-15, 161, 112)"/>
+
+        <!-- Small palm tree -->
+        <line x1="48" y1="162" x2="52" y2="95" stroke="#1A1A1A" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M52,95 Q40,80 25,82" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M52,95 Q58,78 70,75" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M52,95 Q45,75 35,70" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M52,95 Q62,82 72,85" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- Leaves detail -->
+        <path d="M25,82 Q32,88 40,90" fill="none" stroke="#1A1A1A" stroke-width="0.8" stroke-linecap="round"/>
+        <path d="M70,75 Q63,82 58,88" fill="none" stroke="#1A1A1A" stroke-width="0.8" stroke-linecap="round"/>
+
+        <!-- Small sun -->
+        <circle cx="255" cy="35" r="10" fill="none" stroke="#B85C38" stroke-width="1" opacity="0.4"/>
+        <line x1="255" y1="20" x2="255" y2="15" stroke="#B85C38" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
+        <line x1="270" y1="35" x2="275" y2="35" stroke="#B85C38" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
+        <line x1="265" y1="25" x2="269" y2="21" stroke="#B85C38" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
+        <line x1="245" y1="25" x2="241" y2="21" stroke="#B85C38" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
+      </svg>
+
+      <h2 class="section-title">Prêt à construire quelque chose qui t'appartient ?</h2>
+      <p class="cta-text">Tu sais que c'est possible. Tu l'as toujours su. Il ne manque plus que la décision — et la méthode.</p>
+      <p class="cta-text" style="margin-bottom: 40px;">Remplis le formulaire de candidature. Si ton profil correspond, tu recevras un lien pour réserver ton appel avec moi.</p>
+      <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
+      <span class="cta-note">Candidature gratuite · Réponse sous 48h</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    App Accelerator — Harry Gueguen · JMG HARRY · Tous droits réservés
+  </footer>
+
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Carousel (simple, no loop)
+    const carousel = document.getElementById('proofCarousel');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    const gap = 32;
+
+    function getItemWidth() {
+      return carousel.querySelector('figure').offsetWidth + gap;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -getItemWidth(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: getItemWidth(), behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
