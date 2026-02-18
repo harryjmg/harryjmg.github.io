@@ -1,128 +1,411 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Jmg - Créateur de contenu & Entrepreneur</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { 
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-        }
-        .project-card {
-            transition: transform 0.2s ease-in-out;
-        }
-        .project-card:hover {
-            transform: translateY(-4px);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harry Jmg</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23B85C38'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='22' fill='white'>H</text></svg>">
+  <meta name="description" content="Entrepreneur, développeur et Youtubeur. De coursier à vélo à créateur d'apps rentables, je documente l'aventure et j'aide ceux qui veulent se lancer.">
+  <meta property="og:title" content="Harry Jmg">
+  <meta property="og:description" content="Entrepreneur, développeur et Youtubeur. De coursier à vélo à créateur d'apps rentables, je documente l'aventure et j'aide ceux qui veulent se lancer.">
+  <meta property="og:image" content="https://harryjmg.fr/assets/images/harry-yt.jpeg">
+  <meta property="og:url" content="https://harryjmg.fr">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #FAFAF7;
+      --bg-warm: #F5F3EE;
+      --text: #1A1A1A;
+      --text-secondary: #6B6B6B;
+      --text-light: #999;
+      --accent: #B85C38;
+      --accent-hover: #A34E2E;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--bg);
+    }
+
+    a { color: inherit; }
+
+    .container {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ===== CARDS ===== */
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-bottom: 80px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .card-link:hover {
+      gap: 10px;
+      color: var(--accent-hover);
+    }
+
+    .card-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .card-cta:hover {
+      background: var(--accent-hover);
+    }
+
+    .card-cta svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ===== FEATURED (YouTube) ===== */
+    .card.featured {
+      background: var(--bg-warm);
+      border: 1px solid rgba(184, 92, 56, 0.1);
+    }
+
+    /* ===== YT GRID ===== */
+    .yt-section {
+      margin: 24px 0;
+    }
+
+    .yt-phase-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .yt-section + .yt-section {
+      margin-top: 28px;
+    }
+
+    .yt-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .yt-card {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .yt-card:hover .yt-card-title {
+      color: var(--accent);
+    }
+
+    .yt-card-thumb {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .yt-card-thumb img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .yt-card-title {
+      display: block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-top: 10px;
+      transition: color 0.2s ease;
+    }
+
+    @media (max-width: 560px) {
+      .yt-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .yt-card:nth-child(3) {
+        display: none;
+      }
+    }
+
+    /* ===== SEPARATOR ===== */
+    .sep {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      opacity: 0.3;
+      margin: 0 auto;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 40px 0 60px;
+      color: var(--text-light);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 600px) {
+      header { padding: 60px 0 40px; }
+      header h1 { font-size: 32px; }
+      header p { font-size: 16px; }
+      .card { padding: 24px; }
+      .card h2 { font-size: 20px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="max-w-4xl mx-auto px-4 py-14 sm:px-6 lg:px-8">
-        <header class="text-center mb-16">
-            <h1 class="text-5xl font-bold text-gray-900 mb-4">Harry Jmg</h1>
-            <p class="text-2xl text-gray-700">Je crée du contenu et des trucs<br>qui aident les gens à devenir plus libres.</p>
-        </header>
+  <div class="container">
 
-        <!-- YouTube -->
-        <div class="mb-16 project-card">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-8">
-                    <div class="flex items-center mb-4">
-                        <span class="text-4xl mr-3">📺</span>
-                        <h2 class="text-2xl font-bold">Ma chaîne YouTube</h2>
-                    </div>
-                    <div class="aspect-video w-full mb-6 rounded-xl overflow-hidden">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/FbCcvtQhwDo?si=PowfTDsSEEhVOIcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <p class="text-gray-600 text-lg mb-6">
-                        Depuis 2016, je partage mon parcours sans filtre : de livreur à vélo à entrepreneur. Pas de script, pas de chichi, juste la réalité de quelqu'un qui apprend à coder et à créer sa liberté. Je raconte tout : les galères, les victoires, et surtout comment j'ai réussi à m'en sortir.
-                    </p>
-                    <a href="https://youtube.com/c/HarryJmg" target="_blank" rel="noopener" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-500">
-                        👉 Rejoindre +50 000 abonnés
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+    <header>
+      <img src="assets/images/harry-yt.jpeg" alt="Harry Jmg" class="avatar">
+      <h1>Harry Jmg</h1>
+      <p>Entrepreneur, développeur et Youtubeur.<br>Je vis ma vie et je fais des vidéos pour raconter l'aventure et donner quelques conseils à ceux qui passent après moi.</p>
+    </header>
+
+    <div class="cards">
+
+      <!-- YouTube -->
+      <div class="card featured">
+        <div class="card-label">YouTube</div>
+        <p style="margin-bottom: 8px;">10 ans de vidéos, 3 vies différentes.</p>
+        <a href="https://youtube.com/c/HarryJmg" target="_blank" rel="noopener" class="card-link" style="margin-bottom: 4px;">
+          Voir la chaîne
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </a>
+
+        <div class="yt-section">
+          <div class="yt-phase-label">Coursier (2016-2017)</div>
+          <div class="yt-row">
+            <a href="https://www.youtube.com/watch?v=xz-TL08xy70" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/xz-TL08xy70/maxresdefault.jpg" alt="Coursier à vélo, combien je gagne ?">
+              </div>
+              <span class="yt-card-title">COURSIER A VELO, COMBIEN JE GAGNE ?</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=wNzjTiFThlQ" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/wNzjTiFThlQ/maxresdefault.jpg" alt="Repas gratuit pour bibi avec UberEATS">
+              </div>
+              <span class="yt-card-title">Repas gratuit pour bibi avec UberEATS</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=ZyKWcLqcxt8" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/ZyKWcLqcxt8/maxresdefault.jpg" alt="Combien j'ai gagné avec Shift Heroes en 2017">
+              </div>
+              <span class="yt-card-title">Combien j'ai gagné avec Shift Heroes en 2017</span>
+            </a>
+          </div>
         </div>
 
-        <!-- 5K App Challenge -->
-        <div class="mb-16 project-card">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-8">
-                    <div class="flex items-center mb-4">
-                        <span class="text-4xl mr-3">🚀</span>
-                        <h2 class="text-2xl font-bold">5K App Challenge</h2>
-                    </div>
-                    <p class="text-gray-600 text-lg mb-6">
-                        Je me suis lancé un défi : créer une app mobile rentable (5 000€/mois) en 3 mois. Je partage tout sur YouTube.
-                        Tu peux aussi rejoindre le groupe privé pour suivre une roadmap, poser tes questions, et avancer avec d'autres créateurs d'apps.
-                    </p>
-                    <a href="https://5kappchallenge.fr" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-500">
-                        👉 Rejoindre le challenge
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+        <div class="yt-section">
+          <div class="yt-phase-label">Dev freelance (2018-2024)</div>
+          <div class="yt-row">
+            <a href="https://www.youtube.com/watch?v=INWzYUiVI08" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/INWzYUiVI08/maxresdefault.jpg" alt="Une journée random de développeur freelance (400€/jour)">
+              </div>
+              <span class="yt-card-title">Une journée random de développeur freelance (400€/jour)</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=FbCcvtQhwDo" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/FbCcvtQhwDo/maxresdefault.jpg" alt="10 ans d'une vie de développeur sans diplômes">
+              </div>
+              <span class="yt-card-title">10 ans d'une vie de développeur sans diplômes</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=m1LmZ0o_iCI" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/m1LmZ0o_iCI/maxresdefault.jpg" alt="9 étapes pour devenir développeur freelance">
+              </div>
+              <span class="yt-card-title">9 étapes pour devenir développeur freelance</span>
+            </a>
+          </div>
         </div>
 
-        <!-- Coding Accelerator -->
-        <div class="mb-16 project-card">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-8">
-                    <div class="flex items-center mb-4">
-                        <span class="text-4xl mr-3">💻</span>
-                        <h2 class="text-2xl font-bold">Coding Accelerator</h2>
-                    </div>
-                    <p class="text-gray-600 text-lg mb-6">
-                        Un accompagnement en ligne pour apprendre à coder, trouver ses premiers clients en tant que développeur freelance.
-                        Pas besoin d'être un génie des maths, pas besoin de diplômes. Juste de la motivation, un bon plan à suivre, et un peu d'audace.
-                    </p>
-                    <a href="/codingaccelerator.html" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-500">
-                        👉 Découvrir le programme
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+        <div class="yt-section">
+          <div class="yt-phase-label">Indie app maker (2025-aujourd'hui)</div>
+          <div class="yt-row">
+            <a href="https://www.youtube.com/watch?v=D_y4ZgBJtRg" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/D_y4ZgBJtRg/maxresdefault.jpg" alt="J'ai essayé d'atteindre 30k/mois avec une app mobile">
+              </div>
+              <span class="yt-card-title">J'ai essayé d'atteindre 30k/mois avec une app mobile</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=fGMdzWXMM4Y" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/fGMdzWXMM4Y/maxresdefault.jpg" alt="J'ai lancé une app et voici combien j'ai gagné en 3 mois">
+              </div>
+              <span class="yt-card-title">J'ai lancé une app et voici combien j'ai gagné en 3 mois</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=iSBmHYaYf-k" target="_blank" class="yt-card">
+              <div class="yt-card-thumb">
+                <img src="https://img.youtube.com/vi/iSBmHYaYf-k/maxresdefault.jpg" alt="Jour 1/90 – On va bien s'amuser (5kappchallenge)">
+              </div>
+              <span class="yt-card-title">Jour 1/90 – On va bien s'amuser (5kappchallenge)</span>
+            </a>
+          </div>
         </div>
 
-        <!-- Je médite tous les jours -->
-        <div class="mb-16 project-card">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-8">
-                    <div class="flex items-center mb-4">
-                        <span class="text-4xl mr-3">🧘</span>
-                        <h2 class="text-2xl font-bold">Je médite tous les jours</h2>
-                    </div>
-                    <p class="text-gray-600 text-lg mb-6">
-                        Un podcast de méditations guidées pour ralentir, respirer, et revenir à soi.
-                        +10 000 personnes écoutent chaque jour. Un programme plus profond arrive bientôt pour ceux qui veulent aller plus loin.
-                    </p>
-                    <a href="https://jemeditetouslesjours.fr" target="_blank" rel="noopener" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-500">
-                        👉 Écouter les méditations
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+      </div>
 
-        <!-- Social Links -->
-        <footer class="text-center">
-            <div class="flex justify-center space-x-6 text-gray-600">
-                Contact professionnel : harry@harryjmg.fr
-            </div>
-            <p class="mt-8 text-gray-500"> 2025 Harry Jmg. Tous droits réservés.</p>
-        </footer>
+      <!-- App Accelerator -->
+      <div class="card" style="border-left: 3px solid var(--accent);">
+        <div class="card-label">Coaching</div>
+        <h2>App Accelerator</h2>
+        <p>Tout ce que j'ai appris en atteignant 25k€/mois avec une application mobile, condensé dans un programme structuré. Tu repars avec une app publiée, un modèle économique et un plan d'acquisition.</p>
+        <a href="/app_accelerator/" class="card-cta">
+          Découvrir le programme
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Méditation -->
+      <div class="card" style="border-left: 3px solid var(--accent);">
+        <div class="card-label">Podcast</div>
+        <h2>Je médite tous les jours</h2>
+        <p>Des centaines de méditations guidées enregistrées en totale improvisation. Disponible sur la plupart des plateformes d'écoute depuis 2020. Plus de 300 000 écoutes par mois.</p>
+        <a href="https://jemeditetouslesjours.fr" target="_blank" rel="noopener" class="card-cta">
+          Écouter les méditations
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
     </div>
+
+    <footer>
+      <div class="sep" style="margin-bottom: 24px;"></div>
+      <a href="mailto:harry@harryjmg.fr">harry@harryjmg.fr</a>
+      <p style="margin-top: 12px;">&copy; <script>document.write(new Date().getFullYear())</script> Harry Jmg</p>
+    </footer>
+
+  </div>
 </body>
 </html>
