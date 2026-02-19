@@ -443,6 +443,21 @@
       margin: 40px 0;
     }
 
+    .venn-wrap {
+      margin: 40px 0;
+      position: relative;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 560px) {
+      .chart-label { font-size: 16px !important; }
+      .chart-value { font-size: 20px !important; }
+      .venn-label { font-size: 16px !important; }
+      .venn-sublabel { font-size: 14px !important; }
+    }
+
     .yt-grid--story {
       grid-template-columns: repeat(3, 1fr);
       margin: 36px -80px;
@@ -470,8 +485,8 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
-      margin-top: 56px;
-      padding-top: 48px;
+      margin-top: 40px;
+      padding-top: 36px;
       border-top: 1px solid rgba(0,0,0,0.06);
       text-align: center;
     }
@@ -947,12 +962,10 @@
       <div class="manifeste-text fade-up">
         <p><span class="first-line">L'ère où tu codais pour les autres est terminée.</span></p>
         <p>Envoyer des CV, peaufiner son LinkedIn, faire des tests techniques, passer des entretiens avec des RH en essayant de faire bon genre, tout ça pour ensuite bosser sur des projets chiants en échange d'un virement tous les mois.</p>
-        <p>Peu importe le montant du virement, ça ne fait plus rêver personne.</p>
-        <p><span class="highlight">Aujourd'hui, on veut travailler pour nous-mêmes.</span> On veut lancer nos propres projets, créer nos propres business, ne plus avoir de plafonds de revenus fixés par quelqu'un d'autre. On veut construire nos propres sources de revenus et gagner notre liberté.</p>
+        <p>Peu importe le montant du virement, on est d'accord que ça ne fait pas vraiment rêver.</p>
+        <p><span class="highlight">On veut travailler pour nous-mêmes.</span> On veut lancer nos propres projets, créer nos propres business, ne plus avoir de plafonds de revenus fixés par quelqu'un d'autre. On veut construire nos propres sources de revenus et gagner notre liberté.</p>
         <p>Et ça tombe bien, parce que c'est possible.</p>
-        <p>De plus en plus d'applications mobiles bootstrappées par des développeurs solos apparaissent dans les classements des stores, et les témoignages inspirants de développeurs courageux qui atteignent des sommets se multiplient aussi.</p>
-        <p>Toujours le même schéma : l'IA leur permet de faire des choses qu'il aurait été impossible ou très difficile de faire avant, ils trouvent un canal d'acquisition marketing qui fonctionne, et l'argent a l'air de pleuvoir sur leur tête.</p>
-        <p><strong>Voici quelques success stories, rien que sur YouTube :</strong></p>
+        <p>Est-ce que je suis le seul à les voir ? Parce qu’ils poussent comme des champignons depuis quelques temps sur le YouTube anglophone :</p>
         <div class="yt-grid">
           <a href="https://www.youtube.com/watch?v=yBjcmMhXSDk" target="_blank" class="yt-card">
             <div class="yt-card-thumb">
@@ -1099,10 +1112,9 @@
             </div>
           </a>
         </div>
-        <p>Après avoir vu des dizaines d'exemples de réussite, j'ai décidé de tenter moi-même l'aventure en public sur <a href="#" style="color: var(--accent);">ma chaîne YouTube</a> l'année dernière. C'était ma première application mobile, mais les résultats ont été fous.</p>
-        <p>App Accelerator est le condensé de tout ce que j'ai découvert à l'intérieur d'un système cohérent, qu'il ne reste plus qu'à suivre pour mettre toutes les chances de son côté.</p>
-        <p>Je te raconte tout sur cette page.</p>
-        <p class="manifeste-signature">Harry Jmg</p>
+        <p>Jusqu'au jour où je me suis dit "Pourquoi pas moi ?" et que j'ai décidé de tenter moi-même l'aventure en public sur <a href="#" style="color: var(--accent);">ma chaîne YouTube</a>. C'était ma première application mobile, mais les résultats ont été fous.</p>
+        <p>App Accelerator est le condensé de tout ce que j'ai découvert dans un système cohérent, qu'il ne reste plus qu'à suivre pour avancer.</p>
+        <p>Mais avant, un peu de contexte !</p>
       </div>
     </div>
   </section>
@@ -1120,7 +1132,7 @@
 
       <!-- Graphique du marché des apps mobiles -->
       <div class="wide-figure">
-        <svg viewBox="0 0 600 290" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
+        <svg viewBox="0 0 600 255" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
           <defs>
             <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#B85C38" stop-opacity="0.18"/>
@@ -1137,11 +1149,11 @@
           <line x1="60" y1="40" x2="570" y2="40" stroke="#e0ddd6" stroke-width="0.5" stroke-dasharray="4"/>
 
           <!-- Y axis labels -->
-          <text x="52" y="224" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$0</text>
-          <text x="52" y="179" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$250B</text>
-          <text x="52" y="134" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$500B</text>
-          <text x="52" y="89" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$750B</text>
-          <text x="52" y="44" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11">$1 000B</text>
+          <text x="52" y="224" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">$0</text>
+          <text x="52" y="179" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">$250B</text>
+          <text x="52" y="134" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">$500B</text>
+          <text x="52" y="89" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">$750B</text>
+          <text x="52" y="44" text-anchor="end" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">$1 000B</text>
 
           <!-- Area fill (2015-2035) -->
           <path d="M60,201 L111,196 L162,190 L213,182 L264,173 L315,161 L366,146 L417,128 L468,106 L519,78 L570,40 L570,220 L60,220 Z" fill="url(#areaGrad)"/>
@@ -1162,40 +1174,34 @@
           <!-- Key highlight: 2025 -->
           <circle cx="315" cy="161" r="5" fill="#B85C38"/>
           <line x1="315" y1="161" x2="315" y2="220" stroke="#B85C38" stroke-width="1" stroke-dasharray="3" opacity="0.3"/>
-          <text x="315" y="150" text-anchor="middle" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="13" font-weight="600">$330B</text>
+          <text x="315" y="150" text-anchor="middle" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" class="chart-value">$330B</text>
 
           <!-- Key highlight: ~2035 -->
           <circle cx="570" cy="40" r="5" fill="#B85C38"/>
-          <text x="558" y="32" text-anchor="end" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="13" font-weight="600">$1 000B</text>
+          <text x="558" y="32" text-anchor="end" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" class="chart-value">$1 000B</text>
 
-          <!-- "Projections" label -->
-          <text x="445" y="75" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="10" font-style="italic" opacity="0.7">projections ›</text>
+          <!-- Projection label -->
+          <text x="445" y="68" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="10" font-style="italic" class="chart-label" opacity="0.7">projections</text>
+          <line x1="445" y1="72" x2="445" y2="117" stroke="#B85C38" stroke-width="0.8" opacity="0.35"/>
 
           <!-- X axis years -->
-          <text x="60" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">2015</text>
-          <text x="162" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">2019</text>
-          <text x="315" y="240" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="11" font-weight="600">2025</text>
-          <text x="468" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">2031</text>
-          <text x="570" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">~2035</text>
-
-          <!-- Annotation: x3 growth -->
-          <text x="190" y="268" text-anchor="middle" fill="#6B6B6B" font-family="DM Sans, sans-serif" font-size="11">× 3 en 10 ans</text>
-          <line x1="75" y1="264" x2="135" y2="264" stroke="#ccc" stroke-width="1"/>
-          <line x1="245" y1="264" x2="305" y2="264" stroke="#ccc" stroke-width="1"/>
-
-          <!-- Caption -->
-          <text x="315" y="285" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11">Revenus du marché mondial des applications mobiles · Sources : Statista, Sensor Tower</text>
+          <text x="60" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">2015</text>
+          <text x="162" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">2019</text>
+          <text x="315" y="240" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" class="chart-value">2025</text>
+          <text x="468" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">2031</text>
+          <text x="570" y="240" text-anchor="middle" fill="#999" font-family="DM Sans, sans-serif" font-size="11" class="chart-label">~2035</text>
         </svg>
+        <p style="text-align: center; font-size: 12px; color: var(--text-light); margin-top: 8px;">Revenus du marché mondial des applications mobiles · Sources : Statista, Sensor Tower</p>
       </div>
 
       <div class="prose">
-        <p>Mais il ne suffit pas de publier des applications qui résolvent un problème pour profiter de cet énorme gâteau. Il faut être capable de trouver un marché, des angles marketing et un canal d'acquisition rentable.</p>
-        <p>Cette partie business, c'est elle qui manque à la plupart des développeurs aujourd'hui. Ils sont capables de construire n'importe quoi, mais incapables de comprendre le marché et de vendre.</p>
+        <p>Mais il ne suffit pas de publier des applications qui résolvent un problème pour profiter de cet énorme gâteau. Il faut identifier un marché, déterminer des angles marketing et trouver des canaux d'acquisition.</p>
+        <p>Cette aspect business, c'est ce qui manque à la plupart des développeurs aujourd'hui. <strong>Ils sont capables de construire n'importe quoi, mais incapables de comprendre le marché et de vendre.</strong></p>
       </div>
 
       <!-- Venn diagram: Code x Business = App Accelerator -->
-      <div style="margin: 40px 0; position: relative;">
-        <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
+      <div class="venn-wrap">
+        <svg viewBox="90 10 420 260" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
           <!-- Left circle: Code -->
           <circle cx="230" cy="140" r="120" fill="none" stroke="#ccc" stroke-width="1.5" stroke-dasharray="6,4"/>
 
@@ -1209,11 +1215,11 @@
           <circle cx="370" cy="140" r="120" clip-path="url(#clipLeft)" fill="#B85C38" opacity="0.12"/>
 
           <!-- Labels -->
-          <text x="170" y="135" text-anchor="middle" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="15" font-weight="600">Code</text>
-          <text x="170" y="155" text-anchor="middle" fill="#6B6B6B" font-family="DM Sans, sans-serif" font-size="11">Dev, IA, Produit</text>
+          <text x="170" y="135" text-anchor="middle" fill="#1A1A1A" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" class="venn-label">Code</text>
+          <text x="170" y="155" text-anchor="middle" fill="#6B6B6B" font-family="DM Sans, sans-serif" font-size="11" class="venn-sublabel">Dev, IA, Produit</text>
 
-          <text x="430" y="135" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="15" font-weight="600">Business</text>
-          <text x="430" y="155" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="11" opacity="0.7">Marketing, vente</text>
+          <text x="430" y="135" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" class="venn-label">Business</text>
+          <text x="430" y="155" text-anchor="middle" fill="#B85C38" font-family="DM Sans, sans-serif" font-size="11" class="venn-sublabel" opacity="0.7">Marketing, vente</text>
         </svg>
         <!-- HTML overlay for center label (wraps naturally) -->
         <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--accent); text-align: center; width: 90px; line-height: 1.3;">App Accelerator</span>
@@ -1320,9 +1326,9 @@
       </div>
 
       <div class="prose">
-        <p>Ça a donné Punchlines, une application grand public de développement personnel, disponible uniquement sur iOS pour le moment.</p>
-        <p>6 mois seulement après son lancement, et malgré que ce soit ma toute première application mobile, j'avais réussi à atteindre 25k€ de revenus mensuels.</p>
-        <p>Ce n'est pas un coup de chance. Il y a une méthode derrière tout ça, et ça faisait longtemps que je n'avais pas été aussi passionné par un sujet. C'est pour ça que j'ai créé App Accelerator : pour transmettre tout ce que j'ai appris.</p>
+        <p>Ça a donné Punchlines, une application de développement personnel avec un principe simple mais terriblement efficace.</p>
+        <p>6 mois seulement après son lancement, et malgré que ce soit ma toute première application mobile, j'avais réussi à atteindre <strong>25k€ de revenus mensuels</strong>.</p>
+        <p>Ce n’est pas un coup de chance. J’ai appliqué des principes et des méthodes qui ont réduit à zéro la possibilité que je puisse échouer.</p>
       </div>
 
       <div class="stats-row">
@@ -1336,11 +1342,11 @@
         </div>
         <div class="stat-item">
           <span class="stat-number">600+</span>
-          <span class="stat-label">personnes accompagnées</span>
+          <span class="stat-label">élèves formés</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">8 ans</span>
-          <span class="stat-label">d'accompagnement</span>
+          <span class="stat-label">de coaching</span>
         </div>
       </div>
     </div>
@@ -1351,8 +1357,11 @@
   <!-- PROGRAMME -->
   <section>
     <div class="content">
-      <h2 class="section-title fade-up">Le programme en 17 semaines</h2>
-      <p class="prose fade-up" style="color: var(--text-secondary); margin-bottom: 64px;">Un système à suivre pour atteindre les 5K de revenus mensuels.</p>
+      <p class="section-label fade-up">App Accelerator</p>
+      <h2 class="section-title fade-up">Ma méthode en 7 étapes pour lancer une app et atteindre 5 000€/mois.</h2>
+      <div class="prose fade-up" style="margin-bottom: 80px;">
+        <p style="color: var(--text-secondary);">J'ai suivi le même parcours pour atteindre 25 000€/mois en 6 mois avec ma toute première app — à la différence que moi, j'ai dû trouver les réponses seul. Toi en revanche, tu ne seras pas seul.</p>
+      </div>
 
       <div class="timeline fade-up">
         <div class="module-block" data-step="1">
@@ -1416,12 +1425,12 @@
       <p class="section-label" style="margin-top: 48px;">L'accompagnement</p>
 
       <div class="format-block format-block--accent">
-        <h3 class="format-title">Un module chaque semaine</h3>
-        <p class="format-desc">Des vidéos qui détaillent des concepts, des principes et des méthodes pour t'aider à comprendre comment tu vas réussir à franchir chacune des marches vers l'objectif final : 5 000€/mois avec ton app.</p>
+        <h3 class="format-title">Un programme vidéo complet</h3>
+        <p class="format-desc">Des vidéos qui détaillent les concepts, les principes et les méthodes qui vont t'aider à franchir chacune des marches vers ton objectif final : 5000€/mois avec ton app.</p>
       </div>
 
       <div class="format-block format-block--accent">
-        <h3 class="format-title">Call avec Harry tous les vendredis</h3>
+        <h3 class="format-title">Rdv hebdomadaire avec Harry</h3>
         <p class="format-desc">Je suis là pour te donner mon avis sur ton travail chaque semaine. Que ce soit sur la recherche d'idées, le marketing, la technique, tout est sur la table. Tu n'es jamais laissé seul, et tu peux venir pour participer ou simplement écouter pour apprendre des autres.</p>
       </div>
 
@@ -1429,23 +1438,23 @@
 
       <div class="format-grid">
         <div class="format-block">
-          <h3 class="format-title">Communauté Discord privée</h3>
-          <p class="format-desc">Un groupe de gens qui veulent atteindre la même chose que toi, accessibles en permanence. On review les apps des membres, on se partage les meilleures ressources, on échange sur les nouveautés. J'y suis actif au quotidien.</p>
+          <h3 class="format-title">Discord privé</h3>
+          <p class="format-desc">Reviews de ton app, partage de ressources, discussions sur l'actualité tech. J'y suis actif tous les jours.</p>
         </div>
 
         <div class="format-block">
-          <h3 class="format-title">Boilerplate React Native / Expo</h3>
-          <p class="format-desc">Un code de départ prêt à l'emploi. Si tu pars de zéro, tu gagnes des jours de développement. Si tu as déjà une app, ce sera une référence pour t'aider à améliorer ton propre projet.</p>
+          <h3 class="format-title">Boilerplate Expo</h3>
+          <p class="format-desc">Un projet de départ prêt à l'emploi, avec toutes les librairies nécessaires pré-installées.</p>
         </div>
 
         <div class="format-block">
-          <h3 class="format-title">Raccourci iOS App Intelligence</h3>
-          <p class="format-desc">J'ai créé ce raccourci iOS pour obtenir une estimation des revenus et des téléchargements de n'importe quelle app. J'y ai ajouté une fonction d'historique des recherches.</p>
+          <h3 class="format-title">Shortcut App Intelligence</h3>
+          <p class="format-desc">Raccourci iOS exclusif qui permet de connaître tous les chiffres d'une app et même un peu plus.</p>
         </div>
 
         <div class="format-block">
-          <h3 class="format-title">Templates et checklists</h3>
-          <p class="format-desc">On te donne des templates et des checklists pour chaque étape : validation de l'idée, plan marketing, suivi des campagnes de pub, checklist de soumission App Store. Tu n'as plus qu'à cocher et avancer.</p>
+          <h3 class="format-title">Golden nuggets</h3>
+          <p class="format-desc">Des checklists, des templates, des prompts et des bases de connaissances en .md à donner comme contexte à ton IA.</p>
         </div>
       </div>
 
@@ -1490,7 +1499,7 @@
       <div class="garantie-inner fade-up">
         <h2 class="section-title">Garantie 100% remboursé</h2>
         <div class="prose">
-          <p style="color: var(--text-secondary);">Si tu suis toutes les étapes du programme et que tu n'as pas généré un minimum de 5 000€ de chiffre d'affaires 6 mois après avoir démarré, je te rembourse le prix du programme et aussi tout ce que tu auras investi en marketing.</p>
+          <p style="color: var(--text-secondary);">Si tu suis toutes les étapes du programme et que tu n'as pas généré un minimum de 5 000€ de chiffre d'affaires 6 mois après avoir démarré, tu seras remboursé à 100%.</p>
         </div>
       </div>
       <div style="margin-top: 48px; text-align: center;" class="fade-up">
@@ -1521,7 +1530,7 @@
           Combien de temps faut-il consacrer par semaine ?
         </div>
         <div class="faq-answer">
-          <p>Minimum 20 heures par semaine. C'est un vrai projet entrepreneurial, pas un cours du soir.</p>
+          <p>Minimum 20 heures par semaine. Idéalement 80h par semaine. C'est un vrai projet entrepreneurial, pas un cours du soir.</p>
         </div>
       </div>
 
@@ -1530,7 +1539,7 @@
           Je peux suivre le programme en parallèle de mon job ?
         </div>
         <div class="faq-answer">
-          <p>Oui. Par contre, il faut pouvoir dégager au moins 20h/semaine de travail sérieux.</p>
+          <p>Oui. Par contre, il faut pouvoir dégager au moins 20h/semaine de travail sérieux. Si tu es rincé en dehors de ton travail, ça ne marchera pas.</p>
         </div>
       </div>
 
@@ -1548,7 +1557,7 @@
           J'ai déjà une app publiée mais elle ne génère rien. C'est pour moi ?
         </div>
         <div class="faq-answer">
-          <p>Oui. Les modules 1-4 te permettent d'auditer tes fondations avant d'investir en pub. La plupart des apps qui ne génèrent rien ont un problème de fondations, pas de marketing.</p>
+          <p>Oui. Les modules 1-4 te permettent d'auditer tes fondations avant d'investir en pub. La plupart des apps qui ne génèrent rien ont un problème de fondations avant d'avoir un problème de marketing.</p>
         </div>
       </div>
 
@@ -1566,7 +1575,7 @@
           Je peux sauter les premiers modules si j'ai déjà une app ?
         </div>
         <div class="faq-answer">
-          <p>Je te le déconseille. Les modules 1-4 ne sont pas des modules débutant — c'est l'audit de tes fondations. Est-ce que ton idée tient la route ? Est-ce que ton onboarding convertit ? La plupart des apps qui ne décollent pas ont un problème là, pas dans le marketing.</p>
+          <p>Je te le déconseille. Les modules 1-4 ne sont pas des modules débutant — c'est l'audit de tes fondations. Est-ce que ton idée tient la route ? Est-ce que ton onboarding convertit ? La plupart des apps qui ne décollent pas ont un problème à ce niveau là avant d'avoir un problème de marketing.</p>
         </div>
       </div>
 
@@ -1575,7 +1584,7 @@
           Je n'y connais rien en marketing. C'est grave ?
         </div>
         <div class="faq-answer">
-          <p>C'est exactement pour ça que le programme existe. Les modules 6-7 partent de zéro sur le marketing.</p>
+          <p>C'est exactement pour ça que le programme existe. Les modules 6-7 partent de zéro sur le marketing. Dis-toi que moi non plus, je n'y connaissais pas grand chose en marketing avant de faire le marketing de mon app.</p>
         </div>
       </div>
 
@@ -1584,7 +1593,7 @@
           5 000€/mois, c'est réaliste ?
         </div>
         <div class="faq-answer">
-          <p>J'ai atteint 25k€/mois avec ma propre app en moins d'un an. Le programme est conçu pour t'amener aux 5k€/mois en 6 mois si tu fais le boulot. C'est ambitieux mais réaliste.</p>
+          <p>Quelqu'un de raisonnable te dira que c'est impossible. Mais moi je te dirais le contraire. J'ai atteint 25k€/mois avec ma propre app en moins d'un an. Le programme est conçu pour t'amener aux 5k€/mois en 6 mois si tu fais le boulot. C'est ambitieux mais réaliste.</p>
         </div>
       </div>
 
@@ -1593,7 +1602,16 @@
           Pourquoi un formulaire de candidature ?
         </div>
         <div class="faq-answer">
-          <p>Parce que je veux des gens déterminés, pas des touristes. Le formulaire me permet de vérifier que ton profil correspond. On se parle ensuite en appel pour confirmer que c'est le bon move pour toi.</p>
+          <p>Parce que je veux des gens déterminés, pas des touristes. Le formulaire me permet de vérifier que ton profil correspond. On se parle ensuite en appel pour confirmer que c'est une bonne piste pour toi.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Combien coûte le programme App Accelerator ?
+        </div>
+        <div class="faq-answer">
+          <p>Le montant de l'investissement pour accéder au programme est de 2 197€ TTC pour la première cohorte. Le prix augmentera pour les prochaines cohortes, au fur et à mesure que le programme s'étoffe.</p>
         </div>
       </div>
 
@@ -1629,79 +1647,17 @@
           Quand est-ce que le programme commence ?
         </div>
         <div class="faq-answer">
-          <p>Dès ton inscription. Le Module 1 est disponible immédiatement.</p>
+          <p>Dès ton inscription, tu as accès au Module 1 (Découverte du marché mobile B2C), à la communauté Discord et aux appels de groupe hebdomadaires. Les modules suivants seront publiés chaque semaine à partir du 30 mars 2026.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA FINAL -->
-  <section class="cta-final">
+  <section class="cta-final section-warm" style="border-top: 3px solid var(--accent); border-bottom: 3px solid var(--accent);">
     <div class="content fade-up">
-      <!-- Illustration: dev on transat -->
-      <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="width: 220px; height: auto; display: block; margin: 0 auto 40px; opacity: 0.55;">
-        <!-- Transat frame -->
-        <line x1="80" y1="160" x2="100" y2="90" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="200" y1="160" x2="180" y2="90" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="210" y1="160" x2="220" y2="120" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- Transat back support -->
-        <line x1="220" y1="120" x2="180" y2="90" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- Transat seat fabric -->
-        <path d="M98,92 Q140,105 182,92" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M182,92 Q200,130 210,155" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M98,92 Q88,130 82,155" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- Transat legs cross -->
-        <line x1="90" y1="160" x2="130" y2="130" stroke="#1A1A1A" stroke-width="1" stroke-linecap="round"/>
-        <line x1="195" y1="160" x2="160" y2="130" stroke="#1A1A1A" stroke-width="1" stroke-linecap="round"/>
-        <!-- Ground line -->
-        <path d="M50,162 Q150,165 250,162" fill="none" stroke="#1A1A1A" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="3,5"/>
-
-        <!-- Person body leaning back -->
-        <!-- Head -->
-        <circle cx="190" cy="62" r="12" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
-        <!-- Hair scribble -->
-        <path d="M183,54 Q190,48 197,54" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- Body/torso leaning -->
-        <path d="M188,74 Q170,95 155,115" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- Legs stretched -->
-        <path d="M155,115 Q130,130 110,140" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M155,115 Q128,135 108,148" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- Feet -->
-        <path d="M110,140 L103,138" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M108,148 L101,146" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-
-        <!-- Arms holding laptop -->
-        <path d="M180,82 Q168,95 158,100" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M185,85 Q175,100 168,105" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
-
-        <!-- Laptop -->
-        <rect x="148" y="96" width="26" height="16" rx="2" fill="none" stroke="#1A1A1A" stroke-width="1.3" transform="rotate(-15, 161, 104)"/>
-        <!-- Laptop screen glow -->
-        <rect x="150" y="98" width="22" height="11" rx="1" fill="#B85C38" opacity="0.1" transform="rotate(-15, 161, 104)"/>
-        <!-- Laptop base -->
-        <path d="M150,112 Q161,115 172,112" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-linecap="round" transform="rotate(-15, 161, 112)"/>
-
-        <!-- Small palm tree -->
-        <line x1="48" y1="162" x2="52" y2="95" stroke="#1A1A1A" stroke-width="1.3" stroke-linecap="round"/>
-        <path d="M52,95 Q40,80 25,82" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M52,95 Q58,78 70,75" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M52,95 Q45,75 35,70" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M52,95 Q62,82 72,85" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
-        <!-- Leaves detail -->
-        <path d="M25,82 Q32,88 40,90" fill="none" stroke="#1A1A1A" stroke-width="0.8" stroke-linecap="round"/>
-        <path d="M70,75 Q63,82 58,88" fill="none" stroke="#1A1A1A" stroke-width="0.8" stroke-linecap="round"/>
-
-        <!-- Small sun -->
-        <circle cx="255" cy="35" r="10" fill="none" stroke="#B85C38" stroke-width="1" opacity="0.4"/>
-        <line x1="255" y1="20" x2="255" y2="15" stroke="#B85C38" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
-        <line x1="270" y1="35" x2="275" y2="35" stroke="#B85C38" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
-        <line x1="265" y1="25" x2="269" y2="21" stroke="#B85C38" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
-        <line x1="245" y1="25" x2="241" y2="21" stroke="#B85C38" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
-      </svg>
-
-      <h2 class="section-title">Prêt à construire quelque chose qui t'appartient ?</h2>
-      <p class="cta-text">Tu sais que c'est possible. Tu l'as toujours su. Il ne manque plus que la décision — et la méthode.</p>
-      <p class="cta-text" style="margin-bottom: 40px;">Remplis le formulaire de candidature. Si ton profil correspond, tu recevras un lien pour réserver ton appel avec moi.</p>
+      <h2 class="section-title">Prêt à lancer ta propre app rentable ?</h2>
+      <p class="cta-text" style="margin-bottom: 40px;">Tu sais que c'est possible. Tu l'as toujours su. Il ne manque plus que la décision — et la méthode. Remplis le formulaire de candidature. Si ton profil correspond, tu pourras réserver un appel avec moi.</p>
       <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
       <span class="cta-note">Candidature gratuite · Réponse sous 48h</span>
     </div>
