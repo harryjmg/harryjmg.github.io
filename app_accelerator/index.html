@@ -119,6 +119,8 @@
       align-items: flex-start;
       justify-content: center;
       overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
       scrollbar-width: none;
@@ -133,6 +135,7 @@
       flex-shrink: 0;
       margin: 0;
       text-align: center;
+      scroll-snap-align: center;
     }
 
     .hero-images img {
@@ -1693,6 +1696,18 @@
     function getItemWidth() {
       return carousel.querySelector('figure').offsetWidth + gap;
     }
+
+    function updateArrows() {
+      const atStart = carousel.scrollLeft <= 1;
+      const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1;
+      prevBtn.style.opacity = atStart ? '0.3' : '1';
+      prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+      nextBtn.style.opacity = atEnd ? '0.3' : '1';
+      nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
+    }
+
+    carousel.addEventListener('scroll', updateArrows);
+    updateArrows();
 
     prevBtn.addEventListener('click', () => {
       carousel.scrollBy({ left: -getItemWidth(), behavior: 'smooth' });
