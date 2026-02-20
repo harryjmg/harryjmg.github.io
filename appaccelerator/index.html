@@ -85,7 +85,9 @@
     }
 
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-family: var(--sans);
       font-size: 12px;
       font-weight: 500;
@@ -93,9 +95,16 @@
       text-transform: uppercase;
       color: var(--text-secondary);
       background: var(--bg-warm);
-      padding: 6px 14px;
+      padding: 4px 14px 4px 4px;
       border-radius: 100px;
       margin-bottom: 24px;
+    }
+
+    .badge-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
     .hero h1 {
@@ -938,7 +947,7 @@
   <section class="hero">
     <div class="content">
       <div class="fade-up">
-        <span class="badge">App Accelerator — Harry JMG</span>
+        <span class="badge"><img src="assets/images/harry-fun.jpeg" alt="Harry" class="badge-avatar">App Accelerator — Harry JMG</span>
 
         <h1>Deviens Indie App Maker en 17 semaines</h1>
 
@@ -972,6 +981,7 @@
   <!-- WHY / MANIFESTE -->
   <section class="manifeste">
     <div class="content">
+      <p class="section-label" style="color: rgba(255,255,255,0.5);">Le manifeste</p>
       <div class="manifeste-text fade-up">
         <p><span class="first-line">L'ère où tu codais pour les autres est terminée.</span></p>
         <p>Envoyer des CV, peaufiner son LinkedIn, faire des tests techniques, passer des entretiens avec des RH en essayant de faire bon genre, tout ça pour ensuite bosser sur des projets chiants en échange d'un virement tous les mois.</p>
@@ -1254,7 +1264,8 @@
   <!-- QUI SUIS-JE -->
   <section class="section-warm">
     <div class="content fade-up">
-      <img src="assets/images/harry-portrait.jpeg" alt="Harry" class="portrait-img">
+      <p class="section-label">Mon histoire</p>
+      <img src="assets/images/harry-fun.jpeg" alt="Harry" class="portrait-img">
       <h2 class="section-subtitle">Je m'appelle Harry.</h2>
       <div class="prose">
         <p>Après une vie d'étudiant chaotique que j'ai délaissée sans diplôme, j'ai enchaîné les petits boulots qui apprennent la vie : fast food, livraison, jusqu'à ce que j'utilise le code comme moyen d'augmenter mes revenus lorsque j'étais livreur sur Paris (Shift Heroes, les vrais savent).</p>
