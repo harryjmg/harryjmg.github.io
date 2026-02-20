@@ -695,6 +695,10 @@
       line-height: 1.7;
     }
 
+    .checklist li:last-child {
+      margin-bottom: 0;
+    }
+
     .checklist li::before {
       position: absolute;
       left: 0;
@@ -714,12 +718,26 @@
 
     .not-for-you {
       background: var(--bg-warm);
-      border-radius: 10px;
+      border-radius: 0 0 10px 10px;
       padding: 32px;
-      margin-top: 48px;
+      margin-top: 0;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .pour-qui-heading {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .pour-qui-heading--no {
+      color: var(--text-secondary);
     }
 
     .not-for-you-title {
+      display: none;
       font-family: var(--sans);
       font-size: 16px;
       font-weight: 600;
@@ -745,14 +763,14 @@
 
     /* ===== GARANTIE ===== */
     .garantie {
-      padding: 80px 0;
+      padding: 64px 0 48px;
     }
 
     .garantie-inner {
       max-width: var(--content-width);
       margin: 0 auto;
       padding: 48px;
-      background: var(--accent);
+      background: linear-gradient(145deg, #676767, #333);
       border-radius: 12px;
       text-align: center;
       color: #fff;
@@ -905,6 +923,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 24px 16px;
       }
+
 
       .manifeste-text {
         font-size: 18px;
@@ -1146,6 +1165,10 @@
         <p>App Accelerator est le condensé de tout ce que j'ai découvert dans un système cohérent, qu'il ne reste plus qu'à suivre pour avancer.</p>
         <p>Mais avant, un peu de contexte !</p>
       </div>
+      <div style="margin-top: 48px;" class="fade-up">
+        <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
+        <span class="cta-note">30 places · Candidature gratuite</span>
+      </div>
     </div>
   </section>
 
@@ -1380,6 +1403,11 @@
           <span class="stat-label">de coaching</span>
         </div>
       </div>
+
+      <div style="margin-top: 48px;" class="fade-up">
+        <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
+        <span class="cta-note">30 places · Candidature gratuite</span>
+      </div>
     </div>
   </section>
 
@@ -1499,11 +1527,13 @@
   <div class="section-sep"></div>
 
   <!-- POUR QUI -->
-  <section style="padding-bottom: 80px;">
+  <section style="padding-bottom: 0;">
     <div class="content fade-up">
-      <h2 class="section-title">C'est fait pour toi si...</h2>
+      <p class="section-label">Pour qui ?</p>
+      <h2 class="section-title">Est-ce que c'est fait pour toi ?</h2>
 
-      <div style="background: var(--bg-warm); border-radius: 10px; padding: 32px; margin-top: 48px;">
+      <div style="background: var(--bg-warm); border-radius: 10px 10px 0 0; padding: 32px; margin-top: 48px;">
+        <h3 class="pour-qui-heading">C'est fait pour toi si...</h3>
         <ul class="checklist checklist--yes">
           <li>Tu sais coder et/ou tu sais superviser les outils d'IA qui codent tes projets à ta place.</li>
           <li>Tu es prêt à créer ton propre business, tu ne veux plus travailler pour quelqu'un d'autre.</li>
@@ -1511,15 +1541,15 @@
           <li>Tu es prêt à prendre au sérieux le marketing, car tu sais que c'est 70% de la réussite d'un business.</li>
         </ul>
       </div>
-
-      <div class="not-for-you" style="margin-top: 24px;">
-        <p class="not-for-you-title">Ce n'est pas pour toi si…</p>
+      <div class="not-for-you">
+        <h3 class="pour-qui-heading pour-qui-heading--no">Ce n'est pas pour toi si…</h3>
         <ul class="checklist checklist--no">
           <li>Tu n'as aucune compétence technique et tu n'es pas à l'aise avec l'utilisation de l'IA</li>
           <li>Tu cherches un revenu passif sans fournir aucun effort. Construire un business d'app mobile qui fonctionne est un vrai métier.</li>
           <li>Tu veux faire du B2B ou un SaaS. Tu n'es pas au bon endroit, on se concentre sur l'opportunité des apps mobiles B2C ici.</li>
         </ul>
       </div>
+
     </div>
   </section>
 
@@ -1534,7 +1564,7 @@
       </div>
       <div style="margin-top: 48px; text-align: center;" class="fade-up">
         <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
-        <span class="cta-note" style="display: block; margin-top: 12px;">30 places · Candidature gratuite</span>
+        <span class="cta-note">30 places · Candidature gratuite</span>
       </div>
     </div>
   </section>
@@ -1677,7 +1707,7 @@
           Quand est-ce que le programme commence ?
         </div>
         <div class="faq-answer">
-          <p>Dès ton inscription, tu as accès au Module 1 (Découverte du marché mobile B2C), à la communauté Discord et aux appels de groupe hebdomadaires. Les modules suivants seront publiés chaque semaine à partir du 30 mars 2026.</p>
+          <p>Dès ton inscription, tu as accès à la communauté Discord et aux appels de groupe hebdomadaires. Le premier module sera publié le lundi 16 mars 2026, puis un nouveau module chaque lundi.</p>
         </div>
       </div>
     </div>
@@ -1689,7 +1719,7 @@
       <h2 class="section-title">Prêt à lancer ta propre app rentable ?</h2>
       <p class="cta-text" style="margin-bottom: 40px;">Tu sais que c'est possible. Tu l'as toujours su. Il ne manque plus que la décision — et la méthode. Remplis le formulaire de candidature. Si ton profil correspond, tu pourras réserver un appel avec moi.</p>
       <a href="https://tally.so/r/jaQKAx" class="cta-btn">Je candidate pour la Session 1</a>
-      <span class="cta-note">Candidature gratuite · Réponse sous 48h</span>
+      <span class="cta-note">30 places · Candidature gratuite</span>
     </div>
   </section>
 
