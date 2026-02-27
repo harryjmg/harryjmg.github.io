@@ -293,6 +293,18 @@
 
     <div class="cards">
 
+      <!-- Newsletter -->
+      <div class="card" style="text-align: center;">
+        <div class="card-label">Newsletter</div>
+        <p style="margin-bottom: 16px;">Reçois mes actus de temps en temps. Pas de spam.</p>
+        <form id="subscribe-form" style="display: flex; gap: 8px; max-width: 420px; margin: 0 auto;">
+          <input type="text" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
+          <input type="email" name="email" placeholder="Ton email" required style="flex:1; padding: 10px 14px; border: 1px solid rgba(0,0,0,0.12); border-radius: 8px; font-family: var(--sans); font-size: 14px; outline: none;">
+          <button type="submit" id="subscribe-btn" class="card-cta" style="white-space: nowrap; border: none; cursor: pointer; font-family: var(--sans);">S'inscrire</button>
+        </form>
+        <p id="form-message" style="font-size: 13px; margin-top: 10px; display: none;"></p>
+      </div>
+
       <!-- YouTube -->
       <div class="card featured">
         <div class="card-label">YouTube</div>
@@ -407,5 +419,44 @@
     </footer>
 
   </div>
+  <script>
+  document.getElementById('subscribe-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('subscribe-btn');
+    const msg = document.getElementById('form-message');
+    const email = this.email.value.trim();
+    if (this.website.value) return;
+    btn.disabled = true;
+    btn.textContent = 'Envoi...';
+    msg.style.display = 'none';
+    try {
+      const resp = await fetch('https://listmonk.jmgops.fr/api/public/subscription', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: email,
+          name: '',
+          list_uuids: ['b1074ca5-0f43-4d6a-a211-4dd9ecc343e0']
+        })
+      });
+      if (resp.ok) {
+        msg.textContent = 'Bienvenue !';
+        msg.style.color = '#2d7a3a';
+        msg.style.display = 'block';
+        this.reset();
+      } else {
+        msg.textContent = 'Tu es déjà inscrit(e) !';
+        msg.style.color = '#b85c38';
+        msg.style.display = 'block';
+      }
+    } catch (err) {
+      msg.textContent = 'Erreur réseau. Réessaie.';
+      msg.style.color = '#c0392b';
+      msg.style.display = 'block';
+    }
+    btn.disabled = false;
+    btn.textContent = "S'inscrire";
+  });
+  </script>
 </body>
 </html>
