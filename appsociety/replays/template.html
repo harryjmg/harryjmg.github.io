@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Replay — {{TITLE}} — App Society</title>
+  <meta name="description" content="Replay de l'appel hebdomadaire App Society du {{DATE_LONG}}. Écoute, résumé et transcription.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B85C38'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='700' font-size='20' fill='white'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark: #0D0F14;
+      --dark-surface: #14161C;
+      --dark-subtle: #1C1E26;
+      --text: #E8E6E1;
+      --text-secondary: #9A9890;
+      --text-light: #7A786F;
+      --accent: #B85C38;
+      --accent-hover: #A34E2E;
+      --accent-glow: rgba(184, 92, 56, 0.15);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--sans); font-size: 17px; line-height: 1.75; color: var(--text); background: var(--dark); }
+
+    ::selection { background: rgba(184, 92, 56, 0.2); }
+
+    .container { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+    .header { padding: 48px 0 0; text-align: center; }
+    .header-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-light); text-decoration: none; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .header-back:hover { color: var(--accent); }
+    .header-back svg { width: 16px; height: 16px; }
+    .header-date { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-top: 32px; }
+    .header-title { font-family: var(--serif); font-size: clamp(28px, 5vw, 42px); font-weight: 500; color: #fff; margin-top: 8px; line-height: 1.2; }
+    .header-meta { color: var(--text-secondary); font-size: 15px; margin-top: 8px; }
+
+    .player-wrap { margin-top: 40px; padding: 28px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; }
+    .player { display: flex; align-items: center; gap: 16px; }
+    .play-btn { width: 52px; height: 52px; border-radius: 50%; border: none; background: linear-gradient(135deg, #C96E4A, #B85C38, #A34E2E); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.15s, box-shadow 0.3s; }
+    .play-btn:hover { transform: scale(1.05); box-shadow: 0 4px 20px rgba(184, 92, 56, 0.3); }
+    .play-btn svg { width: 22px; height: 22px; margin-left: 2px; }
+    .play-btn.playing svg { margin-left: 0; }
+    .player-body { flex: 1; min-width: 0; }
+    .player-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .player-time { font-size: 13px; color: var(--text-light); font-variant-numeric: tabular-nums; }
+    .player-speed { font-size: 12px; font-weight: 600; color: var(--text-secondary); background: var(--dark-subtle); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 3px 8px; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+    .player-speed:hover { color: var(--accent); border-color: var(--accent); }
+
+    .player-controls { display: flex; align-items: center; gap: 8px; }
+    .vol-btn { background: none; border: none; color: var(--text-light); cursor: pointer; display: flex; align-items: center; padding: 2px; transition: color 0.2s; }
+    .vol-btn:hover { color: var(--text); }
+    .vol-btn svg { width: 18px; height: 18px; }
+    .vol-slider { -webkit-appearance: none; appearance: none; width: 70px; height: 4px; background: var(--dark-subtle); border-radius: 2px; outline: none; cursor: pointer; }
+    .vol-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; background: var(--text-secondary); border-radius: 50%; cursor: pointer; transition: background 0.15s; }
+    .vol-slider::-webkit-slider-thumb:hover { background: var(--text); }
+    .vol-slider::-moz-range-thumb { width: 12px; height: 12px; background: var(--text-secondary); border-radius: 50%; border: none; cursor: pointer; }
+
+    .intro { margin-top: 36px; padding: 24px 28px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+    .intro p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; }
+    .intro strong { color: var(--text); font-weight: 500; }
+
+    .progress-wrap { position: relative; height: 6px; background: var(--dark-subtle); border-radius: 3px; cursor: pointer; }
+    .progress-wrap:hover { height: 8px; }
+    .progress-wrap:hover .progress-thumb { opacity: 1; }
+    .progress-buffered { position: absolute; top: 0; left: 0; height: 100%; background: rgba(255,255,255,0.08); border-radius: 3px; pointer-events: none; }
+    .progress-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--accent); border-radius: 3px; pointer-events: none; transition: width 0.1s linear; }
+    .progress-thumb { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #fff; border-radius: 50%; box-shadow: 0 1px 6px rgba(0,0,0,0.4); pointer-events: none; opacity: 0; transition: opacity 0.15s; }
+
+    .tabs { margin-top: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; gap: 0; }
+    .tab-btn { background: none; border: none; color: var(--text-light); font-family: var(--sans); font-size: 15px; font-weight: 500; padding: 12px 24px; cursor: pointer; position: relative; transition: color 0.2s; }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); }
+    .tab-btn.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: var(--accent); border-radius: 2px 2px 0 0; }
+
+    .tab-content { display: none; padding-top: 32px; padding-bottom: 80px; }
+    .tab-content.active { display: block; }
+
+    .summary h2 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: #fff; margin: 40px 0 16px; }
+    .summary h2:first-child { margin-top: 0; }
+    .summary h3 { font-family: var(--sans); font-size: 17px; font-weight: 600; color: var(--accent); margin: 28px 0 8px; }
+    .summary p, .summary li { color: var(--text-secondary); font-size: 16px; line-height: 1.8; }
+    .summary ul { padding-left: 20px; }
+    .summary li { margin-bottom: 6px; }
+    .summary strong { color: var(--text); font-weight: 500; }
+    .summary hr { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 32px 0; }
+    .summary table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+    .summary th { text-align: left; padding: 10px 12px; background: var(--dark-subtle); color: var(--text); font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .summary td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); }
+    .summary td:first-child { color: var(--text); white-space: nowrap; }
+
+    .transcript-search { width: 100%; padding: 12px 16px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: var(--text); font-family: var(--sans); font-size: 15px; outline: none; transition: border-color 0.2s; margin-bottom: 24px; }
+    .transcript-search:focus { border-color: var(--accent); }
+    .transcript-search::placeholder { color: var(--text-light); }
+
+    .msg { padding: 6px 0; font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+    .msg .speaker { color: var(--accent); font-weight: 600; font-size: 14px; margin-right: 6px; }
+    .msg .speaker::after { content: ' :'; }
+    .msg.hidden { display: none; }
+    .msg mark { background: rgba(184, 92, 56, 0.25); color: var(--text); border-radius: 2px; padding: 0 2px; }
+    .no-results { color: var(--text-light); font-size: 15px; text-align: center; padding: 40px 0; display: none; }
+
+    @media (max-width: 480px) {
+      .player { flex-wrap: wrap; }
+      .play-btn { width: 46px; height: 46px; }
+      .tab-btn { padding: 12px 16px; font-size: 14px; }
+      .summary table { font-size: 13px; }
+      .summary td, .summary th { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header class="header">
+    <a href="/appsociety/" class="header-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      App Society
+    </a>
+    <div class="header-date">{{DATE_LONG}}</div>
+    <h1 class="header-title">{{TITLE}}</h1>
+    <p class="header-meta">{{META}}</p>
+  </header>
+
+  <!-- Player -->
+  <div class="player-wrap">
+    <div class="player">
+      <button class="play-btn" id="playBtn" aria-label="Lecture">
+        <svg id="iconPlay" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21"/></svg>
+        <svg id="iconPause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="3" width="4" height="18" rx="1"/><rect x="15" y="3" width="4" height="18" rx="1"/></svg>
+      </button>
+      <div class="player-body">
+        <div class="player-top">
+          <span class="player-time"><span id="timeCurrent">0:00</span> / <span id="timeTotal">--:--</span></span>
+          <div class="player-controls">
+            <button class="vol-btn" id="volBtn" title="Volume">
+              <svg id="iconVol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              <svg id="iconMute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            </button>
+            <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.05" value="1">
+            <button class="player-speed" id="speedBtn" title="Vitesse de lecture">1x</button>
+          </div>
+        </div>
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-buffered" id="progressBuffered"></div>
+          <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-thumb" id="progressThumb"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro">
+    <p>{{INTRO}}</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="summary">Compte-rendu</button>
+    <button class="tab-btn" data-tab="transcript">Transcription</button>
+  </div>
+
+  <!-- Summary -->
+  <div class="tab-content active" id="tab-summary">
+    <div class="summary">
+{{SUMMARY_HTML}}
+    </div>
+  </div>
+
+  <!-- Transcript -->
+  <div class="tab-content" id="tab-transcript">
+    <input type="text" class="transcript-search" id="transcriptSearch" placeholder="Rechercher dans la transcription...">
+    <div class="no-results" id="noResults">Aucun résultat</div>
+    <div id="transcriptBody">
+{{TRANSCRIPT_HTML}}
+    </div>
+  </div>
+</div>
+
+<audio id="audio" preload="metadata" src="{{AUDIO_URL}}"></audio>
+
+<script>
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('playBtn');
+const iconPlay = document.getElementById('iconPlay');
+const iconPause = document.getElementById('iconPause');
+const timeCurrent = document.getElementById('timeCurrent');
+const timeTotal = document.getElementById('timeTotal');
+const speedBtn = document.getElementById('speedBtn');
+const progressWrap = document.getElementById('progressWrap');
+const progressFill = document.getElementById('progressFill');
+const progressBuffered = document.getElementById('progressBuffered');
+const progressThumb = document.getElementById('progressThumb');
+
+const speeds = [0.75, 1, 1.25, 1.5, 2];
+let speedIdx = 1;
+
+function fmt(s) {
+  if (!s || !isFinite(s)) return '--:--';
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = Math.floor(s % 60);
+  return h > 0 ? `${h}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}` : `${m}:${String(sec).padStart(2,'0')}`;
+}
+
+playBtn.onclick = () => {
+  if (audio.paused) { audio.play(); } else { audio.pause(); }
+};
+
+audio.onplay = () => { iconPlay.style.display='none'; iconPause.style.display='block'; playBtn.classList.add('playing'); };
+audio.onpause = () => { iconPlay.style.display='block'; iconPause.style.display='none'; playBtn.classList.remove('playing'); };
+
+audio.ontimeupdate = () => {
+  timeCurrent.textContent = fmt(audio.currentTime);
+  const pct = (audio.currentTime / audio.duration) * 100;
+  progressFill.style.width = pct + '%';
+  progressThumb.style.left = pct + '%';
+};
+
+audio.onloadedmetadata = () => { timeTotal.textContent = fmt(audio.duration); };
+audio.ondurationchange = () => { timeTotal.textContent = fmt(audio.duration); };
+
+audio.onprogress = () => {
+  if (audio.buffered.length > 0) {
+    const buf = (audio.buffered.end(audio.buffered.length - 1) / audio.duration) * 100;
+    progressBuffered.style.width = buf + '%';
+  }
+};
+
+speedBtn.onclick = () => {
+  speedIdx = (speedIdx + 1) % speeds.length;
+  audio.playbackRate = speeds[speedIdx];
+  speedBtn.textContent = speeds[speedIdx] + 'x';
+};
+
+// Volume
+const volBtn = document.getElementById('volBtn');
+const volSlider = document.getElementById('volSlider');
+const iconVol = document.getElementById('iconVol');
+const iconMute = document.getElementById('iconMute');
+let savedVol = 1;
+
+volSlider.oninput = () => {
+  audio.volume = parseFloat(volSlider.value);
+  updateVolIcon();
+};
+
+volBtn.onclick = () => {
+  if (audio.volume > 0) {
+    savedVol = audio.volume;
+    audio.volume = 0;
+    volSlider.value = 0;
+  } else {
+    audio.volume = savedVol;
+    volSlider.value = savedVol;
+  }
+  updateVolIcon();
+};
+
+function updateVolIcon() {
+  iconVol.style.display = audio.volume > 0 ? 'block' : 'none';
+  iconMute.style.display = audio.volume === 0 ? 'block' : 'none';
+}
+
+// Seek
+let seeking = false;
+function seek(e) {
+  const rect = progressWrap.getBoundingClientRect();
+  const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  audio.currentTime = pct * audio.duration;
+}
+progressWrap.onmousedown = (e) => { seeking = true; seek(e); };
+document.onmousemove = (e) => { if (seeking) seek(e); };
+document.onmouseup = () => { seeking = false; };
+progressWrap.ontouchstart = (e) => { seek(e.touches[0]); };
+progressWrap.ontouchmove = (e) => { seek(e.touches[0]); e.preventDefault(); };
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  };
+});
+
+// Transcript search
+const searchInput = document.getElementById('transcriptSearch');
+const msgs = document.querySelectorAll('#transcriptBody .msg');
+const noResults = document.getElementById('noResults');
+
+searchInput.oninput = () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (!q) {
+    msgs.forEach(m => { m.classList.remove('hidden'); m.innerHTML = m.textContent.replace(/^(\S+?\s*:)/, (_, s) => `<span class="speaker">${s.slice(0,-2)}</span>`); });
+    msgs.forEach(m => {
+      const sp = m.querySelector('.speaker') || m.firstChild;
+    });
+    noResults.style.display = 'none';
+    return;
+  }
+  let found = 0;
+  msgs.forEach(m => {
+    const text = m.textContent.toLowerCase();
+    if (text.includes(q)) {
+      m.classList.remove('hidden');
+      found++;
+    } else {
+      m.classList.add('hidden');
+    }
+  });
+  noResults.style.display = found === 0 ? 'block' : 'none';
+};
+</script>
+
+</body>
+</html>
