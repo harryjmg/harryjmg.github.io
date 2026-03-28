@@ -264,10 +264,50 @@
     }
 
     /* ============================================================
+       SOCIAL PROOF (inside hero)
+       ============================================================ */
+    .proof-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .proof-avatars {
+      display: flex;
+    }
+
+    .proof-avatars img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--dark-alt);
+      margin-left: -8px;
+      position: relative;
+    }
+
+    .proof-avatars img:first-child {
+      margin-left: 0;
+    }
+
+    .proof-text {
+      font-size: 13px;
+      color: var(--text-light);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
        FEATURES — Dark
        ============================================================ */
     .features {
-      padding: var(--section-gap) 0;
+      padding: 80px 0 var(--section-gap);
+    }
+
+    .features .content {
+      max-width: 800px;
     }
 
     .features-section-header {
@@ -294,22 +334,20 @@
     }
 
     .features-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
 
     .feature-item {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 8px;
-      padding: 36px 32px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 32px 28px;
     }
 
-    .feature-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    .feature-item--full {
+      grid-column: 1 / -1;
     }
 
     .feature-header {
@@ -364,7 +402,7 @@
        ============================================================ */
     .audience {
       background: var(--dark);
-      padding: var(--section-gap) 0;
+      padding: 80px 0 var(--section-gap);
     }
 
     .audience .content {
@@ -727,6 +765,10 @@
         bottom: 24px;
       }
 
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
       .feature-item {
         padding: 28px 24px;
       }
@@ -809,10 +851,32 @@
 
       <div class="hero-tagline fade-child">Guilde de fondateurs d'apps B2C</div>
 
-      <p class="hero-description fade-child">Un petit groupe d'entrepreneurs et de d&eacute;veloppeurs ambitieux, d&eacute;termin&eacute;s &agrave; dompter la meta des apps mobiles. On se partage nos &eacute;checs, nos victoires et nos strat&eacute;gies.</p>
+      <p class="hero-description fade-child">Cr&eacute;er une app rentable est un parcours du combattant. Traverser &ccedil;a seul, c'est perdre du temps et de l'argent sur des probl&egrave;mes que d'autres ont d&eacute;j&agrave; r&eacute;solus.</p>
 
       <div class="fade-child">
         <a href="#prix" class="cta-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align:-3px;margin-right:6px;"><rect x="3" y="11" width="18" height="11" rx="2" fill="currentColor"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Acc&egrave;s sur candidature</a>
+      </div>
+
+      <div class="proof-row fade-child">
+        <div class="proof-avatars">
+          <img src="replays/2026-03-23/avatars/4-harryjmg.png" alt="">
+          <img src="replays/2026-03-16/avatars/3-z11op0.png" alt="">
+          <img src="replays/2026-03-23/avatars/6-sitexw.png" alt="">
+          <img src="replays/2026-03-09/avatars/2-azog6071.png" alt="">
+          <img src="replays/2026-03-23/avatars/7-sylvain_72834.png" alt="">
+          <img src="replays/2026-03-23/avatars/2-kevinmons.png" alt="">
+          <img src="replays/2026-03-16/avatars/1-lucrypto.png" alt="">
+          <img src="replays/2026-03-09/avatars/3-fenrurr.png" alt="">
+          <img src="replays/2026-03-23/avatars/3-krisskool_.png" alt="">
+          <img src="replays/2026-03-16/avatars/7-technodor.png" alt="">
+          <img src="replays/2026-03-23/avatars/5-siix79.png" alt="">
+          <img src="replays/2026-03-09/avatars/9-siikoz.png" alt="">
+          <img src="replays/2026-03-23/avatars/9-elyass_5.png" alt="">
+          <img src="replays/2026-03-16/avatars/9-garenherve.png" alt="">
+          <img src="replays/2026-03-23/avatars/8-adilbh.png" alt="">
+          <img src="replays/2026-03-16/avatars/5-zarathoustra75.png" alt="">
+        </div>
+        <span class="proof-text">~30 fondateurs actifs</span>
       </div>
 
     </div>
@@ -832,7 +896,7 @@
 
       <div class="features-section-header fade-up">
         <div class="features-section-label">La guilde</div>
-        <h2 class="features-section-title">Inclus avec ton acc&egrave;s</h2>
+        <h2 class="features-section-title">Ce que &ccedil;a change pour toi</h2>
       </div>
 
       <div class="features-grid">
@@ -848,7 +912,7 @@
             </span>
             <h3>Discord priv&eacute;</h3>
           </div>
-          <p>Des conversations quotidiennes entre des vrais passionn&eacute;s. Retours honn&ecirc;tes, partages de strat&eacute;gies...</p>
+          <p>T'es bloqu&eacute; depuis 3 jours sur un probl&egrave;me&nbsp;? Pose ta question, en 10 minutes quelqu'un qui est d&eacute;j&agrave; pass&eacute; par l&agrave; te donne la solution.</p>
         </div>
 
         <div class="feature-item fade-up">
@@ -864,10 +928,10 @@
             </span>
             <h3>Call du lundi</h3>
           </div>
-          <p>Un cr&eacute;neau fixe tous les lundis soir. Des &eacute;changes libres entre les membres et des workshops. Replays pour les absents.</p>
+          <p>Chaque semaine, on se partage nos progressions, ce qui marche et ce qui foire. Tu repars avec des id&eacute;es concr&egrave;tes et du recul sur ta propre situation.</p>
         </div>
 
-        <div class="feature-item fade-up">
+        <div class="feature-item feature-item--full fade-up">
           <div class="feature-header">
             <span class="feature-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -878,10 +942,10 @@
             </span>
             <h3>Ressources &amp; outils</h3>
           </div>
-          <p>Des outils, des m&eacute;thodes et des frameworks utilis&eacute;s par d'autres fondateurs d'apps B2C pour piloter leur business et am&eacute;liorer leurs apps.</p>
+          <p>Chacun d&eacute;couvre ses trucs et les partage. Des fois &ccedil;a tombe pile avec ton besoin du moment, et tu t'&eacute;conomises les jours qu'un autre a pass&eacute; &agrave; d&eacute;bugger (coucou l'attribution).</p>
         </div>
 
-        <div class="feature-item fade-up">
+        <div class="feature-item feature-item--full fade-up">
           <div class="feature-header">
             <span class="feature-icon feature-icon--photo">
               <img src="assets/images/harry-fun.jpeg" alt="Harry" width="30" height="30" style="border-radius:50%;object-fit:cover;">
@@ -892,7 +956,7 @@
         </div>
 
         <!-- Bientot card — dashed border -->
-        <div class="feature-item feature-item--bientot fade-up">
+        <div class="feature-item feature-item--bientot feature-item--full fade-up">
           <div class="feature-header">
             <span class="feature-icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
