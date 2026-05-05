@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lancer des TikTok Ads sans galère — Masterclass App Society</title>
-  <meta name="description" content="Masterclass TikTok Ads d'Harry pour App Society — comment lancer une campagne pour une app à essai gratuit, créatifs, gestion au jour le jour. Présentation du 4 mai 2026, ~1h45.">
+  <title>Comment utiliser TikTok Ads pour obtenir des installs ? — Masterclass App Society</title>
+  <meta name="description" content="Comment utiliser TikTok Ads pour obtenir des installs (étape par étape) — masterclass d'Harry pour App Society. Setup live d'une campagne, créatifs, gestion au jour le jour. Présentation du 4 mai 2026, ~1h45.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B85C38'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='700' font-size='20' fill='white'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,6 +73,22 @@
     .callout { margin: 24px 0; padding: 16px 20px; background: rgba(184, 92, 56, 0.08); border-left: 3px solid var(--accent); border-radius: 6px; }
     .callout p { color: var(--text); font-size: 15px; line-height: 1.7; }
 
+    .chapters { margin-top: 24px; padding: 22px 26px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+    .chapters-title { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .chapters-title::before { content: ''; width: 4px; height: 14px; background: var(--accent); border-radius: 2px; }
+    .chapters-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 2px; }
+    .chapter-item { display: flex; align-items: baseline; gap: 14px; padding: 9px 12px; border-radius: 8px; cursor: pointer; transition: background 0.15s, color 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: inherit; }
+    .chapter-item:hover { background: var(--dark-subtle); }
+    .chapter-item.active { background: rgba(184, 92, 56, 0.12); }
+    .chapter-time { font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; color: var(--accent); flex-shrink: 0; min-width: 56px; }
+    .chapter-item.active .chapter-time { color: var(--accent); }
+    .chapter-label { color: var(--text-secondary); font-size: 15px; line-height: 1.45; transition: color 0.15s; }
+    .chapter-item:hover .chapter-label,
+    .chapter-item.active .chapter-label { color: var(--text); }
+    @media (min-width: 720px) {
+      .chapters-list { grid-template-columns: 1fr 1fr; gap: 2px 18px; }
+    }
+
     .footer-link { margin-top: 48px; text-align: center; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.06); }
     .footer-link a { color: var(--accent); text-decoration: none; font-weight: 500; }
     .footer-link a:hover { text-decoration: underline; }
@@ -92,8 +108,8 @@
       Replay du 4 mai 2026
     </a>
     <div class="header-tag">Masterclass</div>
-    <h1 class="header-title">Lancer des TikTok Ads sans galère</h1>
-    <p class="header-meta">Présentation d'Harry &middot; ~1h45 &middot; <a href="/appsociety/">App Society</a></p>
+    <h1 class="header-title">Comment utiliser TikTok Ads pour obtenir des installs ?</h1>
+    <p class="header-meta">Étape par étape &middot; Présentation d'Harry &middot; ~1h45 &middot; <a href="/appsociety/">App Society</a></p>
   </header>
 
   <!-- Video -->
@@ -104,6 +120,31 @@
     </video>
   </div>
   <p class="video-note">Vidéo Loom (partage d'écran) avec audio Discord du call original. Synchronisée automatiquement.</p>
+
+  <!-- Chapitres -->
+  <div class="chapters">
+    <div class="chapters-title">Chapitres</div>
+    <div class="chapters-list" id="chaptersList">
+      <button class="chapter-item" data-time="0"><span class="chapter-time">0:00</span><span class="chapter-label">Introduction</span></button>
+      <button class="chapter-item" data-time="198"><span class="chapter-time">3:18</span><span class="chapter-label">Payant vs organique</span></button>
+      <button class="chapter-item" data-time="278"><span class="chapter-time">4:38</span><span class="chapter-label">Prérequis : compte Business + coupon 5 200€</span></button>
+      <button class="chapter-item" data-time="618"><span class="chapter-time">10:18</span><span class="chapter-label">Événements & attribution (règle des 6-12h)</span></button>
+      <button class="chapter-item" data-time="816"><span class="chapter-time">13:36</span><span class="chapter-label">Stratégie avancée : events custom (Revenue4)</span></button>
+      <button class="chapter-item" data-time="1082"><span class="chapter-time">18:02</span><span class="chapter-label">🥇 Les créatifs sont rois + Spark Ads</span></button>
+      <button class="chapter-item" data-time="1379"><span class="chapter-time">22:59</span><span class="chapter-label">Setup d'une campagne en live</span></button>
+      <button class="chapter-item" data-time="1781"><span class="chapter-time">29:41</span><span class="chapter-label">Choisir l'objectif (install vs trial)</span></button>
+      <button class="chapter-item" data-time="2776"><span class="chapter-time">46:16</span><span class="chapter-label">Sélection manuelle vs auto des créatifs</span></button>
+      <button class="chapter-item" data-time="3098"><span class="chapter-time">51:38</span><span class="chapter-label">Page de destination intermédiaire</span></button>
+      <button class="chapter-item" data-time="3408"><span class="chapter-time">56:48</span><span class="chapter-label">Gestion au jour le jour : ne jamais couper</span></button>
+      <button class="chapter-item" data-time="3698"><span class="chapter-time">1:01:38</span><span class="chapter-label">Mon exemple : CPT divisé par 3</span></button>
+      <button class="chapter-item" data-time="3908"><span class="chapter-time">1:05:08</span><span class="chapter-label">Format gagnant : carousels 2-3 slides</span></button>
+      <button class="chapter-item" data-time="4477"><span class="chapter-time">1:14:37</span><span class="chapter-label">Routine du week-end + algo de décision</span></button>
+      <button class="chapter-item" data-time="5125"><span class="chapter-time">1:25:25</span><span class="chapter-label">Le dashboard automatisé</span></button>
+      <button class="chapter-item" data-time="5428"><span class="chapter-time">1:30:28</span><span class="chapter-label">Q&A : PostHog vs SDK TikTok</span></button>
+      <button class="chapter-item" data-time="5619"><span class="chapter-time">1:33:39</span><span class="chapter-label">La fable de la poule aux œufs d'or</span></button>
+      <button class="chapter-item" data-time="6114"><span class="chapter-time">1:41:54</span><span class="chapter-label">Q&A : une annonce par persona ?</span></button>
+    </div>
+  </div>
 
   <!-- Intro -->
   <div class="intro">
@@ -344,6 +385,45 @@
   </div>
 
 </div>
+
+<script>
+(() => {
+  const video = document.getElementById('video');
+  const items = Array.from(document.querySelectorAll('.chapter-item'));
+  if (!video || !items.length) return;
+
+  const times = items.map(el => parseFloat(el.dataset.time));
+
+  items.forEach((el, i) => {
+    el.addEventListener('click', () => {
+      video.currentTime = times[i];
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+      const rect = video.getBoundingClientRect();
+      if (rect.bottom < 80 || rect.top > window.innerHeight - 80) {
+        video.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  let lastActive = -1;
+  function updateActive() {
+    const t = video.currentTime;
+    let idx = 0;
+    for (let i = 0; i < times.length; i++) {
+      if (t >= times[i]) idx = i; else break;
+    }
+    if (idx !== lastActive) {
+      items.forEach(el => el.classList.remove('active'));
+      items[idx].classList.add('active');
+      lastActive = idx;
+    }
+  }
+  video.addEventListener('timeupdate', updateActive);
+  video.addEventListener('seeked', updateActive);
+  updateActive();
+})();
+</script>
 
 </body>
 </html>
