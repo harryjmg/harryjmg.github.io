@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lancer des TikTok Ads sans galère — Masterclass App Society</title>
+  <meta name="description" content="Masterclass TikTok Ads d'Harry pour App Society — comment lancer une campagne pour une app à essai gratuit, créatifs, gestion au jour le jour. Présentation du 4 mai 2026, ~1h45.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B85C38'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='700' font-size='20' fill='white'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark: #0D0F14;
+      --dark-surface: #14161C;
+      --dark-subtle: #1C1E26;
+      --text: #E8E6E1;
+      --text-secondary: #9A9890;
+      --text-light: #7A786F;
+      --accent: #B85C38;
+      --accent-hover: #A34E2E;
+      --accent-glow: rgba(184, 92, 56, 0.15);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--sans); font-size: 17px; line-height: 1.75; color: var(--text); background: var(--dark); }
+    ::selection { background: rgba(184, 92, 56, 0.2); }
+
+    .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+    .header { padding: 48px 0 0; text-align: center; }
+    .header-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-light); text-decoration: none; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .header-back:hover { color: var(--accent); }
+    .header-back svg { width: 16px; height: 16px; }
+    .header-tag { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-top: 32px; padding: 4px 12px; border: 1px solid var(--accent); border-radius: 100px; }
+    .header-title { font-family: var(--serif); font-size: clamp(32px, 5.5vw, 50px); font-weight: 500; color: #fff; margin-top: 18px; line-height: 1.15; max-width: 740px; margin-left: auto; margin-right: auto; }
+    .header-meta { color: var(--text-secondary); font-size: 15px; margin-top: 14px; }
+    .header-meta a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(184,92,56,0.4); transition: border-color 0.2s; }
+    .header-meta a:hover { border-color: var(--accent); }
+
+    .video-wrap { margin-top: 40px; border-radius: 14px; overflow: hidden; background: #000; box-shadow: 0 6px 32px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); }
+    .video-wrap video { display: block; width: 100%; height: auto; }
+    .video-note { margin-top: 14px; color: var(--text-light); font-size: 13px; text-align: center; }
+
+    .intro { margin-top: 36px; padding: 26px 30px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; max-width: 740px; margin-left: auto; margin-right: auto; }
+    .intro p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; }
+    .intro strong { color: var(--text); font-weight: 500; }
+
+    .content { max-width: 740px; margin: 56px auto 0; padding-bottom: 80px; }
+    .content h2 { font-family: var(--serif); font-size: 28px; font-weight: 500; color: #fff; margin: 56px 0 18px; padding-top: 12px; }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 { font-family: var(--sans); font-size: 17px; font-weight: 600; color: var(--accent); margin: 32px 0 10px; }
+    .content p, .content li { color: var(--text-secondary); font-size: 16px; line-height: 1.85; }
+    .content ul { padding-left: 22px; margin: 12px 0; }
+    .content li { margin-bottom: 8px; }
+    .content strong { color: var(--text); font-weight: 500; }
+    .content hr { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 40px 0; }
+    .content blockquote { margin: 24px 0; padding: 16px 22px; background: var(--dark-subtle); border-left: 3px solid var(--accent); border-radius: 4px; }
+    .content blockquote p { font-style: italic; color: var(--text); }
+    .content code { background: var(--dark-subtle); padding: 2px 8px; border-radius: 4px; font-size: 14px; color: var(--text); border: 1px solid rgba(255,255,255,0.05); }
+
+    .toc { margin: 32px 0; padding: 22px 28px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+    .toc-title { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 12px; }
+    .toc ol { padding-left: 22px; margin: 0; }
+    .toc li { margin-bottom: 6px; color: var(--text-secondary); font-size: 15px; }
+    .toc a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .toc a:hover { color: var(--accent); }
+
+    .callout { margin: 24px 0; padding: 16px 20px; background: rgba(184, 92, 56, 0.08); border-left: 3px solid var(--accent); border-radius: 6px; }
+    .callout p { color: var(--text); font-size: 15px; line-height: 1.7; }
+
+    .footer-link { margin-top: 48px; text-align: center; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-link a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .footer-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .content h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header class="header">
+    <a href="/appsociety/replays/2026-05-04/" class="header-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Replay du 4 mai 2026
+    </a>
+    <div class="header-tag">Masterclass</div>
+    <h1 class="header-title">Lancer des TikTok Ads sans galère</h1>
+    <p class="header-meta">Présentation d'Harry &middot; ~1h45 &middot; <a href="/appsociety/">App Society</a></p>
+  </header>
+
+  <!-- Video -->
+  <div class="video-wrap">
+    <video id="video" controls preload="metadata" playsinline poster="">
+      <source src="https://www.dropbox.com/scl/fi/380s8w3v0jkajk9k4f26h/presentation-tiktok-ads.mp4?rlkey=jqxp49833al16j2ckcldh2wzi&dl=1" type="video/mp4">
+      Ton navigateur ne lit pas la balise vidéo.
+    </video>
+  </div>
+  <p class="video-note">Vidéo Loom (partage d'écran) avec audio Discord du call original. Synchronisée automatiquement.</p>
+
+  <!-- Intro -->
+  <div class="intro">
+    <p>Cette présentation a été donnée le <strong>lundi 4 mai 2026</strong> pendant l'appel hebdomadaire d'<strong>App Society</strong>. Elle couvre le lancement d'une campagne TikTok Ads <em>de zéro</em> pour une app à essai gratuit : prérequis, setup étape par étape, gestion au jour le jour, et — surtout — pourquoi <strong>les créatifs sont la seule chose qui compte vraiment</strong>. Harry y partage aussi son dashboard automatisé qui pull les chiffres de TikTok Ads, App Store Connect, PostHog et RevenueCat.</p>
+  </div>
+
+  <div class="content">
+
+  <div class="toc">
+    <div class="toc-title">Sommaire</div>
+    <ol>
+      <li><a href="#payant-vs-organique">Payant vs organique : pourquoi changer</a></li>
+      <li><a href="#prerequis">Prérequis : compte, app, events</a></li>
+      <li><a href="#evenements">Événements & attribution</a></li>
+      <li><a href="#creatifs">🥇 Les créatifs sont rois</a></li>
+      <li><a href="#spark-ads">Spark Ads : organique → pub</a></li>
+      <li><a href="#setup-campagne">Setup campagne (live, étape par étape)</a></li>
+      <li><a href="#jour-le-jour">Gestion au jour le jour</a></li>
+      <li><a href="#dashboard">Le dashboard automatisé</a></li>
+      <li><a href="#format-gagnant">Format gagnant en ce moment</a></li>
+      <li><a href="#qa">Q&amp;A — débats avec Valentin et Noah</a></li>
+    </ol>
+  </div>
+
+  <h2 id="payant-vs-organique">1. Payant vs organique : pourquoi changer</h2>
+  <ul>
+    <li>En <strong>organique</strong>, les contenus qui ont rendu Harry rentable n'auraient jamais fait de vues. <em>"Je les aurais postés et je me serais dit ça marche pas."</em></li>
+    <li>En <strong>payant</strong>, TikTok teste les contenus pour toi. Output clair en quelques jours : ça marche / ça marche pas, à combien le coût d'install, à combien le trial.</li>
+    <li>Tu peux <strong>scaler</strong> simplement en augmentant le budget (avec dégradation contrôlée).</li>
+    <li>Tu peux <strong>optimiser pour un événement précis</strong> (install, trial, achat, ou même un event custom). En organique, tu fais des vues pour des vues — sans rapport direct avec le business.</li>
+  </ul>
+
+  <h2 id="prerequis">2. Prérequis</h2>
+  <h3>Compte TikTok Business</h3>
+  <ul>
+    <li>Inscription via <code>tiktok.com/business</code>.</li>
+    <li><strong>Coupon 5 200€</strong> : pas toujours visible sur la home. Il est dans le dashboard une fois inscrit. Astuce de Valentin : <em>"Je veux y aller à la dernière seconde, j'ai peur que si je me reconnecte trop tôt il me refasse pas l'offre."</em></li>
+    <li>Le coupon est offert quand tu as dépensé un certain seuil (5 200€ pour Harry). Une fois débloqué, tu dépenses gratuitement jusqu'à une deadline (~6 semaines pour Harry).</li>
+  </ul>
+
+  <h3>Créer l'app dans Event Manager</h3>
+  <ul>
+    <li>TikTok Ads Manager → Outils → <strong>Event Manager</strong> → Nouvelle source d'événements → Application.</li>
+    <li>Tu connectes ton app (iOS, Android, ou les deux selon ce que tu vises).</li>
+    <li>Vérifier que les events remontent : <strong>installation</strong>, <strong>début de l'essai</strong>, et <strong>achat</strong> si tu as un hard paywall.</li>
+  </ul>
+
+  <h2 id="evenements">3. Événements & attribution</h2>
+  <ul>
+    <li>Les campagnes ne peuvent optimiser que sur des événements déclenchés dans les <strong>premières heures</strong> post-install. <em>"Au-delà de 6-12h, l'attribution ne fait plus le lien avec la campagne."</em></li>
+    <li>Pour une app à essai gratuit, le dernier event exploitable directement est donc le <strong>start trial</strong>.</li>
+    <li>L'achat (qui arrive à J+7) n'est <em>pas</em> exploitable directement.</li>
+  </ul>
+  <h3>Stratégie avancée : events custom envoyés manuellement</h3>
+  <p>Pointer du doigt par Harry comme prochaine étape (pas encore mise en place chez lui). Source : podcast Revenue4 / Thomas Petit.</p>
+  <ul>
+    <li>Tu détectes a posteriori les patterns de réponses (dans ton onboarding) qui prédisent une conversion à la fin du trial.</li>
+    <li>Au moment où l'utilisateur déclenche ce pattern, tu envoies <strong>toi-même un event custom</strong> à TikTok.</li>
+    <li>Tu peux aussi <strong>délayer</strong> l'envoi pour distinguer un "trial qui active" d'un "trial qui ne touche pas l'app". Plus tu actives, plus le signal est fort.</li>
+    <li>Encore mieux : associer une <strong>valeur</strong> à l'event (cf. champ "valeur" dans la campagne) pour que TikTok cible des comportements à plus forte valeur.</li>
+  </ul>
+  <blockquote>
+    <p>"Je l'ai pas fait, mais je sais que c'est la prochaine étape. Une fois que tu as bien optimisé sur le trial, la suite pour réduire ton CPT, c'est de trouver les bonnes personnes encore plus facilement." — Harry</p>
+  </blockquote>
+
+  <h2 id="creatifs">4. 🥇 Les créatifs sont rois</h2>
+  <p>C'est <em>le</em> message central de la masterclass. Harry y revient en boucle.</p>
+  <ul>
+    <li>Harry a <strong>divisé son CPT par 3-4 en changeant uniquement les créatifs</strong>, même config. Passé de 20€ par essai gratuit (fin mars) à 4-5€ (mi-avril) puis 4,43€ (semaine du call).</li>
+    <li>Les <strong>5 personnes</strong> qu'il accompagne en mentorat ont toutes divisé leur CPT par 2, 3, 4 ou 5 grâce au focus créatifs. <em>"Vraiment, je pensais qu'on allait échouer. Et ce petit revirement sur les créatifs a tout changé pour chacun."</em></li>
+  </ul>
+  <blockquote>
+    <p>"Avant de remettre en question la terre entière — peut-être c'est mon onboarding, peut-être c'est mon paywall, peut-être c'est mon app c'est de la merde — bah dites-vous surtout que c'est les créatifs qu'il faut améliorer."</p>
+  </blockquote>
+  <h3>Pourquoi ça marchait moins bien chez les mentorés ?</h3>
+  <ol>
+    <li>Créatifs <strong>merdiques</strong>. Pas assez d'efforts dedans, fait du bout des doigts.</li>
+    <li>Approche trop orientée <strong>vente / démonstration de valeur</strong>. <em>"Ça marche pas sur TikTok. Faut être plus dans l'énergie : tu partages un flash de voici ce que je fais."</em></li>
+    <li>Hooks faibles. <em>"Bien sûr, il faut que le hook soit intéressant — c'est pas que ça."</em></li>
+  </ol>
+
+  <h2 id="spark-ads">5. Spark Ads : organique → pub</h2>
+  <ul>
+    <li>Plutôt que d'uploader directement dans la campagne, <strong>poste les contenus en organique</strong> sur ton compte TikTok.</li>
+    <li>Sur le post : 3 petits points → "Paramètres publicitaires" (sur téléphone) → tu récupères un <strong>code Spark Ads</strong>.</li>
+    <li>Tu colles ce code dans la campagne pour ajouter le post comme créatif.</li>
+    <li>Avantage : tu profites des bienfaits de l'organique (engagement, signaux sociaux) tout en faisant de la pub.</li>
+    <li>Variante : connecter directement ton compte TikTok à ton compte TikTok Ads (Noah utilisait cette méthode sur son ancienne app).</li>
+  </ul>
+
+  <h2 id="setup-campagne">6. Setup campagne (live, étape par étape)</h2>
+  <p>Harry crée une campagne en direct sur l'écran. Récapitulatif :</p>
+  <h3>Niveau campagne</h3>
+  <ul>
+    <li><strong>Type</strong> : Promotion de l'application → Installation de l'application.</li>
+    <li><strong>"Utiliser une campagne dédiée à iOS 14"</strong> : <strong>cocher</strong>. Wording trompeur : ça veut dire iOS 14 et plus (les pubs modernes). Si tu décoches, tu vises seulement les iPhones &lt;iOS 14.</li>
+    <li><strong>Budget</strong> : minimum 20€/jour, mais Harry recommande <strong>50€/jour</strong> pour tester correctement 5-6 créatifs.</li>
+    <li><strong>Attribution scan</strong> : laisser cocher (réseau d'attribution Apple parallèle, gratuit, 26 campagnes max simultanées).</li>
+    <li><strong>"Utiliser la page de profit dans l'application"</strong> : <strong>cocher</strong>. C'est la page intermédiaire hébergée par TikTok qui ressemble à l'App Store. Donne plus de signaux à TikTok pour optimiser.</li>
+  </ul>
+  <h3>Niveau ad group</h3>
+  <ul>
+    <li><strong>Objectif</strong> : start trial si tu reçois bien l'event, sinon install. <em>"TikTok va de toute façon optimiser sur l'event d'avant pendant la phase d'apprentissage."</em></li>
+    <li><strong>Stratégie d'enchères</strong> : "Coût par résultat cible" avec un chiffre <strong>large</strong> (sinon tu perds les enchères et TikTok ne dépense pas ton argent les mauvaises journées). C'est un système d'enchères, pas un cap.</li>
+    <li><strong>Localisation</strong> : 1 pays par campagne (Harry fait FR séparée de la francophonie).</li>
+    <li><strong>Audience</strong> : <strong>full automatique</strong>. <em>"Cette ère est révolue. Maintenant, tu définis bien ce que tu veux trouver et TikTok te les trouve. La difficulté, c'est de bien définir et d'envoyer des créatifs. C'est tout."</em></li>
+    <li><strong>Placements</strong> : automatique. Pas la peine de désactiver Pangle.</li>
+  </ul>
+  <h3>Niveau annonce</h3>
+  <ul>
+    <li><strong>Une seule annonce</strong> avec plusieurs créatifs dedans. C'est nouveau : avant il fallait dupliquer une annonce par créatif, c'était dramatique.</li>
+    <li>Cliquer sur "Passer à la sélection personnalisée" (souvent traduit n'importe comment, parfois cassé en français).</li>
+    <li>Ajouter <strong>5-6 créatifs minimum</strong> via les codes Spark Ads.</li>
+    <li><strong>Ne pas utiliser la sélection automatique</strong> : ajoutée il y a 1.5 mois, mauvais retour d'expérience d'Harry. Trop automatique, ça t'empêche de tester les nouveaux formats que toi tu veux pousser.</li>
+    <li><strong>Amélioration automatique</strong> : tout cocher (qualité d'image, switch musique tendance, redimensionnement). Si un test ne fonctionne pas, TikTok arrête vite.</li>
+    <li><strong>Page de destination</strong> : la fameuse page intermédiaire. Tu peux personnaliser nom, description, screenshots si stratégie pointue. Sinon, créer une page basique et la réutiliser.</li>
+  </ul>
+  <p>Limite récente : <strong>50 ads par campagne</strong> (passée de 30 → 50 la semaine du call). <em>"Bon signe, ça veut dire qu'ils poussent ce truc-là."</em></p>
+
+  <h2 id="jour-le-jour">7. Gestion au jour le jour</h2>
+  <h3>Les 48 premières heures</h3>
+  <div class="callout">
+    <p><strong>Règle d'or :</strong> ne jamais couper la campagne dans les 48h qui suivent le lancement, même si les stats te font peur. <em>"C'est la première façon de tout gâcher. Mentalement, faut être prêt à se dire : je mets une enveloppe d'argent pour apprendre."</em></p>
+  </div>
+  <ul>
+    <li>Une fois par jour max : vérifier que la campagne tourne, c'est tout.</li>
+    <li>Au bout de 48h, regarder où en est ton CPT par essai gratuit.</li>
+  </ul>
+  <h3>Calculer ton seuil de rentabilité</h3>
+  <ul>
+    <li>Avec les benchmarks de Revenue4 (1 personne sur 5 qui convertit, prix moyen, etc.), tu calcules ton coût d'essai gratuit qui te rend rentable.</li>
+    <li>Pour Harry : 7€ par trial = seuil de rentabilité.</li>
+  </ul>
+  <h3>Les seuils de décision (algo Harry)</h3>
+  <table style="width:100%;border-collapse:collapse;margin:14px 0;font-size:15px;">
+    <thead>
+      <tr style="background:var(--dark-subtle);">
+        <th style="padding:10px;text-align:left;color:var(--text);">CPT actuel</th>
+        <th style="padding:10px;text-align:left;color:var(--text);">Décision</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text);">&lt; cible (ex. &lt;7€)</td><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-secondary);">Rentable. Continuer, augmenter budget +20% tous les 3-4 jours.</td></tr>
+      <tr><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text);">cible × 1 → ×2 (7€ → 14€)</td><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-secondary);">Laisser tourner, injecter de nouveaux créatifs tous les 3-4 jours.</td></tr>
+      <tr><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text);">&gt; cible × 2 (&gt;14€)</td><td style="padding:10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-secondary);">Couper. Revenir avec meilleures hypothèses créatifs sous 3 jours.</td></tr>
+    </tbody>
+  </table>
+  <h3>Routine du week-end</h3>
+  <ul>
+    <li>Injecter les nouveaux créatifs de la semaine.</li>
+    <li>Pour chaque créatif déjà actif :
+      <ul>
+        <li>Si ≥20€ dépensés ET CPA mauvais → désactiver (pas supprimer, juste décocher).</li>
+        <li>Si pas de dépense pendant 14 jours ET CTR moyen → désactiver.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2 id="dashboard">8. Le dashboard automatisé d'Harry</h2>
+  <p>Une feuille Google Sheets qui pull les chiffres tous les jours.</p>
+  <ul>
+    <li><strong>API TikTok Ads</strong> → coût, CPC, CPM, coût par install, coût par trial.</li>
+    <li><strong>App Store Connect</strong> → installs (via génération de rapport JSON, l'IA a aidé Harry à automatiser ça).</li>
+    <li><strong>PostHog</strong> → events de l'app, funnels.</li>
+    <li><strong>RevenueCat</strong> → vrais paiements et conversions à la fin du trial.</li>
+  </ul>
+  <p>Tous les jours : récupération auto des chiffres de la veille + email matinal avec rapport. <em>"Voilà la journée d'hier, boss."</em></p>
+  <p>Cloud Code (Claude Code) reste ouvert sur le dossier — Harry lui demande "fais le rapport pour chaque créatif actif dans la campagne FR" et il sort le tableau directement, en suivant l'algo de décision.</p>
+  <h3>Le dashboard montre des moyennes 7j et 30j, pas de courbe jour par jour</h3>
+  <p>Choix volontaire : <em>"Quand j'ai fait ce dashboard, j'avais en tête de réduire le bruit mental. Surtout, je partais en vacances."</em></p>
+  <p>Valentin pousse pour ajouter une courbe : <em>"Si ça remonte sur 7j tu veux le savoir, c'est peut-être que tu fais des erreurs."</em> Harry concède le point sans s'engager : il modifie sa campagne une fois par semaine, pas de risque d'erreur dramatique du jour au lendemain.</p>
+
+  <h2 id="format-gagnant">9. Format gagnant en ce moment</h2>
+  <ul>
+    <li><strong>Carousels 2-3 slides</strong> : image + hook → résultat → icône app. Stop.</li>
+    <li>Le tuto "comment mettre le widget" en carousel a remplacé la version vidéo. <em>"Les vidéos, c'est plus chiant à produire. J'ai l'impression qu'il y a un gap avec le carousel, c'est sous-valorisé."</em></li>
+    <li>Pour faire des carousels TikTok, il faut <strong>obligatoirement le téléphone</strong> — pas possible sur PC. Curieux : tu peux faire des miniatures de vidéo sur desktop, mais pas des carousels.</li>
+  </ul>
+  <h3>Exemples concrets de Harry</h3>
+  <ul>
+    <li>Affirmations format simple : photo de Clara + texte "Affirmations pour aujourd'hui".</li>
+    <li>Tuto widget : 2-3 slides montrant comment l'installer.</li>
+    <li>Affirmations matin / soir : "Mon affirmation ce matin / mon affirmation ce soir".</li>
+  </ul>
+
+  <hr>
+
+  <h2 id="qa">10. Q&amp;A — débats avec Valentin et Noah</h2>
+
+  <h3>"Une annonce par persona ou tout mélanger ?" (Valentin)</h3>
+  <p>Valentin a créé 3-4 personas UGC via Claude (entrepreneur, mère de famille, étudiante…). Question : créer une annonce par persona ?</p>
+  <ul>
+    <li><strong>Réponse Harry</strong> : tout mélanger au début. Atteindre la rentabilité avec une approche simple, ensuite tester les variantes "farfelues".</li>
+    <li><em>"Embrasser la simplicité, Valentin. L'embrasser de tout ton être."</em></li>
+    <li>Argument : pour la même config, juste en changeant les créatifs, Harry et ses mentorés ont divisé leur CPT par 2, 3, 4. Il n'y a pas de signe que la segmentation par persona apporterait plus.</li>
+  </ul>
+
+  <h3>"Comment je sais quand changer d'objectif (install → trial) ?" (Elyass)</h3>
+  <ul>
+    <li>Dès que tu as l'event trial qui remonte bien, optimise sur trial directement.</li>
+    <li>Si tu lances avec install et qu'en cours de route tu setup le SDK : tu changes d'objectif <strong>tout de suite</strong>, sauf si la campagne actuelle marche bien (alors ne tue pas une campagne qui marche).</li>
+  </ul>
+
+  <h3>"Je peux mettre en pause une campagne ?" (Elyass)</h3>
+  <ul>
+    <li>Non, sauf bug dramatique dans l'app.</li>
+    <li><em>"Tu ne vas pas ouvrir le ventre de la poule aux œufs d'or. Une campagne qui marche bien ne s'arrête jamais."</em></li>
+  </ul>
+
+  <h3>"Tu n'as pas optimisé ton paywall ?" (Noah)</h3>
+  <ul>
+    <li><em>"Que dalle, mec. J'ai rien fait là-dessus."</em></li>
+    <li>Ce qui aide Harry : il sait que ça marchait avant. Donc il sait que la dégradation venait d'ailleurs (les contenus périmés, en l'occurrence).</li>
+  </ul>
+
+  <h3>Le futur : les events custom à valeurs (Valentin pousse l'idée)</h3>
+  <ul>
+    <li>Idée Valentin : envoyer à TikTok une valeur croissante selon les actions de l'utilisateur. Plus il fait d'actions clés, plus la valeur monte.</li>
+    <li>Réponse Harry : <strong>oui, mais à posteriori</strong> — observer ce qui prédit la conversion réelle, pas deviner. Et seulement quand la campagne est déjà rentable. <em>"Ce sont des trucs avancés et franchement, avant de faire ça, il faut être bien sûr de ce qu'on fait."</em></li>
+  </ul>
+
+  <hr>
+
+  <h2>En résumé</h2>
+  <ol>
+    <li><strong>Le seul levier qui compte vraiment, c'est les créatifs.</strong> Renouveler, tester, observer ce qui marche.</li>
+    <li><strong>Embrasser la simplicité.</strong> Tout en automatique sauf le choix des créatifs et un seul pays par campagne.</li>
+    <li><strong>Ne jamais couper</strong> une campagne dans les 48h, ni une qui marche.</li>
+    <li><strong>Injecter du nouveau contenu</strong> tous les 3-4 jours, faire le ménage des mauvais à chaque week-end.</li>
+    <li><strong>Optimiser sur le meilleur event disponible</strong>. Pour les apps à essai gratuit : start trial si possible, install sinon.</li>
+  </ol>
+
+  </div>
+
+  <div class="footer-link">
+    <p><a href="/appsociety/replays/2026-05-04/">← Retour au replay complet du 4 mai 2026</a></p>
+    <p style="margin-top:12px;"><a href="/appsociety/">App Society — Tous les replays</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>
