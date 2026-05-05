@@ -32,12 +32,15 @@
 
     .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
 
-    .header { padding: 48px 0 0; text-align: center; }
-    .header-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-light); text-decoration: none; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .topbar { padding-top: 32px; }
+    .header-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-light); text-decoration: none; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
     .header-back:hover { color: var(--accent); }
     .header-back svg { width: 16px; height: 16px; }
-    .header-tag { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-top: 32px; padding: 4px 12px; border: 1px solid var(--accent); border-radius: 100px; }
-    .header-title { font-family: var(--serif); font-size: clamp(32px, 5.5vw, 50px); font-weight: 500; color: #fff; margin-top: 18px; line-height: 1.15; max-width: 740px; margin-left: auto; margin-right: auto; }
+
+    .header { padding: 56px 0 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .header-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding: 6px 14px; border: 1px solid var(--accent); border-radius: 100px; background: rgba(184, 92, 56, 0.06); }
+    .header-tag::before { content: ''; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
+    .header-title { font-family: var(--serif); font-size: clamp(32px, 5.5vw, 50px); font-weight: 500; color: #fff; margin-top: 22px; line-height: 1.15; max-width: 740px; }
     .header-meta { color: var(--text-secondary); font-size: 15px; margin-top: 14px; }
     .header-meta a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(184,92,56,0.4); transition: border-color 0.2s; }
     .header-meta a:hover { border-color: var(--accent); }
@@ -105,12 +108,14 @@
 <body>
 
 <div class="container">
-  <header class="header">
+  <div class="topbar">
     <a href="/appsociety/replays/2026-05-04/" class="header-back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       Replay du 4 mai 2026
     </a>
-    <div class="header-tag">Masterclass</div>
+  </div>
+  <header class="header">
+    <div class="header-tag">Masterclass App Society</div>
     <h1 class="header-title">Comment utiliser TikTok Ads pour obtenir des installs ?</h1>
     <p class="header-meta">Étape par étape &middot; Présentation d'Harry &middot; ~1h45 &middot; <a href="/appsociety/">App Society</a></p>
   </header>
