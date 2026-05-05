@@ -74,20 +74,23 @@
     .callout p { color: var(--text); font-size: 15px; line-height: 1.7; }
 
     .chapters { margin-top: 24px; padding: 22px 26px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
-    .chapters-title { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .chapters-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+    .chapters-title { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
     .chapters-title::before { content: ''; width: 4px; height: 14px; background: var(--accent); border-radius: 2px; }
-    .chapters-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 2px; }
-    .chapter-item { display: flex; align-items: baseline; gap: 14px; padding: 9px 12px; border-radius: 8px; cursor: pointer; transition: background 0.15s, color 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: inherit; }
+    .chapters-count { font-size: 12px; color: var(--text-light); font-variant-numeric: tabular-nums; }
+    .chapters-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+    .chapter-item { display: flex; align-items: baseline; gap: 16px; padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: background 0.15s, color 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: inherit; position: relative; }
+    .chapter-item + .chapter-item { border-top: 1px solid rgba(255,255,255,0.04); }
     .chapter-item:hover { background: var(--dark-subtle); }
-    .chapter-item.active { background: rgba(184, 92, 56, 0.12); }
-    .chapter-time { font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; color: var(--accent); flex-shrink: 0; min-width: 56px; }
-    .chapter-item.active .chapter-time { color: var(--accent); }
-    .chapter-label { color: var(--text-secondary); font-size: 15px; line-height: 1.45; transition: color 0.15s; }
+    .chapter-item:hover + .chapter-item { border-top-color: transparent; }
+    .chapter-item.active { background: rgba(184, 92, 56, 0.10); }
+    .chapter-item.active + .chapter-item { border-top-color: transparent; }
+    .chapter-num { font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 600; color: var(--text-light); flex-shrink: 0; min-width: 22px; text-align: right; padding-top: 1px; }
+    .chapter-item.active .chapter-num { color: var(--accent); }
+    .chapter-time { font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; color: var(--accent); flex-shrink: 0; min-width: 58px; }
+    .chapter-label { color: var(--text-secondary); font-size: 15px; line-height: 1.45; transition: color 0.15s; flex: 1; }
     .chapter-item:hover .chapter-label,
     .chapter-item.active .chapter-label { color: var(--text); }
-    @media (min-width: 720px) {
-      .chapters-list { grid-template-columns: 1fr 1fr; gap: 2px 18px; }
-    }
 
     .footer-link { margin-top: 48px; text-align: center; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.06); }
     .footer-link a { color: var(--accent); text-decoration: none; font-weight: 500; }
@@ -123,26 +126,29 @@
 
   <!-- Chapitres -->
   <div class="chapters">
-    <div class="chapters-title">Chapitres</div>
+    <div class="chapters-header">
+      <div class="chapters-title">Chapitres</div>
+      <div class="chapters-count">18 sections</div>
+    </div>
     <div class="chapters-list" id="chaptersList">
-      <button class="chapter-item" data-time="0"><span class="chapter-time">0:00</span><span class="chapter-label">Introduction</span></button>
-      <button class="chapter-item" data-time="198"><span class="chapter-time">3:18</span><span class="chapter-label">Payant vs organique</span></button>
-      <button class="chapter-item" data-time="278"><span class="chapter-time">4:38</span><span class="chapter-label">Prérequis : compte Business + coupon 5 200€</span></button>
-      <button class="chapter-item" data-time="618"><span class="chapter-time">10:18</span><span class="chapter-label">Événements & attribution (règle des 6-12h)</span></button>
-      <button class="chapter-item" data-time="816"><span class="chapter-time">13:36</span><span class="chapter-label">Stratégie avancée : events custom (Revenue4)</span></button>
-      <button class="chapter-item" data-time="1082"><span class="chapter-time">18:02</span><span class="chapter-label">🥇 Les créatifs sont rois + Spark Ads</span></button>
-      <button class="chapter-item" data-time="1379"><span class="chapter-time">22:59</span><span class="chapter-label">Setup d'une campagne en live</span></button>
-      <button class="chapter-item" data-time="1781"><span class="chapter-time">29:41</span><span class="chapter-label">Choisir l'objectif (install vs trial)</span></button>
-      <button class="chapter-item" data-time="2776"><span class="chapter-time">46:16</span><span class="chapter-label">Sélection manuelle vs auto des créatifs</span></button>
-      <button class="chapter-item" data-time="3098"><span class="chapter-time">51:38</span><span class="chapter-label">Page de destination intermédiaire</span></button>
-      <button class="chapter-item" data-time="3408"><span class="chapter-time">56:48</span><span class="chapter-label">Gestion au jour le jour : ne jamais couper</span></button>
-      <button class="chapter-item" data-time="3698"><span class="chapter-time">1:01:38</span><span class="chapter-label">Mon exemple : CPT divisé par 3</span></button>
-      <button class="chapter-item" data-time="3908"><span class="chapter-time">1:05:08</span><span class="chapter-label">Format gagnant : carousels 2-3 slides</span></button>
-      <button class="chapter-item" data-time="4477"><span class="chapter-time">1:14:37</span><span class="chapter-label">Routine du week-end + algo de décision</span></button>
-      <button class="chapter-item" data-time="5125"><span class="chapter-time">1:25:25</span><span class="chapter-label">Le dashboard automatisé</span></button>
-      <button class="chapter-item" data-time="5428"><span class="chapter-time">1:30:28</span><span class="chapter-label">Q&A : PostHog vs SDK TikTok</span></button>
-      <button class="chapter-item" data-time="5619"><span class="chapter-time">1:33:39</span><span class="chapter-label">La fable de la poule aux œufs d'or</span></button>
-      <button class="chapter-item" data-time="6114"><span class="chapter-time">1:41:54</span><span class="chapter-label">Q&A : une annonce par persona ?</span></button>
+      <button class="chapter-item" data-time="0"><span class="chapter-num">01</span><span class="chapter-time">0:00</span><span class="chapter-label">Introduction</span></button>
+      <button class="chapter-item" data-time="198"><span class="chapter-num">02</span><span class="chapter-time">3:18</span><span class="chapter-label">Payant vs organique</span></button>
+      <button class="chapter-item" data-time="278"><span class="chapter-num">03</span><span class="chapter-time">4:38</span><span class="chapter-label">Prérequis : compte Business + coupon 5 200€</span></button>
+      <button class="chapter-item" data-time="618"><span class="chapter-num">04</span><span class="chapter-time">10:18</span><span class="chapter-label">Événements & attribution (règle des 6-12h)</span></button>
+      <button class="chapter-item" data-time="816"><span class="chapter-num">05</span><span class="chapter-time">13:36</span><span class="chapter-label">Stratégie avancée : events custom (Revenue4)</span></button>
+      <button class="chapter-item" data-time="1082"><span class="chapter-num">06</span><span class="chapter-time">18:02</span><span class="chapter-label">🥇 Les créatifs sont rois + Spark Ads</span></button>
+      <button class="chapter-item" data-time="1379"><span class="chapter-num">07</span><span class="chapter-time">22:59</span><span class="chapter-label">Setup d'une campagne en live</span></button>
+      <button class="chapter-item" data-time="1781"><span class="chapter-num">08</span><span class="chapter-time">29:41</span><span class="chapter-label">Choisir l'objectif (install vs trial)</span></button>
+      <button class="chapter-item" data-time="2776"><span class="chapter-num">09</span><span class="chapter-time">46:16</span><span class="chapter-label">Sélection manuelle vs auto des créatifs</span></button>
+      <button class="chapter-item" data-time="3098"><span class="chapter-num">10</span><span class="chapter-time">51:38</span><span class="chapter-label">Page de destination intermédiaire</span></button>
+      <button class="chapter-item" data-time="3408"><span class="chapter-num">11</span><span class="chapter-time">56:48</span><span class="chapter-label">Gestion au jour le jour : ne jamais couper</span></button>
+      <button class="chapter-item" data-time="3698"><span class="chapter-num">12</span><span class="chapter-time">1:01:38</span><span class="chapter-label">Mon exemple : CPT divisé par 3</span></button>
+      <button class="chapter-item" data-time="3908"><span class="chapter-num">13</span><span class="chapter-time">1:05:08</span><span class="chapter-label">Format gagnant : carousels 2-3 slides</span></button>
+      <button class="chapter-item" data-time="4477"><span class="chapter-num">14</span><span class="chapter-time">1:14:37</span><span class="chapter-label">Routine du week-end + algo de décision</span></button>
+      <button class="chapter-item" data-time="5125"><span class="chapter-num">15</span><span class="chapter-time">1:25:25</span><span class="chapter-label">Le dashboard automatisé</span></button>
+      <button class="chapter-item" data-time="5428"><span class="chapter-num">16</span><span class="chapter-time">1:30:28</span><span class="chapter-label">Q&A : PostHog vs SDK TikTok</span></button>
+      <button class="chapter-item" data-time="5619"><span class="chapter-num">17</span><span class="chapter-time">1:33:39</span><span class="chapter-label">La fable de la poule aux œufs d'or</span></button>
+      <button class="chapter-item" data-time="6114"><span class="chapter-num">18</span><span class="chapter-time">1:41:54</span><span class="chapter-label">Q&A : une annonce par persona ?</span></button>
     </div>
   </div>
 
