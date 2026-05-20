@@ -99,6 +99,8 @@
     .summary blockquote { margin: 16px 0; padding: 12px 18px; border-left: 2px solid var(--accent); background: var(--dark-subtle); border-radius: 0 8px 8px 0; }
     .summary blockquote p { font-size: 15px; color: var(--text-secondary); }
     .summary code { background: var(--dark-subtle); padding: 1px 6px; border-radius: 4px; font-size: 14px; color: var(--text); }
+    .summary a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(184,92,56,0.4); transition: border-color 0.15s; }
+    .summary a:hover { border-bottom-color: var(--accent); }
 
     .callout { margin: 24px 0; padding: 20px 24px; background: rgba(184,92,56,0.10); border: 1px solid rgba(184,92,56,0.32); border-radius: 12px; }
     .callout h3 { margin-top: 0 !important; }
@@ -151,7 +153,8 @@
     <p class="header-meta">BookNova — l'app de challenge de lecture &middot; Anna &amp; Florent &middot; session du 20 mai 2026</p>
     <div class="avatars">
       <div class="avatar"><img src="avatars/1-harryjmg.png" alt="Harry"><span class="avatar-name">Harry</span></div>
-      <div class="avatar"><img src="avatars/5-mexicangola_35841.png" alt="Anna &amp; Florent"><span class="avatar-name">Anna &amp; Florent</span></div>
+      <div class="avatar"><img src="avatars/5-mexicangola_35841.png" alt="Anna"><span class="avatar-name">Anna</span></div>
+      <div class="avatar"><img src="avatars/5-mexicangola_35841.png" alt="Florent"><span class="avatar-name">Florent</span></div>
     </div>
   </header>
 
@@ -298,6 +301,11 @@
       <p>Trois leviers se cumulent dans le scénario gagnant : le prix porte le bénéfice de 1 500 à 2 000 €, puis le scaling de la dépense fait le reste du chemin jusqu'aux 5K — à condition que l'ITT et le CPI tiennent leurs seuils.</p>
 
       <div class="callout">
+        <h3>Le tableur du call, en accès libre</h3>
+        <p>C'est la feuille de calcul qu'Harry construit en direct dans la vidéo. Elle est ouverte à tous : ouvre-la et fais-en une copie (<em>Fichier → Créer une copie</em>) pour y brancher les chiffres de ta propre app. <a href="https://docs.google.com/spreadsheets/d/11MWvO8iyuWgyWkNtVbYt4sjYMmvvGDAGGCMVeX6Sr4o/edit?usp=sharing" target="_blank" rel="noopener">Ouvrir le tableur des scénarios →</a></p>
+      </div>
+
+      <div class="callout">
         <h3>L'objectif du 1er juin</h3>
         <p>Tout doit être en place pour le 1er juin, pour que juin tourne à plein. Quatre cibles :</p>
         <ul>
@@ -339,6 +347,7 @@
       <h2>Outils / refs mentionnés</h2>
       <ul>
         <li><strong>Le tunnel d'acquisition</strong> — CPI (coût/install) → ITT (install→essai) → TTP (essai→payant) → prix → bénéfice net. Les quatre variables à connaître et à piloter.</li>
+        <li><strong>Le tableur des scénarios</strong> — la feuille de calcul construite pendant le call, en accès libre et copiable : <a href="https://docs.google.com/spreadsheets/d/11MWvO8iyuWgyWkNtVbYt4sjYMmvvGDAGGCMVeX6Sr4o/edit?usp=sharing" target="_blank" rel="noopener">ouvrir le Google Sheet</a>.</li>
         <li><strong>Spark Ads</strong> (TikTok) — diffuser en publicité le post organique d'un créateur, avec son autorisation (un code à récupérer). Manière sans risque de « nourrir » la campagne en créatifs frais.</li>
         <li><strong>Paywall contextuel</strong> — fenêtre promo qui s'ouvre rarement pour un utilisateur gratuit régulier, avec option d'abonnement direct sans essai à prix cassé.</li>
         <li><strong>Mixpanel</strong> — l'outil d'analytics de BookNova, d'où sortir l'ITT mesuré sur 30 jours.</li>
