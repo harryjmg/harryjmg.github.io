@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coaching BookNova — Objectif 5K en juin — App Society</title>
-  <meta name="description" content="Session de coaching d'Harry avec Anna &amp; Florent (BookNova). Construction en direct, dans un tableur, du plan pour atteindre 5 000 € de bénéfices nets en juin : augmenter le prix, ajouter des paywalls contextuels, scaler la campagne TikTok à 80 €/jour et la nourrir en créatifs.">
+  <title>Étude de cas — BookNova : de 1 500 € à 5 000 € de bénéfices en un mois — App Society</title>
+  <meta name="description" content="Étude de cas App Society. Comment Anna &amp; Florent comptent faire passer BookNova de ~1 500 € à 5 000 € de bénéfices nets en un mois : la session de coaching où Harry construit le plan, levier par levier — prix, paywalls contextuels, scaling de la campagne TikTok et créatifs.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B85C38'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='700' font-size='20' fill='white'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +57,22 @@
     .intro { margin-top: 36px; padding: 24px 28px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
     .intro p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; }
     .intro strong { color: var(--text); font-weight: 500; }
+
+    .transformation { display: flex; align-items: stretch; gap: 0; margin-top: 32px; }
+    .tf-state { flex: 1; padding: 20px 16px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; text-align: center; }
+    .tf-state--target { background: rgba(184,92,56,0.10); border-color: rgba(184,92,56,0.32); }
+    .tf-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); }
+    .tf-state--target .tf-label { color: var(--accent); }
+    .tf-figure { font-family: var(--serif); font-size: clamp(30px, 6.5vw, 44px); font-weight: 500; color: #fff; line-height: 1.1; margin-top: 8px; }
+    .tf-sub { font-size: 12.5px; color: var(--text-secondary); margin-top: 4px; }
+    .tf-arrow { display: flex; align-items: center; padding: 0 14px; color: var(--accent); }
+    .tf-arrow svg { width: 26px; height: 26px; }
+    .tf-caption { text-align: center; color: var(--text-light); font-size: 14px; margin-top: 14px; }
+    @media (max-width: 460px) {
+      .transformation { flex-direction: column; }
+      .tf-arrow { padding: 8px 0; justify-content: center; }
+      .tf-arrow svg { transform: rotate(90deg); }
+    }
 
     .tabs { margin-top: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; gap: 0; }
     .tab-btn { background: none; border: none; color: var(--text-light); font-family: var(--sans); font-size: 15px; font-weight: 500; padding: 12px 24px; cursor: pointer; position: relative; transition: color 0.2s; }
@@ -130,14 +146,30 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       App Society
     </a>
-    <div class="header-date">Mercredi 20 mai 2026 &middot; Coaching</div>
-    <h1 class="header-title">BookNova — viser 5K en juin</h1>
-    <p class="header-meta">Anna &amp; Florent &middot; ~1h18 &middot; construire le plan, chiffre par chiffre</p>
+    <div class="header-date">Étude de cas Nº1</div>
+    <h1 class="header-title">Comment passer de 1 500 € à 5 000 € de bénéfices en un mois ?</h1>
+    <p class="header-meta">BookNova — l'app de challenge de lecture &middot; Anna &amp; Florent &middot; session du 20 mai 2026</p>
     <div class="avatars">
       <div class="avatar"><img src="avatars/1-harryjmg.png" alt="Harry"><span class="avatar-name">Harry</span></div>
       <div class="avatar"><img src="avatars/5-mexicangola_35841.png" alt="Anna &amp; Florent"><span class="avatar-name">Anna &amp; Florent</span></div>
     </div>
   </header>
+
+  <!-- Bloc transformation : situation de départ → objectif -->
+  <div class="transformation">
+    <div class="tf-state">
+      <div class="tf-label">Situation de départ</div>
+      <div class="tf-figure">~1 500 €</div>
+      <div class="tf-sub">de bénéfices nets / mois</div>
+    </div>
+    <div class="tf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    <div class="tf-state tf-state--target">
+      <div class="tf-label">Objectif &middot; juin 2026</div>
+      <div class="tf-figure">5 000 €</div>
+      <div class="tf-sub">de bénéfices nets / mois</div>
+    </div>
+  </div>
+  <p class="tf-caption">La session de coaching où Harry construit le plan, levier par levier. Verdict fin juin.</p>
 
   <!-- Player vidéo (Loom embed — partage d'écran d'Harry pendant toute la session) -->
   <div class="video-wrap">
@@ -165,7 +197,7 @@
 
   <!-- Intro -->
   <div class="intro">
-    <p><strong>Une session de coaching, un tableur, et un objectif.</strong> Anna &amp; Florent développent <strong>BookNova</strong> — l'app de challenge de lecture (« lis ta propre taille en livres ») — depuis un an. Ils ont parié avec Harry : <strong>5K en juin</strong>, et le resto est pour lui. Ce call sert à transformer ce pari en plan concret. Harry a préparé un tableur, et pendant 1h18 il pose le tunnel de conversion à plat, chiffre par chiffre, puis fait tourner les scénarios jusqu'à trouver la combinaison qui donne <strong>5 000 € de bénéfices nets</strong> (après dépenses pub et taxes des stores) sur le mois. La conclusion : quatre leviers — <strong>augmenter le prix, ajouter des paywalls contextuels, scaler la campagne à 80 €/jour, et la nourrir en créatifs</strong>. Harry, pendant le call : <em>« On va tout poser à plat, parce qu'il y a peut-être des gens qui vont regarder la vidéo et qui ne savent même pas c'est quoi la base. »</em> — c'est exactement à eux que ce replay s'adresse.</p>
+    <p><strong>Première étude de cas App Society.</strong> Le principe : on prend la situation réelle d'un membre, on la diagnostique, et on construit le plan chiffré pour la transformer. Ici, <strong>BookNova</strong> — l'app de challenge de lecture d'Anna &amp; Florent (« lis ta propre taille en livres »), un an de développement. Le tableur du call estime leur bénéfice actuel à <strong>~1 500 €/mois</strong> ; l'objectif, c'est <strong>5 000 € de bénéfices nets</strong> (après dépenses pub et taxes des stores) sur le seul mois de juin. Pendant 1h18, Harry pose le tunnel de conversion à plat — CPI, install→essai, essai→payant, prix — puis fait tourner les scénarios jusqu'à trouver la combinaison gagnante : <strong>quatre leviers</strong> — augmenter le prix, ajouter des paywalls contextuels, scaler la campagne TikTok à 80 €/jour, et la nourrir en créatifs. Un pari est en jeu : un resto pour Harry si c'est réussi. <strong>À ce stade, c'est un plan, pas un résultat</strong> — le verdict tombera fin juin.</p>
   </div>
 
   <!-- Tabs -->
