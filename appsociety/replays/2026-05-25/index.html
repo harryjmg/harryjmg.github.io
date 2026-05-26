@@ -62,9 +62,38 @@
     .vol-slider::-webkit-slider-thumb:hover { background: var(--text); }
     .vol-slider::-moz-range-thumb { width: 12px; height: 12px; background: var(--text-secondary); border-radius: 50%; border: none; cursor: pointer; }
 
-    .intro { margin-top: 36px; padding: 24px 28px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
-    .intro p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; }
-    .intro strong { color: var(--text); font-weight: 500; }
+    .intro { margin-top: 36px; padding: 22px 26px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+    .intro p { color: var(--text); font-size: 16px; line-height: 1.7; }
+    .intro strong { color: var(--accent); font-weight: 600; }
+
+    /* Chapters navigator (clickable, jumps audio + scrolls) */
+    .chapters { margin-top: 20px; padding: 22px 26px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+    .chapters-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+    .chapters-title { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
+    .chapters-title::before { content: ''; width: 4px; height: 14px; background: var(--accent); border-radius: 2px; }
+    .chapters-count { font-size: 12px; color: var(--text-light); font-variant-numeric: tabular-nums; }
+    .chapters-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+    .chapter-item { display: flex; align-items: baseline; gap: 16px; padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: background 0.15s, color 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: inherit; position: relative; }
+    .chapter-item + .chapter-item { border-top: 1px solid rgba(255,255,255,0.04); }
+    .chapter-item:hover { background: var(--dark-subtle); }
+    .chapter-item:hover + .chapter-item { border-top-color: transparent; }
+    .chapter-item.active { background: rgba(184, 92, 56, 0.10); }
+    .chapter-item.active + .chapter-item { border-top-color: transparent; }
+    .chapter-num { font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 600; color: var(--text-light); flex-shrink: 0; min-width: 22px; text-align: right; padding-top: 1px; }
+    .chapter-item.active .chapter-num { color: var(--accent); }
+    .chapter-time { font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; color: var(--accent); flex-shrink: 0; min-width: 58px; }
+    .chapter-label { color: var(--text-secondary); font-size: 15px; line-height: 1.45; transition: color 0.15s; flex: 1; }
+    .chapter-item:hover .chapter-label,
+    .chapter-item.active .chapter-label { color: var(--text); }
+
+    /* Chapter sections (in summary) */
+    .chapter-section { scroll-margin-top: 16px; padding-top: 8px; }
+    .chapter-section h2 { display: flex; align-items: baseline; gap: 14px; font-family: var(--serif); font-size: 24px; font-weight: 500; color: #fff; margin: 36px 0 10px; flex-wrap: wrap; }
+    .chapter-section h2 .ch-time-anchor { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .chapter-section .speakers { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 14px; }
+    .chapter-section .speaker-chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 3px; background: var(--dark-subtle); border-radius: 999px; font-size: 13px; color: var(--text-secondary); }
+    .chapter-section .speaker-chip img { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
+    .chapter-section .speaker-chip strong { color: var(--text); font-weight: 500; font-size: 13px; }
 
     .progress-wrap { position: relative; height: 6px; background: var(--dark-subtle); border-radius: 3px; cursor: pointer; }
     .progress-wrap:hover { height: 8px; }
@@ -188,7 +217,7 @@
 
   <!-- Intro -->
   <div class="intro">
-    <p><strong>Soirée "trois nouveaux"</strong>. Mathis ouvre la séance avec DailyCore (nutrition/fitness/orga 3-en-1, 4 campagnes pour 1600&euro;, encore 10 utilisateurs actifs par jour), Estéban débarque de Coding Accelerator avec Pixel Journal (mood tracking pixel art, ses ads en français viennent de mordre), et Victor (ex-BestCreator, vrai marketer growth qui a fait 0→10K MRR sur Meta pendant Noël) ramène une perspective Meta qu'on n'avait pas dans le groupe. <strong>Pierre-Louis a publié Pixelio sur l'App Store ET Play Store</strong> mardi dernier ; il dévoile l'app au groupe et démarre la com via ses ~100K abonnés Instagram/YouTube le 1<sup>er</sup> juin. <strong>Livio a publié VocabRecall</strong> jeudi : objectif 20 clients à 50&euro;/an pour fin juin, démarre les pubs cette semaine. <strong>Valentin a vécu une "catastrophe technique invisible"</strong> : son onboarding web était cassé dans le navigateur in-app TikTok (pas d'Apple Pay/Google Pay, pas de PWA, pas de micro). A codé en urgence à distance depuis le Center Park un message "ouvre dans Chrome" avant le paywall, relance les pubs en live pendant le call. <strong>Anna scale</strong> de 30 à 80&euro;/jour, augmente les prix (35→49&euro; annuel), A/B test sur 3 paywalls, prépare ses "missiles balistiques" parce qu'elle doit reprendre l'intérim cette semaine — objectif 5K&euro; de bénéfice net en juin. Harry, fatigué, débranche vers 23h30 ; Valentin, Livio et Victor finissent à 4 sur la technique webview/native, Apple Connect, A/B testing PostHog Experiments.</p>
+    <p>Soir&eacute;e <strong>trois nouveaux</strong> (Mathis, Est&eacute;ban, Victor) + <strong>deux publications</strong> dans la semaine : Pixelio (Pierre-Louis) et VocabRecall (Livio). Valentin r&eacute;v&egrave;le une catastrophe technique invisible dans le navigateur in-app TikTok qui bloquait son onboarding. Anna scale Booknova &agrave; 80&euro;/jour pour viser 5K&euro; de b&eacute;n&eacute;fice net en juin. Victor (ex-BestCreator, marketer growth Lisbonne) ram&egrave;ne la perspective Meta qui manquait au groupe.</p>
   </div>
 
   <!-- Tabs -->
@@ -200,354 +229,262 @@
   <!-- Summary -->
   <div class="tab-content active" id="tab-summary">
     <div class="summary">
-      <h2>Participants</h2>
-      <div class="participants">
-        <div class="participant"><img class="participant-avatar" src="avatars/3-harryjmg.png" alt=""><div><strong>Harry</strong> — anime jusqu'à 23h30 puis débranche (<em>"il est un peu tard, mon corps le pense aussi"</em>). Pas de tour perso ce soir, le call est consacré aux trois nouveaux et aux deux publications du week-end. Pendant la journée, il a partagé sur Discord un podcast sur Life360 (80M$/mois en contrôle parental) — qui tombe pile pour le pitch de Victor.</div></div>
-        <div class="participant"><img class="participant-avatar" src="avatars/1-gingblueapp.png" alt=""><div><strong>Mathis (gingblueapp) &middot; nouveau</strong> — arrive en avance, accueilli par Anna avant Harry. <strong>DailyCore</strong>, app 3-en-1 nutrition/fitness/organisation sur l'App Store en Swift, autodidacte (a appris le dev sur YouTube en suivant Harry). 4 campagnes pour 1600&euro;, ~3000 utilisateurs cumulés, 4 clients payants, ~10 actifs/jour. <em>"Je n'arrive pas à rentabiliser mes campagnes."</em> Dernière maj poussée à Apple récemment après plusieurs crashs critiques. Note du groupe : 57 avis à 4,5&star;, design propre. <em>"T'es mieux que nous, hein"</em> — Anna.</div></div>
-        <div class="participant"><img class="participant-avatar" src="avatars/5-ereynier.png" alt=""><div><strong>Estéban (ereynier) &middot; nouveau</strong> — vient de Coding Accelerator. <strong>Pixel Journal</strong>, mood tracker où un pixel par jour remplit ton année (corrélations entre trackers, design pixel art). Sur l'App Store depuis 1&ndash;1,5 mois. Ses ads ont décollé il y a 2&ndash;3 jours après deux pivots : <strong>FR&nbsp;&gt;&nbsp;EN</strong> et <strong>carousels&nbsp;&gt;&nbsp;vidéos</strong> (a copié l'approche d'Harry avec sa créatrice UGC, "Clara"). Premiers payants qui rentrent. <strong>Objectif acté devant tout le monde : 1000&euro; de bénéfice pour le 1<sup>er</sup>&nbsp;juin.</strong> Anna : <em>"Je suis persuadée que si tu trouves un bon format, ça peut exploser. C'est beau à regarder, satisfaisant avec les carrés."</em></div></div>
-        <div class="participant"><img class="participant-avatar" src="avatars/4-victor_nouchet.png" alt=""><div><strong>Victor Nouchet (victor.nouchet) &middot; nouveau</strong> — Growth Engineer, basé à Lisbonne depuis 2023. Pas dev de base, "bidouilleur" à l'aise depuis Opus 4.5. Story marketing massive : <strong>BestCreator</strong>, app de filtres photo IA, avec funnel web Lovable + Meta. Sur Halloween-Noël, format viral "anime ton chat" sur Meta : <strong>0&nbsp;→&nbsp;10K MRR en un mois</strong>. Verticalisation animaux fail, organique TikTok énorme fail (<em>"j'avais trop écouté les sirènes, je faisais 500&ndash;1000 vues par vidéo, pas suffisant"</em>). Sort d'une rupture d'associé. Va lancer une app de <strong>contrôle parental</strong> ciblée US (Stripe Atlas LLC) : MVP = donner le temps d'écran de l'enfant aux parents (Apple/Google galère pour ça). Objectifs : sortir l'app fin juin, faire du revenu fin août.</div></div>
-        <div class="participant"><img class="participant-avatar" src="avatars/2-mexicangola_35841.png" alt=""><div><strong>Anna &amp; Florent (Mexicangola)</strong> — semaine 3 du sprint scaling Booknova. Records confirmés (<strong>500 abonnés atteints le 21/05</strong>, posté dans #résultats). Budget passé de 30 → 55&euro;/jour, vise <strong>80&euro;/jour</strong>. La semaine n'a pas été clean : nouveaux créatifs commandés à Théa pas aussi "savants" que Clara, coût par install qui remonte. Pivote vers <strong>2 campagnes en parallèle (iOS + Android)</strong> avec les nouveaux UGC qui ont marché sur Android. <strong>Lève le levier prix</strong> : annuel 35 → 49&euro;, paywall secondaire 25 → 35&euro;. <strong>A/B test sur 3 paywalls</strong> prévu (le sien est <em>"un paywall dégueulasse fait gamine, ça fait gamine"</em>). Victor lui glisse une idée nouvelle : <strong>abonnement à la semaine</strong> au lieu de mensuel ("7&euro; pendant 52 semaines, ça paraît énorme, l'annuel devient le bon deal"). Note Anna : <em>"On va y réfléchir, mais là on change déjà trop de choses en même temps."</em> Backstage : <strong>Anna doit reprendre du travail (intérim) dès cette semaine</strong> — elle prépare ses "missiles balistiques" pour piloter même en bossant.</div></div>
-        <div class="participant"><img class="participant-avatar" src="avatars/6-sitexw.png" alt=""><div><strong>Valentin (SiteXw)</strong> — <strong>J85/90 du défi 5K MRR.</strong> Retour de Center Park il y a 3h. Avait lancé ses pubs jeudi/vendredi puis les a <strong>coupées en urgence</strong> en testant ses propres pubs via le QR TikTok : le navigateur in-app TikTok est de la grosse merde — pas d'Apple Pay/Google Pay, pas de connexion rapide, pas de PWA, pas de notifications, pas de micro pour son onboarding vocal. <strong>Friction à 99% au paywall.</strong> A codé en urgence à distance un message "ouvre dans Chrome" juste avant le paywall (clic facile sur Android, beaucoup plus chiant sur iOS). A relancé il y a une heure. Premiers chiffres : 11K impressions, 312 clics, <strong>CTR à 2,82</strong> sur ses contenus "officiels" mais <strong>5,9-6,45 sur les UGC IA Anna</strong> (qui n'ont presque pas eu de budget alloué par TikTok). Objectif 5K MRR ne se fera pas, mais le 0→1 lui suffira pour ce challenge.</div></div>
-        <div class="participant"><img class="participant-avatar" src="avatars/7-fenrurr.png" alt=""><div><strong>Livio (Fenrur)</strong> — <strong>VocabRecall publié sur l'App Store mardi dernier</strong> (validation Apple en 36h). Backstory : 6 mois après son retour des Philippines, idée d'app dédiée vocabulaire anglais (vs Duolingo qui couvre tout). 2 mois de dev, puis 3 mois infernaux à refaire le langage visuel avec un pote UX/UI. Petite baisse de motivation il y a 1 mois → remontée grâce au sport. Tech : Capacitor + PostHog (parcours utilisateurs en clair côté web). Astuce sombre : <em>"cliquez 10 secondes sur le renard à la fin du paywall, ça te donne accès."</em> Offre l'accès à tous les membres en échange de leur email. Maintenant : <strong>premières pubs TikTok</strong> jamais lancées de sa vie. Conseil unanime : copier ses concurrents qui sont nuls (Pingo AI, etc.), bourriner les UGC. <strong>Objectif : 20 clients à 50&euro;/an = 1000&euro; CA fin juin.</strong></div></div>
-        <div class="participant"><img class="participant-avatar" src="avatars/8-elyass_5.png" alt=""><div><strong>Elyass</strong> — présent mais <strong>quasi silencieux toute la session</strong> (juste un "Salut" et une question sur Stripe Atlas). Harry l'a vanné gentiment en début de call comme "celui qu'on taquine quand il n'avance pas", mais aucun update perso ce soir. <em>(En filigrane Discord : a juste accueilli Estéban et Victor le 19/05, sinon RAS depuis le 11/05. À surveiller au prochain call.)</em></div></div>
-        <div class="participant"><img class="participant-avatar" src="avatars/9-garenherve.png" alt=""><div><strong>Pierre-Louis / Robin (Garen Hervé)</strong> — <strong>Pixelio publié sur l'App Store ET Play Store</strong> (validation Apple le 22/05, communiqué dans #publication). Premier rejet Apple sur les IAP (3 abonnements avec la même icône → il a refait avec des icônes différentes). Pas encore lancé la com — il se laisse cette semaine pour finaliser des détails (cartes achievement holographiques, etc.). <strong>Plan com : 1<sup>er</sup>&nbsp;juin via sa newsletter, 2 juin posts avec CTA discret sur ses ~100K abonnés Instagram/YouTube</strong> (créateur de contenu organisation/dev perso depuis plusieurs années). Harry repère un bug visuel pendant l'onboarding (icônes iPhone illisibles sur fond clair). Objectif maintenu : <strong>1000&euro; en juin</strong>.</div></div>
+
+      <!-- Sommaire chapitres -->
+      <div class="chapters">
+        <div class="chapters-header">
+          <div class="chapters-title">Chapitres</div>
+          <div class="chapters-count">9 sections &middot; ~3h23</div>
+        </div>
+        <div class="chapters-list" id="chaptersList">
+          <button class="chapter-item" data-time="0" data-anchor="ch-1"><span class="chapter-num">01</span><span class="chapter-time">0:00</span><span class="chapter-label">Mathis &mdash; DailyCore, autodidacte fan de la cha&icirc;ne</span></button>
+          <button class="chapter-item" data-time="510" data-anchor="ch-2"><span class="chapter-num">02</span><span class="chapter-time">8:30</span><span class="chapter-label">Est&eacute;ban &mdash; Pixel Journal, les premiers payants rentrent</span></button>
+          <button class="chapter-item" data-time="1285" data-anchor="ch-3"><span class="chapter-num">03</span><span class="chapter-time">21:25</span><span class="chapter-label">Victor &mdash; Le marketer growth ramen&eacute; de Lisbonne</span></button>
+          <button class="chapter-item" data-time="2450" data-anchor="ch-4"><span class="chapter-num">04</span><span class="chapter-time">40:50</span><span class="chapter-label">Anna &amp; Florent &mdash; Scaling, prix qui montent, retour intérim</span></button>
+          <button class="chapter-item" data-time="3115" data-anchor="ch-5"><span class="chapter-num">05</span><span class="chapter-time">51:55</span><span class="chapter-label">Valentin &mdash; La catastrophe technique du navigateur in-app TikTok</span></button>
+          <button class="chapter-item" data-time="3890" data-anchor="ch-6"><span class="chapter-num">06</span><span class="chapter-time">1:04:50</span><span class="chapter-label">Le d&eacute;bat organique vs payant (&agrave; 4 voix)</span></button>
+          <button class="chapter-item" data-time="4950" data-anchor="ch-7"><span class="chapter-num">07</span><span class="chapter-time">1:22:30</span><span class="chapter-label">Pierre-Louis &mdash; Pixelio est en ligne</span></button>
+          <button class="chapter-item" data-time="6510" data-anchor="ch-8"><span class="chapter-num">08</span><span class="chapter-time">1:48:30</span><span class="chapter-label">Livio &mdash; VocabRecall publi&eacute;, premi&egrave;res pubs cette semaine</span></button>
+          <button class="chapter-item" data-time="8885" data-anchor="ch-9"><span class="chapter-num">09</span><span class="chapter-time">2:28:05</span><span class="chapter-label">Apr&egrave;s le d&eacute;part d'Harry &mdash; Webview, A/B testing, Apple Connect</span></button>
+        </div>
       </div>
 
-      <p style="margin-top:24px;padding:14px 18px;background:var(--dark-subtle);border-radius:8px;font-size:14px;color:var(--text-light);border-left:2px solid var(--accent);"><strong>Pouls du groupe (Discord, semaine du 19→26 mai)</strong> — <strong>Trois personnes arrivées sur le Discord cette semaine</strong> : Estéban (19/05, mood tracking), Victor (19/05, contrôle parental) et Mathis (25/05 à 16h31, jour du call). Tous présents au call le soir même. <strong>Anna &amp; Florent</strong> publient un gros plan détaillé dans le thread Booknova le 21/05 (leviers : prix, paywall A/B, scaling, UGC Théa/Jade/Luna, promos thématiques) → c'est ce qu'on entend au call. <strong>Noah</strong> est en voyage 3 semaines, premier post sur ads en 2 semaines (25/05) : <em>"rentable mais pas énormément, beaucoup de refunds étonnants"</em>, va relancer. <strong>Krisskool</strong> a migré sur Codex (GPT-5.5 plan Plus) — Victor confirme l'utiliser aussi dans Xcode. <strong>Sylvain</strong> en pause Discord cette semaine (<em>"En mode pause alors moi pas 😉"</em>). <strong>Harry</strong> publie la <a href="/appsociety/presentations/booknova-5k/" style="color:var(--accent);">première étude de cas App Society</a> (Anna &amp; Florent) le 20/05.</p>
+      <!-- Chapitre 1 : Mathis -->
+      <div class="chapter-section" id="ch-1">
+        <h2>1. Mathis &mdash; DailyCore <span class="ch-time-anchor">0:00</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/1-gingblueapp.png" alt=""><strong>Mathis</strong> &middot; nouveau</span>
+          <span class="speaker-chip"><img src="avatars/2-mexicangola_35841.png" alt=""><strong>Anna &amp; Florent</strong></span>
+          <span class="speaker-chip"><img src="avatars/3-harryjmg.png" alt=""><strong>Harry</strong></span>
+        </div>
+        <p>Mathis arrive en avance, accueilli par Anna avant Harry. <strong>DailyCore</strong> est une app 3-en-1 nutrition / fitness / organisation avec un avatar emoji compagnon. Autodidacte STI 2D, a appris le dev sur YouTube en suivant Harry depuis avril dernier.</p>
+        <ul>
+        <li><strong>4 campagnes pour ~1600&euro;</strong> depuis d&eacute;cembre, ~3000 utilisateurs cumul&eacute;s, 4 clients payants, ~10 actifs/jour.</li>
+        <li>Diag honn&ecirc;te : <em>"Je laisse les campagnes une semaine &agrave; 50&euro;/jour puis je coupe. J'aurais d&ucirc; les laisser beaucoup plus longtemps."</em></li>
+        <li>57 avis &agrave; 4,5&star; sur l'App Store. Anna : <em>"T'es mieux que nous, hein."</em></li>
+        <li>Pose plus tard la question des budgets &mdash; Victor r&eacute;pond : <strong>50&euro;/jour minimum</strong> en France, 300$/jour aux US pour les apps mobiles.</li>
+        </ul>
+      </div>
+
+      <!-- Chapitre 2 : Estéban -->
+      <div class="chapter-section" id="ch-2">
+        <h2>2. Est&eacute;ban &mdash; Pixel Journal <span class="ch-time-anchor">8:30</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/5-ereynier.png" alt=""><strong>Est&eacute;ban</strong> &middot; nouveau</span>
+          <span class="speaker-chip"><img src="avatars/2-mexicangola_35841.png" alt=""><strong>Anna</strong></span>
+          <span class="speaker-chip"><img src="avatars/3-harryjmg.png" alt=""><strong>Harry</strong></span>
+        </div>
+        <p>Vient de Coding Accelerator. <strong>Pixel Journal</strong> = mood tracker o&ugrave; un pixel par jour remplit ton ann&eacute;e (design pixel art, corr&eacute;lations entre trackers). React Native + Codex, sur l'App Store depuis 1&ndash;1,5 mois.</p>
+        <ul>
+        <li><strong>Deux switchs r&eacute;cents qui ont tout chang&eacute;</strong> (il y a 2&ndash;3 jours) : EN&nbsp;&rarr;&nbsp;FR sur ses ads + vid&eacute;os&nbsp;&rarr;&nbsp;carousels &agrave; la "Clara" (apr&egrave;s avoir vu une vid&eacute;o d'Harry).</li>
+        <li>Premiers payants qui rentrent (annuels surtout). <em>"Pas encore ultra rentable, mais on n'est pas loin."</em></li>
+        <li><strong>Engagement public devant le groupe : 1000&euro; de b&eacute;n&eacute;fice sur le mois de juin</strong> (l'&eacute;changes a &eacute;t&eacute; un peu confus : Harry a propos&eacute; "1000&euro; en juin", Est&eacute;ban a oscill&eacute; entre "20 juin" et "1<sup>er</sup>&nbsp;juin" &mdash; bilan = mois de juin).</li>
+        </ul>
+        <blockquote>
+        <p><em>"Une &eacute;cole de marketing, &ccedil;a te co&ucirc;te 15&nbsp;000 balles par an. Toi, tu es en train d'apprendre ce que quelqu'un, apr&egrave;s 5 ans d'&eacute;cole de marketing, ne fait pas. C'est de l'investissement."</em><br>&mdash; Anna &agrave; Est&eacute;ban, qui a peur de "br&ucirc;ler de l'argent"</p>
+        </blockquote>
+      </div>
+
+      <!-- Chapitre 3 : Victor -->
+      <div class="chapter-section" id="ch-3">
+        <h2>3. Victor &mdash; Le marketer growth ramen&eacute; de Lisbonne <span class="ch-time-anchor">21:25</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/4-victor_nouchet.png" alt=""><strong>Victor</strong> &middot; nouveau</span>
+          <span class="speaker-chip"><img src="avatars/3-harryjmg.png" alt=""><strong>Harry</strong></span>
+          <span class="speaker-chip"><img src="avatars/7-fenrurr.png" alt=""><strong>Livio</strong></span>
+        </div>
+        <p>Le profil le plus original arriv&eacute; dans le groupe. <strong>Growth Engineer</strong>, expat &agrave; Lisbonne depuis fin 2023 (LLC US via Stripe Atlas, ~10% d'imp&ocirc;t avec la convention fiscale FR-PT-US). Pas dev de base, "bidouilleur" depuis Opus 4.5.</p>
+        <p><strong>Story BestCreator</strong> (octobre-mars) :</p>
+        <ul>
+        <li>App de filtres photo IA, funnel web Lovable + Meta.</li>
+        <li>Format viral animaux pour Halloween (transformer ton chat en sorci&egrave;re) &rarr; quelques leads. <strong>No&euml;l : pivot objectif lead vers subscribe &rarr; 0&nbsp;&rarr;&nbsp;10K MRR en un mois</strong> (Facebook Moms 45+ US, weekly 7,99$).</li>
+        <li>Saint-Valentin : se refait sur Meta mais reste &agrave; l'&eacute;quilibre.</li>
+        <li>Verticalisation animaux fail. <strong>Organique TikTok &eacute;norme fail</strong> : <em>"3-4 vid&eacute;os/jour pas suffisant. Pour l'organique, faut en faire 100 par jour."</em></li>
+        </ul>
+        <p><strong>Pivot contr&ocirc;le parental</strong> (US, fin ao&ucirc;t cible) :</p>
+        <ul>
+        <li>Inspiration : <strong>Life360</strong> (80M$/mois &mdash; podcast partag&eacute; par Harry le matin du call).</li>
+        <li>MVP minimaliste : juste donner le temps d'&eacute;cran de l'enfant aux parents (Apple/Google gal&egrave;re).</li>
+        <li>Prix &eacute;lev&eacute;s : <strong>13&euro;/semaine, 60&euro;/6 mois</strong>. Levier : peur pour ses enfants.</li>
+        </ul>
+        <blockquote>
+        <p><em>"Sur Meta aux US, en dessous de 300$/jour, tu n'existes pas. En face on a Temu et Shein qui d&eacute;pensent 3 milliards par an."</em></p>
+        </blockquote>
+        <blockquote>
+        <p><em>"Si tu d&eacute;penses 20&euro;/jour pendant 5 jours, &ccedil;a fait 100&euro;. Mais si tu d&eacute;penses 50&euro;/jour pendant 2 jours, t'as le m&ecirc;me apprentissage. T'as juste gagn&eacute; du temps."</em></p>
+        </blockquote>
+      </div>
+
+      <!-- Chapitre 4 : Anna scaling -->
+      <div class="chapter-section" id="ch-4">
+        <h2>4. Anna &amp; Florent &mdash; Scaling, prix qui montent, retour int&eacute;rim <span class="ch-time-anchor">40:50</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/2-mexicangola_35841.png" alt=""><strong>Anna &amp; Florent</strong></span>
+          <span class="speaker-chip"><img src="avatars/4-victor_nouchet.png" alt=""><strong>Victor</strong></span>
+          <span class="speaker-chip"><img src="avatars/3-harryjmg.png" alt=""><strong>Harry</strong></span>
+        </div>
+        <p>Semaine 3 du sprint scaling Booknova. <strong>500 abonn&eacute;s atteints le 21/05</strong>, mais la semaine n'a pas &eacute;t&eacute; clean : nouveaux cr&eacute;atifs de Th&eacute;a moins "savants" que les bangers initiaux, co&ucirc;t par install qui remonte de 20 &agrave; 30 centimes.</p>
+        <ul>
+        <li>Budget pass&eacute; 30&nbsp;&rarr;&nbsp;55&euro;/jour, vise <strong>80&euro;/jour d&eacute;but juin</strong>.</li>
+        <li>Pivote vers <strong>2 campagnes parall&egrave;les (iOS + Android)</strong> avec les UGC qui ont march&eacute; sur Android.</li>
+        <li><strong>Augmentation des prix</strong> : annuel 35 &rarr; <strong>49&euro;</strong>, paywall secondaire 25 &rarr; 35&euro;. <strong>A/B test sur 3 paywalls</strong> pr&eacute;vu.</li>
+        <li>Idée nouvelle de Victor : <strong>abonnement weekly</strong> (au lieu de mensuel). <em>"7&euro;/semaine vs 49&euro;/an, l'annuel paraît un super deal."</em> Anna intéress&eacute;e mais : <em>"On change d&eacute;j&agrave; trop de choses en m&ecirc;me temps."</em></li>
+        </ul>
+        <p><strong>Le contexte qui change tout</strong> : Anna doit reprendre le travail (int&eacute;rim) d&egrave;s cette semaine. Strat&eacute;gie "missiles balistiques" : tout pr&eacute;parer maintenant pour ne plus avoir qu'&agrave; piloter en bossant. <strong>Objectif maintenu : 5K&euro; de b&eacute;n&eacute;fice net en juin</strong> (pari resto-chez-Harry sign&eacute; le 18/05).</p>
+        <blockquote>
+        <p><em>"Je vois &ccedil;a comme une cave o&ugrave; je mets tous mes missiles balistiques pour attaquer la campagne. Comme &ccedil;a il ne me restera plus qu'&agrave; la piloter."</em><br>&mdash; Anna</p>
+        </blockquote>
+      </div>
+
+      <!-- Chapitre 5 : Valentin catastrophe -->
+      <div class="chapter-section" id="ch-5">
+        <h2>5. Valentin &mdash; La catastrophe technique invisible <span class="ch-time-anchor">51:55</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/6-sitexw.png" alt=""><strong>Valentin</strong></span>
+          <span class="speaker-chip"><img src="avatars/2-mexicangola_35841.png" alt=""><strong>Anna</strong></span>
+          <span class="speaker-chip"><img src="avatars/4-victor_nouchet.png" alt=""><strong>Victor</strong></span>
+        </div>
+        <p><strong>J85/90 du d&eacute;fi 5K MRR.</strong> Rentr&eacute; il y a 3h de Center Park. Avait lanc&eacute; les pubs jeudi/vendredi puis <strong>coup&eacute;es en urgence</strong> apr&egrave;s avoir test&eacute; sa propre pub via le QR TikTok.</p>
+        <p><strong>Le bug invisible</strong> : le navigateur in-app TikTok est un Safari amput&eacute; &mdash; pas d'Apple Pay/Google Pay, pas de connexion rapide, PWA non fonctionnelle, micro non dispo (or son onboarding utilise un mode vocal). <strong>Friction au paywall ~99%.</strong></p>
+        <ul>
+        <li>Fix &agrave; distance depuis Center Park : ajout d'un message "ouvre dans Chrome" avant le paywall. Clic facile sur Android, beaucoup plus chiant sur iOS ("on est au Moyen-&Acirc;ge").</li>
+        <li>Code mis en ligne fin d'apr&egrave;s-midi, pubs relanc&eacute;es 1h avant le call.</li>
+        <li>Premiers chiffres : 11K impressions / 312 clics. <strong>CTR 2,82</strong> sur les contenus OneStepia officiels, <strong>5,9&ndash;6,45</strong> sur les UGC IA Anna (peu de budget allou&eacute;). Conversion sur paywall : 0/312.</li>
+        <li>TikTok proposait <strong>9 centimes</strong> par d&eacute;faut en cost cap &rarr; pass&eacute; en mode automatique, plus modifiable.</li>
+        </ul>
+        <blockquote>
+        <p><em>"Le navigateur in-app TikTok c'est de la grosse merde. Pas d'Apple Pay, pas de Google Pay, pas de connexion rapide, pas de PWA, pas de micro. La friction au paywall, elle est &agrave; 99%."</em><br>&mdash; Valentin</p>
+        </blockquote>
+      </div>
+
+      <!-- Chapitre 6 : Débat orga vs payant -->
+      <div class="chapter-section" id="ch-6">
+        <h2>6. Le d&eacute;bat organique vs payant <span class="ch-time-anchor">1:04:50</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/1-gingblueapp.png" alt=""><strong>Mathis</strong></span>
+          <span class="speaker-chip"><img src="avatars/9-garenherve.png" alt=""><strong>Pierre-Louis</strong></span>
+          <span class="speaker-chip"><img src="avatars/2-mexicangola_35841.png" alt=""><strong>Anna</strong></span>
+          <span class="speaker-chip"><img src="avatars/6-sitexw.png" alt=""><strong>Valentin</strong></span>
+          <span class="speaker-chip"><img src="avatars/4-victor_nouchet.png" alt=""><strong>Victor</strong></span>
+        </div>
+        <p>Question lanc&eacute;e par Mathis. Quatre voix, quatre angles :</p>
+        <ul>
+        <li><strong>Pierre-Louis</strong> d&eacute;fend la double approche : pendant les 5 jours o&ugrave; une ad cherche sa cible, faire 3 contenus organiques pour la semaine. <em>"100&nbsp;000 vues sur un post, c'est beaucoup d'argent gagn&eacute;."</em></li>
+        <li><strong>Anna</strong> d&eacute;mine : 80% de ses pubs sont aussi pos&eacute;es en organique, mais elles tournent &agrave; 500 vues. Ce qui convertit c'est le pay&eacute;. <em>"La viralit&eacute;, c'est un coup de chance. On peut pas asseoir un projet l&agrave;-dessus."</em></li>
+        <li><strong>Valentin</strong> : <em>"L'organique c'est lent. Dans un challenge de 3 mois, tu ne peux pas. Tu dois faire tout en m&ecirc;me temps."</em></li>
+        <li><strong>Victor</strong> raconte le contre-exemple. <strong>Allo AI</strong> (filtres photo similaires &agrave; BestCreator) avait un format viral : "After pranking my dad that the gas price is at 2$" &mdash; le mec a bourrin&eacute; ce format pendant 6 mois en changeant juste l'image. <strong>300K MRR.</strong> Mais via 10&nbsp;000 cr&eacute;ateurs pay&eacute;s, agence type <strong>Plutus Media</strong> &agrave; 25K&euro;. Verdict : capital ou exp&eacute;rience pr&eacute;alable, sinon pi&egrave;ge.</li>
+        </ul>
+        <p>Pour <strong>Pierre-Louis</strong> et <strong>Livio</strong>, l'organique est coh&eacute;rent (audience d&eacute;j&agrave; en place ou niche apprentissage). Pour <strong>Anna</strong> et <strong>Valentin</strong>, pay&eacute; uniquement.</p>
+      </div>
+
+      <!-- Chapitre 7 : Pierre-Louis Pixelio -->
+      <div class="chapter-section" id="ch-7">
+        <h2>7. Pierre-Louis &mdash; Pixelio est en ligne <span class="ch-time-anchor">1:22:30</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/9-garenherve.png" alt=""><strong>Pierre-Louis</strong></span>
+          <span class="speaker-chip"><img src="avatars/3-harryjmg.png" alt=""><strong>Harry</strong></span>
+          <span class="speaker-chip"><img src="avatars/4-victor_nouchet.png" alt=""><strong>Victor</strong></span>
+        </div>
+        <p><strong>Pixelio valid&eacute; par Apple ET Play Store</strong> (le 22/05). Premier rejet Apple sur les IAP : 3 abonnements avec la m&ecirc;me ic&ocirc;ne &rarr; il fallait 3 ic&ocirc;nes diff&eacute;rentes.</p>
+        <ul>
+        <li><strong>Plan de lancement organique</strong> : 1<sup>er</sup>&nbsp;juin annonce dans la newsletter, 2 juin posts CTA discrets sur ses <strong>~100K abonn&eacute;s Instagram + YouTube</strong> (cr&eacute;ateur de contenu organisation/dev perso depuis plusieurs ann&eacute;es).</li>
+        <li>Cette semaine = peaufiner : cartes achievement holographiques (3D au clic), animation perso. Backlog : feature sociale type Helldivers (missions communautaires).</li>
+        <li>Inspirations : <strong>Finch</strong> (concurrent direct, plusieurs millions/mois), <strong>Habitica</strong> (open source pixel art mais moche &mdash; <em>"il y a un march&eacute;"</em>).</li>
+        <li>Personnage personnalisable : 6 nuances de peau, barbe + cheveux unisexes (<em>"je suis inclusif"</em>). Travail &agrave; 3 sur l'app depuis janvier.</li>
+        </ul>
+        <p><strong>Bug rep&eacute;r&eacute; en live par Harry</strong> sur l'onboarding : <em>"Le fond est clair, et je vois presque pas les ic&ocirc;nes d'iPhone en haut. J'avais le m&ecirc;me probl&egrave;me dans mon app cet apr&egrave;s-midi."</em></p>
+        <p><strong>Objectif maintenu : 1000&euro; en juin.</strong></p>
+      </div>
+
+      <!-- Chapitre 8 : Livio -->
+      <div class="chapter-section" id="ch-8">
+        <h2>8. Livio &mdash; VocabRecall publi&eacute;, premi&egrave;res pubs <span class="ch-time-anchor">1:48:30</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/7-fenrurr.png" alt=""><strong>Livio</strong></span>
+          <span class="speaker-chip"><img src="avatars/2-mexicangola_35841.png" alt=""><strong>Anna</strong></span>
+          <span class="speaker-chip"><img src="avatars/4-victor_nouchet.png" alt=""><strong>Victor</strong></span>
+          <span class="speaker-chip"><img src="avatars/6-sitexw.png" alt=""><strong>Valentin</strong></span>
+        </div>
+        <p><strong>Publi&eacute; sur l'App Store</strong> jeudi (validation Apple 36h). 6 mois apr&egrave;s son retour des Philippines, 2 mois de dev + 3 mois infernaux de refonte UX avec un pote. Stack Capacitor + PostHog (parcours utilisateurs en clair). <em>"Petite baisse de motivation il y a un mois &mdash; je me suis remis au sport, et l&agrave; il y a 15 jours j'ai dit bon, c'est fini, plus qu'&agrave; int&eacute;grer."</em></p>
+        <ul>
+        <li>Concept : <strong>focus vocabulaire anglais pour francophones</strong> (vs Duolingo qui couvre tout). Une &agrave; deux concurrents, "qu'elles sont nulles".</li>
+        <li>Astuce sombre pour les membres : <em>"&agrave; la fin du paywall, cliquez 10 secondes sur le renard, &ccedil;a vous donne l'acc&egrave;s."</em></li>
+        <li>Pas du tout user TikTok &agrave; la base : <em>"Je n'ai pas l'&oelig;il, je commence &agrave; m'y faire tous les jours."</em></li>
+        <li>Reco convergente Anna + Victor : chopper des <strong>micro-cr&eacute;ateurs (2000 followers)</strong> dans la niche, packs de 5 vid&eacute;os &agrave; 20-30&euro;. Outil partag&eacute; par Victor : <strong>lightreal.ai</strong> (LLM connect&eacute; &agrave; une base TikTok pour trouver les viraux par niche).</li>
+        </ul>
+        <p><strong>Objectif acté devant Harry : 20 clients &agrave; 50&euro;/an = 1000&euro; CA fin juin.</strong></p>
+        <blockquote>
+        <p><em>"Chope des micro-cr&eacute;ateurs dans ta niche (2000 followers). Tu leur fais des packs de 5 vid&eacute;os pour 20-30&euro;. &Ccedil;a fait pas pub, c'est naturel. Mieux que tu fasses 100 carousels toi-m&ecirc;me qui marchent pas en pay&eacute;."</em><br>&mdash; Anna &agrave; Livio</p>
+        </blockquote>
+      </div>
+
+      <!-- Chapitre 9 : Après le départ d'Harry -->
+      <div class="chapter-section" id="ch-9">
+        <h2>9. Apr&egrave;s le d&eacute;part d'Harry &mdash; Webview, A/B testing, Apple Connect <span class="ch-time-anchor">2:28:05</span></h2>
+        <div class="speakers">
+          <span class="speaker-chip"><img src="avatars/6-sitexw.png" alt=""><strong>Valentin</strong></span>
+          <span class="speaker-chip"><img src="avatars/7-fenrurr.png" alt=""><strong>Livio</strong></span>
+          <span class="speaker-chip"><img src="avatars/4-victor_nouchet.png" alt=""><strong>Victor</strong></span>
+        </div>
+        <p>Harry et Anna partent vers 23h30. Victor reste jusqu'&agrave; minuit. Le call se finit &agrave; 3 puis &agrave; 2 sur des sujets techniques :</p>
+        <ul>
+        <li><strong>Apple Connect</strong> : Livio a utilis&eacute; le <strong>MCP Chrome de Claude</strong> pour automatiser les formulaires &mdash; Claude prend des screens, clique, remplit tout seul. <em>"Mode Cloud effort max, je lui ai dit cherche les guidelines, il a tout fait."</em></li>
+        <li><strong>WebView risk</strong> : Apple semble vouloir d&eacute;gager les apps "site web d&eacute;guis&eacute;". Architecture Capacitor avec code encapsul&eacute; devrait passer.</li>
+        <li><strong>A/B testing PostHog Experiments</strong> : Valentin a configur&eacute; 3 variantes d'onboarding servies dynamiquement, PostHog &eacute;quilibre puis pond&egrave;re vers la variante gagnante.</li>
+        <li><strong>EAS Update / Capacitor cloud</strong> : pousser des MAJ de code &agrave; distance sans repasser par les stores. <em>"Tu profites des deux mondes, l'app est encapsul&eacute;e pour de vrai mais tu peux faire les MAJ en arri&egrave;re-plan."</em></li>
+        </ul>
+      </div>
 
       <hr>
-      <h2>1. Mathis — DailyCore, autodidacte fan de la chaîne</h2>
-      <p>Premier arrivé sur le call, premier à se présenter. <strong>DailyCore</strong> est une app 3-en-1 nutrition / fitness / organisation, avec un avatar emoji qui accompagne l'utilisateur. STI 2D au lycée, dev en autodidacte sur Xcode/Swift, "lancé dans l'iOS depuis avril dernier en même temps que toi" (à Harry — il a suivi ses vidéos YouTube en parallèle). Sur l'App Store, encore aucun Android.</p>
-      <h3>Les chiffres au tableau</h3>
-      <ul>
-      <li>4 campagnes TikTok cumulées pour <strong>~1600&euro;</strong> depuis décembre.</li>
-      <li>3000 utilisateurs cumulés, 4 clients payants, <strong>~10 actifs/jour</strong>.</li>
-      <li>Première campagne (10 jours, pas d'onboarding) : 500 users / 500&euro;, peu d'essais.</li>
-      <li>Janvier-février : volumes installs OK mais trial→paid trop faible.</li>
-      <li>Avril : <em>"j'ai enlevé les jeunes de l'audience"</em> — <strong>2 clauses sur 8 trials</strong>, premier vrai signe.</li>
-      </ul>
-      <h3>Le diag honnête de Mathis</h3>
-      <ul>
-      <li>"Je laisse les campagnes une semaine à 50&euro;/jour puis je coupe. J'aurais dû les laisser beaucoup plus longtemps et optimiser les créatifs."</li>
-      <li>App a craché plusieurs fois en avril, dernière maj pushed à Apple récemment.</li>
-      <li>Sur la photo de plat copiée de Kalei, qu'il vient juste d'ajouter : <em>"Au début je voulais un système de commande vocale, parce que prendre la photo me faisait chier. Mais c'est visuel, c'est facilement marketable, j'étais obligé."</em></li>
-      </ul>
-      <h3>Le verdict du groupe : "tes notes sont propres, t'es mieux que nous"</h3>
-      <p>Anna en regardant la fiche App Store : <em>"57 notes à 4,5&star;, ouais ça a l'air vraiment propre quoi. T'es mieux que nous, hein."</em> Plus tard dans le call, Mathis pose la question des budgets — Victor répond : "30&euro;/jour, je pense pas du tout, 50&euro; minimum en France, 300$/jour sur les US d'après les e-commerçants".</p>
+
+      <!-- Pouls Discord (annexe) -->
+      <h2>Pouls Discord de la semaine</h2>
+      <p style="padding:14px 18px;background:var(--dark-subtle);border-radius:8px;font-size:14px;color:var(--text-light);border-left:2px solid var(--accent);"><strong>Trois personnes arriv&eacute;es sur le Discord cette semaine</strong> : Est&eacute;ban (19/05, mood tracking), Victor (19/05, contr&ocirc;le parental), Mathis (25/05 &agrave; 16h31, jour du call). Tous pr&eacute;sents au call le soir m&ecirc;me. <strong>Anna &amp; Florent</strong> ont publi&eacute; un plan d&eacute;taill&eacute; dans le thread Booknova le 21/05 (leviers : prix, paywall A/B, scaling, UGC Th&eacute;a/Jade/Luna, promos th&eacute;matiques) &mdash; c'est ce qu'on entend au call. <strong>Noah</strong> est en voyage 3 semaines, premier post sur ads en 2 semaines (25/05) : "rentable mais pas &eacute;norm&eacute;ment, beaucoup de refunds &eacute;tonnants", va relancer. <strong>Krisskool</strong> a migr&eacute; sur Codex (GPT-5.5 plan Plus) &mdash; Victor confirme l'utiliser aussi dans Xcode. <strong>Sylvain</strong> en pause Discord cette semaine ("En mode pause alors moi pas 😉"). <strong>Harry</strong> publie la <a href="/appsociety/presentations/booknova-5k/" style="color:var(--accent);">premi&egrave;re &eacute;tude de cas App Society</a> (Anna &amp; Florent) le 20/05.</p>
 
       <hr>
-      <h2>2. Estéban — Pixel Journal, les premiers payants qui rentrent</h2>
-      <p>Vient de <strong>Coding Accelerator</strong>. <strong>Pixel Journal</strong> est un mood tracker où un pixel par jour remplit ton année — design pixel art, plusieurs trackers, statistiques de corrélations. 4 mois de dev avec son frère (futur graphiste), sur l'App Store depuis 1-1,5 mois. React Native + Codex.</p>
-      <h3>Les deux switchs qui ont tout changé (il y a 2-3 jours)</h3>
-      <ul>
-      <li><strong>Anglais → français</strong> sur ses ads TikTok ("par défaut j'avais fait en anglais, ça ne marchait pas du tout").</li>
-      <li><strong>Vidéos → carousels</strong>, après avoir vu une vidéo d'Harry qui parlait de ses carousels avec sa créatrice UGC. <em>"J'ai essayé un carousel équivalent avec mon app et ça a pas mal marché. Et j'avais d'autres carousels que je ne mettais pas en pub, et qui ont aussi marché."</em> — Harry : <em>"Ouais, Clara."</em></li>
-      <li>Les premiers payants entrent (annuels surtout, le mensuel est 2&times; plus cher). <em>"Pas encore ultra rentable, mais on n'est pas loin."</em></li>
-      </ul>
-      <h3>L'engagement public devant Anna : 1000&euro; pour le 1<sup>er</sup>&nbsp;juin</h3>
-      <p>Harry pousse l'engagement : <em>"Est-ce que t'as un objectif ? Dans trois mois, deux mois, un mois ?"</em> Estéban réfléchit : <em>"D'ici un mois, oui&hellip; avoir 1000&euro; de bénéfice."</em> — Harry : <em>"Allez, 1000&euro; de bénéfice en juin&nbsp;!"</em> Estéban acquise. Anna réagit : <em>"Oui, il est ouf, je suis persuadée que tu peux. Ton truc est hyper visuel, satisfaisant avec les carrés."</em> Et l'argument-clé sur le marketing comme apprentissage : <em>"Une école de marketing, ça te coûte 15000 balles par an. Toi, tu es en train d'apprendre ce que quelqu'un, après 5 ans d'école de marketing, ne fait pas. C'est de l'investissement."</em></p>
 
-      <hr>
-      <h2>3. Victor — Le marketer growth qui ramène la perspective Meta</h2>
-      <p>Le profil le plus original arrivé dans le groupe. Background Growth Engineer (data + marketing). Lisbonne (Portugal) depuis fin 2023, gère ses boîtes via Stripe Atlas (LLC US). 6 mois dans les apps. Pas dev de base : <em>"C'est pas que je donne et je comprends rien, je vois quand même ce qui se passe. Mais sans l'IA, j'aurais été incapable de le faire."</em></p>
-      <h3>La story BestCreator (octobre → mars)</h3>
-      <ul>
-      <li>App de filtres photo IA (LinkedIn pro, dating, fun) avec funnel web Lovable + Meta. Tâtonnements au début, quelques leads.</li>
-      <li><strong>Format viral animaux pour Halloween</strong> (transformer ton chat/chien en sorcière) : les leads explosent. Capture email = lead. Mais conversions email = 0.</li>
-      <li><strong>Noël : objectif passé de lead à subscribe.</strong> <em>"Là où ça a vraiment pété. En un mois, on a un abonnement à 7,99$/semaine, trial 3 jours, ciblage Facebook Moms 45+ US."</em> <strong>0 → 10K MRR en un mois.</strong></li>
-      <li>Saint-Valentin : se refait sur Meta mais reste à l'équilibre (1-pour-1) après 2-3 rebills, pas scalable.</li>
-      <li>Verticalisation animaux : nouvelle app sortie fin février, plan organique TikTok. <strong>Énorme fail.</strong> 3-4 vidéos/jour pas suffisant : <em>"pour l'organique, faut en faire 100 par jour, pas 3-4. Sinon c'est juste un coup de chance."</em></li>
-      <li>Rupture d'associé (lui faisait 90% du job pour 10% de parts). Ferme la boîte FR, freelance en parallèle.</li>
-      </ul>
-      <h3>Pivot contrôle parental (US, fin août cible)</h3>
-      <ul>
-      <li>Inspiration : <strong>Life360</strong> (80M$/mois — Harry a partagé le podcast dans #général ce matin). FindMyKids comme autre référence.</li>
-      <li>MVP minimaliste : <strong>juste donner le temps d'écran de l'enfant aux parents</strong>. Apple/Google galère pour cette feature simple → angle "simplicité" + onboarding très long pour score de risque temps d'écran.</li>
-      <li>Modèle de prix très élevé : <strong>13&euro;/semaine, 60&euro;/6 mois.</strong> Levier psychologique : la peur pour ses enfants.</li>
-      <li>Objectif : sortir l'app fin juin, faire du revenu fin août.</li>
-      </ul>
-      <h3>L'apport spécifique Meta dans le groupe</h3>
-      <p>Sur ce call, le groupe est full TikTok (à part Harry qui a testé Meta). Victor : <em>"Sur Meta, en dessous de 300$/jour aux US, tu n'existes pas, en face on a Temu et Shein qui dépensent 3 milliards par an."</em> Et sur les ADS qu'il faut faire vivre : <em>"Si tu dépenses 20€/jour pendant 5 jours, ça fait 100€. Mais si tu dépenses 50€/jour pendant 2 jours, t'as le même apprentissage. T'as juste gagné du temps."</em> Le ticket d'entrée TikTok pour Mathis (qui mettait 30&euro;) et Livio : <strong>50&euro;/jour minimum si tu veux apprendre quelque chose</strong>.</p>
-
-      <hr>
-      <h2>4. Pierre-Louis — Pixelio est en ligne</h2>
-      <p><strong>Validée par Apple et Play Store</strong> (Apple a recalé au premier coup sur les IAP : 3 abonnements avec la même icône → il fallait 3 icônes différentes). L'app dispo depuis quelques jours, encore sans communication officielle.</p>
-      <h3>Le plan de lancement organique</h3>
-      <ul>
-      <li>1<sup>er</sup>&nbsp;juin : annonce dans sa newsletter, début de la communication.</li>
-      <li>2 juin : posts avec call-to-action discret sur ses ~100K abonnés Instagram + YouTube (créateur de contenu organisation/dev perso, plusieurs années d'audience). <em>"Le marketing pour moi, je me dis que ça va."</em></li>
-      <li>Cette semaine = peaufiner les détails : cartes achievement holographiques (3D au clic), finition pixel art, animation du personnage qui dit bonjour.</li>
-      <li>Backlog futur : feature sociale ("voir les quêtes de tes amis"), inspiration <strong>Helldivers</strong> (missions communautaires un million de pas) — Harry : <em>"Remplir la cagnotte."</em></li>
-      </ul>
-      <h3>Bug repéré en live par Harry sur l'onboarding</h3>
-      <p>Harry pendant que Pierre-Louis parle : <em>"Le fond est clair, et je vois presque pas les icônes d'iPhone en haut. J'avais le même problème dans mon app cet après-midi. C'est en imprompte, c'est réglé, tu vois."</em> Pierre-Louis encaisse : <em>"Ouais, t'as raison. On ne voit plus la batterie, tout ça, c'est un peu chiant."</em></p>
-      <h3>Le pixel art comme avantage différenciant</h3>
-      <ul>
-      <li>Inspiration assumée : Finch (concurrent qui fait plusieurs millions/mois). <em>"Il y a un mec sur Insta qui disait qu'il y a plein de gens qui font à peu près comme moi. Mais pas beaucoup qui ont poussé le pixel art aussi fort. Ça peut être un avantage au moins pour les contenus."</em></li>
-      <li>Habitica fait aussi du pixel art habit tracker — open source, peu de revenus, "qu'est-ce que c'est moche". Il y a un marché.</li>
-      <li>Anna confirme : <em>"Le pixel art, ça a l'air simple comme ça mais c'est très difficile à faire. Ça prend énormément de temps. Tu as un vrai langage graphique, ça c'est une vraie qualité."</em></li>
-      <li>Travail à 3 (lui + frère + ami) sur l'app depuis janvier. <em>"On a refait tous les personnages, on s'est pris la tête sur les détails pendant longtemps."</em> Inclus : personnalisation persoonnage albino → noir (6 nuances), barbe + cheveux unisexes (<em>"je suis inclusif"</em>).</li>
-      </ul>
-
-      <hr>
-      <h2>5. Livio — VocabRecall publié, premières pubs cette semaine</h2>
-      <p>Publié sur l'App Store la semaine dernière (validation Apple 36h). Stack Capacitor + PostHog. <em>"Petite baisse de motivation il y a un mois — je me suis remis au sport, et là il y a 15 jours j'ai dit bon, c'est fini, plus qu'à intégrer."</em></p>
-      <h3>Le concept et la niche</h3>
-      <ul>
-      <li>Anglais pour les français, focus <strong>vocabulaire</strong> (vs Duolingo qui fait tout). <em>"En tant que français, on sait faire une question, une affirmation, composer une phrase. Ce qui te manque c'est cibler le vocabulaire."</em></li>
-      <li>Trois fonctionnalités : (1) base de connaissance où tu ajoutes tes mots ou choisis dans les plus fréquents, (2) quiz intelligent qui évalue ton niveau et ressort les mots à apprendre, (3) sections thématiques (TOEIC, TOEFL, voyage, etc.).</li>
-      <li>Une à deux concurrents identifiés, <em>"qu'elles sont nulles"</em>. Verdict du groupe : niche défrichée.</li>
-      </ul>
-      <h3>L'astuce technique pour les membres</h3>
-      <p><em>"Si vous voulez l'accès gratuit, à la fin du paywall, vous cliquez 10 secondes sur le renard et ça vous passe à la connexion direct."</em> Une "technique sombre" pour le groupe — Valentin amusé : <em>"C'est un peu border."</em></p>
-      <h3>Le contenu, sa zone de mal aisé</h3>
-      <ul>
-      <li>Né en 2001 mais pas du tout user TikTok. <em>"Je n'ai pas l'œil, je commence à m'y faire tous les jours."</em></li>
-      <li>Anna et Victor convergent sur la même reco : <strong>chopper des micro-créateurs (2000 followers) dans la niche</strong>, ne pas chercher la viralité (<em>"on ne peut pas asseoir un projet sur un coup de chance"</em> — Anna). Pour 20-30&euro;, leur demander des packs de 5 vidéos.</li>
-      <li>Format viral suggéré (idée du call) : <em>"POV t'es bourré, ton collègue te dit 'comment on dit lampadaire en anglais ?' — vas-y, clique."</em></li>
-      <li>Outil partagé par Victor : <strong>lightreal.ai</strong>, LLM connecté à une base TikTok pour trouver les viraux par niche, évite de scroller à l'aveugle.</li>
-      </ul>
-      <h3>L'objectif acté devant Harry avant qu'il parte</h3>
-      <p><strong>20 clients à 50&euro;/an pour fin juin — soit 1000&euro; de CA.</strong> Harry : <em>"20 users c'est pas vrai, c'est 20 clients. Et quand tu dis 1000&euro; de CA, c'est tout de suite plus ambitieux."</em></p>
-
-      <hr>
-      <h2>6. Valentin — La catastrophe technique du navigateur TikTok</h2>
-      <p><strong>J85/90 du défi 5K MRR.</strong> Rentré il y a 3h d'un week-end à Center Park, allume la cam pour mettre de l'ambiance. Avait lancé les pubs jeudi/vendredi puis les a <strong>coupées en urgence</strong> après s'être testé lui-même.</p>
-      <h3>Le bug invisible</h3>
-      <ul>
-      <li>Méthode du QR code TikTok : tu te scannes ta propre pub, tu swipes 3-4 fois et tu tombes dessus. Valentin clique, et là <strong>la décadence</strong>.</li>
-      <li>Le navigateur in-app TikTok est un Safari/Chrome amputé : <strong>pas d'Apple Pay ni Google Pay, pas de connexion rapide Apple/Google, PWA non fonctionnelle, micro non dispo</strong> (or son onboarding utilise un mode vocal).</li>
-      <li>Friction au paywall : <strong>~99%.</strong> Et Valentin a tout cru tester sur Claude : <em>"Claude n'avait pas l'air d'être choqué, donc je n'avais rien vu."</em></li>
-      </ul>
-      <h3>Le fix à distance depuis Center Park</h3>
-      <ul>
-      <li>Ajout d'un message juste avant le paywall : <em>"Pour profiter du maximum des fonctionnalités, ouvre dans Chrome."</em></li>
-      <li>Android = 1 clic (super propre). iOS = chiant (3 petits points en haut puis "Ouvrir dans le navigateur"), <em>"on est au Moyen-Âge"</em>.</li>
-      <li>Code mis en ligne fin d'après-midi, relancé les pubs il y a 1h.</li>
-      </ul>
-      <h3>Premiers chiffres (très tôt)</h3>
-      <ul>
-      <li>11K impressions, 312 clics. <strong>CTR moyen à 2,82.</strong> Anna : <em>"À partir de 1,2 je suis contente."</em></li>
-      <li>Carousels OneStepia (compte officiel) — TikTok a mis toute la thune dessus, CTR moyen mais "rien à se mettre sous la dent".</li>
-      <li>Carousels UGC IA Anna (4 sur 6) — <strong>CTR à 5,9 / 4 / 5,4 / 6,45</strong> mais peu de budget alloué. <em>"J'avais envie de le tarter, frérot, les autres testez-le."</em></li>
-      <li>Conversion sur paywall : 0 sur 312 clics. <em>"J'ai eu une meuf qui a fait le truc jusqu'au bout, qui s'est arrêtée à la donne ses tâches."</em> (donc bloquée par le mode vocal, lui aussi).</li>
-      </ul>
-      <h3>L'enchère cost cap par défaut à 9 centimes</h3>
-      <p>TikTok proposait <strong>9 centimes</strong> par défaut sur l'enchère. <em>"Avec Claude on s'est regardé, ça paraissait beaucoup trop bas. Donc j'ai activé le mode automatique. Tu ne peux pas le modifier ensuite, faut ken la campagne ou l'ad group."</em></p>
-
-      <hr>
-      <h2>7. Anna &amp; Florent — Scaling, augmentation des prix, retour à l'intérim</h2>
-      <p>Pas de tour de table en début de call (Anna avait déjà parlé avant l'arrivée d'Harry), mais la session est ponctuée par leurs interventions. La semaine n'a pas été clean.</p>
-      <h3>Les chiffres "pas content"</h3>
-      <ul>
-      <li>Campagne passée de 30 → <strong>55&euro;/jour</strong>, objectif <strong>80&euro;/jour</strong> début juin (calcul fait avec Harry).</li>
-      <li>Première campagne tournait à <strong>20 centimes l'install</strong> (Victor : <em>"C'est pas cher du tout"</em>). Cette semaine, ~30 centimes après ajout des nouveaux créatifs.</li>
-      <li>Théa, sa créatrice principale : moins de bangers que Clara pour Harry, <em>"elle est plus instable, je vais devoir trouver d'autres créateurs"</em>.</li>
-      <li>Plan : <strong>lancer 2 campagnes en parallèle</strong> (iOS et Android), répartir budget sur les nouveaux UGC qui ont marché sur Android.</li>
-      </ul>
-      <h3>Les leviers prix qui se déclenchent cette semaine</h3>
-      <ul>
-      <li>Annuel : 35&euro; → <strong>49&euro;</strong>. Paywall secondaire : 25&euro; → 35&euro;.</li>
-      <li>Mensuel : 6,99 (premier paywall) et 4,99 (secondaire). Victor : <em>"Je trouve ça bas."</em></li>
-      <li><strong>A/B test sur 3 paywalls</strong> (Anna : <em>"Mon paywall actuel fait gamin, je n'avais jamais dessiné un paywall."</em>).</li>
-      <li>Promos thématiques rigolotes en mode <em>"profite de la Journée Martin Luther King pour&hellip;"</em>.</li>
-      </ul>
-      <h3>L'idée Victor : l'abonnement à la semaine</h3>
-      <ul>
-      <li>Victor pousse fortement : <em>"Tu mets ton mensuel en weekly. Le mec voit '7&euro;/semaine vs 49&euro;/an', l'annuel paraît un super deal."</em></li>
-      <li>Levier secondaire : si la personne reste 2-3 semaines, t'as déjà l'équivalent de 3 mois de mensuel.</li>
-      <li>Anna intriguée : <em>"En vrai, peut-être que c'est pas con."</em> Mais reconnaît : <em>"On change trop de choses en même temps. On va y aller petit à petit."</em></li>
-      </ul>
-      <h3>Le contexte qui change tout</h3>
-      <p>Anna lâche en fin de séquence : <em>"Faut que je reprends le travail. Je peux pas me permettre de ne pas travailler, malheureusement."</em> Intérim, à partir de cette semaine. Stratégie : <em>"Je vois ça comme une cave où je mets tous mes missiles balistiques pour attaquer la campagne. Je fais tout pour bien la fournir, comme ça il ne me restera plus qu'à la piloter."</em> Harry : <em>"Ça marche. Bon, force à vous."</em></p>
-
-      <hr>
-      <h2>8. Le débat organique vs payant (porté à 4 voix)</h2>
-      <p>Question lancée par Mathis. Pierre-Louis défend la double approche : <em>"Pendant les 5 jours où ton ad cherche sa cible, tu peux très bien faire 3 contenus pour ta semaine que tu vas mettre sur Insta TikTok. De la pub gratuite. Si tu fais 100&nbsp;000 vues sur un post, c'est beaucoup d'argent gagné."</em></p>
-      <p>Anna démine : <em>"80% de mes pubs, tout est posté en organique d'abord, c'est juste que mes trucs en organique tournent autour des 500 vues, ça marche jamais. Mais quand je les pousse en pub, ça convertit. Ce qui m'intéresse c'est les bangers en payé. La viralité, c'est un coup de chance, tu ne peux pas asseoir ton projet là-dessus."</em></p>
-      <p>Valentin enfonce : <em>"L'organique c'est lent, il faut l'accepter. Dans un challenge de 3 mois, je me voyais pas. Tu peux pas faire tout en même temps."</em></p>
-      <p>Victor raconte le contre-exemple. <strong>Allo AI</strong> (filtres photo similaires à BestCreator) avait un format viral : "After pranking my dad that the gas price is at 2$" → photo du poisson de compagnie dans une casserole. Le mec a <strong>bourriné ce format pendant 6 mois</strong>, juste en changeant l'image de base. <strong>300K MRR</strong>. Mais via 10000 créateurs payés, agence (genre <strong>Plutus Media</strong> à 25K&euro;). Verdict : capital de départ énorme OU expérience préalable. Sinon : <em>"si tu pars de zéro et que tu n'as pas d'expérience, comme moi j'ai fait, tu as de grandes chances de te casser la gueule."</em></p>
-      <p>Pour <strong>Pierre-Louis</strong>, l'organique est cohérent car il a déjà une audience qui lui correspond (~100K dev perso). Pour <strong>Livio</strong>, l'organique est pertinent vu sa niche apprentissage (Victor : <em>"sur ces app-là, c'est typiquement ce qui marche le mieux"</em>). Pour <strong>Anna et Valentin</strong>, payant uniquement.</p>
-
-      <hr>
-      <h2>9. La fin du call : Valentin, Livio et Victor en mode technique</h2>
-      <p>Harry et Anna partent vers 23h30. Victor reste jusqu'à minuit. Le call se finit à 3 (Valentin + Livio + Victor) puis 2 (Valentin + Livio) sur des sujets techniques précis :</p>
-      <ul>
-      <li><strong>Apple Connect</strong> : Pierre-Louis et Valentin partagent les pièges (langue du groupe d'abonnement, intitulés des plans, etc.). Livio : <em>"J'ai mis Cloud en effort max, je lui ai dit cherche les guidelines, et il m'a tout fait tout seul."</em></li>
-      <li><strong>MCP Chrome de Livio</strong> : il a connecté Claude à son navigateur Chrome — Claude prend des screens, clique, fait les formulaires Apple tout seul.</li>
-      <li><strong>WebView risk</strong> : Apple semble vouloir dégager les apps qui sont "un site web déguisé". Valentin et Livio s'inquiètent, mais leur architecture (Capacitor avec code encapsulé) devrait passer.</li>
-      <li><strong>A/B testing PostHog Experiments</strong> : Valentin a configuré 3 variantes d'onboarding qui peuvent être servies dynamiquement, PostHog équilibre puis pondère vers la variante gagnante.</li>
-      <li><strong>EAS Update / Capacitor cloud</strong> : pour pousser des mises à jour de code à distance sans repasser par les stores. <em>"Tu profites des deux mondes, l'app est encapsulée pour de vrai mais tu peux faire les MAJ en arrière-plan."</em></li>
-      </ul>
-      <h3>Le déclic chiffres cette semaine</h3>
-      <ul>
-      <li>5 mois en mode "à l'oreille", à laisser tourner sans piloter. <em>"Je pense qu'on réussissait à être rentable malgré ça, c'est pour ça qu'on n'avait jamais optimisé."</em></li>
-      <li>Cette semaine, premier vrai pilotage : <strong>tableaux de chiffres, désactivation des créatifs "petits poulains"</strong> que l'algo TikTok pousse mais qui ne convertissent pas, campagne manuelle Android à 30€/jour.</li>
-      <li>Résultat : <strong>10-15 trials/jour</strong> (vs 3-4 avant), <strong>ROAS x3</strong>, trial→paid à <strong>40 %</strong> (37/39/41/37/42 sur les 5 derniers jours, "au-dessus des benchmarks"). <strong>~5€ par essai gratuit.</strong></li>
-      </ul>
-      <h3>Le débat scale France vs Espagne</h3>
-      <ul>
-      <li>Plan initial d'Anna : passer à l'Espagne le mois prochain pour "allumer une autre poudre". Anglophone derrière.</li>
-      <li>Harry et Noah la cuisinent en direct : <em>"Vous avez une machine qui à chaque euro mis en sort trois. Augmentez juste le budget. Vous pouvez passer de 30 à 300 euros par jour, atteindre vos 10K MRR juste avec ça, et les rails sont déjà là."</em></li>
-      <li>Harry : <em>"Pourquoi tu penses que cette campagne est destinée à faire comme les autres ? Apprends à naviguer avec le courant. Il y a un courant qui t'emmène à gauche, à droite. Suis-le."</em></li>
-      <li>Anna se laisse convaincre : <em>"Là, on a les vents qui soufflent dans notre faveur, on a les dieux de l'algorithme TikTok qui sont avec nous. Cette semaine, je vais scale."</em></li>
-      </ul>
-      <h3>La trouvaille créative : l'opération Clara, version Anna</h3>
-      <ul>
-      <li>Anna a fini par contacter une créatrice TikTok native de la niche BookTok ("Théa") après s'être épuisée à faire ses propres vidéos (<em>"Cinq mois à faire mes morceaux toute seule, c'était insupportable"</em>).</li>
-      <li>Première vidéo livrée : Anna la déteste, ne comprend rien (<em>"je vais faire une crise épileptique, rien que de la voir"</em>). Elle la poste quand même : <strong>cartonne</strong>. 61 installs pour 123 clics, son meilleur ratio.</li>
-      <li>Reformulation par Harry, qui lui a vraiment lancé l'idée : c'est l'<strong>opération Clara</strong> (en référence à la créatrice qu'il avait découverte de la même manière en organique pour son app). Anna : <em>"Bah l'opération Clara, c'est toi qui m'avais dit ça au tout début. Je vois ça, je trouve ça dégueulasse — et c'est ça que les gens veulent."</em></li>
-      <li>Suggestion-clé d'Harry pour la suite : <strong>mettre un encart dans l'app</strong> "Vous voulez nous aider ?" avec formulaire pour récolter du UGC en flux continu de leurs propres utilisateurs (qui parlent déjà spontanément de l'app sur TikTok). Anna : <em>"Putain, c'est trop une bonne idée."</em></li>
-      </ul>
-      <h3>L'attribution : "j'étais sur TikTok SDK, ça fonctionnait"</h3>
-      <ul>
-      <li>Anna confirme le retour d'expérience d'Elyass : Tenjin a galéré, retour au <strong>SDK TikTok direct = nickel</strong>. <em>"De base, ça fonctionnait. Et je sais pas pourquoi tout le monde n'arrêtait pas de parler de Tenjin."</em></li>
-      <li>Harry : <em>"Trop bien, on a une preuve que le SDK TikTok fonctionne, elle est là."</em></li>
-      </ul>
-      <h3>Le cœur de la machine, c'est l'attachement</h3>
-      <p>Harry remercie Anna d'avoir <em>"amené le sujet de l'amour, de ce qu'on fait là sur la table"</em>. Anna développe : Booknova s'est construit avec ses utilisateurs (médailles évolutives style raton-laveur → méduse → arbre → lune, partage de collection, niveaux <em>fantasy</em>/<em>romance</em> qui se débloquent et racontent une histoire). <em>"Tu l'as fait avec tes tripes, t'as dessiné avec ton sang carrément les dessins"</em> — Harry. <em>"L'intérêt de faire la pub, c'est bien de faire la pub, mais ce qui fait qu'on va réussir, c'est qu'on n'a pas arrêté d'itérer l'app depuis le début."</em></p>
-
-      <hr>
-      <h2>2. Noah — Le retour explosif</h2>
-      <ul>
-      <li>Deux semaines après le pic du burnout, Noah revient en pleine forme : campagne lancée samedi soir 8 mai, <strong>2,82€ par new customer free trial</strong> (un peu moins en réalité parce qu'il y a des scans non comptés). <strong>Rentable en dessous de 3,7€.</strong></li>
-      <li>Bond paywall : 6 % → <strong>18,2 % de conversion</strong> après refonte.</li>
-      <li>Cancellation : 11-12 % trial→paid — gros levier identifié. A mis en place : <strong>widget réduction -50 % avec timer jusqu'à la fin du trial</strong>, streak journalier, quêtes journalières avec bonus de 2 minutes, notifs au choix de l'utilisateur.</li>
-      <li>Budget passé en direct pendant le call : <strong>40€ → 60€/jour</strong>. <em>"En vous écoutant j'ai augmenté pendant que vous parliez."</em></li>
-      <li>Harry tempère : <em>"Attends 7 jours entre chaque augmentation, pas 3. Plus le budget grandit, plus c'est un grand paquebot. Il y a des trucs qui se passent un peu plus mystiques au-dessus de 100€/jour."</em> Retour d'expérience perso : à 400€/jour fin 2025 il a augmenté trop vite, le coût par action a baissé sans qu'il comprenne où le mal s'était glissé.</li>
-      <li>Anna lui suggère <strong>les médailles évolutives style Pokémon</strong> et la <strong>monnaie interne</strong> pour s'acheter des skins en faisant des pompes (référence à l'app avocat de la copine d'Harry). Noah : <em>"J'ai pensé à faire ça, un shop avec les minutes gagnées."</em></li>
-      </ul>
-
-      <hr>
-      <h2>3. Valentin — Le combat avec la création de contenu IA</h2>
-      <ul>
-      <li>Démarre les ads <strong>vendredi 16 mai</strong> (en théorie 10 créatifs prêts, budget 20-30€/jour pour commencer "juste mettre le pied dedans").</li>
-      <li>Mascotte IA générée sur <strong>GPT Image 2</strong> qui marche bien (1053 vues sur le post Anna, un chiffre non-plafonné — signe que l'algo a mordu). Astuce qualité médiocre = authentique : flou de mouvement, flou directionnel, baisser les contrastes, <strong>iPhone 4</strong> dans le prompt. <em>"Si t'es en train de réfléchir où mettre le texte, c'est déjà trop. Ça veut dire que tu as travaillé l'image."</em></li>
-      <li>Rythme cible : 1 post/jour × 4 personas = <strong>28 créatives/semaine</strong> en automatique.</li>
-      </ul>
-      <h3>Le débat humain-vs-IA avec Harry et Anna</h3>
-      <ul>
-      <li>Anna lui répète plusieurs fois : <em>"Pourquoi t'acharner à faire des trucs IA alors que c'est trop dur ? Si tu demandais à ta copine de te trouver des créatrices..."</em></li>
-      <li>Valentin assume : <em>"Aller voir des gens, attendre qu'ils te répondent, c'est chiant. Je préfère parler avec les IA. Ça fait le mec chelou, mais je trouve ça plus facile."</em></li>
-      <li>Harry recadre : <em>"L'IA, c'est ton arme secondaire. C'est comme marcher sur une jambe sans avoir la deuxième. D'où vient le jeu créatif ? Toi tu prends les contenus de Clara — quelque part il y a un cerveau humain qui crée. Ce truc-là est essentiel pour encore longtemps."</em></li>
-      <li>Valentin reconnaît : pour l'instant il <strong>copie Clara directement</strong> (Claude analyse les 40 derniers posts de Clara, extrait 4 templates récurrents, génère en boucle). <em>"Tu n'inventes pas tes recettes, tu prends tes putains de recettes sur Marmiton."</em></li>
-      </ul>
-      <h3>"Mets ta vidéo où tu parles à ton chat"</h3>
-      <p>Anna a regardé son TikTok et a flashé sur une vieille vidéo où Valentin parle à One Step You en demandant <em>"rappelle-moi de nourrir mon chat"</em>. Insistance : <em>"Sincèrement, en payé, je suis sûre que celle-là va cartonner. Fais-moi confiance."</em> Valentin note.</p>
-
-      <hr>
-      <h2>4. Louka — La complexité de la personnalisation</h2>
-      <ul>
-      <li>Suite logique des retours du call précédent : la priorité = créer un attachement au personnage. Mais personnaliser tenue/coupe pour de vrai signifie refaire toutes les animations × tous les vêtements (perso = 8 animations × 6-9 frames sur sprite sheet).</li>
-      <li>Verdict du groupe, MVP 80-20 : <strong>laisser changer juste les couleurs</strong> (Eyesprite, le logiciel pixel art de Louka, le fait nativement). + 3-4 personnages prédéfinis comme alternative.</li>
-      <li>Valentin sur le minimum viable : <em>"Dès que la Game Boy te laissait choisir entre 3 Pokémon, tout le monde était content. Tu n'as pas besoin de plus."</em></li>
-      <li>Romain lui ouvre une autre voie : le <strong>LoRA training</strong> (entraîner un modèle d'image sur ses propres sprites pour générer de nouveaux assets cohérents avec son style). <em>"Le mec partait d'un dessin de contours et l'IA pondait l'illustration finale dans le bon univers."</em> À tester sur les nouveaux dungeon assets.</li>
-      <li>Astuce Valentin : <strong>arena.ai</strong> (= lmarena) permet de tester gratuitement GPT Image 2 et autres modèles en mode comparatif.</li>
-      <li>Harry recadre : si Louka a 20 images à faire et qu'il en a "le cerveau embouilli", payer quelqu'un sur Fiverr pour 20-30 € est l'option logique.</li>
-      </ul>
-
-      <hr>
-      <h2>5. Elyass — PostHog ✅, SDK TikTok en cours</h2>
-      <ul>
-      <li><strong>PostHog installé</strong> — l'engagement du 4 mai tenu (Harry : <em>"C'était pas le plus dur"</em> — Elyass : <em>"Clairement"</em>).</li>
-      <li>Maintenant sur le <strong>SDK TikTok</strong>, React Native. Code en place, events bien visibles en local et dans l'Event Manager TikTok, mais aucune conversion dans le dashboard. Test via QR code échoué, va passer en méthode manuelle.</li>
-      <li><strong>Campagnes en pause</strong> pendant l'attribution : <em>"pour pas perdre du temps et de l'argent et naviguer à l'aveugle"</em>.</li>
-      <li>Confirmation d'Anna (même chemin un mois plus tôt) : <strong>oublier Tenjin, rester sur SDK TikTok direct</strong>. Harry l'enregistre : <em>"On a une preuve que le SDK TikTok fonctionne, elle est là."</em></li>
-      </ul>
-
-      <hr>
-      <h2>6. Romain — La phase "cerveau en feu"</h2>
-      <p>Romain arrive après le départ d'Harry, en pleine transformation : ex-3D/graphisme, il découvre les <strong>skills Claude Code</strong> et bascule. Pas commencé l'app (deux mois ! "j'ai fait que des contenus TikTok et une fake app HTML pour les screens"), mais a passé deux semaines à automatiser sa génération de carousels.</p>
-      <h3>Son skill Python pour automatiser les carousels</h3>
-      <ul>
-      <li>Il a 50 images de figurines déjà créées → range par dossier (selfie, intérieur, capture téléphone) → skill applique la typo TikTok par-dessus (3 tailles, contours, mise en page) → carousel directement prêt à poster.</li>
-      <li>Méthode pour faire le skill : <em>"Au lieu de lui balancer un gros prompt, je lui ai demandé de faire les étapes une par une et de m'expliquer ce qu'il fait. J'ai corrigé étape par étape. Maintenant il se trompe plus."</em></li>
-      <li>Texte généré encore "catastrophique" et pas assez humain — chantier en cours. Mais le pipeline fonctionne.</li>
-      </ul>
-      <h3>Le piège dopamine de l'apprentissage</h3>
-      <ul>
-      <li>En parallèle, automatise toute sa vie freelance solo (mails, rappels clients, contrats). <em>"Je vais devenir 5 personnes en même temps."</em> Mais commence à s'éparpiller (Obsidian, N8N, skills…).</li>
-      <li>Valentin l'alerte (retour d'expérience de son ancienne boîte avec <strong>350 automatisations Make actives à maintenir</strong>) : <em>"Fais gaffe au nombre de choses que tu mets en place. Plus tu as d'automatisation, plus c'est du temps d'entretien."</em></li>
-      <li>Et le piège dopamine : <em>"Le contenu d'entrepreneurs c'est bien, mais à partir d'une certaine quantité ça ne sert plus à rien. Tu passes ton temps à te préparer à une guerre nucléaire alors que frère, achète ton domaine et commence à développer ton truc."</em></li>
-      </ul>
-      <h3>"Deux mois, c'est rien"</h3>
-      <p>Anna calme Romain quand il s'inquiète de son retard : <em>"Avec Flo, ça fait un an. Ce mois-ci on va atteindre 2 000 € d'MRR — 600 € chacun. On va y arriver. Les vidéos de Starter Story avec des success stories en 3 semaines, je déteste : ça pousse les gens à abandonner des trucs qui pourraient être super à long terme. Toi, tu commences à te dire que ça t'épanouit. C'est ça qu'il te faut."</em></p>
-
-      <hr>
-      <h2>Décisions / actions</h2>
+      <!-- Décisions / actions -->
+      <h2>D&eacute;cisions / actions</h2>
       <table>
       <thead><tr><th>Personne</th><th>Action</th><th>Deadline</th></tr></thead>
       <tbody>
-      <tr><td>Estéban</td><td><strong>1000&euro; de bénéfice</strong> (engagement public devant le groupe). Continuer les carousels FR qui marchent, accélérer la cadence.</td><td>1<sup>er</sup>&nbsp;juin</td></tr>
-      <tr><td>Mathis</td><td>Laisser les campagnes tourner <strong>plus longtemps</strong> (pas 1 semaine puis couper), optimiser les créatifs (carousels Clara-style).</td><td>continu</td></tr>
-      <tr><td>Victor</td><td>Setup admin Stripe Atlas LLC + sortir l'app contrôle parental (MVP "read-only time screen")</td><td>fin juin</td></tr>
-      <tr><td>Victor</td><td>Faire du revenu</td><td>fin août</td></tr>
-      <tr><td>Anna &amp; Florent</td><td>Lancer 2 campagnes en parallèle (iOS + Android), augmenter prix 35→49&euro;, A/B test 3 paywalls, relancer Jade et Luna pour UGC</td><td>cette semaine</td></tr>
-      <tr><td>Anna &amp; Florent</td><td><strong>Réfléchir à l'abonnement weekly</strong> (proposé par Victor) sans changer trop de choses en même temps</td><td>plus tard</td></tr>
-      <tr><td>Anna &amp; Florent</td><td><strong>5000&euro; de bénéfice net</strong> (engagement principal du mois)</td><td>fin juin</td></tr>
-      <tr><td>Valentin</td><td>Surveiller les pubs relancées en live pendant le call, faire la vidéo journalière du défi 90 jours ce soir</td><td>ce soir</td></tr>
-      <tr><td>Pierre-Louis</td><td>Fix bug visuel onboarding (icônes iPhone illisibles sur fond clair), finaliser cartes achievements holographiques</td><td>cette semaine</td></tr>
-      <tr><td>Pierre-Louis</td><td>Démarrer la communication (newsletter + posts CTA discrets sur ses 100K abonnés Insta/YouTube). <strong>1000&euro; en juin</strong>.</td><td>1-2 juin</td></tr>
-      <tr><td>Livio</td><td>Premiers carousels TikTok, copier les concurrents (Pingo AI etc.), tester <strong>lightreal.ai</strong>. <strong>20 clients à 50&euro;/an</strong>.</td><td>fin juin</td></tr>
+      <tr><td>Est&eacute;ban</td><td><strong>1000&euro; de b&eacute;n&eacute;fice sur le mois</strong> (engagement public). Continuer les carousels FR qui marchent.</td><td>fin juin</td></tr>
+      <tr><td>Mathis</td><td>Laisser les campagnes tourner plus longtemps, optimiser les cr&eacute;atifs (carousels Clara-style).</td><td>continu</td></tr>
+      <tr><td>Victor</td><td>Setup Stripe Atlas LLC + sortir l'app contr&ocirc;le parental (MVP "read-only time screen").</td><td>fin juin</td></tr>
+      <tr><td>Victor</td><td>Faire du revenu.</td><td>fin ao&ucirc;t</td></tr>
+      <tr><td>Anna &amp; Florent</td><td>2 campagnes parall&egrave;les (iOS + Android), prix annuel 49&euro;, A/B test 3 paywalls, relancer Jade et Luna.</td><td>cette semaine</td></tr>
+      <tr><td>Anna &amp; Florent</td><td><strong>5000&euro; de b&eacute;n&eacute;fice net</strong> (objectif principal).</td><td>fin juin</td></tr>
+      <tr><td>Valentin</td><td>Surveiller les pubs relanc&eacute;es, faire la vid&eacute;o journali&egrave;re du d&eacute;fi 90 jours.</td><td>ce soir</td></tr>
+      <tr><td>Pierre-Louis</td><td>D&eacute;marrer la com (newsletter le 1<sup>er</sup>&nbsp;juin, posts CTA discrets le 2 juin sur ses ~100K abonn&eacute;s Insta/YouTube). Fix bug visuel onboarding avant.</td><td>1&ndash;2 juin</td></tr>
+      <tr><td>Pierre-Louis</td><td><strong>1000&euro; avec Pixelio</strong> (engagement initial du 18/05, report&eacute; sur juin vu que la publication est r&eacute;cente).</td><td>juin</td></tr>
+      <tr><td>Livio</td><td>Premiers carousels TikTok, copier les concurrents, tester <strong>lightreal.ai</strong>. <strong>20 clients &agrave; 50&euro;/an.</strong></td><td>fin juin</td></tr>
       </tbody>
       </table>
 
       <hr>
-      <h2>Citations mémorables</h2>
-      <blockquote>
-      <p><em>"Une école de marketing, ça te coûte 15&nbsp;000 balles par an. Toi, tu es en train d'apprendre ce que quelqu'un, après 5 ans d'école de marketing, ne fait pas. C'est de l'investissement."</em><br>— Anna à Estéban, qui a peur de "brûler de l'argent" sur ses premières ads</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"Si tu dépenses 20&euro;/jour pendant 5 jours, ça fait 100&euro;. Mais si tu dépenses 50&euro;/jour pendant 2 jours, t'as le même apprentissage. T'as juste gagné du temps."</em><br>— Victor, ramenant la perspective Meta sur les budgets de test</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"Sur Meta aux US, en dessous de 300$/jour, tu n'existes pas. En face on a Temu et Shein qui dépensent 3 milliards par an."</em><br>— Victor, sur la réalité des enchères face aux mastodontes</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"La viralité, c'est un coup de chance. Tu ne peux pas asseoir ton projet là-dessus. Moi j'ai trouvé un truc viral une fois et j'ai essayé 45&nbsp;000 itérations de la même chose : plus jamais."</em><br>— Anna, sur l'organique vs la pub</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"L'organique c'est lent, il faut l'accepter. Dans un challenge de 3 mois, tu ne peux pas. Tu dois faire tout en même temps."</em><br>— Valentin, à propos de son défi 5K90J</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"Chope des micro-créateurs dans ta niche (2000 followers). Tu leur fais des packs de 5 vidéos pour 20-30&euro;. Ça fait pas pub, c'est naturel. C'est mieux que tu fasses 100 carousels toi-même qui marchent pas en payé."</em><br>— Anna à Livio</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"Embrasser la simplicité. Le mec a bourriné le même format pendant 6 mois, juste en changeant l'image de base. 300K MRR. Mais via 10&nbsp;000 créateurs payés et une agence à 25K&euro;."</em><br>— Victor, sur le succès d'Allo AI (à savoir : il y a un capital de départ derrière)</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"Le navigateur in-app TikTok, c'est de la grosse merde. Pas d'Apple Pay, pas de Google Pay, pas de connexion rapide, pas de PWA, pas de micro. Le niveau de friction au paywall, il est à 99%."</em><br>— Valentin, sur sa catastrophe technique invisible</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"Tu mets le mensuel en weekly. Le mec voit '7&euro; pendant 52 semaines', l'annuel d'un coup paraît un super deal. S'il reste 2-3 semaines, t'as déjà l'équivalent de 3 mois."</em><br>— Victor à Anna, sur le levier psychologique du weekly</p>
-      </blockquote>
-      <blockquote>
-      <p><em>"Je vois ça comme une cave où je mets tous mes missiles balistiques pour attaquer la campagne. Comme ça il ne me restera plus qu'à la piloter."</em><br>— Anna, qui reprend l'intérim cette semaine et veut quand même viser 5K&euro; en juin</p>
-      </blockquote>
 
-      <hr>
-      <h2>Outils / refs mentionnés</h2>
+      <!-- Outils mentionnés -->
+      <h2>Outils &amp; refs mentionn&eacute;s</h2>
       <ul>
-      <li><strong>Stripe Atlas</strong> — création de LLC US en 2 semaines pour 500&euro;. Cité comme l'outil "Way Combinator-friendly" par Victor.</li>
-      <li><strong>Life360</strong> — 80M$/mois en contrôle parental, podcast partagé par Harry dans #général le matin du call. Référence-clé pour la verticale de Victor.</li>
-      <li><strong>FindMyKids</strong> — autre acteur du contrôle parental cité par Victor.</li>
-      <li><strong>lightreal.ai</strong> — LLM connecté à une base TikTok, trouve les viraux par niche. <em>"Évite de scroller comme un taré"</em> (Victor). 3 jours gratuits avec CB.</li>
-      <li><strong>Lovable</strong> — utilisé par Victor pour ses funnels web Halloween/Noël/Saint-Valentin sur BestCreator.</li>
-      <li><strong>Codex dans Xcode</strong> — Victor et Krisskool sont passés dessus (GPT-5.5 plan Plus).</li>
-      <li><strong>Habitica</strong> — habit tracker pixel art open source. <em>"C'est moche, mais ça fait beaucoup de downloads — il y a un marché"</em> (Pierre-Louis).</li>
-      <li><strong>Finch</strong> — concurrent direct de Pixelio, plusieurs millions/mois. Inspiration assumée.</li>
-      <li><strong>Helldivers</strong> — référence "missions communautaires" pour le futur feature social de Pixelio.</li>
-      <li><strong>Pingo AI</strong> — autre app d'apprentissage anglais qui cartonne sur le format "professeur qui pleure" cité par Victor.</li>
-      <li><strong>Plutus Media</strong> — agence à 25K&euro; (Portugal) qui théorise l'organique massif avec 10&nbsp;000 créateurs. Citée par Victor.</li>
-      <li><strong>EAS Update / Capacitor cloud</strong> — pousser des MAJ de code à distance sans repasser par les stores. Mentionné par Valentin pour Livio.</li>
-      <li><strong>MCP Chrome de Claude</strong> — Livio l'utilise pour faire remplir les formulaires Apple par Claude.</li>
-      <li><strong>PostHog Experiments</strong> — A/B testing serveur par Valentin sur 3 variantes d'onboarding.</li>
-      <li><strong>Première étude de cas App Society</strong> publiée la semaine dernière : <a href="/appsociety/presentations/booknova-5k/" style="color:var(--accent);">/presentations/booknova-5k/</a></li>
-      <li><strong>Replay précédent</strong> : <a href="/appsociety/replays/2026-05-18/">/replays/2026-05-18/</a></li>
+      <li><strong>Stripe Atlas</strong> &mdash; cr&eacute;ation de LLC US en 2 semaines pour 500&euro;.</li>
+      <li><strong>Life360</strong> &mdash; 80M$/mois en contr&ocirc;le parental, podcast partag&eacute; par Harry. R&eacute;f&eacute;rence-cl&eacute; pour la verticale de Victor.</li>
+      <li><strong>lightreal.ai</strong> &mdash; LLM connect&eacute; &agrave; une base TikTok, trouve les viraux par niche.</li>
+      <li><strong>Lovable</strong> &mdash; utilis&eacute; par Victor pour ses funnels web Halloween/No&euml;l.</li>
+      <li><strong>Codex dans Xcode</strong> &mdash; Victor et Krisskool sont pass&eacute;s dessus (GPT-5.5 plan Plus).</li>
+      <li><strong>Habitica</strong> &mdash; habit tracker pixel art open source. "C'est moche mais il y a un march&eacute;" (Pierre-Louis).</li>
+      <li><strong>Finch</strong> &mdash; concurrent direct de Pixelio, plusieurs millions/mois.</li>
+      <li><strong>Pingo AI</strong> &mdash; app d'apprentissage anglais cit&eacute;e par Victor pour son format "professeur qui pleure".</li>
+      <li><strong>Plutus Media</strong> &mdash; agence organique &agrave; 25K&euro; (Portugal), th&eacute;orise l'organique massif avec 10&nbsp;000 cr&eacute;ateurs.</li>
+      <li><strong>EAS Update / Capacitor cloud</strong> &mdash; MAJ de code &agrave; distance sans repasser stores.</li>
+      <li><strong>MCP Chrome de Claude</strong> &mdash; Livio l'utilise pour remplir les formulaires Apple.</li>
+      <li><strong>PostHog Experiments</strong> &mdash; A/B testing serveur (Valentin sur 3 variantes d'onboarding).</li>
+      <li><strong>Premi&egrave;re &eacute;tude de cas App Society</strong> : <a href="/appsociety/presentations/booknova-5k/" style="color:var(--accent);">/presentations/booknova-5k/</a></li>
+      <li><strong>Replay pr&eacute;c&eacute;dent</strong> : <a href="/appsociety/replays/2026-05-18/">/replays/2026-05-18/</a></li>
       </ul>
 
     </div>
   </div>
+
 
   <!-- Transcript -->
   <div class="tab-content" id="tab-transcript">
@@ -2473,6 +2410,54 @@ searchInput.oninput = () => {
   });
   noResults.style.display = found === 0 ? 'block' : 'none';
 };
+
+// Chapters : click = jump audio + scroll to section
+(() => {
+  const items = Array.from(document.querySelectorAll('.chapter-item'));
+  if (!items.length || !audio) return;
+
+  const times = items.map(el => parseFloat(el.dataset.time));
+
+  items.forEach((el, i) => {
+    el.addEventListener('click', () => {
+      // Switch to summary tab if not already there
+      const summaryTabBtn = document.querySelector('.tab-btn[data-tab="summary"]');
+      if (summaryTabBtn && !summaryTabBtn.classList.contains('active')) {
+        summaryTabBtn.click();
+      }
+      // Jump audio
+      audio.currentTime = times[i];
+      const p = audio.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+      // Scroll to the section anchor
+      const anchorId = el.dataset.anchor;
+      if (anchorId) {
+        const section = document.getElementById(anchorId);
+        if (section) {
+          // Small delay to let the tab switch render
+          setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
+      }
+    });
+  });
+
+  let lastActive = -1;
+  function updateActive() {
+    const t = audio.currentTime;
+    let idx = 0;
+    for (let i = 0; i < times.length; i++) {
+      if (t >= times[i]) idx = i; else break;
+    }
+    if (idx !== lastActive) {
+      items.forEach(el => el.classList.remove('active'));
+      items[idx].classList.add('active');
+      lastActive = idx;
+    }
+  }
+  audio.addEventListener('timeupdate', updateActive);
+  audio.addEventListener('seeked', updateActive);
+  updateActive();
+})();
 </script>
 
 </body>
