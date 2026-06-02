@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment setup l'attribution mobile pour scaler sur TikTok + Meta Ads ? — Masterclass App Society</title>
+  <meta name="description" content="Comment setup une attribution mobile propre sur ton app, avec une stack à 0€. Masterclass d'Harry pour App Society. 3 actes : C'est quoi, Pourquoi c'est cassé, Comment le setup (sans MMP puis avec Tenjin). Présentation du 1er juin 2026, ~1h11.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B85C38'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='700' font-size='20' fill='white'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark: #0D0F14;
+      --dark-surface: #14161C;
+      --dark-subtle: #1C1E26;
+      --text: #E8E6E1;
+      --text-secondary: #9A9890;
+      --text-light: #7A786F;
+      --accent: #B85C38;
+      --accent-hover: #A34E2E;
+      --accent-glow: rgba(184, 92, 56, 0.15);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--sans); font-size: 17px; line-height: 1.75; color: var(--text); background: var(--dark); }
+    ::selection { background: rgba(184, 92, 56, 0.2); }
+
+    .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+    .topbar { padding-top: 32px; }
+    .header-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-light); text-decoration: none; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .header-back:hover { color: var(--accent); }
+    .header-back svg { width: 16px; height: 16px; }
+
+    .header { padding: 56px 0 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .header-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding: 6px 14px; border: 1px solid var(--accent); border-radius: 100px; background: rgba(184, 92, 56, 0.06); }
+    .header-tag::before { content: ''; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
+    .header-title { font-family: var(--serif); font-size: clamp(32px, 5.5vw, 50px); font-weight: 500; color: #fff; margin-top: 22px; line-height: 1.15; max-width: 740px; }
+    .header-meta { color: var(--text-secondary); font-size: 15px; margin-top: 14px; }
+    .header-meta a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(184,92,56,0.4); transition: border-color 0.2s; }
+    .header-meta a:hover { border-color: var(--accent); }
+
+    .video-wrap { margin-top: 40px; border-radius: 14px; overflow: hidden; background: #000; box-shadow: 0 6px 32px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); }
+    .video-wrap video { display: block; width: 100%; height: auto; }
+    .video-note { margin-top: 14px; color: var(--text-light); font-size: 13px; text-align: center; }
+
+    .intro { margin-top: 36px; padding: 26px 30px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; max-width: 740px; margin-left: auto; margin-right: auto; }
+    .intro p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; }
+    .intro strong { color: var(--text); font-weight: 500; }
+
+    .content { max-width: 740px; margin: 56px auto 0; padding-bottom: 80px; }
+    .content h2 { font-family: var(--serif); font-size: 28px; font-weight: 500; color: #fff; margin: 56px 0 18px; padding-top: 12px; }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 { font-family: var(--sans); font-size: 17px; font-weight: 600; color: var(--accent); margin: 32px 0 10px; }
+    .content p, .content li { color: var(--text-secondary); font-size: 16px; line-height: 1.85; }
+    .content ul { padding-left: 22px; margin: 12px 0; }
+    .content li { margin-bottom: 8px; }
+    .content strong { color: var(--text); font-weight: 500; }
+    .content hr { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 40px 0; }
+    .content blockquote { margin: 24px 0; padding: 16px 22px; background: var(--dark-subtle); border-left: 3px solid var(--accent); border-radius: 4px; }
+    .content blockquote p { font-style: italic; color: var(--text); }
+    .content code { background: var(--dark-subtle); padding: 2px 8px; border-radius: 4px; font-size: 14px; color: var(--text); border: 1px solid rgba(255,255,255,0.05); }
+
+    .toc { margin: 32px 0; padding: 22px 28px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+    .toc-title { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 12px; }
+    .toc ol { padding-left: 22px; margin: 0; }
+    .toc li { margin-bottom: 6px; color: var(--text-secondary); font-size: 15px; }
+    .toc a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .toc a:hover { color: var(--accent); }
+
+    .callout { margin: 24px 0; padding: 16px 20px; background: rgba(184, 92, 56, 0.08); border-left: 3px solid var(--accent); border-radius: 6px; }
+    .callout p { color: var(--text); font-size: 15px; line-height: 1.7; }
+
+    .chapters { margin-top: 24px; padding: 22px 26px; background: var(--dark-surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; }
+    .chapters-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 12px; }
+    .chapters-title { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
+    .chapters-title::before { content: ''; width: 4px; height: 14px; background: var(--accent); border-radius: 2px; }
+    .chapters-count { font-size: 12px; color: var(--text-light); font-variant-numeric: tabular-nums; }
+    .chapters-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+    .chapter-item { display: flex; align-items: baseline; gap: 16px; padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: background 0.15s, color 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: inherit; position: relative; }
+    .chapter-item + .chapter-item { border-top: 1px solid rgba(255,255,255,0.04); }
+    .chapter-item:hover { background: var(--dark-subtle); }
+    .chapter-item:hover + .chapter-item { border-top-color: transparent; }
+    .chapter-item.active { background: rgba(184, 92, 56, 0.10); }
+    .chapter-item.active + .chapter-item { border-top-color: transparent; }
+    .chapter-num { font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 600; color: var(--text-light); flex-shrink: 0; min-width: 22px; text-align: right; padding-top: 1px; }
+    .chapter-item.active .chapter-num { color: var(--accent); }
+    .chapter-time { font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; color: var(--accent); flex-shrink: 0; min-width: 58px; }
+    .chapter-label { color: var(--text-secondary); font-size: 15px; line-height: 1.45; transition: color 0.15s; flex: 1; }
+    .chapter-item:hover .chapter-label,
+    .chapter-item.active .chapter-label { color: var(--text); }
+
+    .footer-link { margin-top: 48px; text-align: center; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-link a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .footer-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .content h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="topbar">
+    <a href="/appsociety/replays/2026-06-01/" class="header-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Replay du 1er juin 2026
+    </a>
+  </div>
+  <header class="header">
+    <div class="header-tag">Masterclass App Society</div>
+    <h1 class="header-title">Comment setup l'attribution mobile pour scaler sur TikTok + Meta Ads&nbsp;?</h1>
+    <p class="header-meta">3 actes : C'est quoi &rarr; Pourquoi c'est cassé &rarr; Comment le setup &middot; ~1h11 &middot; <a href="/appsociety/">App Society</a></p>
+  </header>
+
+  <!-- Video -->
+  <div class="video-wrap">
+    <video id="video" controls preload="metadata" playsinline poster="">
+      <source src="https://www.dropbox.com/scl/fi/mifm3yrgj9lk5liu6roh4/presentation-attribution-mobile.mp4?rlkey=1xus5xtxxp126q6so9l4kyyhq&dl=1" type="video/mp4">
+      Ton navigateur ne lit pas la balise vidéo.
+    </video>
+  </div>
+  <p class="video-note">Vidéo Loom (partage d'écran) avec audio Discord du call original. Synchronisée automatiquement par cross-correlation FFT.</p>
+
+  <!-- Chapitres -->
+  <div class="chapters">
+    <div class="chapters-header">
+      <div class="chapters-title">Chapitres</div>
+      <div class="chapters-count">12 sections</div>
+    </div>
+    <div class="chapters-list" id="chaptersList">
+      <button class="chapter-item" data-time="0"><span class="chapter-num">01</span><span class="chapter-time">0:00</span><span class="chapter-label">Intro et promesse</span></button>
+      <button class="chapter-item" data-time="50"><span class="chapter-num">02</span><span class="chapter-time">0:50</span><span class="chapter-label">Acte 1 — C'est quoi l'attribution mobile&nbsp;?</span></button>
+      <button class="chapter-item" data-time="140"><span class="chapter-num">03</span><span class="chapter-time">2:20</span><span class="chapter-label">Les 2 systèmes : realtime vs SCAN</span></button>
+      <button class="chapter-item" data-time="270"><span class="chapter-num">04</span><span class="chapter-time">4:30</span><span class="chapter-label">Acte 2 — iOS 14.5 et le drame ATT</span></button>
+      <button class="chapter-item" data-time="480"><span class="chapter-num">05</span><span class="chapter-time">8:00</span><span class="chapter-label">Le 3<sup>e</sup> circuit : probabilistic matching</span></button>
+      <button class="chapter-item" data-time="960"><span class="chapter-num">06</span><span class="chapter-time">16:00</span><span class="chapter-label">Acte 3 — Setup sans MMP : SDK direct</span></button>
+      <button class="chapter-item" data-time="1440"><span class="chapter-num">07</span><span class="chapter-time">24:00</span><span class="chapter-label">Pourquoi le SDK direct foire (60&nbsp;% des cas)</span></button>
+      <button class="chapter-item" data-time="1620"><span class="chapter-num">08</span><span class="chapter-time">27:00</span><span class="chapter-label">🎯 Le reveal Tenjin (MMP à 0€)</span></button>
+      <button class="chapter-item" data-time="1920"><span class="chapter-num">09</span><span class="chapter-time">32:00</span><span class="chapter-label">Démo Tenjin : channels et callbacks</span></button>
+      <button class="chapter-item" data-time="2340"><span class="chapter-num">10</span><span class="chapter-time">39:00</span><span class="chapter-label">SKAdNetwork avec MMP : les 35 CV</span></button>
+      <button class="chapter-item" data-time="2760"><span class="chapter-num">11</span><span class="chapter-time">46:00</span><span class="chapter-label">Q&amp;A : Snapchat, Capacitor, et le piège</span></button>
+      <button class="chapter-item" data-time="3120"><span class="chapter-num">12</span><span class="chapter-time">52:00</span><span class="chapter-label">Conclusion et choix final</span></button>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro">
+    <p>Cette pr&eacute;sentation a &eacute;t&eacute; donn&eacute;e le <strong>lundi 1<sup>er</sup>&nbsp;juin 2026</strong> pendant l'appel hebdomadaire d'<strong>App Society</strong>. Suite logique de la <a href="/appsociety/presentations/tiktok-ads/">masterclass TikTok Ads</a> d'il y a 4 semaines &mdash; <em>"vous savez maintenant lancer une campagne, le sujet d'aujourd'hui c'est ce qui vous bloque tous : savoir si elle est rentable."</em> Format en <strong>3 actes p&eacute;dagogiques</strong> : C'est quoi l'attribution mobile, Pourquoi c'est cass&eacute; depuis iOS 14.5, et comment le setup proprement avec une stack &agrave; 0&euro;. Reveal du MMP gratuit (Tenjin) que la moiti&eacute; du groupe va installer dans la semaine.</p>
+  </div>
+
+  <div class="content">
+
+  <div class="toc">
+    <div class="toc-title">Sommaire</div>
+    <ol>
+      <li><a href="#promesse">La promesse en une phrase</a></li>
+      <li><a href="#acte-1">Acte 1 &mdash; C'est quoi l'attribution mobile ?</a></li>
+      <li><a href="#acte-2">Acte 2 &mdash; Pourquoi c'est cassé en 2026</a></li>
+      <li><a href="#acte-3a">Acte 3a &mdash; Setup sans MMP : SDK direct</a></li>
+      <li><a href="#acte-3b">Acte 3b &mdash; Reveal Tenjin : le MMP à 0€</a></li>
+      <li><a href="#qa">Q&amp;A &mdash; Snapchat, Capacitor, et les pi&egrave;ges</a></li>
+      <li><a href="#stack-0">La stack &agrave; 0€ qui marche</a></li>
+    </ol>
+  </div>
+
+  <h2 id="promesse">La promesse en une phrase</h2>
+  <blockquote>
+    <p>&laquo;&nbsp;&Agrave; la fin, tu sauras comment setup une attribution mobile propre sur ton app, avec une stack &agrave; 0&euro;.&nbsp;&raquo;</p>
+  </blockquote>
+  <p>La masterclass d&eacute;coupe le sujet en <strong>3 actes p&eacute;dagogiques</strong> au lieu de plonger direct dans la technique :</p>
+  <ol>
+    <li><strong>Acte 1 &mdash; C'est quoi ?</strong> D&eacute;finition tangible, les deux syst&egrave;mes qui coexistent.</li>
+    <li><strong>Acte 2 &mdash; Pourquoi c'est cass&eacute; ?</strong> iOS 14.5, ATT, l'agr&eacute;gation forc&eacute;e.</li>
+    <li><strong>Acte 3 &mdash; Comment le setup ?</strong> Sans MMP d'abord (gratuit, marche dans 60&nbsp;% des cas), avec MMP ensuite (Tenjin).</li>
+  </ol>
+
+  <hr>
+
+  <h2 id="acte-1">Acte 1 &mdash; C'est quoi l'attribution mobile ?</h2>
+
+  <p>D&eacute;finition simple :</p>
+  <blockquote>
+    <p>&laquo;&nbsp;C'est ce qui permet de savoir <strong>quelle source a ramen&eacute;</strong> dans votre application cet utilisateur, ou bien cette personne qui vient d'acheter.&nbsp;&raquo;</p>
+  </blockquote>
+
+  <p>L'attribution sert <strong>deux publics</strong> :</p>
+  <ul>
+    <li><strong>Toi</strong> : savoir quelle pub fonctionne, sur quelle audience, pour scaler la bonne et tuer les autres.</li>
+    <li><strong>Les plateformes</strong> (TikTok, Meta, Snapchat, Google Ads) : trouver des profils similaires &agrave; ceux qui ont d&eacute;j&agrave; converti. <em>"C'est toute la magie des publicit&eacute;s payantes &mdash; tu utilises les r&eacute;seaux sociaux pour trouver des gens qui ressemblent &agrave; ceux qui ont d&eacute;clench&eacute; l'&eacute;v&eacute;nement que tu cherches."</em></li>
+  </ul>
+
+  <h3>Les 2 syst&egrave;mes qui coexistent en 2026</h3>
+
+  <table style="width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;">
+    <thead>
+      <tr style="background:var(--dark-subtle);">
+        <th style="padding:12px;text-align:left;color:var(--text);">Realtime / déterministe</th>
+        <th style="padding:12px;text-align:left;color:var(--text);">SKAdNetwork (SCAN)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text);">L'utilisateur a accept&eacute; l'ATT (~25&nbsp;%)</td>
+        <td style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text);">L'utilisateur a refus&eacute; (~75&nbsp;%)</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-secondary);">On sait <strong>qui</strong> a install&eacute; via quelle pub, en temps r&eacute;el</td>
+        <td style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-secondary);">On sait <strong>combien</strong> d'installs sur un campaign_id, agr&eacute;g&eacute;</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-secondary);">Optimisation fine, jusqu'au cr&eacute;atif</td>
+        <td style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text-secondary);">35 conversion values, fen&ecirc;tre 24&ndash;72h, postback unique</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 12px;color:var(--text-secondary);">Mesure micro</td>
+        <td style="padding:10px 12px;color:var(--text-secondary);">Mesure macro (mais c'est <em>tout</em> ton 75&nbsp;%)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Les deux sont obligatoires</strong>, c'est pas un choix. Sans realtime, tu n'optimises rien. Sans SCAN, tu rates les 3/4 de ton volume.</p>
+
+  <hr>
+
+  <h2 id="acte-2">Acte 2 &mdash; Pourquoi c'est cass&eacute; en 2026</h2>
+
+  <h3>Le rappel historique : iOS 14.5 (2021)</h3>
+  <p>Avant 2021, sur iPhone, il existait un identifiant unique appel&eacute; <strong>IDFA</strong> (Identifier For Advertisers). Toutes les apps y avaient acc&egrave;s. R&eacute;sultat : c'&eacute;tait <em>"aussi simple que sur le web"</em>. Ton app voit l'IDFA, TikTok voit l'IDFA, on connecte les deux et on sait exactement qui vient d'o&ugrave;.</p>
+
+  <p><strong>iOS 14.5</strong> a tu&eacute; ce confort. D&eacute;sormais, ton app doit afficher le prompt ATT (<em>App Tracking Transparency</em>) :</p>
+
+  <div class="callout">
+    <p><em>&laquo;&nbsp;Autoriser X &agrave; suivre votre activit&eacute; dans d'autres apps et sites web&nbsp;?&nbsp;&raquo;</em><br>~25&nbsp;% acceptent. <strong>Les 75&nbsp;% restants deviennent invisibles</strong> pour l'attribution d&eacute;terministe classique.</p>
+  </div>
+
+  <h3>La r&eacute;ponse d'Apple : SKAdNetwork (SCAN)</h3>
+  <p>Apple a propos&eacute; SCAN pour ne pas tuer compl&egrave;tement la pub mobile : un syst&egrave;me d'attribution respectueux de la vie priv&eacute;e. Les &eacute;v&eacute;nements remontent quand m&ecirc;me aux plateformes, mais avec deux gros caveats :</p>
+  <ul>
+    <li><strong>Du retard</strong> : 24&ndash;72h entre l'event et le postback.</li>
+    <li><strong>Agr&eacute;g&eacute;</strong> : les donn&eacute;es sont group&eacute;es pour qu'on ne puisse pas d&eacute;duire d'identit&eacute;. <em>"On le met dans une foule, il est cach&eacute;."</em> (Livio)</li>
+  </ul>
+
+  <p><strong>Cons&eacute;quence concr&egrave;te qu'Anna et Florent ont v&eacute;cue le matin m&ecirc;me du call</strong> :</p>
+  <blockquote>
+    <p><em>&laquo;&nbsp;Cinq heures du mat, on a lanc&eacute; la campagne iOS, et l&agrave; on est &agrave; 0 conversions, alors qu'il y a eu plein de t&eacute;l&eacute;chargements.&nbsp;&raquo;</em><br>&mdash; Anna<br><br>Diagnostic Harry : <em>"SCAN met du temps. Il faut attendre 24-72h."</em></p>
+  </blockquote>
+
+  <h3>Le 3<sup>e</sup> circuit : le bricolage des MMP</h3>
+  <p>Quand l'utilisateur refuse l'ATT, les MMP (qu'on verra dans l'Acte 3b) ont aussi un syst&egrave;me d'attribution dit <strong>probabiliste</strong>. Ils utilisent les morceaux qui restent en dehors de l'IDFA : <strong>adresse IP, mod&egrave;le d'appareil, op&eacute;rateur, langue, fuseau horaire</strong>&hellip; pour deviner <em>"c'est probablement celui-l&agrave;"</em>.</p>
+  <p>Pas magique, pas exact, mais &ccedil;a rattrape une partie des conversions perdues. Activable via une simple checkbox c&ocirc;t&eacute; Tenjin (<em>probabilistic matching</em>).</p>
+
+  <hr>
+
+  <h2 id="acte-3a">Acte 3a &mdash; Setup sans MMP : SDK direct</h2>
+
+  <p>Premi&egrave;re voie : tu installes le SDK propri&eacute;taire de la plateforme dans ton app. C'est ce que font Anna &amp; Florent (SDK TikTok), c'est ce qu'utilise Pierre-Louis sur iOS, etc.</p>
+
+  <h3>Le workflow</h3>
+  <ol>
+    <li>SDK TikTok ou Meta install&eacute; dans l'app (doc officielle plut&ocirc;t propre, &ccedil;a se fait en quelques heures).</li>
+    <li>Configurer les events critiques : <code>install</code> (auto), <code>start_trial</code>, <code>purchase</code>, <code>complete_registration</code>.</li>
+    <li>V&eacute;rifier dans l'<strong>Event Manager</strong> de la plateforme via QR code de test : tu scannes, tu fais l'action dans l'app, l'event remonte en quelques secondes.</li>
+    <li>Une fois que &ccedil;a remonte, tu peux passer en prod.</li>
+  </ol>
+
+  <h3>Quel event choisir pour optimiser la campagne&nbsp;?</h3>
+  <p>Grand d&eacute;bat live entre Harry et Valentin pour Livio. <strong>Valentin tranche</strong> :</p>
+  <blockquote>
+    <p><em>&laquo;&nbsp;Fais l'install au d&eacute;but, pas le start_trial. Tu auras des r&eacute;sultats moins bons, mais tu en auras. Si tu pars sur start_trial sans volume, tu auras rien, tu sauras pas si tu fais bien.&nbsp;&raquo;</em></p>
+  </blockquote>
+  <p>Harry confirme : il est lui-m&ecirc;me pass&eacute; <code>install</code> &rarr; <code>trial</code> APR&Egrave;S avoir eu du volume sur l'install (~CPI plus &eacute;lev&eacute; mais CPI/trial-to-paid am&eacute;lior&eacute;).</p>
+
+  <p><strong>R&egrave;gle simple</strong> : commencer sur l'event qui donne du <strong>volume</strong>, m&ecirc;me si le signal est moins qualitatif. TikTok a besoin d'event pour apprendre.</p>
+
+  <h3>L'avantage du SDK direct</h3>
+  <ul>
+    <li><strong>Gratuit</strong> &mdash; aucun frais r&eacute;current.</li>
+    <li>Simple en th&eacute;orie, doc officielle.</li>
+    <li>Si tu n'utilises qu'une seule plateforme de pub, c'est suffisant.</li>
+  </ul>
+
+  <hr>
+
+  <h2 id="acte-3b">Acte 3b &mdash; Le reveal Tenjin : MMP &agrave; 0&euro;</h2>
+
+  <h3>L'inconv&eacute;nient du SDK direct (qui d&eacute;clenche le besoin de MMP)</h3>
+  <blockquote>
+    <p><em>&laquo;&nbsp;Sur le papier, &ccedil;a marche. En pratique, dans 40&nbsp;% des cas tu galères. Tu fais le truc, &ccedil;a ne marche pas, tu parles &agrave; des gens qui soi-disant l'ont mis en place&hellip; en fait ils n'ont rien compris, ils ont eu de la chance, tu leur poses des questions, ils disent <em>ah merde, je sais pas, bonne chance</em>.&nbsp;&raquo;</em><br>&mdash; Harry</p>
+  </blockquote>
+
+  <p>Pourquoi&nbsp;? Parce que l'attribution est <strong>tabou sur Reddit, sur Discord, partout</strong>. <em>"Personne n'en parle. C'est comme Voldemort. Tu galères, tu r&eacute;sous, t'as plus envie d'en parler. Et toi-m&ecirc;me, tu sais pas exactement ce que t'as fait pour que &ccedil;a marche."</em></p>
+
+  <p>C'est <strong>l&agrave; que les MMP interviennent</strong> &mdash; <em>Mobile Measurement Partner</em>. Une couche au-dessus des SDK propri&eacute;taires.</p>
+
+  <h3>L'avantage d'un MMP</h3>
+  <ul>
+    <li><strong>Un seul SDK</strong> &agrave; installer (au lieu d'un par plateforme : TikTok + Meta + Snapchat + Google + Apple Search&hellip;).</li>
+    <li><strong>Source de v&eacute;rit&eacute; unique</strong> : un seul dashboard qui agr&egrave;ge toutes les sources, y compris l'organique.</li>
+    <li><strong>Documentation</strong> en or massif (c'est leur valeur ajout&eacute;e payante).</li>
+    <li><strong>Probabilistic matching</strong> activable d'une checkbox.</li>
+  </ul>
+
+  <h3>Le march&eacute;</h3>
+  <ul>
+    <li><strong>Adjust, AppsFlyer</strong> : les Cadillac, ~250&ndash;1000&euro;/mois minimum.</li>
+    <li><strong>Singular, Branch</strong> : alternatives dans cette gamme.</li>
+    <li><strong>Tenjin</strong> : le moins cher du march&eacute;.</li>
+  </ul>
+
+  <h3>🎯 Le reveal : Tenjin</h3>
+  <p><strong>Pricing Tenjin</strong> :</p>
+  <ul>
+    <li><strong>0&euro;</strong> jusqu'&agrave; 2000 conversions/mois. <em>"Pour un d&eacute;but de challenge, vous n'atteindrez pas ce seuil."</em></li>
+    <li>Au-del&agrave; : ~<strong>200&euro;/mois</strong> pour 10K conversions = <strong>2&ndash;4 centimes par event</strong>.</li>
+    <li>Pour r&eacute;f&eacute;rence : AppsFlyer = 7+ centimes par install d&eacute;j&agrave;, sans forfait.</li>
+  </ul>
+
+  <p>Harry est pass&eacute; sur Tenjin apr&egrave;s avoir explos&eacute; les 12&nbsp;000 conversions gratuites annuelles d'AppsFlyer en plein milieu d'ann&eacute;e. <em>"J'ai vu le bill arriver, ~800-1000 balles pour compter des installs. J'ai trouv&eacute; &ccedil;a fort de caf&eacute;. Je suis pass&eacute; sur Tenjin."</em></p>
+
+  <h3>Le setup Tenjin en 4 &eacute;tapes</h3>
+
+  <ol>
+    <li><strong>SDK Tenjin</strong> install&eacute; dans l'app. Events critiques fir&eacute;s c&ocirc;t&eacute; code (<code>install</code> auto, <code>trial_started</code>, <code>purchase</code>).</li>
+    <li><strong>V&eacute;rification</strong> dans <em>Diagnose &rarr; Live Event Tool</em> de Tenjin : tes events doivent y appara&icirc;tre quand tu lances l'app en mode dev.</li>
+    <li><strong>Section <em>callback</em></strong> de Tenjin : tu ajoutes les <em>channels</em> (TikTok, Meta, Snapchat&hellip;) et tu <strong>mappes tes events custom vers les events natifs</strong> de chaque plateforme. Exemple : <code>trial_started</code> Tenjin &rarr; <code>start_trial</code> TikTok.</li>
+    <li><strong>C&ocirc;t&eacute; TikTok Event Manager</strong> : tu choisis ta m&eacute;thode de connexion = MMP, tu connectes Tenjin via cl&eacute;s API. Une fois branch&eacute;, l'event arrive dans TikTok &eacute;tiquet&eacute; <em>"partenaire de mesure : Tenjin"</em>.</li>
+  </ol>
+
+  <h3>Le pi&egrave;ge SKAdNetwork avec MMP</h3>
+  <p>M&ecirc;me avec un MMP, tu dois faire une <strong>map des conversion values</strong> dans l'onglet SKAdNetwork de Tenjin. Concr&egrave;tement : SCAN limite tes events &agrave; <strong>35 valeurs</strong> que tu d&eacute;finis toi-m&ecirc;me (CV0, CV1, &hellip;, CV35).</p>
+  <blockquote>
+    <p><em>&laquo;&nbsp;Globalement, vous devez fournir une map de valeurs de conversion. Vous devez d&eacute;finir quelle est la valeur pour chaque type d'event. Moi j'ai simplifi&eacute; au maximum : 3 events seulement. Ouverture de l'app = CV1, d&eacute;marrage de l'essai = CV2, purchase = CV3. Je n'y touche plus, je n'en parle plus. C'est pour &ccedil;a que personne n'en parle sur Reddit.&nbsp;&raquo;</em><br>&mdash; Harry</p>
+  </blockquote>
+  <p><strong>Conseil pratique</strong> : trouver un template CSV de conversion values en ligne, l'adapter &agrave; tes 3 events, et arr&ecirc;ter de toucher.</p>
+
+  <hr>
+
+  <h2 id="qa">Q&amp;A &mdash; Snapchat, Capacitor, et les pi&egrave;ges</h2>
+
+  <h3>&laquo;&nbsp;Et si je veux faire du Snapchat ?&nbsp;&raquo; (Elyass)</h3>
+  <p>Snapchat a un SDK natif (SnapKit&hellip; non, c'est pour les filtres). Marketing API de Snapchat existe. <strong>Mais l'avantage du MMP</strong> : Tenjin g&egrave;re Snapchat. Tu ajoutes un channel, tu mappes les events, c'est fait.</p>
+  <blockquote>
+    <p><em>&laquo;&nbsp;Le MMP, c'est exactement &ccedil;a, ton avantage : si demain tu te diversifies en plateformes (TikTok + Meta + Snapchat + Apple Search Ads), tu n'as pas &agrave; refaire l'attribution &agrave; chaque fois. Un seul SDK c&ocirc;t&eacute; app, et tu cliques sur ajouter un channel.&nbsp;&raquo;</em><br>&mdash; Harry</p>
+  </blockquote>
+
+  <h3>&laquo;&nbsp;Je suis sur Capacitor, est-ce que les SDK marchent ?&nbsp;&raquo; (Livio)</h3>
+  <p>Recherche live pendant le call : <strong>pas de SDK TikTok officiel pour Capacitor</strong>. Il y a un plugin community sur GitHub mais Valentin met en garde : <em>"Fais gaffe &agrave; ce que tu installes, sur ce genre de truc."</em></p>
+  <p>En revanche, <strong>Tenjin a un plugin Capacitor officiel</strong>, derni&egrave;re mise &agrave; jour 4 jours avant le call. <strong>Livio d&eacute;cide en live : il part sur Tenjin direct.</strong></p>
+
+  <h3>&laquo;&nbsp;C'est vraiment n&eacute;cessaire d&egrave;s le d&eacute;part ?&nbsp;&raquo; (Sylvain)</h3>
+  <p>R&eacute;ponse : <strong>non, tu peux te baser uniquement sur SCAN</strong> qui marche par d&eacute;faut, sans rien faire. Mais en dessous d'un certain seuil de volume, SCAN devient muet (protection vie priv&eacute;e Apple). Donc utile surtout &agrave; partir d'un certain trafic.</p>
+  <p>Pour Sylvain en early stage : <strong>lance les pubs en mode SCAN-only</strong>, et si tu vois des premiers r&eacute;sultats encourageants, alors investis le temps pour Tenjin.</p>
+
+  <h3>&laquo;&nbsp;Le SDK TikTok envoie automatiquement les conversions scan, ou pas ?&nbsp;&raquo; (Livio)</h3>
+  <p>Non, c'est s&eacute;par&eacute;. Tu peux :</p>
+  <ul>
+    <li><strong>Laisser Apple g&eacute;rer scan tout seul</strong> : par d&eacute;faut, ton app envoie les events scan au serveur d'Apple, qui les redirige vers les plateformes via leurs partenariats.</li>
+    <li><strong>Faire passer scan par ton MMP</strong> : agr&eacute;gation, donne plus de fl&eacute;xibilit&eacute;.</li>
+  </ul>
+  <p>Harry est sur la 2<sup>e</sup> option (<em>"au bout d'un moment, j'ai mis tout en place tout ce qui est possible et imaginable"</em>), mais admet ne pas comprendre &agrave; 100&nbsp;% comment &ccedil;a marche sous le capot.</p>
+
+  <hr>
+
+  <h2 id="stack-0">La stack &agrave; 0&euro; qui marche</h2>
+
+  <div class="callout">
+    <p>Le setup recommand&eacute; pour un founder solo en early stage :</p>
+    <ul style="margin-top:8px;">
+      <li><strong>Tenjin</strong> (gratuit jusqu'&agrave; 2000 conversions/mois) &mdash; le MMP.</li>
+      <li><strong>TikTok Ads</strong> + <strong>Meta Ads</strong> &mdash; les plateformes de pub.</li>
+      <li><strong>PostHog</strong> (free tier) &mdash; analytics in-app, A/B tests.</li>
+      <li><strong>RevenueCat</strong> (gratuit jusqu'&agrave; $2,5K MRR) &mdash; la source de v&eacute;rit&eacute; pour les paiements.</li>
+    </ul>
+    <p style="margin-top:8px;">Total : <strong>0&euro;/mois</strong> tant que tu n'as pas explos&eacute; ton premier objectif business.</p>
+  </div>
+
+  <h3>R&eacute;sum&eacute; en 5 points</h3>
+  <ol>
+    <li><strong>Realtime + SCAN coexistent</strong>. Les deux sont obligatoires sur iOS post-2021.</li>
+    <li><strong>SDK direct marche dans 60&nbsp;% des cas</strong>. Quand &ccedil;a marche, t'as rien &agrave; payer. Quand &ccedil;a marche pas, tu galères dans la jungle pendant des semaines.</li>
+    <li><strong>Tenjin est la sortie de secours</strong>. Gratuit jusqu'&agrave; 2K events/mois, ~4 centimes au-del&agrave; (vs 7+ AppsFlyer).</li>
+    <li><strong>Commence sur l'event qui donne du volume</strong> (install) avant de passer &agrave; un event qualitatif (trial). TikTok a besoin de feedback pour apprendre.</li>
+    <li><strong>SKAdNetwork : 3 conversion values suffisent</strong> (open, trial, purchase). Ne te plonge pas dans la fine optimisation des CV avant que tu sois rentable.</li>
+  </ol>
+
+  </div>
+
+  <div class="footer-link">
+    <p><a href="/appsociety/replays/2026-06-01/">← Retour au replay complet du 1<sup>er</sup>&nbsp;juin 2026</a></p>
+    <p style="margin-top:12px;"><a href="/appsociety/presentations/tiktok-ads/">← Masterclass précédente : Comment utiliser TikTok Ads</a></p>
+    <p style="margin-top:12px;"><a href="/appsociety/">App Society — Tous les replays</a></p>
+  </div>
+
+</div>
+
+<script>
+(() => {
+  const video = document.getElementById('video');
+  const items = Array.from(document.querySelectorAll('.chapter-item'));
+  if (!video || !items.length) return;
+
+  const times = items.map(el => parseFloat(el.dataset.time));
+
+  items.forEach((el, i) => {
+    el.addEventListener('click', () => {
+      video.currentTime = times[i];
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+      const rect = video.getBoundingClientRect();
+      if (rect.bottom < 80 || rect.top > window.innerHeight - 80) {
+        video.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  let lastActive = -1;
+  function updateActive() {
+    const t = video.currentTime;
+    let idx = 0;
+    for (let i = 0; i < times.length; i++) {
+      if (t >= times[i]) idx = i; else break;
+    }
+    if (idx !== lastActive) {
+      items.forEach(el => el.classList.remove('active'));
+      items[idx].classList.add('active');
+      lastActive = idx;
+    }
+  }
+  video.addEventListener('timeupdate', updateActive);
+  video.addEventListener('seeked', updateActive);
+  updateActive();
+})();
+</script>
+
+</body>
+</html>
