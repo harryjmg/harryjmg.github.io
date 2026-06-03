@@ -21,22 +21,53 @@
     }
 
     :root {
-      --bg:        #F4EFE3;
-      --bg-card:   #FBF8F0;
-      --bg-dark:   #0A0A0A;
-      --ink:       #0A0A0A;
-      --ink-soft:  #4A4742;
-      --ink-mute:  #8B8780;
-      --paper:     #F4EFE3;
-      --yellow:    #FFD83D;
-      --yellow-h:  #FFC300;
-      --line:      #0A0A0A;
-      --sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --hand:      'Caveat', cursive;
-      --display:   'Boldonse', 'Inter', system-ui, sans-serif;
-      --content:   1080px;
-      --gap:       clamp(64px, 9vw, 96px);   /* responsive section padding */
-      --radius:    14px;
+      --bg:               #F4EFE3;
+      --bg-card:          #FBF8F0;
+      --bg-dark:          #0A0A0A;
+      --ink:              #0A0A0A;
+      --ink-soft:         #4A4742;
+      --ink-mute:         #8B8780;
+      --ink-on-dark-soft: #C9C6BF;            /* secondary text on dark surfaces */
+      --paper:            #F4EFE3;
+      --yellow:           #FFD83D;
+      --yellow-h:         #FFC300;
+      --yellow-soft:      rgba(255, 216, 61, 0.55);  /* standardized highlight opacity */
+      --line:             #0A0A0A;
+      --focus-ring:       3px solid var(--yellow);
+      --sans:             'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --hand:             'Caveat', cursive;
+      --display:          'Boldonse', 'Inter', system-ui, sans-serif;
+      --content:          1080px;
+      --gap:              clamp(64px, 9vw, 96px);   /* responsive section padding */
+      --radius:           14px;
+    }
+
+    /* ====== A11y : focus-visible + skip link ====== */
+    :focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .cta-primary:focus-visible,
+    .nav-cta:focus-visible {
+      outline-offset: 5px;
+    }
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 12px;
+      background: var(--ink);
+      color: var(--yellow);
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: underline;
+      border-radius: 4px;
+      z-index: 100;
+      transition: top 0.18s ease;
+    }
+    .skip-link:focus {
+      top: 12px;
     }
 
     html {
@@ -421,7 +452,7 @@
       margin-bottom: 36px;
       line-height: 1.6;
     }
-    section.dark .lede { color: #C9C6BF; }
+    section.dark .lede { color: var(--ink-on-dark-soft); }
 
     /* ====== Check-list (used in Diagnostic ✕ and Vision ✓) ====== */
     .check-list {
@@ -476,7 +507,7 @@
     }
     .insight-tail {
       font-size: clamp(16px, 1.5vw, 18px);
-      color: #C9C6BF;
+      color: var(--ink-on-dark-soft);
       max-width: 62ch;
       line-height: 1.65;
     }
@@ -713,7 +744,12 @@
       line-height: 1;
     }
 
-    /* ====== Pricing card ====== */
+    /* ====== Pricing ====== */
+    .pricing-intro {
+      text-align: center;
+      max-width: 36ch;
+      margin: 0 auto 40px;
+    }
     .pricing-card {
       background: var(--bg-card);
       border: 3px solid var(--line);
@@ -740,7 +776,7 @@
     .price-big {
       font-family: var(--display);
       font-weight: 400;
-      font-size: clamp(80px, 9vw, 104px);
+      font-size: clamp(60px, 7vw, 84px);   /* lowered from 80→104 so it sits inside the card */
       line-height: 0.95;
       letter-spacing: -0.025em;
       margin-bottom: 8px;
@@ -886,7 +922,7 @@
     }
     .final-cta .lines {
       font-size: clamp(16px, 1.6vw, 19px);
-      color: #C9C6BF;
+      color: var(--ink-on-dark-soft);
       margin-bottom: 44px;
       line-height: 1.7;
     }
@@ -900,20 +936,6 @@
       max-width: 640px;
       margin: 0 auto;
       border: 3px solid var(--yellow);
-    }
-    .waitlist-placeholder {
-      padding: 40px 24px;
-      text-align: center;
-      color: var(--ink-soft);
-      font-size: 15px;
-      border: 2px dashed var(--ink-mute);
-      border-radius: 12px;
-    }
-    .waitlist-placeholder code {
-      background: var(--bg);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 13px;
     }
 
     /* ====== Footer ====== */
@@ -950,6 +972,8 @@
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#programme">Aller au contenu principal</a>
 
   <!-- ==================== Top urgency strip ==================== -->
   <div class="strip">
@@ -1130,7 +1154,7 @@
       <div class="eyebrow">Qui je suis</div>
       <div class="about-grid">
         <div class="about-photo">
-          <img src="harry-gibli.png" alt="Harry, en terrasse, illustration style Ghibli">
+          <img src="harry-gibli.jpg" alt="Harry, en terrasse, illustration style Ghibli" width="520" height="520" loading="lazy" decoding="async">
         </div>
         <div class="about-text">
           <p>
@@ -1151,9 +1175,11 @@
   <!-- ==================== Pricing ==================== -->
   <section class="card" id="tarif">
     <div class="wrap">
-      <div class="eyebrow center" style="display: block; text-align: center; margin: 0 auto 28px;">Tarif waitlist</div>
-      <h2 class="center" style="text-align: center;">990 €. Une fois.<br>30 jours. App publiée.</h2>
-      <div class="pricing-card mt-32">
+      <div class="pricing-intro">
+        <div class="eyebrow">Tarif waitlist</div>
+        <h2>990 €. Une fois.<br>30 jours. App publiée.</h2>
+      </div>
+      <div class="pricing-card">
         <span class="badge">Tarif waitlist</span>
         <div class="price-big"><span class="currency">€</span>990</div>
         <div class="price-detail">Paiement unique. Pas d'abonnement.</div>
