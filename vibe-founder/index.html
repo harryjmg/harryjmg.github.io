@@ -154,17 +154,23 @@
       position: relative;
     }
 
-    /* Setup — small, soft. "juste" highlighted with subtle yellow underline
-       (replaces the strikethrough as the avant/après signal). */
+    /* Type scale for the hero — modular system
+       ratio ≈ 1.25 (minor third) between adjacent strates (setup ↔ sub)
+       display jump ≈ 3.7× from setup to climax (Boldonse carries its own weight)
+       become preserves 1.34× over climax (Caveat focal point dominant)
+       This brings the desktop setup/climax ratio from 6× down to ~3.7× */
+
+    /* Setup — visible enough to weigh in the hierarchy.
+       "juste" highlighted with subtle yellow underline (replaces strikethrough). */
     .hero-setup {
       font-family: var(--sans);
-      font-size: clamp(15px, 1.6vw, 18px);
+      font-size: clamp(18px, 2.1vw, 24px);
       font-weight: 500;
-      letter-spacing: 0.005em;
+      letter-spacing: -0.005em;
       color: var(--ink-soft);
-      max-width: 38ch;
-      margin: 0 auto 18px;  /* tight → climax (reads as one unit) */
-      line-height: 1.5;
+      max-width: 52ch;       /* one line on desktop, wraps gracefully on mobile */
+      margin: 0 auto 24px;   /* tight-ish → climax */
+      line-height: 1.45;
     }
     .hero-setup em {
       font-style: italic;
@@ -185,17 +191,18 @@
       z-index: -1;
     }
 
-    /* Climax — display brutal Boldonse + Caveat signature focal point */
+    /* Climax — display brutal Boldonse + Caveat signature focal point.
+       Calibrated DOWN from 108→88 so it stops crushing the setup line.
+       Boldonse is already heavy by design — 88px keeps massive impact. */
     .hero-climax {
       font-family: var(--display);
       font-weight: 400;
-      font-size: clamp(48px, 9vw, 108px);
-      line-height: 0.95;
+      font-size: clamp(52px, 7.5vw, 88px);
+      line-height: 0.98;
       letter-spacing: -0.02em;
       color: var(--ink);
       margin: 0 auto 48px;  /* generous → the climax breathes */
       text-transform: none;
-      /* Boldonse already carries optical weight — no upper, no 900 needed */
     }
     .hero-climax .become {
       display: inline-block;
@@ -223,15 +230,15 @@
       transform: skewX(-6deg);
     }
 
-    /* Sub — body text, from→to mirror */
+    /* Sub — body description. Slightly larger (19→20) for harmony with new setup. */
     .hero-sub {
       font-family: var(--sans);
-      font-size: clamp(16px, 1.5vw, 19px);
+      font-size: clamp(17px, 1.7vw, 20px);
       font-weight: 400;
       color: var(--ink-soft);
       max-width: 56ch;
       margin: 0 auto 44px;  /* generous → leads to CTA */
-      line-height: 1.65;
+      line-height: 1.6;
     }
     .hero-sub .from {
       font-style: italic;
@@ -300,14 +307,15 @@
     .hero .wrap > *:nth-child(4) { animation-delay: 0.45s; }
     .hero .wrap > *:nth-child(5) { animation-delay: 0.58s; }
     .hero-sticker {
-      animation: hero-pop 0.5s 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+      /* ease-out-expo, no overshoot — refined feel (bounce easings read dated) */
+      animation: hero-pop 0.55s 0.75s cubic-bezier(0.16, 1, 0.3, 1) backwards;
     }
     @keyframes hero-rise {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes hero-pop {
-      from { opacity: 0; transform: rotate(-6deg) scale(0.6); }
+      from { opacity: 0; transform: rotate(-6deg) scale(0.85); }
       to   { opacity: 1; transform: rotate(-6deg) scale(1); }
     }
     @media (prefers-reduced-motion: reduce) {
