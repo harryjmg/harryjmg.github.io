@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Founder — Ton app sur l'App Store en 30 jours</title>
+  <meta name="description" content="Le bootcamp pour passer de 'j'ai une idée d'app' à 'elle est sur l'App Store' en 30 jours. Sans coder. Avec l'IA. Cohorte juillet 2026 — 15 places.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harryjmg.fr/vibe-founder/">
+  <meta property="og:title" content="Vibe Founder — Ton app sur l'App Store en 30 jours">
+  <meta property="og:description" content="Le bootcamp pour passer de 'j'ai une idée d'app' à 'elle est sur l'App Store' en 30 jours. Sans coder. Avec l'IA.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FFD83D'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='900' font-size='18' fill='%230A0A0A'%3EV%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg:        #F4EFE3;
+      --bg-card:   #FBF8F0;
+      --bg-dark:   #0A0A0A;
+      --ink:       #0A0A0A;
+      --ink-soft:  #4A4742;
+      --ink-mute:  #8B8780;
+      --paper:     #F4EFE3;
+      --yellow:    #FFD83D;
+      --yellow-h:  #FFC300;
+      --line:      #0A0A0A;
+      --sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --hand:      'Caveat', cursive;
+      --content:   1080px;
+      --gap:       96px;
+      --radius:    14px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ====== Top urgency strip ====== */
+    .strip {
+      background: var(--bg-dark);
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 10px 0;
+      text-align: center;
+    }
+    .strip .dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--yellow);
+      vertical-align: middle;
+      margin-right: 8px;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.85); }
+    }
+    .strip strong { color: var(--yellow); font-weight: 700; }
+
+    /* ====== Nav ====== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg);
+      border-bottom: 2px solid var(--line);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .logo-mark {
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .logo-tag {
+      font-family: var(--hand);
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--ink-soft);
+      transform: rotate(-2deg);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--yellow-h); }
+    .nav-cta {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--ink);
+      border: 2px solid var(--line);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 3px 3px 0 var(--line);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .nav-cta:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--line);
+    }
+    @media (max-width: 720px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* ====== Hero ====== */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-weight: 900;
+      font-size: clamp(40px, 7vw, 84px);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 .scratch {
+      text-decoration: line-through;
+      text-decoration-thickness: 4px;
+      text-decoration-color: var(--ink);
+      color: var(--ink-mute);
+      font-size: 0.92em;
+    }
+    .hero h1 .become {
+      display: inline-block;
+      position: relative;
+      font-family: var(--hand);
+      font-weight: 700;
+      font-style: normal;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink);
+      font-size: 1.1em;
+      transform: rotate(-2deg);
+      padding: 0 8px;
+    }
+    .hero h1 .become::after {
+      content: "";
+      position: absolute;
+      left: 4px; right: 4px; bottom: 6px;
+      height: 14px;
+      background: var(--yellow);
+      z-index: -1;
+      transform: skewX(-6deg);
+    }
+    .hero p.sub {
+      font-size: clamp(17px, 2vw, 22px);
+      color: var(--ink-soft);
+      max-width: 720px;
+      margin: 0 auto 40px;
+      line-height: 1.55;
+    }
+    .hero p.sub strong { color: var(--ink); font-weight: 700; }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--ink);
+      border: 2px solid var(--line);
+      padding: 18px 32px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.01em;
+      box-shadow: 5px 5px 0 var(--line);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .cta-primary:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--line);
+      background: var(--yellow-h);
+    }
+    .cta-primary .arrow { transition: transform 0.2s ease; }
+    .cta-primary:hover .arrow { transform: translateX(4px); }
+
+    .meta-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+    .meta-line .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--ink); display: inline-block;
+    }
+
+    /* ====== Section base ====== */
+    section { padding: var(--gap) 0; }
+    section.dark { background: var(--bg-dark); color: var(--paper); }
+    section.card { background: var(--bg-card); }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+    section.dark .eyebrow { border-color: var(--paper); color: var(--paper); }
+
+    h2 {
+      font-weight: 900;
+      font-size: clamp(30px, 4.4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin-bottom: 24px;
+    }
+    h2 .yellow-mark {
+      background: var(--yellow);
+      padding: 0 6px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .lede {
+      font-size: 19px;
+      color: var(--ink-soft);
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+    section.dark .lede { color: #C9C6BF; }
+
+    /* ====== Diagnostic ====== */
+    .check-list {
+      display: grid;
+      gap: 14px;
+      max-width: 720px;
+      margin-top: 28px;
+    }
+    .check-list li {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .check-list li .mark {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border: 2px solid var(--line);
+      border-radius: 6px;
+      margin-top: 3px;
+      position: relative;
+    }
+    .check-list li .mark::after {
+      content: "✕";
+      position: absolute;
+      inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+    }
+    section.dark .check-list li .mark { border-color: var(--paper); }
+
+    /* ====== Insight ====== */
+    .insight-quote {
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      max-width: 880px;
+      margin-bottom: 28px;
+    }
+    .insight-quote span.hl {
+      background: var(--yellow);
+      color: var(--ink);
+      padding: 2px 8px;
+    }
+    .insight-tail {
+      font-size: 18px;
+      color: #C9C6BF;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+    .insight-tail strong { color: var(--paper); font-weight: 700; }
+
+    /* ====== Vision (bullets) ====== */
+    .check-list.positive li .mark::after { content: "✓"; color: var(--ink); }
+    .check-list.positive li .mark { background: var(--yellow); }
+
+    /* ====== Programme cards ====== */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 24px;
+    }
+    @media (max-width: 720px) {
+      .program-grid { grid-template-columns: 1fr; }
+    }
+    .program-card {
+      background: var(--bg);
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 5px 5px 0 var(--line);
+      position: relative;
+    }
+    .program-card .week {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+    .program-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .program-card p {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+    .program-card .deadline {
+      font-family: var(--hand);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+    .program-card .deadline::before {
+      content: "→ ";
+      font-family: var(--sans);
+    }
+
+    /* ====== Format strip ====== */
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .format-item {
+      padding: 22px;
+      border: 2px dashed var(--line);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+    }
+    .format-item .num {
+      font-weight: 900;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .format-item .label {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.4;
+    }
+
+    /* ====== Bonus AS ====== */
+    .bonus-card {
+      background: var(--yellow);
+      border: 3px solid var(--line);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      box-shadow: 8px 8px 0 var(--line);
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .bonus-card .ribbon {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--yellow);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+    }
+    .bonus-card h2 {
+      margin-bottom: 16px;
+    }
+    .bonus-card p {
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink);
+      max-width: 640px;
+    }
+    .bonus-card .value {
+      display: inline-block;
+      margin-top: 18px;
+      font-family: var(--hand);
+      font-weight: 700;
+      font-size: 26px;
+      transform: rotate(-1.5deg);
+    }
+
+    /* ====== About ====== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    .avatar {
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900;
+      font-size: 88px;
+      letter-spacing: -0.04em;
+      border: 3px solid var(--line);
+      box-shadow: 6px 6px 0 var(--line);
+    }
+    .about-text p { margin-bottom: 16px; font-size: 17px; line-height: 1.65; color: var(--ink-soft); }
+    .about-text p strong { color: var(--ink); }
+    .about-text .quote {
+      border-left: 3px solid var(--yellow);
+      padding-left: 16px;
+      font-style: italic;
+      color: var(--ink);
+    }
+    .about-text .signature {
+      font-family: var(--hand);
+      font-size: 32px;
+      font-weight: 700;
+      margin-top: 8px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    /* ====== Pricing card ====== */
+    .pricing-card {
+      background: var(--bg-card);
+      border: 3px solid var(--line);
+      border-radius: 18px;
+      padding: 48px 40px;
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 8px 8px 0 var(--line);
+    }
+    .pricing-card .badge {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-bottom: 22px;
+    }
+    .price-big {
+      font-weight: 900;
+      font-size: 88px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .price-big .currency { font-size: 0.55em; vertical-align: top; }
+    .price-detail {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+    .price-includes {
+      text-align: left;
+      list-style: none;
+      max-width: 420px;
+      margin: 0 auto 28px;
+      display: grid;
+      gap: 10px;
+    }
+    .price-includes li {
+      display: flex;
+      gap: 10px;
+      font-size: 15px;
+    }
+    .price-includes li::before {
+      content: "✓";
+      font-weight: 900;
+      color: var(--ink);
+      background: var(--yellow);
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+    .price-fineprint {
+      font-size: 13px;
+      color: var(--ink-mute);
+      margin-top: 18px;
+    }
+
+    /* ====== Why 15 ====== */
+    .why-15 {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .why-15 .quote {
+      font-family: var(--hand);
+      font-size: 32px;
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 24px 0;
+      transform: rotate(-1deg);
+      display: inline-block;
+    }
+
+    /* ====== FAQ ====== */
+    .faq-list { max-width: 800px; }
+    .faq-item {
+      border-bottom: 2px solid var(--line);
+    }
+    .faq-q {
+      padding: 22px 0;
+      font-weight: 700;
+      font-size: 19px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q::after {
+      content: "+";
+      font-weight: 900;
+      font-size: 26px;
+      line-height: 1;
+      flex-shrink: 0;
+      background: var(--yellow);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 2px solid var(--line);
+      transition: transform 0.2s ease;
+    }
+    .faq-item[open] .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      padding: 0 0 24px;
+      font-size: 16px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      max-width: 700px;
+    }
+
+    /* ====== Final CTA ====== */
+    .final-cta {
+      text-align: center;
+      padding: 100px 0;
+    }
+    .final-cta h2 { color: var(--paper); margin-bottom: 18px; }
+    .final-cta .lines {
+      font-size: 18px;
+      color: #C9C6BF;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .final-cta .lines strong { color: var(--yellow); font-weight: 700; }
+
+    /* ====== Waitlist embed ====== */
+    .waitlist-box {
+      background: var(--paper);
+      border-radius: 18px;
+      padding: 8px;
+      max-width: 640px;
+      margin: 0 auto;
+      border: 3px solid var(--yellow);
+    }
+    .waitlist-placeholder {
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 15px;
+      border: 2px dashed var(--ink-mute);
+      border-radius: 12px;
+    }
+    .waitlist-placeholder code {
+      background: var(--bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      padding: 40px 0 60px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-mute);
+      border-top: 2px solid var(--line);
+      background: var(--bg);
+    }
+    footer .easter {
+      font-family: var(--hand);
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin-top: 10px;
+      transform: rotate(-1deg);
+      display: inline-block;
+    }
+    footer a { color: var(--ink); text-decoration: underline; }
+
+    /* ====== Utilities ====== */
+    .center { text-align: center; }
+    .mt-32 { margin-top: 32px; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== Top urgency strip ==================== -->
+  <div class="strip">
+    <span class="dot"></span>
+    Cohorte juillet 2026 · <strong>Démarrage dans <span id="countdown">…</span></strong> · 15 places · 990€
+  </div>
+
+  <!-- ==================== Nav ==================== -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="logo">
+        <div class="logo-mark">VIBE FOUNDER</div>
+        <div class="logo-tag">since 2026</div>
+      </div>
+      <div class="nav-links">
+        <a href="#programme">Programme</a>
+        <a href="#format">Format</a>
+        <a href="#tarif">Tarif</a>
+        <a href="#faq">FAQ</a>
+        <a href="#waitlist" class="nav-cta">Rejoindre — 990€</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== Hero ==================== -->
+  <header class="hero">
+    <div class="wrap">
+      <h1>
+        Arrête d'être quelqu'un qui<br>
+        <span class="scratch">a juste une idée d'app.</span><br>
+        Deviens un <span class="become">Vibe Founder</span>.
+      </h1>
+      <p class="sub">
+        Le bootcamp pour passer de <em>« j'ai une idée d'app »</em> à <strong>« elle est sur l'App Store »</strong> en 30 jours.<br>
+        Sans coder. Avec l'IA.
+      </p>
+      <div class="cta-row">
+        <a href="#waitlist" class="cta-primary">Je rejoins la waitlist <span class="arrow">→</span></a>
+      </div>
+      <div class="meta-line">
+        <span class="dot"></span> Cohorte juillet 2026 · 15 places · 990€
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== Diagnostic ==================== -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Diagnostic</div>
+      <h2>Tu as une idée d'app depuis<br>des mois. Peut-être des années.</h2>
+      <p class="lede">
+        Tu y penses tous les jours. Tu griffonnes des écrans dans Notion. Tu as déjà essayé de t'y mettre deux ou trois fois.
+        Mais tu n'as pas shippé. Et tu sais pourquoi :
+      </p>
+      <ul class="check-list">
+        <li><span class="mark"></span><span>Tu ne sais pas quels outils utiliser, ni lesquels sont sérieux.</span></li>
+        <li><span class="mark"></span><span>Tu lances un tuto YouTube, puis un deuxième, tu te perds.</span></li>
+        <li><span class="mark"></span><span>Tu ne sais pas par où commencer concrètement.</span></li>
+        <li><span class="mark"></span><span>Tu n'as ni deadline, ni cadre, ni plan.</span></li>
+        <li><span class="mark"></span><span>Personne autour de toi ne te pousse vraiment à shipper.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== Insight (dark) ==================== -->
+  <section class="dark">
+    <div class="wrap">
+      <div class="eyebrow">Le vrai problème</div>
+      <p class="insight-quote">
+        Le problème n'est pas ton idée.<br>
+        Le problème est que tu construis seul, <span class="hl">sans cadre, sans deadline, sans plan.</span>
+      </p>
+      <p class="insight-tail">
+        Plus de tutos YouTube ne te feront pas shipper. Plus de Notion ne te feront pas shipper. Plus de <em>« je vais m'y mettre »</em> ne te feront pas shipper.<br><br>
+        <strong>Ce qui te fera shipper :</strong> une deadline, un cadre, une bande, un coach.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== Vision ==================== -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Dans 30 jours</div>
+      <h2>Voilà <span class="yellow-mark">qui tu es</span>.</h2>
+      <ul class="check-list positive">
+        <li><span class="mark"></span><span><strong>Ton app est publiée sur l'App Store.</strong></span></li>
+        <li><span class="mark"></span><span>Tu maîtrises ton stack IA. Tu sais quoi installer, quand, et pourquoi.</span></li>
+        <li><span class="mark"></span><span>Ton dossier App Store est complet : icône, screenshots, vidéo preview, paywall.</span></li>
+        <li><span class="mark"></span><span>Tu as tes 5 premiers retours utilisateurs réels.</span></li>
+        <li><span class="mark"></span><span>Tu n'es plus quelqu'un qui « a une idée ». Tu es un Vibe Founder.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== Programme ==================== -->
+  <section class="card" id="programme">
+    <div class="wrap">
+      <div class="eyebrow">Le programme</div>
+      <h2>Ce que tu fais. Pendant 30 jours.</h2>
+      <p class="lede">
+        Pas une formation. Pas un cours en ligne. Un bootcamp avec deadline, deux calls par semaine, et une bande qui pousse avec toi.
+      </p>
+      <div class="program-grid">
+        <div class="program-card">
+          <span class="week">Semaine 1</span>
+          <h3>Tu cadres et tu installes.</h3>
+          <p>Tu transformes ton idée vague en MVP shippable. Tu installes ton stack IA : Cursor, Claude Code, RevenueCat, Apple Developer.</p>
+          <span class="deadline">À J7, tu es opérationnel</span>
+        </div>
+        <div class="program-card">
+          <span class="week">Semaine 2</span>
+          <h3>Tu construis.</h3>
+          <p>Une seule feature qui marche. On polit le core loop, on évacue le reste. Pas de scope creep, pas de perfectionnisme.</p>
+          <span class="deadline">À J14, ton prototype tourne</span>
+        </div>
+        <div class="program-card">
+          <span class="week">Semaine 3</span>
+          <h3>Tu polis pour le store.</h3>
+          <p>Icône, screenshots, description, vidéo preview, paywall. La caisse à outils App Store, livrée prête à l'emploi.</p>
+          <span class="deadline">À J21, ton dossier est complet</span>
+        </div>
+        <div class="program-card">
+          <span class="week">Semaine 4</span>
+          <h3>Tu submit et tu lances.</h3>
+          <p>Tu soumets à Apple. On attaque les premières installs en organique ensemble. Tu récupères tes premiers retours.</p>
+          <span class="deadline">À J30, ton app est en ligne</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Format ==================== -->
+  <section id="format">
+    <div class="wrap">
+      <div class="eyebrow">Format</div>
+      <h2>Comment ça <span class="yellow-mark">se passe</span>.</h2>
+      <div class="format-grid">
+        <div class="format-item">
+          <div class="num">2</div>
+          <div class="label">calls live par semaine<br>(mardi + jeudi, 1h30)</div>
+        </div>
+        <div class="format-item">
+          <div class="num">1</div>
+          <div class="label">Discord dédié<br>avec moi + ta cohorte, 24/7</div>
+        </div>
+        <div class="format-item">
+          <div class="num">4</div>
+          <div class="label">modules de contenu<br>livrés semaine par semaine</div>
+        </div>
+        <div class="format-item">
+          <div class="num">15</div>
+          <div class="label">personnes max<br>dans la cohorte, jamais plus</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Bonus AS ==================== -->
+  <section class="card">
+    <div class="wrap">
+      <div class="bonus-card">
+        <span class="ribbon">Bonus inclus</span>
+        <h2>Tu termines.<br>Tu rejoins App Society.<br>6 mois offerts.</h2>
+        <p>
+          App Society, c'est la guilde permanente où les fondateurs d'app B2C poussent leur MRR ensemble chaque semaine. C'est là que tu vas <strong>après</strong> Vibe Founder pour transformer ton ship en business.
+        </p>
+        <div class="value">≈ 500 € de valeur, offerts.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== About ==================== -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Qui je suis</div>
+      <div class="about-grid">
+        <div class="avatar">H</div>
+        <div class="about-text">
+          <p>
+            Moi c'est <strong>Harry</strong>. J'ai construit Punchlines, une app qui a tapé le <strong>top 10 jeux éducation France</strong> à son pic. Je dirige <strong>App Society</strong> depuis mars 2026, où on accompagne une douzaine de fondateurs d'app B2C chaque semaine.
+          </p>
+          <p class="quote">
+            J'ai créé Vibe Founder parce que la moitié des gens qui m'écrivent ne savent pas par où commencer. Ils me disent tous la même chose : <em>« j'ai besoin que quelqu'un me dise quoi faire, dans quel ordre, et qui me tienne par la main jusqu'à ce que je shippe. »</em>
+          </p>
+          <p>
+            C'est exactement ce que fait Vibe Founder. <strong>30 jours, ensemble, jusqu'à la publication.</strong>
+          </p>
+          <span class="signature">— Harry</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Pricing ==================== -->
+  <section class="card" id="tarif">
+    <div class="wrap">
+      <div class="eyebrow center" style="display: block; text-align: center; margin: 0 auto 28px;">Tarif waitlist</div>
+      <h2 class="center" style="text-align: center;">990 €. Une fois.<br>30 jours. App publiée.</h2>
+      <div class="pricing-card mt-32">
+        <span class="badge">Tarif waitlist</span>
+        <div class="price-big"><span class="currency">€</span>990</div>
+        <div class="price-detail">Paiement unique. Pas d'abonnement.</div>
+        <ul class="price-includes">
+          <li>Bootcamp 4 semaines (2 calls live / sem)</li>
+          <li>Discord cohorte 24/7</li>
+          <li>4 modules de contenu structuré</li>
+          <li>6 mois App Society offerts à la fin (≈ 500 €)</li>
+          <li>Garantie satisfait ou remboursé 7 jours</li>
+        </ul>
+        <a href="#waitlist" class="cta-primary">Je rejoins la waitlist <span class="arrow">→</span></a>
+        <div class="price-fineprint">Plein tarif public à venir : 1 490 €.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Why 15 places ==================== -->
+  <section>
+    <div class="wrap why-15">
+      <div class="eyebrow">Pourquoi 15 places</div>
+      <h2>Coaching live. Donc cohorte serrée.</h2>
+      <p class="lede" style="margin-left: auto; margin-right: auto;">
+        Pour que tu puisses lever la main à chaque call et avoir un vrai retour de ma part, je ne peux pas faire vivre plus de 15 personnes en parallèle. C'est tout.
+      </p>
+      <div class="quote">Cette cohorte = la première = la plus serrée.</div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="card" id="faq">
+    <div class="wrap">
+      <div class="eyebrow">No Bullshit Zone</div>
+      <h2>Tu hésites ?<br>Bonne nouvelle, j'ai des réponses.</h2>
+
+      <div class="faq-list mt-32">
+        <details class="faq-item">
+          <summary class="faq-q">Je n'ai pas encore d'idée précise. Je peux rejoindre ?</summary>
+          <div class="faq-a">
+            Idéalement tu as une intuition. Mais la S1 sert aussi à cadrer/affiner ton idée. Si tu as zéro piste et zéro envie d'en chercher, ce n'est pas pour toi. Si tu as une vague idée et que tu veux la concrétiser, c'est exactement pour toi.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Je ne sais coder DU TOUT. C'est grave ?</summary>
+          <div class="faq-a">
+            Non, c'est le profil cible. Vibe Founder est conçu pour les fondateurs qui ne savent pas (encore) coder. Tu vas vibe-coder ton app avec l'IA. Le seul prérequis : être à l'aise avec un ordinateur et prêt à apprendre les outils.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Combien d'heures par semaine ça demande ?</summary>
+          <div class="faq-a">
+            Compte 10-15h par semaine pendant 4 semaines. C'est intense parce que la deadline est intense. Si tu peux dégager 15h/sem, tu shippes. Si tu peux dégager 20h/sem, tu shippes confortablement.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Et si je ne shippe pas en 30 jours ?</summary>
+          <div class="faq-a">
+            Tu ne perds rien. Tu gardes accès au Discord, aux 4 modules, et tu bascules dans App Society avec les 6 mois offerts. Tu finis ton app à ton rythme, dans un cadre permanent. Ceux qui ne shippent pas en 30j shippent souvent en 45-60.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">C'est quoi App Society ?</summary>
+          <div class="faq-a">
+            App Society est ma guilde permanente de fondateurs d'app B2C. On se retrouve chaque lundi pour pousser nos MRR ensemble : marketing, ads, analytics, paywall, monetization. C'est là que tu vas après Vibe Founder pour transformer ton ship en vrai business. <a href="https://harryjmg.fr/appsociety/" target="_blank">Voir App Society →</a>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Comment je suis sûr d'avoir ma place ?</summary>
+          <div class="faq-a">
+            La waitlist est par ordre d'arrivée. Quand on ouvre les paiements (mi-juin), les premiers de la waitlist passent en priorité. 15 places, pas plus. Quand c'est plein, c'est plein.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Final CTA (dark) ==================== -->
+  <section class="dark" id="waitlist">
+    <div class="wrap final-cta">
+      <div class="eyebrow">On se retrouve le 1er juillet ?</div>
+      <h2>Démarrage 1er juillet 2026.<br>15 places. <span class="yellow-mark">Ordre d'arrivée.</span></h2>
+      <p class="lines">
+        <strong>990 €</strong> · paiement unique · garantie 7 jours<br>
+        + 6 mois App Society offerts à la fin
+      </p>
+
+      <div class="waitlist-box">
+        <iframe
+          data-tally-src="https://tally.so/embed/kdv2vR?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          loading="lazy"
+          width="100%"
+          height="600"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Vibe Founder · Rejoindre la waitlist"
+          style="border-radius: 14px; background: var(--paper);">
+        </iframe>
+        <script src="https://tally.so/widgets/embed.js"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Footer ==================== -->
+  <footer>
+    <div class="wrap">
+      © 2026 Vibe Founder — Un programme par <a href="https://harryjmg.fr">Harry</a><br>
+      <span class="easter">Cette landing a été vibe-codée.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown : démarrage 1er juillet 2026 00:00 (heure de Paris ≈ UTC+2 en été)
+    (function() {
+      const target = new Date('2026-07-01T00:00:00+02:00').getTime();
+      const el = document.getElementById('countdown');
+      if (!el) return;
+      function tick() {
+        const now = Date.now();
+        const diff = target - now;
+        if (diff <= 0) { el.textContent = 'maintenant'; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        el.textContent = d + 'j ' + h + 'h ' + m + 'min';
+      }
+      tick();
+      setInterval(tick, 60000);
+    })();
+  </script>
+</body>
+</html>
