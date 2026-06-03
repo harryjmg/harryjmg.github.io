@@ -928,14 +928,27 @@
     }
     .final-cta .lines strong { color: var(--yellow); font-weight: 700; }
 
-    /* ====== Waitlist embed ====== */
-    .waitlist-box {
-      background: var(--paper);
-      border-radius: 18px;
-      padding: 8px;
-      max-width: 640px;
-      margin: 0 auto;
-      border: 3px solid var(--yellow);
+    /* ====== Waitlist CTA hint ====== */
+    .final-cta-hint {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink-on-dark-soft);
+      letter-spacing: 0.04em;
+      font-weight: 500;
+    }
+    .final-cta-hint::before {
+      content: "★ ";
+      color: var(--yellow);
+    }
+
+    /* Bigger CTA for the closing section */
+    .cta-primary--xl {
+      padding: 22px 38px;
+      font-size: 18px;
+      box-shadow: 6px 6px 0 var(--line);
+    }
+    .cta-primary--xl:hover {
+      box-shadow: 8px 8px 0 var(--line);
     }
 
     /* ====== Footer ====== */
@@ -993,7 +1006,7 @@
         <a href="#format">Format</a>
         <a href="#tarif">Tarif</a>
         <a href="#faq">FAQ</a>
-        <a href="#waitlist" class="nav-cta">Rejoindre — 990€</a>
+        <a href="https://tally.so/r/kdv2vR" class="nav-cta" data-tally-open="kdv2vR" data-tally-layout="modal" data-tally-width="640">Rejoindre — 990€</a>
       </div>
     </div>
   </nav>
@@ -1014,7 +1027,7 @@
         <span class="tag">Sans coder. Avec l'IA.</span>
       </p>
       <div class="cta-row">
-        <a href="#waitlist" class="cta-primary">Je rejoins la waitlist <span class="arrow">→</span></a>
+        <a href="https://tally.so/r/kdv2vR" class="cta-primary" data-tally-open="kdv2vR" data-tally-layout="modal" data-tally-width="640" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Je rejoins la waitlist <span class="arrow">→</span></a>
       </div>
       <div class="meta-line">
         <span class="dot"></span> Cohorte juillet 2026 · 20 places · 990€
@@ -1190,7 +1203,7 @@
           <li>6 mois App Society offerts à la fin (≈ 500 €)</li>
           <li>Garantie satisfait ou remboursé 7 jours</li>
         </ul>
-        <a href="#waitlist" class="cta-primary">Je rejoins la waitlist <span class="arrow">→</span></a>
+        <a href="https://tally.so/r/kdv2vR" class="cta-primary" data-tally-open="kdv2vR" data-tally-layout="modal" data-tally-width="640" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Je rejoins la waitlist <span class="arrow">→</span></a>
         <div class="price-fineprint">Plein tarif public à venir : 1 490 €.</div>
       </div>
     </div>
@@ -1265,20 +1278,17 @@
         + 6 mois App Society offerts à la fin
       </p>
 
-      <div class="waitlist-box">
-        <iframe
-          data-tally-src="https://tally.so/embed/kdv2vR?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-          loading="lazy"
-          width="100%"
-          height="600"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-          title="Vibe Founder · Rejoindre la waitlist"
-          style="border-radius: 14px; background: var(--paper);">
-        </iframe>
-        <script src="https://tally.so/widgets/embed.js"></script>
-      </div>
+      <a
+        href="https://tally.so/r/kdv2vR"
+        class="cta-primary cta-primary--xl"
+        data-tally-open="kdv2vR"
+        data-tally-layout="modal"
+        data-tally-width="640"
+        data-tally-emoji-text="👋"
+        data-tally-emoji-animation="wave">
+        Je rejoins la waitlist <span class="arrow">→</span>
+      </a>
+      <p class="final-cta-hint">2 minutes · 4 étapes · 20 places</p>
     </div>
   </section>
 
@@ -1289,6 +1299,9 @@
       <span class="easter">Cette landing a été vibe-codée.</span>
     </div>
   </footer>
+
+  <!-- Tally modal embed — handles data-tally-open on any CTA -->
+  <script async src="https://tally.so/widgets/embed.js"></script>
 
   <script>
     // Countdown : démarrage 1er juillet 2026 00:00 (heure de Paris ≈ UTC+2 en été)
