@@ -747,8 +747,11 @@
     /* ====== Pricing ====== */
     .pricing-intro {
       text-align: center;
-      max-width: 36ch;
       margin: 0 auto 40px;
+      /* no max-width: let the h2 use the full wrap so the <br> is the only break */
+    }
+    .pricing-intro h2 {
+      text-wrap: balance;
     }
     .pricing-card {
       background: var(--bg-card);
@@ -776,15 +779,16 @@
     .price-big {
       font-family: var(--display);
       font-weight: 400;
-      font-size: clamp(60px, 7vw, 84px);   /* lowered from 80→104 so it sits inside the card */
-      line-height: 0.95;
+      font-size: clamp(48px, 5.5vw, 64px);   /* lowered again — was 60→84, now sits comfortably inside the card */
+      line-height: 1;
       letter-spacing: -0.025em;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .price-big .currency {
-      font-size: 0.5em;
-      vertical-align: top;
-      margin-right: 2px;
+      font-size: 0.55em;
+      margin-left: 6px;
+      font-weight: 500;
+      letter-spacing: 0;
     }
     .price-detail {
       font-size: 15px;
@@ -1167,7 +1171,7 @@
       <div class="eyebrow">Qui je suis</div>
       <div class="about-grid">
         <div class="about-photo">
-          <img src="harry-gibli.jpg" alt="Harry, en terrasse, illustration style Ghibli" width="520" height="520" loading="lazy" decoding="async">
+          <img src="harry-gibli.png" alt="Harry, en terrasse, illustration style Ghibli" width="520" height="520" loading="lazy" decoding="async">
         </div>
         <div class="about-text">
           <p>
@@ -1194,7 +1198,7 @@
       </div>
       <div class="pricing-card">
         <span class="badge">Tarif waitlist</span>
-        <div class="price-big"><span class="currency">€</span>990</div>
+        <div class="price-big">990<span class="currency">€</span></div>
         <div class="price-detail">Paiement unique. Pas d'abonnement.</div>
         <ul class="price-includes">
           <li>Bootcamp 4 semaines (2 calls live / sem)</li>
