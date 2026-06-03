@@ -441,6 +441,7 @@
     }
     h2 .yellow-mark {
       background: var(--yellow);
+      color: var(--ink);            /* force black on yellow, regardless of section context (was inheriting paper in section.dark = cream-on-yellow, ~1.2:1) */
       padding: 0 6px;
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
@@ -639,6 +640,7 @@
     }
     .bonus-card h2 {
       margin-bottom: 18px;
+      color: var(--ink);             /* explicit — bonus-card has yellow bg, never rely on inheritance */
     }
     .bonus-card p {
       font-size: clamp(16px, 1.5vw, 18px);
@@ -652,6 +654,7 @@
       font-family: var(--hand);
       font-weight: 700;
       font-size: clamp(26px, 2.8vw, 32px);
+      color: var(--ink);             /* explicit pour la même raison */
       transform: rotate(-1.5deg);
       line-height: 1.1;
     }
@@ -1046,14 +1049,14 @@
       <h2>Tu as une idée d'app depuis<br>des mois. Peut-être des années.</h2>
       <p class="lede">
         Tu y penses tous les jours. Tu griffonnes des écrans dans Notion. Tu as déjà essayé de t'y mettre deux ou trois fois.
-        Mais tu n'as pas shippé. Et tu sais pourquoi :
+        Mais tu n'as pas publié. Et tu sais pourquoi :
       </p>
       <ul class="check-list">
         <li><span class="mark"></span><span>Tu ne sais pas quels outils utiliser, ni lesquels sont sérieux.</span></li>
         <li><span class="mark"></span><span>Tu lances un tuto YouTube, puis un deuxième, tu te perds.</span></li>
         <li><span class="mark"></span><span>Tu ne sais pas par où commencer concrètement.</span></li>
         <li><span class="mark"></span><span>Tu n'as ni deadline, ni cadre, ni plan.</span></li>
-        <li><span class="mark"></span><span>Personne autour de toi ne te pousse vraiment à shipper.</span></li>
+        <li><span class="mark"></span><span>Personne autour de toi ne te pousse vraiment à publier.</span></li>
       </ul>
     </div>
   </section>
@@ -1064,11 +1067,11 @@
       <div class="eyebrow">Le vrai problème</div>
       <p class="insight-quote">
         Le problème n'est pas ton idée.<br>
-        Le problème est que tu construis seul, <span class="hl">sans cadre, sans deadline, sans plan.</span>
+        Le problème c'est que tu es seul, <span class="hl">sans cadre, sans deadline, sans plan.</span>
       </p>
       <p class="insight-tail">
-        Plus de tutos YouTube ne te feront pas shipper. Plus de Notion ne te feront pas shipper. Plus de <em>« je vais m'y mettre »</em> ne te feront pas shipper.<br><br>
-        <strong>Ce qui te fera shipper :</strong> une deadline, un cadre, une bande, un coach.
+        Plus de tutos YouTube ne te feront pas publier. Plus de Notion ne te feront pas publier. Plus de <em>« je vais m'y mettre »</em> ne te feront pas publier.<br><br>
+        <strong>Ce qui te fera publier :</strong> une deadline, un cadre, une bande, un coach.
       </p>
     </div>
   </section>
@@ -1077,7 +1080,7 @@
   <section>
     <div class="wrap">
       <div class="eyebrow">Dans 30 jours</div>
-      <h2>Voilà <span class="yellow-mark">qui tu es</span>.</h2>
+      <h2>Deviens un <span class="yellow-mark">Vibe Founder</span></h2>
       <ul class="check-list positive">
         <li><span class="mark"></span><span><strong>Ton app est publiée sur l'App Store.</strong></span></li>
         <li><span class="mark"></span><span>Tu maîtrises ton stack IA. Tu sais quoi installer, quand, et pourquoi.</span></li>
@@ -1100,7 +1103,7 @@
         <div class="program-card">
           <span class="week">Semaine 1</span>
           <h3>Tu cadres et tu installes.</h3>
-          <p>Tu transformes ton idée vague en MVP shippable. Tu installes ton stack IA : Cursor, Claude Code, RevenueCat, Apple Developer.</p>
+          <p>Tu transformes ton idée vague en MVP publiable. Tu installes ton stack IA : Cursor, Claude Code, RevenueCat, Apple Developer.</p>
           <span class="deadline">À J7, tu es opérationnel</span>
         </div>
         <div class="program-card">
@@ -1117,7 +1120,7 @@
         </div>
         <div class="program-card">
           <span class="week">Semaine 4</span>
-          <h3>Tu submit et tu lances.</h3>
+          <h3>Tu soumets et tu lances.</h3>
           <p>Tu soumets à Apple. On attaque les premières installs en organique ensemble. Tu récupères tes premiers retours.</p>
           <span class="deadline">À J30, ton app est en ligne</span>
         </div>
@@ -1247,13 +1250,13 @@
         <details class="faq-item">
           <summary class="faq-q">Combien d'heures par semaine ça demande ?</summary>
           <div class="faq-a">
-            Compte 10-15h par semaine pendant 4 semaines. C'est intense parce que la deadline est intense. Si tu peux dégager 15h/sem, tu shippes. Si tu peux dégager 20h/sem, tu shippes confortablement.
+            Compte 10-15h par semaine pendant 4 semaines. C'est intense parce que la deadline est intense. Si tu peux dégager 15h/sem, tu publies. Si tu peux dégager 20h/sem, tu publies confortablement.
           </div>
         </details>
         <details class="faq-item">
-          <summary class="faq-q">Et si je ne shippe pas en 30 jours ?</summary>
+          <summary class="faq-q">Et si je ne publie pas en 30 jours ?</summary>
           <div class="faq-a">
-            Tu ne perds rien. Tu gardes accès au Discord, aux 4 modules, et tu bascules dans App Society avec les 6 mois offerts. Tu finis ton app à ton rythme, dans un cadre permanent. Ceux qui ne shippent pas en 30j shippent souvent en 45-60.
+            Tu ne perds rien. Tu gardes accès au Discord, aux 4 modules, et tu bascules dans App Society avec les 6 mois offerts. Tu finis ton app à ton rythme, dans un cadre permanent. Ceux qui ne publient pas en 30j publient souvent en 45-60.
           </div>
         </details>
         <details class="faq-item">
