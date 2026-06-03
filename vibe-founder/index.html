@@ -35,7 +35,7 @@
       --hand:      'Caveat', cursive;
       --display:   'Boldonse', 'Inter', system-ui, sans-serif;
       --content:   1080px;
-      --gap:       96px;
+      --gap:       clamp(64px, 9vw, 96px);   /* responsive section padding */
       --radius:    14px;
     }
 
@@ -59,7 +59,7 @@
     .wrap {
       max-width: var(--content);
       margin: 0 auto;
-      padding: 0 28px;
+      padding: 0 clamp(18px, 4vw, 28px);
     }
 
     /* ====== Top urgency strip ====== */
@@ -132,12 +132,14 @@
       background: var(--yellow);
       color: var(--ink);
       border: 2px solid var(--line);
-      padding: 10px 18px;
+      padding: 11px 20px;
       border-radius: 999px;
       font-weight: 700;
       font-size: 14px;
+      line-height: 1.2;
       box-shadow: 3px 3px 0 var(--line);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+      min-height: 40px;
     }
     .nav-cta:hover {
       transform: translate(-1px, -1px);
@@ -376,23 +378,34 @@
     section.card { background: var(--bg-card); }
 
     .eyebrow {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 6px 12px;
+      padding: 7px 14px 6px;
       border: 1.5px solid var(--ink);
       border-radius: 999px;
       margin-bottom: 28px;
+      color: var(--ink);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 6px; height: 6px;
+      background: var(--ink);
+      border-radius: 50%;
+      flex-shrink: 0;
     }
     section.dark .eyebrow { border-color: var(--paper); color: var(--paper); }
+    section.dark .eyebrow::before { background: var(--yellow); }
 
     h2 {
       font-weight: 900;
-      font-size: clamp(30px, 4.4vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.015em;
+      font-size: clamp(32px, 4.6vw, 58px);
+      line-height: 1.03;
+      letter-spacing: -0.018em;
       margin-bottom: 24px;
     }
     h2 .yellow-mark {
@@ -402,34 +415,35 @@
       -webkit-box-decoration-break: clone;
     }
     .lede {
-      font-size: 19px;
+      font-size: clamp(17px, 1.7vw, 20px);
       color: var(--ink-soft);
-      max-width: 720px;
-      margin-bottom: 32px;
+      max-width: 62ch;
+      margin-bottom: 36px;
+      line-height: 1.6;
     }
     section.dark .lede { color: #C9C6BF; }
 
-    /* ====== Diagnostic ====== */
+    /* ====== Check-list (used in Diagnostic ✕ and Vision ✓) ====== */
     .check-list {
       display: grid;
-      gap: 14px;
-      max-width: 720px;
+      gap: 16px;
+      max-width: 64ch;
       margin-top: 28px;
     }
     .check-list li {
       list-style: none;
       display: flex;
-      gap: 14px;
+      gap: 16px;
       align-items: flex-start;
-      font-size: 17px;
+      font-size: clamp(16px, 1.5vw, 18px);
       line-height: 1.55;
     }
     .check-list li .mark {
       flex-shrink: 0;
-      width: 22px; height: 22px;
+      width: 26px; height: 26px;
       border: 2px solid var(--line);
-      border-radius: 6px;
-      margin-top: 3px;
+      border-radius: 7px;
+      margin-top: 1px;
       position: relative;
     }
     .check-list li .mark::after {
@@ -438,29 +452,33 @@
       inset: 0;
       display: flex; align-items: center; justify-content: center;
       font-weight: 900;
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1;
     }
     section.dark .check-list li .mark { border-color: var(--paper); }
 
-    /* ====== Insight ====== */
+    /* ====== Insight (citation pivot) ====== */
     .insight-quote {
       font-weight: 800;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      max-width: 880px;
-      margin-bottom: 28px;
+      font-size: clamp(30px, 4.4vw, 50px);
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      max-width: min(24ch, 100%);   /* avoid ugly word-wraps on narrow viewports */
+      margin-bottom: 36px;
+      color: var(--paper);
     }
     .insight-quote span.hl {
       background: var(--yellow);
       color: var(--ink);
-      padding: 2px 8px;
+      padding: 2px 10px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
     }
     .insight-tail {
-      font-size: 18px;
+      font-size: clamp(16px, 1.5vw, 18px);
       color: #C9C6BF;
-      max-width: 720px;
-      line-height: 1.6;
+      max-width: 62ch;
+      line-height: 1.65;
     }
     .insight-tail strong { color: var(--paper); font-weight: 700; }
 
@@ -472,81 +490,97 @@
     .program-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-      margin-top: 24px;
+      gap: 24px;
+      margin-top: 32px;
     }
     @media (max-width: 720px) {
-      .program-grid { grid-template-columns: 1fr; }
+      .program-grid { grid-template-columns: 1fr; gap: 18px; }
     }
     .program-card {
       background: var(--bg);
       border: 2px solid var(--line);
       border-radius: var(--radius);
-      padding: 28px;
+      padding: clamp(22px, 3.5vw, 32px);
       box-shadow: 5px 5px 0 var(--line);
       position: relative;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .program-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--line);
     }
     .program-card .week {
       display: inline-block;
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       background: var(--ink);
       color: var(--paper);
-      padding: 5px 10px;
+      padding: 6px 11px 5px;
       border-radius: 4px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
     .program-card h3 {
-      font-size: 22px;
+      font-size: clamp(20px, 2vw, 24px);
       font-weight: 800;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
+      letter-spacing: -0.015em;
+      line-height: 1.18;
       margin-bottom: 12px;
     }
     .program-card p {
-      font-size: 15px;
+      font-size: clamp(15px, 1.4vw, 16px);
       color: var(--ink-soft);
-      line-height: 1.55;
-      margin-bottom: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
     }
     .program-card .deadline {
       font-family: var(--hand);
-      font-size: 22px;
+      font-size: clamp(22px, 2.1vw, 26px);
       font-weight: 700;
       color: var(--ink);
-      transform: rotate(-2deg);
+      transform: rotate(-1.5deg);
       display: inline-block;
+      line-height: 1.1;
     }
     .program-card .deadline::before {
       content: "→ ";
       font-family: var(--sans);
+      font-weight: 800;
     }
 
     /* ====== Format strip ====== */
     .format-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
     }
     .format-item {
-      padding: 22px;
+      padding: 26px 24px;
       border: 2px dashed var(--line);
       border-radius: var(--radius);
       background: var(--bg-card);
+      transition: border-style 0.2s, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .format-item:hover {
+      border-style: solid;
+      transform: translateY(-2px);
     }
     .format-item .num {
-      font-weight: 900;
-      font-size: 28px;
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(40px, 3.6vw, 48px);
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
     .format-item .label {
       font-size: 14px;
+      font-weight: 500;
       color: var(--ink-soft);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     /* ====== Bonus AS ====== */
@@ -554,10 +588,11 @@
       background: var(--yellow);
       border: 3px solid var(--line);
       border-radius: var(--radius);
-      padding: 40px 36px;
+      padding: clamp(32px, 5vw, 48px) clamp(28px, 4vw, 44px);
       box-shadow: 8px 8px 0 var(--line);
       max-width: 880px;
       margin: 0 auto;
+      position: relative;
     }
     .bonus-card .ribbon {
       display: inline-block;
@@ -567,65 +602,115 @@
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 6px 12px;
+      padding: 7px 13px 6px;
       border-radius: 4px;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
     .bonus-card h2 {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .bonus-card p {
-      font-size: 17px;
-      line-height: 1.55;
+      font-size: clamp(16px, 1.5vw, 18px);
+      line-height: 1.6;
       color: var(--ink);
-      max-width: 640px;
+      max-width: 56ch;
     }
     .bonus-card .value {
       display: inline-block;
-      margin-top: 18px;
+      margin-top: 22px;
       font-family: var(--hand);
       font-weight: 700;
-      font-size: 26px;
+      font-size: clamp(26px, 2.8vw, 32px);
       transform: rotate(-1.5deg);
+      line-height: 1.1;
+    }
+    /* Stamp corner — "★ INCLUS" pinned in the corner like a collector mark */
+    .bonus-card::after {
+      content: "★ INCLUS";
+      position: absolute;
+      top: -14px;
+      right: clamp(16px, 4vw, 40px);
+      background: var(--ink);
+      color: var(--yellow);
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      padding: 6px 11px 5px;
+      border-radius: 4px;
+      transform: rotate(3deg);
+      box-shadow: 2px 2px 0 var(--line);
     }
 
     /* ====== About ====== */
     .about-grid {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 40px;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
       align-items: start;
     }
     @media (max-width: 720px) {
-      .about-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-photo { max-width: 220px; }
     }
-    .avatar {
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: var(--ink);
-      color: var(--yellow);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900;
-      font-size: 88px;
-      letter-spacing: -0.04em;
+    .about-photo {
+      width: 100%;
+      max-width: 260px;
+      position: relative;
+    }
+    .about-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
       border: 3px solid var(--line);
-      box-shadow: 6px 6px 0 var(--line);
+      border-radius: 12px;
+      box-shadow: 8px 8px 0 var(--line);
+      transform: rotate(-2deg);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .about-text p { margin-bottom: 16px; font-size: 17px; line-height: 1.65; color: var(--ink-soft); }
-    .about-text p strong { color: var(--ink); }
+    .about-photo:hover img {
+      transform: rotate(-1deg) translate(-2px, -2px);
+    }
+    .about-photo::after {
+      content: "Harry";
+      position: absolute;
+      bottom: -10px;
+      right: -8px;
+      background: var(--yellow);
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--hand);
+      font-weight: 700;
+      font-size: 22px;
+      padding: 4px 14px 2px;
+      transform: rotate(4deg);
+      box-shadow: 2px 2px 0 var(--line);
+      color: var(--ink);
+      line-height: 1;
+    }
+    .about-text p {
+      margin-bottom: 18px;
+      font-size: clamp(16px, 1.5vw, 18px);
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .about-text p strong { color: var(--ink); font-weight: 700; }
     .about-text .quote {
       border-left: 3px solid var(--yellow);
-      padding-left: 16px;
+      padding: 4px 0 4px 18px;
       font-style: italic;
       color: var(--ink);
+      margin: 6px 0;
     }
     .about-text .signature {
       font-family: var(--hand);
-      font-size: 32px;
+      font-size: clamp(30px, 3.2vw, 38px);
       font-weight: 700;
-      margin-top: 8px;
+      margin-top: 12px;
       transform: rotate(-2deg);
       display: inline-block;
+      line-height: 1;
     }
 
     /* ====== Pricing card ====== */
@@ -633,11 +718,12 @@
       background: var(--bg-card);
       border: 3px solid var(--line);
       border-radius: 18px;
-      padding: 48px 40px;
-      max-width: 560px;
+      padding: clamp(36px, 5vw, 56px) clamp(28px, 4vw, 44px);
+      max-width: 580px;
       margin: 0 auto;
       text-align: center;
-      box-shadow: 8px 8px 0 var(--line);
+      box-shadow: 10px 10px 0 var(--line);
+      position: relative;
     }
     .pricing-card .badge {
       display: inline-block;
@@ -647,51 +733,62 @@
       font-weight: 800;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 6px 12px;
+      padding: 7px 13px 6px;
       border-radius: 4px;
-      margin-bottom: 22px;
+      margin-bottom: 26px;
     }
     .price-big {
-      font-weight: 900;
-      font-size: 88px;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      margin-bottom: 6px;
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(80px, 9vw, 104px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
     }
-    .price-big .currency { font-size: 0.55em; vertical-align: top; }
+    .price-big .currency {
+      font-size: 0.5em;
+      vertical-align: top;
+      margin-right: 2px;
+    }
     .price-detail {
       font-size: 15px;
+      font-weight: 500;
       color: var(--ink-soft);
-      margin-bottom: 28px;
+      margin-bottom: 32px;
+      letter-spacing: 0.005em;
     }
     .price-includes {
       text-align: left;
       list-style: none;
-      max-width: 420px;
-      margin: 0 auto 28px;
+      max-width: 440px;
+      margin: 0 auto 32px;
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
     .price-includes li {
       display: flex;
-      gap: 10px;
-      font-size: 15px;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: clamp(15px, 1.4vw, 16px);
+      line-height: 1.5;
+      color: var(--ink);
     }
     .price-includes li::before {
       content: "✓";
       font-weight: 900;
       color: var(--ink);
       background: var(--yellow);
-      width: 22px; height: 22px;
+      width: 24px; height: 24px;
       border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      font-size: 13px;
+      font-size: 14px;
+      margin-top: 1px;
     }
     .price-fineprint {
       font-size: 13px;
       color: var(--ink-mute);
-      margin-top: 18px;
+      margin-top: 22px;
     }
 
     /* ====== Why 20 ====== */
@@ -700,32 +797,49 @@
       max-width: 720px;
       margin: 0 auto;
     }
+    .why-20 .lede { margin-left: auto; margin-right: auto; }
     .why-20 .quote {
       font-family: var(--hand);
-      font-size: 32px;
-      line-height: 1.2;
+      font-size: clamp(28px, 3.4vw, 38px);
+      line-height: 1.15;
       color: var(--ink);
-      margin: 24px 0;
+      margin: 28px auto 0;
       transform: rotate(-1deg);
       display: inline-block;
+      padding: 0 4px;
+      position: relative;
+    }
+    .why-20 .quote::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      bottom: 0.1em;
+      height: 0.28em;
+      background: var(--yellow);
+      z-index: -1;
+      transform: skewX(-4deg);
     }
 
     /* ====== FAQ ====== */
-    .faq-list { max-width: 800px; }
+    .faq-list { max-width: 820px; margin-top: 32px; }
     .faq-item {
       border-bottom: 2px solid var(--line);
     }
+    .faq-item:first-child { border-top: 2px solid var(--line); }
     .faq-q {
-      padding: 22px 0;
+      padding: 24px 0;
       font-weight: 700;
-      font-size: 19px;
+      font-size: clamp(17px, 1.7vw, 20px);
+      letter-spacing: -0.005em;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
       list-style: none;
+      transition: color 0.15s ease;
     }
+    .faq-q:hover { color: var(--ink); }
     .faq-q::-webkit-details-marker { display: none; }
     .faq-q::after {
       content: "+";
@@ -734,31 +848,46 @@
       line-height: 1;
       flex-shrink: 0;
       background: var(--yellow);
-      width: 36px; height: 36px;
+      width: 44px; height: 44px;     /* WCAG touch target */
       border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
       border: 2px solid var(--line);
-      transition: transform 0.2s ease;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 2px 2px 0 var(--line);
     }
     .faq-item[open] .faq-q::after { transform: rotate(45deg); }
     .faq-a {
-      padding: 0 0 24px;
-      font-size: 16px;
+      padding: 0 0 28px;
+      font-size: clamp(15px, 1.5vw, 17px);
       color: var(--ink-soft);
       line-height: 1.7;
-      max-width: 700px;
+      max-width: 68ch;
+    }
+    .faq-a a {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: var(--yellow);
+      text-decoration-thickness: 3px;
+      text-underline-offset: 2px;
     }
 
     /* ====== Final CTA ====== */
     .final-cta {
       text-align: center;
-      padding: 100px 0;
+      padding: clamp(64px, 10vh, 120px) 0;
     }
-    .final-cta h2 { color: var(--paper); margin-bottom: 18px; }
+    .final-cta h2 {
+      color: var(--paper);
+      margin-bottom: 22px;
+      max-width: 16ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .final-cta .lines {
-      font-size: 18px;
+      font-size: clamp(16px, 1.6vw, 19px);
       color: #C9C6BF;
-      margin-bottom: 40px;
+      margin-bottom: 44px;
       line-height: 1.7;
     }
     .final-cta .lines strong { color: var(--yellow); font-weight: 700; }
@@ -789,22 +918,31 @@
 
     /* ====== Footer ====== */
     footer {
-      padding: 40px 0 60px;
+      padding: 48px 0 64px;
       text-align: center;
       font-size: 13px;
       color: var(--ink-mute);
       border-top: 2px solid var(--line);
       background: var(--bg);
+      line-height: 1.7;
     }
     footer .easter {
       font-family: var(--hand);
-      font-size: 18px;
+      font-size: 20px;
       color: var(--ink-soft);
-      margin-top: 10px;
+      margin-top: 12px;
       transform: rotate(-1deg);
       display: inline-block;
+      line-height: 1;
     }
-    footer a { color: var(--ink); text-decoration: underline; }
+    footer a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--yellow);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
 
     /* ====== Utilities ====== */
     .center { text-align: center; }
@@ -991,7 +1129,9 @@
     <div class="wrap">
       <div class="eyebrow">Qui je suis</div>
       <div class="about-grid">
-        <div class="avatar">H</div>
+        <div class="about-photo">
+          <img src="harry-gibli.png" alt="Harry, en terrasse, illustration style Ghibli">
+        </div>
         <div class="about-text">
           <p>
             Moi c'est <strong>Harry</strong>. J'ai construit Punchlines, une app qui a tapé le <strong>top 10 jeux éducation France</strong> à son pic. Je dirige <strong>App Society</strong> depuis mars 2026, où on accompagne une douzaine de fondateurs d'app B2C chaque semaine.
