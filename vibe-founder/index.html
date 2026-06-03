@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vibe Founder — Ton app sur l'App Store en 30 jours</title>
-  <meta name="description" content="Le bootcamp pour passer de 'j'ai une idée d'app' à 'elle est sur l'App Store' en 30 jours. Sans coder. Avec l'IA. Cohorte juillet 2026 — 15 places.">
+  <meta name="description" content="Le bootcamp pour passer de 'j'ai une idée d'app' à 'elle est sur l'App Store' en 30 jours. Sans coder. Avec l'IA. Cohorte juillet 2026 — 20 places.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://harryjmg.fr/vibe-founder/">
   <meta property="og:title" content="Vibe Founder — Ton app sur l'App Store en 30 jours">
@@ -12,7 +12,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FFD83D'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='900' font-size='18' fill='%230A0A0A'%3EV%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -33,6 +33,7 @@
       --line:      #0A0A0A;
       --sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --hand:      'Caveat', cursive;
+      --display:   'Boldonse', 'Inter', system-ui, sans-serif;
       --content:   1080px;
       --gap:       96px;
       --radius:    14px;
@@ -148,54 +149,174 @@
 
     /* ====== Hero ====== */
     .hero {
-      padding: 100px 0 80px;
+      padding: clamp(72px, 12vh, 140px) 0 clamp(64px, 8vh, 96px);
       text-align: center;
+      position: relative;
     }
-    .hero h1 {
-      font-weight: 900;
-      font-size: clamp(40px, 7vw, 84px);
-      line-height: 0.98;
+
+    /* Setup — small, soft. "juste" highlighted with subtle yellow underline
+       (replaces the strikethrough as the avant/après signal). */
+    .hero-setup {
+      font-family: var(--sans);
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      color: var(--ink-soft);
+      max-width: 38ch;
+      margin: 0 auto 18px;  /* tight → climax (reads as one unit) */
+      line-height: 1.5;
+    }
+    .hero-setup em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--ink);
+      position: relative;
+      display: inline-block;
+    }
+    .hero-setup em::after {
+      content: "";
+      position: absolute;
+      left: -2px;
+      right: -2px;
+      bottom: 2px;
+      height: 7px;
+      background: var(--yellow);
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    /* Climax — display brutal Boldonse + Caveat signature focal point */
+    .hero-climax {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(48px, 9vw, 108px);
+      line-height: 0.95;
       letter-spacing: -0.02em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
+      color: var(--ink);
+      margin: 0 auto 48px;  /* generous → the climax breathes */
+      text-transform: none;
+      /* Boldonse already carries optical weight — no upper, no 900 needed */
     }
-    .hero h1 .scratch {
-      text-decoration: line-through;
-      text-decoration-thickness: 4px;
-      text-decoration-color: var(--ink);
-      color: var(--ink-mute);
-      font-size: 0.92em;
-    }
-    .hero h1 .become {
+    .hero-climax .become {
       display: inline-block;
       position: relative;
       font-family: var(--hand);
       font-weight: 700;
       font-style: normal;
-      text-transform: none;
-      letter-spacing: 0;
+      font-size: 1.34em;       /* slightly oversized vs Boldonse so it dominates */
+      line-height: 0.9;
+      letter-spacing: -0.01em;
       color: var(--ink);
-      font-size: 1.1em;
-      transform: rotate(-2deg);
-      padding: 0 8px;
+      padding: 0 14px;
+      margin-top: 10px;
+      transform: rotate(-2.5deg);
     }
-    .hero h1 .become::after {
+    .hero-climax .become::after {
       content: "";
       position: absolute;
-      left: 4px; right: 4px; bottom: 6px;
-      height: 14px;
+      left: 6px;
+      right: 6px;
+      bottom: 0.18em;
+      height: 0.32em;
       background: var(--yellow);
       z-index: -1;
       transform: skewX(-6deg);
     }
-    .hero p.sub {
-      font-size: clamp(17px, 2vw, 22px);
+
+    /* Sub — body text, from→to mirror */
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: clamp(16px, 1.5vw, 19px);
+      font-weight: 400;
       color: var(--ink-soft);
-      max-width: 720px;
-      margin: 0 auto 40px;
-      line-height: 1.55;
+      max-width: 56ch;
+      margin: 0 auto 44px;  /* generous → leads to CTA */
+      line-height: 1.65;
     }
-    .hero p.sub strong { color: var(--ink); font-weight: 700; }
+    .hero-sub .from {
+      font-style: italic;
+      color: var(--ink-mute);
+      white-space: nowrap;
+    }
+    .hero-sub .to {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+      background: linear-gradient(to top, rgba(255, 216, 61, 0.55) 32%, transparent 32%);
+      padding: 0 4px;
+    }
+    .hero-sub .tag {
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+
+    /* Sticker — asymmetric anchor that breaks the all-centered axis */
+    .hero-sticker {
+      position: absolute;
+      top: clamp(16px, 3vh, 32px);
+      right: clamp(20px, 5vw, 80px);
+      background: var(--yellow);
+      border: 2.5px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 14px 6px;
+      font-family: var(--hand);
+      font-weight: 700;
+      font-size: clamp(17px, 1.8vw, 22px);
+      line-height: 1;
+      color: var(--ink);
+      transform: rotate(-6deg);
+      box-shadow: 3px 3px 0 var(--line);
+      z-index: 2;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .hero-sticker .star {
+      display: inline-block;
+      margin-right: 4px;
+      transform: translateY(-1px) rotate(8deg);
+    }
+    @media (max-width: 720px) {
+      .hero-sticker {
+        top: 12px;
+        right: 12px;
+        padding: 6px 10px 5px;
+        font-size: 15px;
+      }
+    }
+
+    /* Staggered entrance animation on hero children
+       (the "effets" the user wanted, kept tasteful + a11y-aware) */
+    .hero .wrap > * {
+      opacity: 0;
+      animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero .wrap > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero .wrap > *:nth-child(2) { animation-delay: 0.17s; }
+    .hero .wrap > *:nth-child(3) { animation-delay: 0.30s; }
+    .hero .wrap > *:nth-child(4) { animation-delay: 0.45s; }
+    .hero .wrap > *:nth-child(5) { animation-delay: 0.58s; }
+    .hero-sticker {
+      animation: hero-pop 0.5s 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+    }
+    @keyframes hero-rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes hero-pop {
+      from { opacity: 0; transform: rotate(-6deg) scale(0.6); }
+      to   { opacity: 1; transform: rotate(-6deg) scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero .wrap > *,
+      .hero-sticker {
+        opacity: 1;
+        animation: none;
+      }
+    }
 
     .cta-row {
       display: flex;
@@ -203,7 +324,7 @@
       justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 20px;  /* tight → meta-line (action + details cluster) */
     }
     .cta-primary {
       display: inline-flex;
@@ -565,13 +686,13 @@
       margin-top: 18px;
     }
 
-    /* ====== Why 15 ====== */
-    .why-15 {
+    /* ====== Why 20 ====== */
+    .why-20 {
       text-align: center;
       max-width: 720px;
       margin: 0 auto;
     }
-    .why-15 .quote {
+    .why-20 .quote {
       font-family: var(--hand);
       font-size: 32px;
       line-height: 1.2;
@@ -687,7 +808,7 @@
   <!-- ==================== Top urgency strip ==================== -->
   <div class="strip">
     <span class="dot"></span>
-    Cohorte juillet 2026 · <strong>Démarrage dans <span id="countdown">…</span></strong> · 15 places · 990€
+    Cohorte juillet 2026 · <strong>Démarrage dans <span id="countdown">…</span></strong> · 20 places · 990€
   </div>
 
   <!-- ==================== Nav ==================== -->
@@ -709,21 +830,24 @@
 
   <!-- ==================== Hero ==================== -->
   <header class="hero">
+    <div class="hero-sticker" aria-hidden="true"><span class="star">★</span>Cohorte n°1</div>
     <div class="wrap">
-      <h1>
-        Arrête d'être quelqu'un qui<br>
-        <span class="scratch">a juste une idée d'app.</span><br>
-        Deviens un <span class="become">Vibe Founder</span>.
+      <p class="hero-setup">
+        Arrête d'être quelqu'un qui a <em>juste</em> une idée d'app.
+      </p>
+      <h1 class="hero-climax">
+        Deviens un<br>
+        <span class="become">Vibe Founder</span>.
       </h1>
-      <p class="sub">
-        Le bootcamp pour passer de <em>« j'ai une idée d'app »</em> à <strong>« elle est sur l'App Store »</strong> en 30 jours.<br>
-        Sans coder. Avec l'IA.
+      <p class="hero-sub">
+        Le bootcamp pour passer de <span class="from">« j'ai une idée d'app »</span> à <span class="to">« elle est sur l'App Store »</span> en 30 jours.<br>
+        <span class="tag">Sans coder. Avec l'IA.</span>
       </p>
       <div class="cta-row">
         <a href="#waitlist" class="cta-primary">Je rejoins la waitlist <span class="arrow">→</span></a>
       </div>
       <div class="meta-line">
-        <span class="dot"></span> Cohorte juillet 2026 · 15 places · 990€
+        <span class="dot"></span> Cohorte juillet 2026 · 20 places · 990€
       </div>
     </div>
   </header>
@@ -833,7 +957,7 @@
           <div class="label">modules de contenu<br>livrés semaine par semaine</div>
         </div>
         <div class="format-item">
-          <div class="num">15</div>
+          <div class="num">20</div>
           <div class="label">personnes max<br>dans la cohorte, jamais plus</div>
         </div>
       </div>
@@ -898,13 +1022,13 @@
     </div>
   </section>
 
-  <!-- ==================== Why 15 places ==================== -->
+  <!-- ==================== Why 20 places ==================== -->
   <section>
-    <div class="wrap why-15">
-      <div class="eyebrow">Pourquoi 15 places</div>
+    <div class="wrap why-20">
+      <div class="eyebrow">Pourquoi 20 places</div>
       <h2>Coaching live. Donc cohorte serrée.</h2>
       <p class="lede" style="margin-left: auto; margin-right: auto;">
-        Pour que tu puisses lever la main à chaque call et avoir un vrai retour de ma part, je ne peux pas faire vivre plus de 15 personnes en parallèle. C'est tout.
+        Pour que tu puisses lever la main à chaque call et avoir un vrai retour de ma part, je ne peux pas faire vivre plus de 20 personnes en parallèle. C'est tout.
       </p>
       <div class="quote">Cette cohorte = la première = la plus serrée.</div>
     </div>
@@ -950,7 +1074,7 @@
         <details class="faq-item">
           <summary class="faq-q">Comment je suis sûr d'avoir ma place ?</summary>
           <div class="faq-a">
-            La waitlist est par ordre d'arrivée. Quand on ouvre les paiements (mi-juin), les premiers de la waitlist passent en priorité. 15 places, pas plus. Quand c'est plein, c'est plein.
+            La waitlist est par ordre d'arrivée. Quand on ouvre les paiements (mi-juin), les premiers de la waitlist passent en priorité. 20 places, pas plus. Quand c'est plein, c'est plein.
           </div>
         </details>
       </div>
@@ -961,7 +1085,7 @@
   <section class="dark" id="waitlist">
     <div class="wrap final-cta">
       <div class="eyebrow">On se retrouve le 1er juillet ?</div>
-      <h2>Démarrage 1er juillet 2026.<br>15 places. <span class="yellow-mark">Ordre d'arrivée.</span></h2>
+      <h2>Démarrage 1er juillet 2026.<br>20 places. <span class="yellow-mark">Ordre d'arrivée.</span></h2>
       <p class="lines">
         <strong>990 €</strong> · paiement unique · garantie 7 jours<br>
         + 6 mois App Society offerts à la fin
