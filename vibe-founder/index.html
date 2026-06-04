@@ -1038,6 +1038,41 @@
       font-weight: 600;
     }
 
+    /* ====== Scroll-driven reveal animations ====== */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-reveal-stagger] > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-reveal-stagger].is-visible > * { opacity: 1; transform: translateY(0); }
+    [data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+    [data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay: 0.14s; }
+    [data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay: 0.23s; }
+    [data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay: 0.32s; }
+    [data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay: 0.41s; }
+    [data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay: 0.50s; }
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal], [data-reveal-stagger] > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Program cards : enable 3D perspective for hover tilt */
+    .program-card { transform-style: preserve-3d; }
+
     /* ====== Utilities ====== */
     .center { text-align: center; }
     .mt-32 { margin-top: 32px; }
@@ -1111,7 +1146,7 @@
         Tu y penses tous les jours. Tu griffonnes des écrans dans Notion. Tu as déjà essayé de t'y mettre deux ou trois fois.
         Mais tu n'as pas publié. Et tu sais pourquoi :
       </p>
-      <ul class="check-list">
+      <ul class="check-list" data-reveal-stagger>
         <li><span class="mark"></span><span>Tu ne sais pas quels outils utiliser, ni lesquels sont sérieux.</span></li>
         <li><span class="mark"></span><span>Tu lances un tuto YouTube, puis un deuxième, tu te perds.</span></li>
         <li><span class="mark"></span><span>Tu ne sais pas par où commencer concrètement.</span></li>
@@ -1141,7 +1176,7 @@
     <div class="wrap">
       <div class="eyebrow">Dans 30 jours</div>
       <h2>Deviens un <span class="yellow-mark">Vibe Founder</span></h2>
-      <ul class="check-list positive">
+      <ul class="check-list positive" data-reveal-stagger>
         <li><span class="mark"></span><span><strong>Ton app est publiée sur l'App Store.</strong></span></li>
         <li><span class="mark"></span><span>Tu maîtrises ton stack IA. Tu sais quoi installer, quand, et pourquoi.</span></li>
         <li><span class="mark"></span><span>Ton dossier App Store est complet : icône, screenshots, vidéo preview, paywall.</span></li>
@@ -1159,7 +1194,7 @@
       <p class="lede">
         Pas une formation. Pas un cours en ligne. Un bootcamp avec deadline, deux calls par semaine, et une bande qui pousse avec toi.
       </p>
-      <div class="program-grid">
+      <div class="program-grid" data-reveal-stagger>
         <div class="program-card">
           <span class="week">Semaine 1</span>
           <h3>Tu cadres et tu installes.</h3>
@@ -1193,7 +1228,7 @@
     <div class="wrap">
       <div class="eyebrow">Format</div>
       <h2>Comment ça <span class="yellow-mark">se passe</span>.</h2>
-      <div class="format-grid">
+      <div class="format-grid" data-reveal-stagger>
         <div class="format-item">
           <div class="num">2</div>
           <div class="label">calls live par semaine<br>(mardi + jeudi, 1h30)</div>
@@ -1217,7 +1252,7 @@
   <!-- ==================== Bonus AS ==================== -->
   <section class="card">
     <div class="wrap">
-      <div class="bonus-card">
+      <div class="bonus-card" data-reveal>
         <span class="ribbon">Bonus inclus</span>
         <h2>Tu termines.<br>Tu rejoins App Society.<br>6 mois offerts.</h2>
         <p>
@@ -1232,7 +1267,7 @@
   <section>
     <div class="wrap">
       <div class="eyebrow">Qui je suis</div>
-      <div class="about-grid">
+      <div class="about-grid" data-reveal>
         <div class="about-photo">
           <img src="harry-gibli.png" alt="Harry, en terrasse, illustration style Ghibli" width="520" height="520" loading="lazy" decoding="async">
         </div>
@@ -1259,7 +1294,7 @@
         <div class="eyebrow">Tarif waitlist</div>
         <h2>990 €. Une fois.<br>30 jours. App publiée.</h2>
       </div>
-      <div class="pricing-card">
+      <div class="pricing-card" data-reveal>
         <span class="badge">Tarif waitlist</span>
         <div class="price-big">990<span class="currency">€</span></div>
         <div class="price-detail">Paiement unique. Pas d'abonnement.</div>
@@ -1387,6 +1422,69 @@
       }
       tick();
       setInterval(tick, 60000);
+    })();
+
+    // ============== Scroll-driven reveals (sections, cards, bullets) ==============
+    (function() {
+      const reveals = document.querySelectorAll('[data-reveal], [data-reveal-stagger]');
+      if (!reveals.length || !('IntersectionObserver' in window)) {
+        reveals.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      reveals.forEach(el => obs.observe(el));
+    })();
+
+    // ============== Format chiffres : compteur animé 0 → N ==============
+    (function() {
+      const nums = document.querySelectorAll('.format-item .num');
+      if (!nums.length || !('IntersectionObserver' in window)) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = parseInt(el.dataset.count || el.textContent, 10);
+          if (!target) return;
+          const duration = 1100;
+          const start = performance.now();
+          el.textContent = '0';
+          (function tick(now) {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.floor(eased * target);
+            if (p < 1) requestAnimationFrame(tick);
+            else el.textContent = target;
+          })(start);
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      nums.forEach(el => {
+        el.dataset.count = el.textContent;
+        obs.observe(el);
+      });
+    })();
+
+    // ============== Hover tilt 3D sur les cards Programme (desktop pointer only) ==============
+    (function() {
+      if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+      document.querySelectorAll('.program-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `translate(-2px, -2px) perspective(900px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
     })();
   </script>
 </body>
