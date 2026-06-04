@@ -93,21 +93,16 @@
       padding: 0 clamp(32px, 6vw, 48px);   /* edge breathing for nav + all body content */
     }
 
-    /* ====== Top urgency strip (floating pill) ======
-       Was full-width bar with internal padding (kept getting reported as "stuck to edges").
-       New approach: shrink it to a centered pill with VISIBLE outer margin so the
-       cream page background shows on the left/right of the black pill. */
+    /* ====== Top urgency strip ====== */
     .strip {
       background: var(--bg-dark);
       color: var(--paper);
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.02em;
-      padding: 10px 22px;
+      padding: 10px 20px;
       text-align: center;
       line-height: 1.5;
-      margin: 14px clamp(16px, 4vw, 32px) 0;   /* visible outer gap to viewport edges */
-      border-radius: 999px;
     }
     .strip .dot {
       display: inline-block;
@@ -127,11 +122,7 @@
     .strip-places { white-space: nowrap; }
     /* mobile : trim to the two urgency essentials (countdown + scarcité) */
     @media (max-width: 560px) {
-      .strip {
-        font-size: 12px;
-        padding: 9px 18px;
-        margin: 10px 14px 0;        /* visible gap on the smallest viewports too */
-      }
+      .strip { font-size: 12px; padding: 9px 16px; }
       .strip-cohort,
       .strip-price { display: none; }
     }
@@ -148,7 +139,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 26px 0 20px;  /* +8px top : crée du blanc entre la strip noire urgence et VIBE FOUNDER */
+      /* CRITICAL: padding-top/bottom uniquement.
+         NE PAS utiliser le shorthand 'padding: X Y' ici — le Y horizontal écrase
+         silencieusement le padding-x de .wrap (les deux classes sont sur le même <div>).
+         C'était le bug qui rendait invisibles tous les bumps de .wrap padding. */
+      padding-top: 26px;
+      padding-bottom: 20px;
     }
     .logo {
       display: flex;
