@@ -1510,11 +1510,10 @@
         if (diff <= 0) { el.textContent = 'maintenant'; return; }
         const d = Math.floor(diff / 86400000);
         const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        el.textContent = d + 'j ' + h + 'h ' + m + 'min';
+        el.textContent = d + 'j ' + h + 'h';
       }
       tick();
-      setInterval(tick, 60000);
+      setInterval(tick, 1800000);   // 30 min : assez précis sans minutes affichées
     })();
 
     // ============== Scroll-driven reveals (sections, cards, bullets) ==============
