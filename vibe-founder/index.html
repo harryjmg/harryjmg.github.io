@@ -90,11 +90,7 @@
     .wrap {
       max-width: var(--content);
       margin: 0 auto;
-      padding: 0 clamp(24px, 5vw, 36px);  /* body content : breath modéré (24-36) */
-    }
-    /* Nav-only : padding horizontal bien plus généreux car le logo et le CTA touchent visuellement les bords du viewport */
-    .nav .wrap {
-      padding: 0 clamp(40px, 7vw, 48px);
+      padding: 0 clamp(24px, 5vw, 36px);
     }
 
     /* ====== Top urgency strip ====== */
@@ -155,6 +151,7 @@
       font-size: 18px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+      white-space: nowrap;        /* never split "VIBE FOUNDER" on 2 lines */
     }
     .logo-tag {
       font-family: var(--hand);
@@ -162,6 +159,14 @@
       font-size: 18px;
       color: var(--ink-soft);
       transform: rotate(-2deg);
+      white-space: nowrap;        /* same guard for "since 2026" */
+    }
+    .nav-cta { white-space: nowrap; }
+    /* Mobile : progressive disclosure — hide decorative tag + price suffix
+       so the nav stays "[VIBE FOUNDER] ........ [Rejoindre]" : aéré, propre, lisible */
+    @media (max-width: 560px) {
+      .logo-tag      { display: none; }
+      .nav-cta-price { display: none; }
     }
     .nav-links {
       display: flex;
@@ -1025,7 +1030,7 @@
         <a href="#format">Format</a>
         <a href="#tarif">Tarif</a>
         <a href="#faq">FAQ</a>
-        <a href="https://tally.so/r/kdv2vR" class="nav-cta" data-tally-open="kdv2vR" data-tally-layout="modal" data-tally-width="640">Rejoindre — 990€</a>
+        <a href="https://tally.so/r/kdv2vR" class="nav-cta" data-tally-open="kdv2vR" data-tally-layout="modal" data-tally-width="640">Rejoindre<span class="nav-cta-price"> — 990€</span></a>
       </div>
     </div>
   </nav>
