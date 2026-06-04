@@ -430,6 +430,36 @@
     section.dark { background: var(--bg-dark); color: var(--paper); }
     section.card { background: var(--bg-card); }
 
+    /* ====== Marquee bolder — défile entre le Hero et la Diagnostic ====== */
+    .marquee {
+      background: var(--ink);
+      color: var(--yellow);
+      padding: clamp(14px, 2.2vh, 22px) 0;
+      overflow: hidden;
+      border-top: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      font-family: var(--display);
+      font-size: clamp(18px, 2.6vw, 30px);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      width: max-content;
+      animation: marquee 26s linear infinite;
+    }
+    .marquee-track span { flex-shrink: 0; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -1063,6 +1093,14 @@
       </div>
     </div>
   </header>
+
+  <!-- ==================== Marquee bolder ==================== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ DEVIENS UN VIBE FOUNDER ★ APP PUBLIÉE EN 30 JOURS ★ SANS CODER ★ AVEC L'IA ★ </span>
+      <span>★ DEVIENS UN VIBE FOUNDER ★ APP PUBLIÉE EN 30 JOURS ★ SANS CODER ★ AVEC L'IA ★ </span>
+    </div>
+  </div>
 
   <!-- ==================== Diagnostic ==================== -->
   <section>
