@@ -258,8 +258,36 @@
       line-height: 0.98;
       letter-spacing: -0.02em;
       color: var(--ink);
-      margin: 0 auto 48px;  /* generous → the climax breathes */
+      margin: 0 auto 16px;  /* tight → hero-duration suit immédiatement */
       text-transform: none;
+    }
+
+    /* Duration — 2e focal jaune juste sous le climax, plus petit pour la hiérarchie */
+    .hero-duration {
+      font-family: var(--hand);
+      font-weight: 700;
+      font-size: clamp(32px, 4.6vw, 52px);
+      color: var(--ink);
+      line-height: 1;
+      margin: 0 auto 44px;
+      letter-spacing: -0.01em;
+    }
+    .hero-duration span {
+      position: relative;
+      display: inline-block;
+      padding: 0 8px;
+      transform: rotate(-1.5deg);
+    }
+    .hero-duration span::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      bottom: 0.14em;
+      height: 0.32em;
+      background: var(--yellow);
+      z-index: -1;
+      transform: skewX(-6deg);
     }
     .hero-climax .become {
       display: inline-block;
@@ -358,9 +386,10 @@
     }
     .hero .wrap > *:nth-child(1) { animation-delay: 0.05s; }
     .hero .wrap > *:nth-child(2) { animation-delay: 0.17s; }
-    .hero .wrap > *:nth-child(3) { animation-delay: 0.30s; }
-    .hero .wrap > *:nth-child(4) { animation-delay: 0.45s; }
-    .hero .wrap > *:nth-child(5) { animation-delay: 0.58s; }
+    .hero .wrap > *:nth-child(3) { animation-delay: 0.26s; }   /* hero-duration suit le climax de près */
+    .hero .wrap > *:nth-child(4) { animation-delay: 0.40s; }
+    .hero .wrap > *:nth-child(5) { animation-delay: 0.55s; }
+    .hero .wrap > *:nth-child(6) { animation-delay: 0.68s; }
     .hero-sticker {
       /* ease-out-expo, no overshoot — refined feel (bounce easings read dated) */
       animation: hero-pop 0.55s 0.75s cubic-bezier(0.16, 1, 0.3, 1) backwards;
@@ -1172,10 +1201,11 @@
       </p>
       <h1 class="hero-climax">
         Deviens un<br>
-        <span class="become">Vibe Founder</span>.
+        <span class="become">Vibe Founder</span>
       </h1>
+      <div class="hero-duration"><span>en 30 jours</span>.</div>
       <p class="hero-sub">
-        Le bootcamp pour passer de <span class="from">« j'ai une idée d'app »</span> à <span class="to">« elle est sur l'App Store »</span> en 30 jours.<br>
+        Le bootcamp pour passer de <span class="from">« j'ai une idée d'app »</span> à <span class="to">« elle est sur l'App Store »</span>.<br>
         <span class="tag">Sans coder. Avec l'IA.</span>
       </p>
       <div class="cta-row">
