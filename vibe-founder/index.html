@@ -90,7 +90,7 @@
     .wrap {
       max-width: var(--content);
       margin: 0 auto;
-      padding: 0 clamp(32px, 6vw, 48px);   /* edge breathing for nav + all body content */
+      padding: 0 clamp(22px, 5vw, 40px);   /* mobile 22-24px, desktop jusqu'à 40px */
     }
 
     /* ====== Top urgency strip ====== */
@@ -205,7 +205,7 @@
 
     /* ====== Hero ====== */
     .hero {
-      padding: clamp(48px, 10vh, 140px) 0 clamp(64px, 8vh, 96px);  /* top min 72→48 : climax 'Vibe Founder' bien plus above-the-fold sur mobile */
+      padding: clamp(24px, 6vh, 120px) 0 clamp(56px, 8vh, 96px);  /* mobile : top serré (24-40px), évite le grand blanc entre la nav et 'Arrête d'être...' */
       text-align: center;
       position: relative;
     }
