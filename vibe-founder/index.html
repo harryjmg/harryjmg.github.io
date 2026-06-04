@@ -90,7 +90,7 @@
     .wrap {
       max-width: var(--content);
       margin: 0 auto;
-      padding: 0 clamp(18px, 4vw, 28px);
+      padding: 0 clamp(22px, 4vw, 28px);  /* min bumped 18→22 to keep nav edges breathing on mobile */
     }
 
     /* ====== Top urgency strip ====== */
@@ -213,6 +213,7 @@
       max-width: 52ch;       /* one line on desktop, wraps gracefully on mobile */
       margin: 0 auto 24px;   /* tight-ish → climax */
       line-height: 1.45;
+      text-wrap: balance;    /* avoid orphans like "d'app." alone on its own line on mobile */
     }
     .hero-setup em {
       font-style: italic;
@@ -281,6 +282,7 @@
       max-width: 56ch;
       margin: 0 auto 44px;  /* generous → leads to CTA */
       line-height: 1.6;
+      text-wrap: pretty;    /* prevents short last lines / awkward breaks */
     }
     .hero-sub .from {
       font-style: italic;
