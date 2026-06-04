@@ -100,8 +100,9 @@
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.02em;
-      padding: 10px 0;
+      padding: 10px 16px;
       text-align: center;
+      line-height: 1.5;
     }
     .strip .dot {
       display: inline-block;
@@ -117,6 +118,14 @@
       50%      { opacity: 0.4; transform: scale(0.85); }
     }
     .strip strong { color: var(--yellow); font-weight: 700; }
+    /* keep "20 places" as one unit so it never wraps mid-phrase */
+    .strip-places { white-space: nowrap; }
+    /* mobile : trim to the two urgency essentials (countdown + scarcité) */
+    @media (max-width: 560px) {
+      .strip { font-size: 12px; padding: 9px 14px; }
+      .strip-cohort,
+      .strip-price { display: none; }
+    }
 
     /* ====== Nav ====== */
     .nav {
@@ -320,12 +329,9 @@
       transform: translateY(-1px) rotate(8deg);
     }
     @media (max-width: 720px) {
-      .hero-sticker {
-        top: 12px;
-        right: 12px;
-        padding: 6px 10px 5px;
-        font-size: 15px;
-      }
+      /* Mobile: hide the sticker — it duplicates 'Cohorte' from the strip
+         and crowds the hero. Desktop keeps the playful collector touch. */
+      .hero-sticker { display: none; }
     }
 
     /* Staggered entrance animation on hero children
@@ -998,7 +1004,7 @@
   <!-- ==================== Top urgency strip ==================== -->
   <div class="strip">
     <span class="dot"></span>
-    Cohorte juillet 2026 · <strong>Démarrage dans <span id="countdown">…</span></strong> · 20 places · 990€
+    <span class="strip-cohort">Cohorte juillet 2026 · </span><strong>Démarrage dans <span id="countdown">…</span></strong><span class="strip-places"> · 20 places</span><span class="strip-price"> · 990€</span>
   </div>
 
   <!-- ==================== Nav ==================== -->
