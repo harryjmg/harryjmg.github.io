@@ -90,7 +90,11 @@
     .wrap {
       max-width: var(--content);
       margin: 0 auto;
-      padding: 0 clamp(28px, 5vw, 36px);  /* min bumped 18→28 (+10px) so nav logo + CTA respirent vraiment sur mobile */
+      padding: 0 clamp(24px, 5vw, 36px);  /* body content : breath modéré (24-36) */
+    }
+    /* Nav-only : padding horizontal bien plus généreux car le logo et le CTA touchent visuellement les bords du viewport */
+    .nav .wrap {
+      padding: 0 clamp(40px, 7vw, 48px);
     }
 
     /* ====== Top urgency strip ====== */
