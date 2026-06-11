@@ -3,37 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>De zéro à ton app — Bootcamp 30 jours · Harry Jmg</title>
-  <meta name="description" content="Aucune ligne de code connue. Aucune expérience. On part vraiment de zéro, ensemble — et en 30 jours tu publies ta première vraie application.">
+  <title>Vibe Founder — De zéro à ton app en 30 jours · Harry Jmg</title>
+  <meta name="description" content="Bootcamp 30 jours qui transforme les codeurs et non-codeurs en fondateurs d'app publiées. L'IA fait le code, Harry fait le cadre, la cohorte fait la pression. Démarrage 1er juillet 2026. 20 places.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://harryjmg.fr/vibe-founder-v2/">
-  <meta property="og:title" content="De zéro à ton app — Bootcamp 30 jours">
-  <meta property="og:description" content="Aucune ligne de code connue. Aucune expérience. On part vraiment de zéro — et en 30 jours tu publies ta première vraie application.">
+  <meta property="og:title" content="Vibe Founder — De zéro à ton app en 30 jours">
+  <meta property="og:description" content="Bootcamp 30 jours pour publier ta première app avec l'IA. Dev ou novice, peu importe. 20 places. Démarrage 1er juillet 2026.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FFDF6B'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-weight='800' font-size='18' fill='%232B2722'%3EH%3C/text%3E%3C/svg%3E">
 
-  <!-- Tabler Icons via CDN (utilisé dans le widget hero pour les ti-*) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/dist/tabler-icons.min.css">
 
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg:        #F4EFE3;
       --ink:       #2B2722;
+      --ink-soft:  #5C5246;
       --paper:     #FBF3E4;
       --white:     #FFFFFF;
       --yellow:    #FFDF6B;
+      --yellow-d:  #F1C631;
       --pink:      #FF8FB0;
+      --pink-soft: #FFD8E3;
       --pink-ink:  #5A1E32;
       --blue:      #BFE0FF;
+      --blue-soft: #E2F1FF;
       --blue-ink:  #1E3A52;
       --green:     #C9F2D6;
+      --green-soft:#E5F8EB;
       --green-ink: #1E4A2E;
       --shadow:    rgba(43, 39, 34, 0.18);
+      --shadow-hard: rgba(43, 39, 34, 0.95);
     }
 
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -42,228 +43,476 @@
       font-family: 'Helvetica Neue', Arial, sans-serif;
       background: var(--bg);
       color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(20px, 4vw, 48px);
+      line-height: 1.55;
+      padding: clamp(20px, 4vw, 40px) clamp(16px, 3vw, 32px);
     }
 
-    /* ====== Hero (single widget for now — V2 starts minimal, we enrich step by step) ====== */
-    .hero {
-      width: 100%;
-      max-width: 880px;
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(20px, 3vw, 32px);
+    }
+
+    /* ====== Card base ====== */
+    .card {
       background: var(--paper);
       border: 3px solid var(--ink);
       border-radius: 22px;
-      overflow: hidden;
       box-shadow: 5px 6px 0 var(--shadow);
+      overflow: hidden;
+    }
+    .card-pad {
+      padding: clamp(24px, 4vw, 40px);
     }
 
-    .hero-top {
-      display: flex;
+    /* ====== Typography ====== */
+    h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; line-height: 1.05; }
+    h1 { font-size: clamp(32px, 5vw, 48px); letter-spacing: -1.5px; }
+    h2 { font-size: clamp(26px, 3.6vw, 36px); margin-bottom: 18px; }
+    h3 { font-size: clamp(18px, 2vw, 22px); margin-bottom: 8px; }
+    p { font-size: clamp(15px, 1.5vw, 17px); line-height: 1.6; }
+    strong { font-weight: 800; }
+
+    .lede {
+      font-size: clamp(16px, 1.7vw, 19px);
+      line-height: 1.55;
+      color: var(--ink);
+      max-width: 56ch;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 6px 14px;
+      margin-bottom: 18px;
+      background: var(--white);
+    }
+    .eyebrow.pink   { background: var(--pink); color: var(--pink-ink); }
+    .eyebrow.blue   { background: var(--blue); color: var(--blue-ink); }
+    .eyebrow.green  { background: var(--green); color: var(--green-ink); }
+    .eyebrow.yellow { background: var(--yellow); color: var(--ink); }
+
+    .mark {
+      background: var(--yellow);
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 0 6px;
+      display: inline-block;
+    }
+
+    /* ====== CTA buttons ====== */
+    .btn {
+      text-decoration: none;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 14px 24px;
+      border: 3px solid var(--ink);
+      border-radius: 14px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+    .btn-primary:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+    .btn-primary.lg { padding: 18px 30px; font-size: 18px; box-shadow: 5px 5px 0 var(--ink); }
+    .btn-primary.lg:hover { box-shadow: 7px 7px 0 var(--ink); }
+    .btn i { font-size: 20px; }
+
+    /* ====== HERO ====== */
+    .hero-top {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
       padding: 14px 22px;
       border-bottom: 3px solid var(--ink);
       background: var(--white);
     }
-    .hero-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .hero-logo { display: flex; align-items: center; gap: 10px; }
     .hero-logo-mark {
-      width: 34px;
-      height: 34px;
-      background: var(--ink);
-      color: var(--paper);
+      width: 34px; height: 34px;
+      background: var(--ink); color: var(--paper);
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 18px;
     }
-    .hero-logo-name {
-      font-weight: 800;
-      font-size: 15px;
-      letter-spacing: -0.4px;
-    }
+    .hero-logo-name { font-weight: 800; font-size: 15px; letter-spacing: -0.4px; }
     .hero-badge-yt {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--blue-ink);
-      background: var(--blue);
-      border: 2px solid var(--ink);
-      border-radius: 999px;
-      padding: 5px 12px;
-      white-space: nowrap;
+      font-size: 12px; font-weight: 700;
+      color: var(--blue-ink); background: var(--blue);
+      border: 2px solid var(--ink); border-radius: 999px;
+      padding: 5px 12px; white-space: nowrap;
     }
 
-    .hero-body {
-      display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 0;
-    }
-
-    .hero-text {
-      padding: 30px 26px 28px;
-    }
-    .hero-eyebrow {
-      display: inline-block;
-      background: var(--pink);
-      color: var(--pink-ink);
-      border: 2px solid var(--ink);
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-weight: 800;
-      font-size: 12px;
-      margin-bottom: 18px;
-      letter-spacing: 0.02em;
-    }
-    .hero-title {
-      font-size: clamp(32px, 4.4vw, 48px);
-      line-height: 1.02;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      margin-bottom: 16px;
-    }
-    .hero-title-mark {
-      background: var(--yellow);
-      border: 2px solid var(--ink);
-      border-radius: 10px;
-      padding: 0 8px;
-      display: inline-block;
-    }
-    .hero-lede {
-      font-size: 16px;
-      line-height: 1.55;
-      font-weight: 500;
-      margin-bottom: 24px;
-      max-width: 38ch;
-    }
-
-    .hero-cta {
-      text-decoration: none;
-      background: var(--yellow);
-      color: var(--ink);
-      border: 3px solid var(--ink);
-      border-radius: 14px;
-      box-shadow: 4px 4px 0 var(--ink);
-      padding: 15px 26px;
-      font-weight: 800;
-      font-size: 17px;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .hero-cta:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--ink);
-    }
-    .hero-cta:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0 var(--ink);
-    }
-    .hero-cta i { font-size: 20px; }
+    .hero-body { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0; }
+    .hero-text { padding: 30px 26px 28px; }
+    .hero-title { margin-bottom: 16px; }
+    .hero-lede { font-size: 16px; line-height: 1.55; font-weight: 500; margin-bottom: 24px; max-width: 38ch; }
+    .hero-lede strong { font-weight: 800; }
 
     .hero-photo {
       position: relative;
       border-left: 3px solid var(--ink);
       background: var(--green);
       min-height: 280px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      display: flex; align-items: flex-end; justify-content: center;
       overflow: hidden;
     }
     .hero-photo-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-      color: var(--green-ink);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px; color: var(--green-ink);
     }
     .hero-photo-placeholder i { font-size: 54px; }
     .hero-photo-placeholder span { font-size: 13px; font-weight: 700; }
-    .hero-photo img {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .hero-photo img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: cover; }
     .hero-photo-tag {
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      z-index: 3;
-      background: var(--white);
-      border: 2px solid var(--ink);
-      border-radius: 12px;
-      padding: 7px 12px;
+      position: absolute; bottom: 14px; left: 14px; z-index: 3;
+      background: var(--white); border: 2px solid var(--ink);
+      border-radius: 12px; padding: 7px 12px;
       box-shadow: 3px 3px 0 var(--ink);
     }
-    .hero-photo-tag span {
-      font-size: 12px;
-      font-weight: 800;
-    }
+    .hero-photo-tag span { font-size: 12px; font-weight: 800; }
 
     .hero-features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       border-top: 3px solid var(--ink);
       background: var(--white);
     }
-    .hero-feature {
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .hero-feature { padding: 16px; display: flex; align-items: center; gap: 10px; }
+    .hero-feature + .hero-feature { border-left: 3px solid var(--ink); }
+    .hero-feature i { font-size: 22px; color: var(--yellow-d); flex-shrink: 0; }
+    .hero-feature span { font-weight: 700; font-size: 13px; line-height: 1.3; }
+
+    /* ====== FOR WHO ====== */
+    .for-who { background: var(--blue-soft); }
+    .for-who-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-top: 24px;
     }
-    .hero-feature + .hero-feature {
-      border-left: 3px solid var(--ink);
+    .for-who-card {
+      background: var(--white);
+      border: 2px solid var(--ink);
+      border-radius: 14px;
+      padding: 22px 20px;
+      box-shadow: 3px 3px 0 var(--ink);
     }
-    .hero-feature i {
-      font-size: 22px;
-      color: #7A5A00;
+    .for-who-card i {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      background: var(--blue); border: 2px solid var(--ink); border-radius: 10px;
+      font-size: 22px; color: var(--blue-ink);
+      margin-bottom: 12px;
+    }
+    .for-who-card h3 { font-size: 17px; margin-bottom: 8px; }
+    .for-who-card p { font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+
+    /* ====== DIAGNOSTIC ====== */
+    .diag-list { list-style: none; margin-top: 20px; display: grid; gap: 12px; max-width: 60ch; }
+    .diag-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 16px; line-height: 1.5;
+    }
+    .diag-list li i {
       flex-shrink: 0;
+      width: 26px; height: 26px;
+      background: var(--pink-soft);
+      border: 2px solid var(--ink); border-radius: 7px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--pink-ink);
+      margin-top: 1px;
     }
-    .hero-feature span {
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 1.3;
+    .diag-insight {
+      margin-top: 28px;
+      padding: 22px 26px;
+      background: var(--ink); color: var(--paper);
+      border-radius: 14px;
+      font-size: clamp(20px, 2.6vw, 26px);
+      font-weight: 800; line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+    .diag-insight .mark { color: var(--ink); }
+
+    /* ====== METHOD ====== */
+    .method { background: var(--green-soft); }
+    .method-stop p { font-size: 17px; margin: 4px 0; font-weight: 600; color: var(--ink-soft); }
+    .method-stop p i { color: var(--pink-ink); margin-right: 6px; vertical-align: -2px; }
+    .method-divider {
+      margin: 24px 0 20px;
+      font-weight: 800; font-size: 13px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--green-ink);
+    }
+    .method-stack { display: flex; flex-wrap: wrap; gap: 10px; }
+    .method-tag {
+      background: var(--yellow); color: var(--ink);
+      border: 2px solid var(--ink); border-radius: 999px;
+      padding: 8px 14px; font-weight: 700; font-size: 14px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .method-tag i { font-size: 16px; }
+    .method-conclude {
+      margin-top: 24px;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 800; letter-spacing: -0.3px;
+    }
+    .method-conclude .mark { padding: 0 8px; }
+
+    /* ====== PROGRAM ====== */
+    .program-weeks { display: grid; gap: 16px; margin-top: 24px; }
+    .program-week {
+      border: 2px solid var(--ink);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .program-week-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 20px;
+      background: var(--ink); color: var(--paper);
+      font-weight: 800;
+    }
+    .program-week-header .label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
+    .program-week-header .title { font-size: 16px; }
+    .program-week-header .milestone {
+      background: var(--yellow); color: var(--ink);
+      border-radius: 8px; padding: 4px 10px;
+      font-size: 12px; font-weight: 800;
+    }
+    .program-week-body { padding: 18px 20px; }
+    .program-week-body ul { list-style: none; display: grid; gap: 10px; }
+    .program-week-body li { display: flex; gap: 10px; font-size: 14.5px; }
+    .program-week-body li strong { font-weight: 800; min-width: 38px; color: var(--green-ink); }
+
+    /* ====== STACK OF VALUE ====== */
+    .stack { background: var(--pink-soft); }
+    .stack-list { display: grid; gap: 10px; margin: 24px 0 24px; }
+    .stack-item {
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px;
+      padding: 14px 18px;
+      background: var(--white);
+      border: 2px solid var(--ink); border-radius: 12px;
+    }
+    .stack-item .name { display: flex; align-items: center; gap: 12px; }
+    .stack-item .name i {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--yellow);
+      border: 2px solid var(--ink); border-radius: 9px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .stack-item .name span { font-weight: 700; font-size: 15px; }
+    .stack-item .price {
+      font-weight: 800; font-size: 15px;
+      background: var(--paper);
+      border: 2px solid var(--ink); border-radius: 8px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+    .stack-total {
+      display: grid; grid-template-columns: 1fr auto; gap: 16px;
+      align-items: center;
+      padding: 18px 22px;
+      background: var(--ink); color: var(--paper);
+      border-radius: 14px;
+    }
+    .stack-total .label { font-weight: 700; font-size: 14px; opacity: 0.85; letter-spacing: 0.02em; }
+    .stack-total .value { font-weight: 800; font-size: clamp(24px, 3vw, 32px); }
+    .stack-pay {
+      margin-top: 12px;
+      display: grid; grid-template-columns: 1fr auto; gap: 16px;
+      align-items: center;
+      padding: 18px 22px;
+      background: var(--yellow); color: var(--ink);
+      border: 3px solid var(--ink); border-radius: 14px;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .stack-pay .label { font-weight: 700; font-size: 14px; letter-spacing: 0.02em; }
+    .stack-pay .value { font-weight: 800; font-size: clamp(24px, 3vw, 32px); }
+
+    /* ====== ABOUT ====== */
+    .about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: start; margin-top: 6px; }
+    .about-photo {
+      width: 200px; height: 200px; border-radius: 18px;
+      background: var(--green); border: 3px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+      overflow: hidden; position: relative;
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-photo-placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 6px; color: var(--green-ink);
+    }
+    .about-photo-placeholder i { font-size: 46px; }
+    .about-photo-placeholder span { font-size: 12px; font-weight: 700; }
+    .about-text p { margin-bottom: 14px; }
+    .about-text p strong { font-weight: 800; }
+    .about-quote {
+      margin-top: 16px;
+      padding: 16px 20px;
+      background: var(--yellow);
+      border: 2px solid var(--ink); border-radius: 12px;
+      font-style: italic; font-weight: 700;
     }
 
-    /* ====== Responsive : stack everything on small screens ====== */
+    /* ====== GUARANTEES ====== */
+    .guarantees { background: var(--yellow); }
+    .guarantees h2 .mark { background: var(--white); }
+    .guar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .guar-card {
+      background: var(--white);
+      border: 3px solid var(--ink); border-radius: 14px;
+      padding: 22px 22px 20px;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .guar-card i {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px;
+      background: var(--green); border: 2px solid var(--ink); border-radius: 10px;
+      font-size: 24px; color: var(--green-ink);
+      margin-bottom: 14px;
+    }
+    .guar-card h3 { font-size: 18px; margin-bottom: 10px; }
+    .guar-card p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+    .guar-card p strong { color: var(--ink); }
+
+    /* ====== PRICING ====== */
+    .pricing-box {
+      background: var(--ink); color: var(--paper);
+      border-radius: 18px;
+      padding: clamp(28px, 4vw, 40px);
+      margin-top: 8px;
+      position: relative;
+    }
+    .pricing-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; }
+    .pricing-amount { display: flex; flex-direction: column; gap: 6px; }
+    .pricing-amount .small {
+      font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; opacity: 0.7;
+    }
+    .pricing-amount .big {
+      font-size: clamp(54px, 8vw, 84px); font-weight: 800;
+      letter-spacing: -2px; line-height: 1;
+      color: var(--yellow);
+    }
+    .pricing-amount .tax { font-size: 14px; opacity: 0.7; }
+    .pricing-amount .ref { font-size: 13px; opacity: 0.75; }
+    .pricing-amount .ref s { opacity: 0.5; }
+    .pricing-cta { text-align: center; }
+    .pricing-cta .btn { width: 100%; justify-content: center; }
+    .pricing-cta .reassure { margin-top: 12px; font-size: 13px; opacity: 0.7; }
+
+    /* ====== NOT FOR YOU ====== */
+    .not-for-you { background: var(--ink); color: var(--paper); }
+    .not-for-you h2 { color: var(--paper); }
+    .not-for-you .eyebrow { background: var(--pink); color: var(--pink-ink); }
+    .nfy-list { list-style: none; display: grid; gap: 12px; margin-top: 20px; max-width: 64ch; }
+    .nfy-list li { display: flex; gap: 12px; font-size: 16px; line-height: 1.55; }
+    .nfy-list li i {
+      flex-shrink: 0; width: 26px; height: 26px;
+      background: var(--pink); border: 2px solid var(--paper); border-radius: 7px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--pink-ink); font-size: 16px; margin-top: 1px;
+    }
+    .nfy-close { margin-top: 24px; font-size: 17px; font-weight: 700; }
+    .nfy-close .mark { color: var(--ink); }
+
+    /* ====== FAQ ====== */
+    .faq-list { display: grid; gap: 12px; margin-top: 24px; }
+    .faq-item {
+      background: var(--white);
+      border: 2px solid var(--ink); border-radius: 12px;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      list-style: none; cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 700; font-size: 15.5px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      background: var(--yellow); border: 2px solid var(--ink); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 20px; line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item .ans { padding: 0 18px 18px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .faq-item .ans strong { color: var(--ink); }
+
+    /* ====== FINAL CTA ====== */
+    .final-cta { background: var(--yellow); text-align: center; }
+    .final-cta h2 { font-size: clamp(30px, 4.4vw, 42px); margin-bottom: 16px; }
+    .final-cta p { font-size: 16px; margin-bottom: 8px; }
+    .final-cta-meta {
+      display: inline-flex; flex-wrap: wrap; gap: 8px;
+      margin: 18px auto 24px;
+      justify-content: center;
+    }
+    .final-cta-meta span {
+      background: var(--white); border: 2px solid var(--ink);
+      border-radius: 999px; padding: 6px 12px;
+      font-size: 13px; font-weight: 700;
+    }
+    .final-cta .btn { margin: 0 auto; }
+    .final-cta .reassure {
+      margin-top: 14px;
+      font-size: 13px; font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      margin: clamp(32px, 5vw, 48px) auto 8px;
+      max-width: 920px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    footer .easter { font-style: italic; opacity: 0.7; }
+    footer a { color: var(--ink); font-weight: 700; }
+
+    /* ====== Responsive ====== */
     @media (max-width: 720px) {
-      .hero-body {
-        grid-template-columns: 1fr;
-      }
-      .hero-photo {
-        border-left: none;
-        border-top: 3px solid var(--ink);
-        min-height: 240px;
-      }
-      .hero-features {
-        grid-template-columns: 1fr;
-      }
-      .hero-feature + .hero-feature {
-        border-left: none;
-        border-top: 3px solid var(--ink);
-      }
+      .hero-body { grid-template-columns: 1fr; }
+      .hero-photo { border-left: none; border-top: 3px solid var(--ink); min-height: 240px; }
+      .hero-features { grid-template-columns: 1fr; }
+      .hero-feature + .hero-feature { border-left: none; border-top: 3px solid var(--ink); }
+      .for-who-grid { grid-template-columns: 1fr; }
+      .guar-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 20px; }
+      .about-photo { width: 160px; height: 160px; margin: 0 auto; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 18px; text-align: center; }
+      .pricing-amount { align-items: center; }
+      .stack-item { grid-template-columns: 1fr; gap: 8px; }
+      .stack-item .price { justify-self: start; }
     }
   </style>
 </head>
 <body>
 
-  <main class="hero">
+<main>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="card">
     <div class="hero-top">
       <div class="hero-logo">
         <div class="hero-logo-mark">H</div>
@@ -274,16 +523,12 @@
 
     <div class="hero-body">
       <div class="hero-text">
-        <div class="hero-eyebrow">Bootcamp · 30 jours</div>
-        <h1 class="hero-title">
-          De <span class="hero-title-mark">zéro</span> à ton app.
-        </h1>
+        <div class="eyebrow pink">Bootcamp · 30 jours</div>
+        <h1 class="hero-title">De <span class="mark">zéro</span> à ton app.</h1>
         <p class="hero-lede">
           Que tu sois dev ou que tu n'aies jamais codé, en 30 jours ton app est publiée sur l'App Store. L'IA fait le code. <strong>Prêt ?</strong>
         </p>
-        <a href="#" class="hero-cta">
-          Je commence <i class="ti ti-arrow-right" aria-hidden="true"></i>
-        </a>
+        <a href="#cta" class="btn btn-primary">Je rejoins la cohorte <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
       </div>
 
       <div class="hero-photo">
@@ -292,9 +537,7 @@
           <span>ta photo ici</span>
         </div>
         <img src="https://harryjmg.fr/assets/images/harry-yt.jpeg" alt="Harry" onerror="this.style.display='none'">
-        <div class="hero-photo-tag">
-          <span>Salut, c'est Harry 👋</span>
-        </div>
+        <div class="hero-photo-tag"><span>Salut, c'est Harry 👋</span></div>
       </div>
     </div>
 
@@ -312,7 +555,408 @@
         <span>App publiée</span>
       </div>
     </div>
-  </main>
+  </section>
+
+
+  <!-- ==================== FOR WHO ==================== -->
+  <section class="card for-who">
+    <div class="card-pad">
+      <div class="eyebrow blue">Pour qui c'est</div>
+      <h2>Vibe Founder est pensé pour 3 personnes.</h2>
+      <p class="lede">Tu vas te reconnaître dans une des trois. Peut-être les trois en même temps. Bienvenue.</p>
+
+      <div class="for-who-grid">
+        <div class="for-who-card">
+          <i class="ti ti-code"></i>
+          <h3>Le dev qui veut s'émanciper.</h3>
+          <p>T'as un job dev, t'as une idée d'app, mais tu remets ça à plus tard depuis 6 mois. L'IA accélère le code, donc l'excuse "j'ai pas le temps" n'existe plus. Dans 30 jours, tu signes ton premier produit à toi.</p>
+        </div>
+        <div class="for-who-card">
+          <i class="ti ti-briefcase"></i>
+          <h3>Le freelance qui veut un actif.</h3>
+          <p>T'es freelance, t'as les compétences, mais tu vends du temps. Vibe Founder = passer de la prestation au produit. Construire le SaaS qui tourne pendant que tu dors. Sortir de la roue.</p>
+        </div>
+        <div class="for-who-card">
+          <i class="ti ti-bulb"></i>
+          <h3>Le novice qui a une idée.</h3>
+          <p>T'as une idée d'app depuis longtemps. T'as jamais codé. Et l'IA fait ça maintenant. Vibe Founder te transforme en fondateur, pas en développeur. Tu décides du quoi, l'IA s'occupe du comment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== DIAGNOSTIC ==================== -->
+  <section class="card">
+    <div class="card-pad">
+      <div class="eyebrow">Diagnostic</div>
+      <h2>T'as une idée. Depuis combien de temps déjà ?</h2>
+      <p class="lede">6 mois ? 1 an ? 3 ans ? Tu vois où je veux en venir. Et tu sais pourquoi elle n'existe toujours pas&nbsp;:</p>
+
+      <ul class="diag-list">
+        <li><i class="ti ti-x"></i><span>Tu sais pas par où commencer concrètement.</span></li>
+        <li><i class="ti ti-x"></i><span>Les tutos YouTube te perdent à mi-chemin. Tu en empiles 5 sans en finir un.</span></li>
+        <li><i class="ti ti-x"></i><span>T'as personne pour te dire <em>"vas-y"</em> ou <em>"stop, refais ça autrement"</em>.</span></li>
+        <li><i class="ti ti-x"></i><span>Tu vis sans deadline donc tu remets toujours à demain.</span></li>
+        <li><i class="ti ti-x"></i><span>Syndrome du tutoriel infini : 50 cours commencés, 0 produit lancé.</span></li>
+      </ul>
+
+      <p class="diag-insight">
+        Le vrai problème ? <span class="mark">Tu construis seul, sans cadre, sans deadline, sans coach.</span>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ==================== METHOD ==================== -->
+  <section class="card method">
+    <div class="card-pad">
+      <div class="eyebrow green">La méthode</div>
+      <h2>Stop. Plus de tutos ne te feront pas publier.</h2>
+      <div class="method-stop">
+        <p><i class="ti ti-x"></i>Plus de tutos YouTube ne te feront pas publier.</p>
+        <p><i class="ti ti-x"></i>Plus de cours en ligne ne te feront pas publier.</p>
+        <p><i class="ti ti-x"></i>Plus de <em>"je m'y mets demain"</em> ne te feront pas publier.</p>
+      </div>
+
+      <div class="method-divider">Ce qui te fera publier ↓</div>
+
+      <div class="method-stack">
+        <span class="method-tag"><i class="ti ti-clock"></i> Une deadline ferme</span>
+        <span class="method-tag"><i class="ti ti-layout-grid"></i> Un cadre clair</span>
+        <span class="method-tag"><i class="ti ti-users"></i> Une cohorte qui pousse</span>
+        <span class="method-tag"><i class="ti ti-headset"></i> Un coach qui débloque</span>
+        <span class="method-tag"><i class="ti ti-bolt"></i> L'IA qui fait le code</span>
+      </div>
+
+      <p class="method-conclude">→ C'est exactement <span class="mark">Vibe Founder</span>.</p>
+    </div>
+  </section>
+
+
+  <!-- ==================== PROGRAM ==================== -->
+  <section class="card">
+    <div class="card-pad">
+      <div class="eyebrow yellow">Le programme</div>
+      <h2>30 jours. 4 semaines. 1 app publiée.</h2>
+      <p class="lede">Une mission par jour. Une milestone par semaine. Rien d'aléatoire, rien de flou.</p>
+
+      <div class="program-weeks">
+
+        <div class="program-week">
+          <div class="program-week-header">
+            <div>
+              <div class="label">Semaine 1</div>
+              <div class="title">Cadre &amp; idée</div>
+            </div>
+            <div class="milestone">→ J7 : MVP scopé</div>
+          </div>
+          <div class="program-week-body">
+            <ul>
+              <li><strong>J1</strong>Setup ton stack (Cursor, Claude Code, Apple Developer)</li>
+              <li><strong>J2</strong>Affine ton idée en spec exécutable (template fourni)</li>
+              <li><strong>J3</strong>Ton premier prompt produit qui marche vraiment</li>
+              <li><strong>J4-6</strong>Architecture, écrans clés, premiers composants</li>
+              <li><strong>J7</strong>Live call : on valide ton MVP scopé, tu sais quoi construire</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-week">
+          <div class="program-week-header">
+            <div>
+              <div class="label">Semaine 2</div>
+              <div class="title">Construction</div>
+            </div>
+            <div class="milestone">→ J14 : Prototype tourne</div>
+          </div>
+          <div class="program-week-body">
+            <ul>
+              <li><strong>J8-12</strong>Tu construis ton core loop avec l'IA. Une feature qui marche, point.</li>
+              <li><strong>J11</strong>Live call : on debug ensemble, on coupe ce qui te freine</li>
+              <li><strong>J13</strong>Auth + paywall RevenueCat (kit pré-intégré fourni)</li>
+              <li><strong>J14</strong>Ton prototype tourne sur ton iPhone. Tu le testes, tu le sens.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-week">
+          <div class="program-week-header">
+            <div>
+              <div class="label">Semaine 3</div>
+              <div class="title">Polish &amp; store</div>
+            </div>
+            <div class="milestone">→ J21 : Dossier prêt</div>
+          </div>
+          <div class="program-week-body">
+            <ul>
+              <li><strong>J15-17</strong>Icône, écrans, copy de la fiche App Store</li>
+              <li><strong>J18</strong>Vidéo preview + screenshots</li>
+              <li><strong>J19-20</strong>Test beta TestFlight avec tes premiers users</li>
+              <li><strong>J21</strong>Live call : on valide ton dossier de soumission</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-week">
+          <div class="program-week-header">
+            <div>
+              <div class="label">Semaine 4</div>
+              <div class="title">Submit &amp; launch</div>
+            </div>
+            <div class="milestone">→ J30 : App en ligne</div>
+          </div>
+          <div class="program-week-body">
+            <ul>
+              <li><strong>J22</strong>Tu soumets à Apple. Tu prends une bière.</li>
+              <li><strong>J23-28</strong>Review process + ton plan d'acquisition organique</li>
+              <li><strong>J29</strong>Live call de lancement avec la cohorte</li>
+              <li><strong>J30</strong>Ton app est <span class="mark">en ligne</span>. Tu es fondateur.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== STACK OF VALUE ==================== -->
+  <section class="card stack">
+    <div class="card-pad">
+      <div class="eyebrow pink">Tout ce que tu reçois</div>
+      <h2>10 éléments. Empilés pour que tu ailles au bout.</h2>
+      <p class="lede">Pas une formation isolée. Un système complet : la méthode, les outils, les calls live, la communauté, les bonus pour les 30 jours après le lancement.</p>
+
+      <div class="stack-list">
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-calendar-stats"></i><span>Bootcamp 30 jours structuré (1 mission/jour)</span></div>
+          <div class="price">990 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-headset"></i><span>8 calls live avec Harry (2 / semaine)</span></div>
+          <div class="price">800 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-playlist"></i><span>Modules vidéo IA-first (accès à vie)</span></div>
+          <div class="price">300 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-package"></i><span>Starter Kit Vibe Founder (repo + prompts + paywall pré-intégré)</span></div>
+          <div class="price">400 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-target-arrow"></i><span>Système d'accountability (tracker + deadlines J7/J14/J21/J30)</span></div>
+          <div class="price">100 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-brand-discord"></i><span>Discord cohorte privé (peer review, debug)</span></div>
+          <div class="price">200 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-gift"></i><span>Bonus : 3 mois App Society offerts à la fin</span></div>
+          <div class="price">300 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-tools"></i><span>Setup business : Apple Dev, Stripe, analytics</span></div>
+          <div class="price">200 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-flame"></i><span>Bonus : playbook "Tes 100 premiers utilisateurs"</span></div>
+          <div class="price">300 €</div>
+        </div>
+        <div class="stack-item">
+          <div class="name"><i class="ti ti-coin-euro"></i><span>Bonus : playbook "Tes 1 000 premiers €"</span></div>
+          <div class="price">300 €</div>
+        </div>
+      </div>
+
+      <div class="stack-total">
+        <div class="label">Valeur totale empilée</div>
+        <div class="value">3 890 €</div>
+      </div>
+      <div class="stack-pay">
+        <div class="label">Tu paies (tarif waitlist cohorte 1)</div>
+        <div class="value">990 € TTC</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== ABOUT ==================== -->
+  <section class="card">
+    <div class="card-pad">
+      <div class="eyebrow">Qui je suis</div>
+      <h2>Salut, c'est Harry.</h2>
+      <div class="about-grid">
+        <div class="about-photo">
+          <div class="about-photo-placeholder" aria-hidden="true">
+            <i class="ti ti-user-circle"></i>
+            <span>Harry</span>
+          </div>
+          <img src="https://harryjmg.fr/assets/images/harry-yt.jpeg" alt="Harry" onerror="this.style.display='none'">
+        </div>
+        <div class="about-text">
+          <p><strong>90 000 abonnés sur YouTube</strong> qui suivent mes vidéos sur le code, l'IA et l'indépendance.</p>
+          <p>J'ai fondé <strong>Punchlines</strong>, une app qui a atterri dans le top 10 des jeux éducation en France à son pic. J'anime <strong>App Society</strong> depuis mars 2026, une communauté de fondateurs d'app qui se voient chaque semaine pour pousser leur MRR.</p>
+          <p>J'ai pas inventé l'IA. Mais je teste tous les workflows possibles depuis 18 mois pour publier des apps mobiles sans équipe technique. Voilà ce qui marche vraiment.</p>
+          <div class="about-quote">
+            "Vibe Founder, c'est le bootcamp que j'aurais voulu avoir il y a 5 ans. Direct, structuré, sans bullshit."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== GUARANTEES ==================== -->
+  <section class="card guarantees">
+    <div class="card-pad">
+      <div class="eyebrow">Garanties</div>
+      <h2>Tu prends <span class="mark">zéro risque</span>. Je prends tout pour toi.</h2>
+      <p class="lede">Deux garanties béton. Si tu fais ta part, tu gagnes. Sinon, je perds. C'est aussi simple.</p>
+
+      <div class="guar-grid">
+        <div class="guar-card">
+          <i class="ti ti-shield-check"></i>
+          <h3>Garantie 1 — Satisfait ou remboursé.</h3>
+          <p>Tu testes <strong>7 jours après le premier call</strong>. Si tu sens que c'est pas pour toi, tu m'écris en une ligne. Je rembourse <strong>intégralement</strong>. Pas de débat, pas de friction.</p>
+        </div>
+        <div class="guar-card">
+          <i class="ti ti-trophy"></i>
+          <h3>Garantie 2 — Résultat ou je recommence avec toi.</h3>
+          <p>Si à J+30 ton app n'est pas publiée <em>malgré ta participation active</em> (75% des calls + missions soumises), tu <strong>refais la cohorte suivante gratuitement</strong>. Et la suivante. Jusqu'à ce que ton app soit en ligne.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== PRICING ==================== -->
+  <section class="card" id="cta">
+    <div class="card-pad">
+      <div class="eyebrow yellow">Cohorte 1 — Tarif waitlist</div>
+      <h2>990 €. Une fois. Et tu prends ta place.</h2>
+
+      <div class="pricing-box">
+        <div class="pricing-grid">
+          <div class="pricing-amount">
+            <span class="small">Tu paies aujourd'hui</span>
+            <div class="big">990 €</div>
+            <span class="tax">TTC · Paiement unique · Pas d'abonnement</span>
+            <span class="ref">À l'ouverture publique : <s>1 790 €</s> + retrait des bonus exclusifs</span>
+          </div>
+          <div class="pricing-cta">
+            <a href="https://tally.so/r/kdv2vR" class="btn btn-primary lg">Je rejoins la cohorte <i class="ti ti-arrow-right"></i></a>
+            <div class="reassure">2 minutes · 4 étapes · 20 places</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== NOT FOR YOU ==================== -->
+  <section class="card not-for-you">
+    <div class="card-pad">
+      <div class="eyebrow">C'est pas pour tout le monde</div>
+      <h2>Vibe Founder n'est pas pour toi si...</h2>
+      <ul class="nfy-list">
+        <li><i class="ti ti-x"></i><span>Tu penses que l'IA est une mode et que ça va passer.</span></li>
+        <li><i class="ti ti-x"></i><span>Tu cherches une formation magique qui fait le boulot à ta place.</span></li>
+        <li><i class="ti ti-x"></i><span>Tu peux pas dégager 10h par semaine pendant 30 jours.</span></li>
+        <li><i class="ti ti-x"></i><span>Tu veux apprendre à coder de manière académique (Vibe Founder, c'est apprendre à publier avec l'IA, pas à devenir dev pro).</span></li>
+        <li><i class="ti ti-x"></i><span>T'as zéro idée d'app et zéro envie d'en chercher une.</span></li>
+      </ul>
+      <p class="nfy-close">Si rien de tout ça t'identifie : <span class="mark">tu sais quoi faire.</span></p>
+    </div>
+  </section>
+
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="card">
+    <div class="card-pad">
+      <div class="eyebrow">Tu te poses la question ?</div>
+      <h2>Réponses honnêtes aux objections sérieuses.</h2>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>J'ai pas vraiment 10h par semaine. C'est possible quand même ?</summary>
+          <div class="ans">
+            Soyons clair : <strong>en dessous de 8h/semaine</strong>, tu auras du mal à finir en 30j. La cohorte tourne autour de 10-15h/sem. Mes meilleurs profils sortent à 12h/sem en moyenne, certains à 6h s'ils sont devs expérimentés. Si tu peux pas dégager le temps, attends une période où tu peux.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>990 €, c'est cher pour moi.</summary>
+          <div class="ans">
+            Honnête : si ton intuition est que ton app peut générer ne serait-ce que <strong>100 € de revenu une fois publiée</strong>, le coût est amorti en 10 mois. Mais surtout, tu paies pas une formation, tu paies pour <strong>ne pas être au même point dans 6 mois</strong>. Si t'as pas la conviction dans ton idée, c'est probablement pas l'argent le problème.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>J'ai pas d'idée précise. Je peux quand même rejoindre ?</summary>
+          <div class="ans">
+            Idéalement t'as une <em>intuition</em>. Pas besoin d'une idée parfaite : la semaine 1 sert à transformer ton intuition en spec exécutable. Par contre si t'as <strong>zéro idée et zéro envie</strong> d'en chercher une, c'est pas pour toi.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Et si je publie pas en 30 jours ?</summary>
+          <div class="ans">
+            Tu <strong>refais la cohorte suivante gratuitement</strong> (conditions : 75% présence aux calls + missions soumises). Et la suivante. Jusqu'à ce que ton app soit en ligne. C'est la <strong>Garantie 2</strong>. Si tu fais ta part, tu publies. Sinon, je m'engage à recommencer avec toi.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Pourquoi maintenant et pas dans 6 mois ?</summary>
+          <div class="ans">
+            Parce qu'on est exactement à la <strong>fenêtre temporelle qui ne se reproduira pas</strong>. L'IA a fait disparaître la barrière technique en 18 mois. Dans 12 mois, le marché sera saturé d'apps publiées avec la même méthode. Cohorte 1, c'est aussi le tarif le plus bas que cette formation aura jamais.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Je suis dev senior. Vibe Founder a quelque chose pour moi ?</summary>
+          <div class="ans">
+            Oui — et probablement plus que pour un novice. Tu sais coder mais tu publies pas. Vibe Founder t'apporte le <strong>cadre, la cohorte, la deadline</strong> et un workflow IA-first qui te fera gagner 5-10× sur la vitesse de prototypage. La barrière n'est plus technique, elle est mentale et organisationnelle. C'est ça qu'on adresse.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>C'est quoi App Society dont tu parles ?</summary>
+          <div class="ans">
+            <strong>App Society</strong> est ma communauté permanente de fondateurs d'app. On se voit chaque lundi en live pour pousser nos MRR : marketing, ads, paywall, monétisation. Tous les diplômés de Vibe Founder reçoivent <strong>3 mois d'accès offerts</strong>. C'est là que tu vas après pour transformer ton app en business.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== FINAL CTA ==================== -->
+  <section class="card final-cta">
+    <div class="card-pad">
+      <div class="eyebrow">On se retrouve le 1<sup>er</sup> juillet ?</div>
+      <h2>Démarrage 1<sup>er</sup> juillet 2026.<br>20 places. Ordre d'arrivée.</h2>
+      <p>990 € TTC · Garantie 7 jours · Garantie résultat J+30</p>
+
+      <div class="final-cta-meta">
+        <span>★ Cohorte n°1</span>
+        <span>20 places</span>
+        <span>Démarrage 01.07.26</span>
+      </div>
+
+      <a href="https://tally.so/r/kdv2vR" class="btn btn-primary lg">Je rejoins la cohorte <i class="ti ti-arrow-right"></i></a>
+      <p class="reassure">2 minutes · 4 étapes</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 <a href="https://harryjmg.fr">Vibe Founder</a> · un programme par Harry<br>
+  <span class="easter">cette landing a été vibe-codée 🤙</span>
+</footer>
 
 </body>
 </html>
