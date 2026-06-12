@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Founder — De zéro à ta première app en 30 jours</title>
+  <meta name="description" content="Regarde la vidéo : comment passer de zéro à ta première app publiée en 30 jours. Sans coder. Avec l'IA. Première cohorte début juillet — 20 places.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harryjmg.fr/vibe-founder-v3/">
+  <meta property="og:title" content="Vibe Founder — De zéro à ta première app en 30 jours">
+  <meta property="og:description" content="Bootcamp 30 jours pour publier ta première app avec l'IA. 20 places. Première cohorte début juillet 2026.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FFDF6B'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-weight='800' font-size='18' fill='%232B2722'%3EH%3C/text%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/dist/tabler-icons.min.css">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:        #F4EFE3;
+      --ink:       #2B2722;
+      --ink-soft:  #5C5246;
+      --ink-warm:  #6B5A3A;
+      --yellow:    #FFDF6B;
+      --green:     #C9F2D6;
+      --green-ink: #1E4A2E;
+      --blue:      #CDE1F8;
+      --blue-ink:  #1D3F6E;
+      --red:       #FF7575;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      padding: clamp(28px, 6vw, 56px) clamp(18px, 4vw, 24px) 0;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      width: 100%;
+      max-width: clamp(600px, 58vw, 760px);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ====== Top identity ====== */
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: clamp(24px, 4vw, 32px);
+    }
+    .brand-mark {
+      width: 30px; height: 30px;
+      background: var(--ink); color: var(--bg);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px;
+    }
+    .brand-name { font-weight: 800; font-size: 15px; letter-spacing: -0.4px; }
+
+    /* ====== Headline ====== */
+    h1 {
+      font-size: clamp(28px, 6vw, 42px);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      margin: 0 auto clamp(26px, 4.5vw, 34px);
+      max-width: 22ch;
+      text-wrap: balance;
+    }
+    .mark {
+      background: var(--yellow);
+      border: 2px solid var(--ink);
+      border-radius: 9px;
+      padding: 0 7px;
+      display: inline-block;
+    }
+    .under {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .under::after {
+      content: '';
+      position: absolute;
+      left: -0.1em;
+      right: -0.1em;
+      bottom: -0.15em;
+      height: max(0.22em, 9px);
+      background: var(--red);
+      border-radius: 999px;
+      z-index: -1;
+    }
+    .watch-hint {
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 600;
+      margin: 0 0 clamp(14px, 2.5vw, 18px);
+      color: var(--ink-warm);
+      text-wrap: balance;
+    }
+    .watch-hint i { font-size: 18px; vertical-align: -3px; }
+
+    /* ====== VSL ====== */
+    .vsl-frame {
+      position: relative;
+      margin: 0 auto;
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 7px 8px 0 var(--ink);
+      overflow: hidden;
+      background: var(--ink);
+    }
+    .vsl-inner {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #1a1714;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vsl-inner iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .vsl-play {
+      position: relative;
+      z-index: 2;
+      width: clamp(58px, 16vw, 78px);
+      height: clamp(58px, 16vw, 78px);
+      background: var(--yellow);
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 4px 4px 0 var(--ink);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .vsl-play:hover { transform: scale(1.06); }
+    .vsl-play i { font-size: clamp(27px, 7.5vw, 36px); color: var(--ink); margin-left: 4px; }
+
+    /* ====== CTA ====== */
+    .cta-block { margin-top: clamp(34px, 6vw, 44px); }
+    .btn-primary {
+      text-decoration: none;
+      background: var(--yellow);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      border-radius: 14px;
+      box-shadow: 6px 7px 0 var(--ink);
+      padding: 19px 40px;
+      font-weight: 800;
+      font-size: clamp(18px, 2.4vw, 20px);
+      letter-spacing: -0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+    }
+    .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 8px 9px 0 var(--ink); }
+    .btn-primary:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+    .btn-primary:hover i { transform: translateX(3px); }
+    .btn-primary i { font-size: 22px; transition: transform 0.15s ease; }
+    .cta-reassure {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 10px 0 0;
+      color: var(--ink-warm);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 16px;
+    }
+    .cta-reassure span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .cta-reassure i { font-size: 14px; }
+
+    /* ====== Divider ====== */
+    .rule {
+      width: 60px;
+      height: 3px;
+      background: var(--ink);
+      border-radius: 2px;
+      margin: clamp(40px, 7vw, 60px) auto clamp(24px, 4vw, 32px);
+    }
+
+    /* ====== Recap (inline, pas une carte) ====== */
+    .recap-title {
+      font-size: clamp(18px, 2.6vw, 22px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: clamp(18px, 3vw, 24px);
+    }
+    .recap-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      max-width: 420px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .recap-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .recap-list li i {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      background: var(--green);
+      border: 2px solid var(--ink);
+      border-radius: 7px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      color: var(--green-ink);
+      margin-top: 1px;
+    }
+    .recap-list li strong { font-weight: 800; }
+    .recap-list li.bonus { margin-top: 10px; }
+    .recap-list li.bonus i {
+      background: var(--blue);
+      color: var(--blue-ink);
+    }
+    .recap-list li.guarantee i {
+      background: var(--yellow);
+      color: var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    .recap-list li.g-first { margin-top: 10px; }
+    @media (max-width: 480px) {
+      .recap-list li { font-size: 14px; }
+    }
+    @media (max-width: 374px) {
+      .recap-list li { font-size: 13px; gap: 10px; }
+    }
+
+    .price-line {
+      margin: 18px auto 0;
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+    .price-line strong {
+      color: var(--ink);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      margin-top: auto;
+      padding-top: clamp(44px, 8vw, 72px);
+      padding-bottom: 36px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .footer-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .footer-dots span {
+      width: 11px; height: 11px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+    }
+    .footer-dots .d-yellow { background: var(--yellow); transform: rotate(-6deg); }
+    .footer-dots .d-red    { background: var(--red); }
+    .footer-dots .d-green  { background: var(--green); }
+    .footer-dots .d-blue   { background: var(--blue); transform: rotate(6deg); }
+    footer .legal-link { color: var(--ink); font-weight: 700; }
+    footer .easter { font-style: italic; opacity: 0.7; }
+  </style>
+</head>
+<body>
+
+<main>
+
+  <div class="brand">
+    <div class="brand-mark">H</div>
+    <span class="brand-name">Harry Jmg</span>
+  </div>
+
+  <h1>Comment passer de <span class="mark">zéro</span> à ta première app en ligne en 30 jours <span class="under">sans coder</span></h1>
+  <p class="watch-hint">
+    <i class="ti ti-arrow-down" aria-hidden="true"></i> Appuie sur play et je t'explique tout (4 minutes)
+  </p>
+
+  <!-- Pour activer la vidéo, remplace le contenu de .vsl-inner par une iframe :
+       YouTube : <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="Vibe Founder" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       Vimeo   : <iframe src="https://player.vimeo.com/video/VIDEO_ID" title="Vibe Founder" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> -->
+  <div class="vsl-frame">
+    <div class="vsl-inner">
+      <div class="vsl-play" aria-hidden="true">
+        <i class="ti ti-player-play"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <a href="https://tally.so/r/kdv2vR" class="btn-primary" data-tally-open="kdv2vR" data-tally-layout="modal" data-tally-width="640" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">
+      Je réserve ma place <i class="ti ti-arrow-right" aria-hidden="true"></i>
+    </a>
+    <p class="price-line"><strong>990 € TTC</strong> · paiement unique</p>
+    <p class="cta-reassure">
+      <span><i class="ti ti-users"></i> 20 places</span>
+      <span><i class="ti ti-calendar"></i> Première cohorte juillet 2026</span>
+    </p>
+  </div>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <h2 class="recap-title">Ce que tu reçois</h2>
+  <ul class="recap-list">
+    <li><i class="ti ti-calendar" aria-hidden="true"></i><span><strong>30 jours de bootcamp</strong>, de l'idée à l'app publiée</span></li>
+    <li><i class="ti ti-checks" aria-hidden="true"></i><span><strong>1 tâche claire</strong> à réaliser / jour</span></li>
+    <li><i class="ti ti-headset" aria-hidden="true"></i><span><strong>2 calls live / semaine</strong> avec Harry</span></li>
+    <li><i class="ti ti-playlist" aria-hidden="true"></i><span><strong>6 modules vidéo</strong> délivrés à chaque étape</span></li>
+    <li class="bonus"><i class="ti ti-gift" aria-hidden="true"></i><span><strong>6 mois App Society offerts</strong> (600 € de valeur)</span></li>
+    <li class="guarantee g-first"><i class="ti ti-shield-check" aria-hidden="true"></i><span><strong>Garantie satisfaction</strong> : remboursé sous 7 jours</span></li>
+    <li class="guarantee"><i class="ti ti-trophy" aria-hidden="true"></i><span><strong>Garantie résultats</strong> : cohorte suivante offerte</span></li>
+  </ul>
+
+  </main>
+
+<footer>
+  <div class="footer-dots" aria-hidden="true">
+    <span class="d-yellow"></span><span class="d-red"></span><span class="d-green"></span><span class="d-blue"></span>
+  </div>
+  © 2026 Vibe Founder · un programme par Harry Jmg<br>
+  <a class="legal-link" href="legal.html">Mentions légales &amp; confidentialité</a><br>
+  <span class="easter">cette landing a été vibe-codée 🤙</span>
+</footer>
+
+<script async src="https://tally.so/widgets/embed.js"></script>
+
+</body>
+</html>
