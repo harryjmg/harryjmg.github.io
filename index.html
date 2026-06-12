@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harry Jmg</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23B85C38'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='22' fill='white'>H</text></svg>">
-  <meta name="description" content="Entrepreneur, développeur et Youtubeur. De coursier à vélo à créateur d'apps rentables, je documente l'aventure et j'aide ceux qui veulent se lancer.">
+  <meta name="description" content="Des vidéos, du code, de l'argent et de l'amour. Entrepreneur, développeur et YouTubeur — je documente l'aventure depuis 10 ans.">
   <meta property="og:title" content="Harry Jmg">
-  <meta property="og:description" content="Entrepreneur, développeur et Youtubeur. De coursier à vélo à créateur d'apps rentables, je documente l'aventure et j'aide ceux qui veulent se lancer.">
+  <meta property="og:description" content="Des vidéos, du code, de l'argent et de l'amour. Entrepreneur, développeur et YouTubeur — je documente l'aventure depuis 10 ans.">
   <meta property="og:image" content="https://harryjmg.fr/assets/images/harry-yt.jpeg">
   <meta property="og:url" content="https://harryjmg.fr">
   <meta property="og:type" content="website">
@@ -30,6 +30,7 @@
       --text-light: #999;
       --accent: #B85C38;
       --accent-hover: #A34E2E;
+      --accent-soft: rgba(184, 92, 56, 0.15);
       --serif: 'Libre Baskerville', Georgia, serif;
       --sans: 'DM Sans', -apple-system, sans-serif;
     }
@@ -49,6 +50,14 @@
 
     a { color: inherit; }
 
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
     .container {
       max-width: 620px;
       margin: 0 auto;
@@ -67,6 +76,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 20px;
+      box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--accent-soft);
     }
 
     header h1 {
@@ -74,11 +84,13 @@
       font-size: 42px;
       font-weight: 700;
       letter-spacing: -0.5px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    header p {
-      font-size: 18px;
+    .tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 19px;
       color: var(--text-secondary);
       line-height: 1.6;
       max-width: 480px;
@@ -98,7 +110,7 @@
       border: 1px solid rgba(0,0,0,0.06);
       border-radius: 16px;
       padding: 32px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .card:hover {
@@ -137,7 +149,7 @@
       font-weight: 600;
       color: var(--accent);
       text-decoration: none;
-      transition: gap 0.2s ease;
+      transition: gap 0.2s ease, color 0.2s ease;
     }
 
     .card-link:hover {
@@ -180,26 +192,39 @@
     }
 
     /* ===== YT GRID ===== */
-    .yt-section {
-      margin: 24px 0;
+    .yt-section + .yt-section {
+      margin-top: 32px;
     }
 
     .yt-phase-label {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
       font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
-    .yt-section + .yt-section {
-      margin-top: 28px;
+    .yt-phase-label .yt-phase-years {
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+
+    .yt-phase-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--accent-soft);
+      align-self: center;
     }
 
     .yt-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
@@ -217,6 +242,7 @@
       position: relative;
       border-radius: 10px;
       overflow: hidden;
+      background: rgba(0,0,0,0.04);
     }
 
     .yt-card-thumb img {
@@ -224,6 +250,11 @@
       display: block;
       aspect-ratio: 16 / 9;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .yt-card:hover .yt-card-thumb img {
+      transform: scale(1.04);
     }
 
     .yt-card-title {
@@ -231,19 +262,83 @@
       font-family: var(--sans);
       font-size: 13px;
       font-weight: 600;
-      line-height: 1.3;
+      line-height: 1.4;
       margin-top: 10px;
       transition: color 0.2s ease;
     }
 
+    .yt-channel-link {
+      margin-top: 28px;
+    }
+
     @media (max-width: 560px) {
       .yt-row {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .yt-card:nth-child(3) {
         display: none;
       }
+    }
+
+    /* ===== NEWSLETTER ===== */
+    .card.newsletter {
+      text-align: center;
+    }
+
+    .card.newsletter p {
+      margin-bottom: 16px;
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 8px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .subscribe-form input[type="email"] {
+      flex: 1;
+      min-width: 0;
+      padding: 10px 14px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 14px;
+      outline: none;
+      background: white;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .subscribe-form input[type="email"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .subscribe-form .honeypot {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+    }
+
+    .subscribe-form button {
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+
+    .subscribe-form button:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    #form-message {
+      font-size: 13px;
+      margin-top: 10px;
+      display: none;
     }
 
     /* ===== SEPARATOR ===== */
@@ -252,7 +347,7 @@
       height: 2px;
       background: var(--accent);
       opacity: 0.3;
-      margin: 0 auto;
+      margin: 0 auto 24px;
     }
 
     /* ===== FOOTER ===== */
@@ -266,6 +361,7 @@
     footer a {
       color: var(--text-secondary);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     footer a:hover {
@@ -276,9 +372,16 @@
     @media (max-width: 600px) {
       header { padding: 60px 0 40px; }
       header h1 { font-size: 32px; }
-      header p { font-size: 16px; }
+      .tagline { font-size: 17px; }
       .card { padding: 24px; }
       .card h2 { font-size: 20px; }
+      .subscribe-form { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -288,38 +391,32 @@
     <header>
       <img src="assets/images/harry-yt.jpeg" alt="Harry Jmg" class="avatar">
       <h1>Harry Jmg</h1>
-      <p>Entrepreneur, développeur et YouTubeur.</p>
+      <p class="tagline">Des vidéos, du code, de l'argent et de l'amour.</p>
     </header>
 
     <div class="cards">
 
       <!-- YouTube -->
       <div class="card featured">
-        <div class="card-label">YouTube</div>
-        <p style="margin-bottom: 8px;">10 ans de vidéos, 3 vies différentes.</p>
-        <a href="https://youtube.com/c/HarryJmg" target="_blank" rel="noopener" class="card-link" style="margin-bottom: 4px;">
-          Voir la chaîne
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-        </a>
 
         <div class="yt-section">
-          <div class="yt-phase-label">Coursier (2016-2017)</div>
+          <div class="yt-phase-label">Coursier <span class="yt-phase-years">2016–2017</span></div>
           <div class="yt-row">
-            <a href="https://www.youtube.com/watch?v=xz-TL08xy70" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=xz-TL08xy70" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/xz-TL08xy70/maxresdefault.jpg" alt="Coursier à vélo, combien je gagne ?">
+                <img src="https://img.youtube.com/vi/xz-TL08xy70/maxresdefault.jpg" alt="Coursier à vélo, combien je gagne ?" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">COURSIER A VELO, COMBIEN JE GAGNE ?</span>
             </a>
-            <a href="https://www.youtube.com/watch?v=wNzjTiFThlQ" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=wNzjTiFThlQ" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/wNzjTiFThlQ/maxresdefault.jpg" alt="Repas gratuit pour bibi avec UberEATS">
+                <img src="https://img.youtube.com/vi/wNzjTiFThlQ/maxresdefault.jpg" alt="Repas gratuit pour bibi avec UberEATS" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">Repas gratuit pour bibi avec UberEATS</span>
             </a>
-            <a href="https://www.youtube.com/watch?v=ZyKWcLqcxt8" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=ZyKWcLqcxt8" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/ZyKWcLqcxt8/maxresdefault.jpg" alt="Combien j'ai gagné avec Shift Heroes en 2017">
+                <img src="https://img.youtube.com/vi/ZyKWcLqcxt8/maxresdefault.jpg" alt="Combien j'ai gagné avec Shift Heroes en 2017" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">Combien j'ai gagné avec Shift Heroes en 2017</span>
             </a>
@@ -327,23 +424,23 @@
         </div>
 
         <div class="yt-section">
-          <div class="yt-phase-label">Dev freelance (2018-2024)</div>
+          <div class="yt-phase-label">Dev freelance <span class="yt-phase-years">2018–2024</span></div>
           <div class="yt-row">
-            <a href="https://www.youtube.com/watch?v=INWzYUiVI08" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=INWzYUiVI08" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/INWzYUiVI08/maxresdefault.jpg" alt="Une journée random de développeur freelance (400€/jour)">
+                <img src="https://img.youtube.com/vi/INWzYUiVI08/maxresdefault.jpg" alt="Une journée random de développeur freelance (400€/jour)" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">Une journée random de développeur freelance (400€/jour)</span>
             </a>
-            <a href="https://www.youtube.com/watch?v=FbCcvtQhwDo" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=FbCcvtQhwDo" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/FbCcvtQhwDo/maxresdefault.jpg" alt="10 ans d'une vie de développeur sans diplômes">
+                <img src="https://img.youtube.com/vi/FbCcvtQhwDo/maxresdefault.jpg" alt="10 ans d'une vie de développeur sans diplômes" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">10 ans d'une vie de développeur sans diplômes</span>
             </a>
-            <a href="https://www.youtube.com/watch?v=m1LmZ0o_iCI" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=m1LmZ0o_iCI" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/m1LmZ0o_iCI/maxresdefault.jpg" alt="9 étapes pour devenir développeur freelance">
+                <img src="https://img.youtube.com/vi/m1LmZ0o_iCI/maxresdefault.jpg" alt="9 étapes pour devenir développeur freelance" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">9 étapes pour devenir développeur freelance</span>
             </a>
@@ -351,44 +448,60 @@
         </div>
 
         <div class="yt-section">
-          <div class="yt-phase-label">Indie app maker (2025-aujourd'hui)</div>
+          <div class="yt-phase-label">Indie app maker <span class="yt-phase-years">2025–aujourd'hui</span></div>
           <div class="yt-row">
-            <a href="https://www.youtube.com/watch?v=D_y4ZgBJtRg" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=D_y4ZgBJtRg" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/D_y4ZgBJtRg/maxresdefault.jpg" alt="J'ai essayé d'atteindre 30k/mois avec une app mobile">
+                <img src="https://img.youtube.com/vi/D_y4ZgBJtRg/maxresdefault.jpg" alt="J'ai essayé d'atteindre 30k/mois avec une app mobile" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">J'ai essayé d'atteindre 30k/mois avec une app mobile</span>
             </a>
-            <a href="https://www.youtube.com/watch?v=fGMdzWXMM4Y" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=fGMdzWXMM4Y" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/fGMdzWXMM4Y/maxresdefault.jpg" alt="J'ai lancé une app et voici combien j'ai gagné en 3 mois">
+                <img src="https://img.youtube.com/vi/fGMdzWXMM4Y/maxresdefault.jpg" alt="J'ai lancé une app et voici combien j'ai gagné en 3 mois" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">J'ai lancé une app et voici combien j'ai gagné en 3 mois</span>
             </a>
-            <a href="https://www.youtube.com/watch?v=iSBmHYaYf-k" target="_blank" class="yt-card">
+            <a href="https://www.youtube.com/watch?v=iSBmHYaYf-k" target="_blank" rel="noopener" class="yt-card">
               <div class="yt-card-thumb">
-                <img src="https://img.youtube.com/vi/iSBmHYaYf-k/maxresdefault.jpg" alt="Jour 1/90 – On va bien s'amuser (5kappchallenge)">
+                <img src="https://img.youtube.com/vi/iSBmHYaYf-k/maxresdefault.jpg" alt="Jour 1/90 – On va bien s'amuser (5kappchallenge)" loading="lazy" decoding="async">
               </div>
               <span class="yt-card-title">Jour 1/90 – On va bien s'amuser (5kappchallenge)</span>
             </a>
           </div>
         </div>
 
+        <a href="https://youtube.com/c/HarryJmg" target="_blank" rel="noopener" class="card-link yt-channel-link">
+          Voir toute la chaîne
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </a>
+
+      </div>
+
+      <!-- Vibe Founder -->
+      <div class="card">
+        <div class="card-label">Bootcamp</div>
+        <h2>Vibe Founder</h2>
+        <p>30 jours pour passer de zéro à ta première app en ligne, sans coder, grâce à l'IA. Première cohorte en juillet 2026 — 20 places.</p>
+        <a href="vibe-founder-v3/" class="card-cta">
+          Découvrir le bootcamp
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </a>
       </div>
 
       <!-- App Society -->
-      <div class="card" style="border-left: 3px solid var(--accent);">
-        <div class="card-label">Communaut&eacute;</div>
+      <div class="card">
+        <div class="card-label">Communauté</div>
         <h2>App Society</h2>
-        <p>Une guilde d'entrepreneurs et de d&eacute;veloppeurs d&eacute;brouillards, ambitieux et passionn&eacute;s qui cherchent &agrave; cracker le code des apps mobiles B2C.</p>
+        <p>Une guilde d'entrepreneurs et de développeurs débrouillards, ambitieux et passionnés qui cherchent à cracker le code des apps mobiles B2C.</p>
         <a href="appsociety/" class="card-cta">
-          D&eacute;couvrir la communaut&eacute;
+          Découvrir la communauté
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       <!-- Méditation -->
-      <div class="card" style="border-left: 3px solid var(--accent);">
+      <div class="card">
         <div class="card-label">Podcast</div>
         <h2>Je médite tous les jours</h2>
         <p>Des centaines de méditations guidées enregistrées en totale improvisation. Disponible sur la plupart des plateformes d'écoute depuis 2020. Plus de 300 000 écoutes par mois.</p>
@@ -399,27 +512,29 @@
       </div>
 
       <!-- Newsletter -->
-      <div class="card" style="text-align: center;">
+      <div class="card newsletter">
         <div class="card-label">Newsletter</div>
-        <p style="margin-bottom: 16px;">Reçois mes actus de temps en temps. Pas de spam.</p>
-        <form id="subscribe-form" style="display: flex; gap: 8px; max-width: 420px; margin: 0 auto;">
-          <input type="text" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
-          <input type="email" name="email" placeholder="Ton email" required style="flex:1; padding: 10px 14px; border: 1px solid rgba(0,0,0,0.12); border-radius: 8px; font-family: var(--sans); font-size: 14px; outline: none;">
-          <button type="submit" id="subscribe-btn" class="card-cta" style="white-space: nowrap; border: none; cursor: pointer; font-family: var(--sans);">S'inscrire</button>
+        <p>Reçois mes actus de temps en temps. Pas de spam.</p>
+        <form id="subscribe-form" class="subscribe-form">
+          <input type="text" name="website" autocomplete="off" tabindex="-1" class="honeypot" aria-hidden="true">
+          <input type="email" name="email" placeholder="Ton email" aria-label="Ton email" required>
+          <button type="submit" id="subscribe-btn" class="card-cta">S'inscrire</button>
         </form>
-        <p id="form-message" style="font-size: 13px; margin-top: 10px; display: none;"></p>
+        <p id="form-message" role="status"></p>
       </div>
 
     </div>
 
     <footer>
-      <div class="sep" style="margin-bottom: 24px;"></div>
+      <div class="sep"></div>
       <a href="mailto:harry@harryjmg.fr">harry@harryjmg.fr</a>
-      <p style="margin-top: 12px;">&copy; <script>document.write(new Date().getFullYear())</script> Harry Jmg</p>
+      <p style="margin-top: 12px;">&copy; <span id="year"></span> Harry Jmg</p>
     </footer>
 
   </div>
   <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   document.getElementById('subscribe-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('subscribe-btn');
