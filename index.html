@@ -28,9 +28,15 @@
       --text: #1A1A1A;
       --text-secondary: #6B6B6B;
       --text-light: #999;
+      --ink: #2A2622;
       --accent: #B85C38;
       --accent-hover: #A34E2E;
       --accent-soft: rgba(184, 92, 56, 0.15);
+      --yellow: #FFDF6B;
+      --green: #C9F2D6;
+      --blue: #CDE1F8;
+      --peach: #F8D2BE;
+      --red: #FF8E8E;
       --serif: 'Libre Baskerville', Georgia, serif;
       --sans: 'DM Sans', -apple-system, sans-serif;
     }
@@ -75,8 +81,9 @@
       height: 96px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 20px;
-      box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--accent-soft);
+      margin-bottom: 22px;
+      border: 3px solid var(--ink);
+      box-shadow: 4px 5px 0 var(--ink);
     }
 
     header h1 {
@@ -107,25 +114,37 @@
 
     .card {
       background: white;
-      border: 1px solid rgba(0,0,0,0.06);
+      border: 2.5px solid var(--ink);
       border-radius: 16px;
       padding: 32px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 5px 6px 0 var(--ink);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 8px 0 var(--ink);
     }
 
     .card-label {
+      display: inline-block;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 3px 13px;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--accent);
-      margin-bottom: 10px;
+      letter-spacing: 0.8px;
+      color: var(--ink);
+      background: var(--yellow);
+      margin-bottom: 14px;
     }
+
+    .card-label.c-red    { background: var(--red); }
+    .card-label.c-yellow { background: var(--yellow); }
+    .card-label.c-green  { background: var(--green); }
+    .card-label.c-blue   { background: var(--blue); }
+    .card-label.c-peach  { background: var(--peach); }
 
     .card h2 {
       font-family: var(--serif);
@@ -146,7 +165,7 @@
       align-items: center;
       gap: 6px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent);
       text-decoration: none;
       transition: gap 0.2s ease, color 0.2s ease;
@@ -167,17 +186,27 @@
       align-items: center;
       gap: 8px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       color: white;
       background: var(--accent);
       text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      transition: background 0.2s ease;
+      padding: 11px 22px;
+      border: 2.5px solid var(--ink);
+      border-radius: 10px;
+      box-shadow: 3px 4px 0 var(--ink);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
     }
 
     .card-cta:hover {
       background: var(--accent-hover);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 6px 0 var(--ink);
+    }
+
+    .card-cta:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--ink);
     }
 
     .card-cta svg {
@@ -188,7 +217,6 @@
     /* ===== FEATURED (YouTube) ===== */
     .card.featured {
       background: var(--bg-warm);
-      border: 1px solid rgba(184, 92, 56, 0.1);
     }
 
     /* ===== YT GRID ===== */
@@ -243,6 +271,7 @@
       border-radius: 10px;
       overflow: hidden;
       background: rgba(0,0,0,0.04);
+      border: 2px solid var(--ink);
     }
 
     .yt-card-thumb img {
@@ -300,19 +329,18 @@
     .subscribe-form input[type="email"] {
       flex: 1;
       min-width: 0;
-      padding: 10px 14px;
-      border: 1px solid rgba(0,0,0,0.12);
-      border-radius: 8px;
+      padding: 11px 15px;
+      border: 2.5px solid var(--ink);
+      border-radius: 10px;
       font-family: var(--sans);
       font-size: 14px;
       outline: none;
       background: white;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: box-shadow 0.18s ease;
     }
 
     .subscribe-form input[type="email"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-soft);
+      box-shadow: 3px 4px 0 var(--accent);
     }
 
     .subscribe-form .honeypot {
@@ -343,12 +371,20 @@
 
     /* ===== SEPARATOR ===== */
     .sep {
-      width: 40px;
-      height: 2px;
-      background: var(--accent);
-      opacity: 0.3;
-      margin: 0 auto 24px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 0 auto 22px;
     }
+    .sep span {
+      width: 11px; height: 11px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+    }
+    .sep .d-yellow { background: var(--yellow); transform: rotate(-6deg); }
+    .sep .d-red    { background: var(--red); }
+    .sep .d-green  { background: var(--green); }
+    .sep .d-blue   { background: var(--blue); transform: rotate(6deg); }
 
     /* ===== FOOTER ===== */
     footer {
@@ -398,6 +434,7 @@
 
       <!-- YouTube -->
       <div class="card featured">
+        <div class="card-label c-red">Chaîne YouTube</div>
 
         <div class="yt-section">
           <div class="yt-phase-label">Coursier <span class="yt-phase-years">2016–2017</span></div>
@@ -480,7 +517,7 @@
 
       <!-- Vibe Founder -->
       <div class="card">
-        <div class="card-label">Bootcamp</div>
+        <div class="card-label c-yellow">Bootcamp</div>
         <h2>Vibe Founder</h2>
         <p>30 jours pour passer de zéro à ta première app en ligne, sans coder, grâce à l'IA. Première cohorte en juillet 2026 — 20 places.</p>
         <a href="vibe-founder-v3/" class="card-cta">
@@ -491,7 +528,7 @@
 
       <!-- App Society -->
       <div class="card">
-        <div class="card-label">Communauté</div>
+        <div class="card-label c-green">Communauté</div>
         <h2>App Society</h2>
         <p>Une guilde d'entrepreneurs et de développeurs débrouillards, ambitieux et passionnés qui cherchent à cracker le code des apps mobiles B2C.</p>
         <a href="appsociety/" class="card-cta">
@@ -502,7 +539,7 @@
 
       <!-- Méditation -->
       <div class="card">
-        <div class="card-label">Podcast</div>
+        <div class="card-label c-blue">Podcast</div>
         <h2>Je médite tous les jours</h2>
         <p>Des centaines de méditations guidées enregistrées en totale improvisation. Disponible sur la plupart des plateformes d'écoute depuis 2020. Plus de 300 000 écoutes par mois.</p>
         <a href="https://jemeditetouslesjours.fr" target="_blank" rel="noopener" class="card-cta">
@@ -513,7 +550,7 @@
 
       <!-- Newsletter -->
       <div class="card newsletter">
-        <div class="card-label">Newsletter</div>
+        <div class="card-label c-peach">Newsletter</div>
         <p>Reçois mes actus de temps en temps. Pas de spam.</p>
         <form id="subscribe-form" class="subscribe-form">
           <input type="text" name="website" autocomplete="off" tabindex="-1" class="honeypot" aria-hidden="true">
@@ -526,7 +563,9 @@
     </div>
 
     <footer>
-      <div class="sep"></div>
+      <div class="sep" aria-hidden="true">
+        <span class="d-yellow"></span><span class="d-red"></span><span class="d-green"></span><span class="d-blue"></span>
+      </div>
       <a href="mailto:harry@harryjmg.fr">harry@harryjmg.fr</a>
       <p style="margin-top: 12px;">&copy; <span id="year"></span> Harry Jmg</p>
     </footer>
